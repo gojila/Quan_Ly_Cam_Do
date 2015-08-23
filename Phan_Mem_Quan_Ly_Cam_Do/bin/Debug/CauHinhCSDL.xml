@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <CauHinhCSDL>
+    <MayChu>.\SQLEXPRESS</MayChu>
+    <SuDungTaiKhoanWindows>True</SuDungTaiKhoanWindows>
+    <TaiKhoanSQL>sa</TaiKhoanSQL>
+    <Password>123456</Password>
+    <CSDL>QLCD_KIM_PHUNG</CSDL>
+    <TenTiem>Tiệm Cầm Đồ Văn Tèo</TenTiem>
+    <BienNhanCamDo>Trần Văn Tèo</BienNhanCamDo>
+    <DiaChi>460/5 - Đường Số 3 - Long An</DiaChi>
+    <DienThoai>0723.882.222</DienThoai>
+    <LaiSuat>3</LaiSuat>
+    <ThoiHanQuyDinh>2</ThoiHanQuyDinh>
+  </CauHinhCSDL>
+</NewDataSet>
