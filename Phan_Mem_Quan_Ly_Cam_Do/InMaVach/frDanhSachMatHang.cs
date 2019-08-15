@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlTypes;
-using OnBarcode.Barcode;
 using Phan_Mem_Quan_Ly_Cam_Do.DoiTuong;
-using System.Diagnostics;
-using DevExpress.BarCodes;
 using Phan_Mem_Quan_Ly_Cam_Do.InMaVach;
 using DevExpress.XtraReports.UI;
 using System.Data.OleDb;
 using System.IO;
 using DevExpress.XtraEditors;
-using DevExpress.XtraPrinting;
-using DevExpress.XtraPrinting.Preview;
 using System.IO.Ports;
 
 namespace quanlykho_quang_make
