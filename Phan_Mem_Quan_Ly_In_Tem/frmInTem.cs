@@ -232,6 +232,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 return;
             }
             var rptMaVach = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text);
+            string filePath = @"rptInTemNuTrang.repx";
+            if (File.Exists(filePath))
+            {
+                rptMaVach.LoadLayout(filePath);
+                rptMaVach.Parameters["TenTiem"].Value = txtTenTiem.Text;
+                rptMaVach.Parameters["DiaChi"].Value = txtDiaChi.Text;
+            }
+
             rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
             rptMaVach.CreateDocument();
             
@@ -283,7 +291,16 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 return;
             }
 
-            ReportDesignTool dt = new ReportDesignTool(new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text));
+            var report = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text);
+            string filePath = @"rptInTemNuTrang.repx";
+            if (File.Exists(filePath))
+            {
+                report.LoadLayout(filePath);
+                report.Parameters["TenTiem"].Value = txtTenTiem.Text;
+                report.Parameters["DiaChi"].Value = txtDiaChi.Text;
+            }
+            ReportDesignTool dt = new ReportDesignTool(report);
+            //ReportDesignTool dt = new ReportDesignTool(new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text));
 
             // Access the report's properties.
             dt.Report.DrawGrid = false;
