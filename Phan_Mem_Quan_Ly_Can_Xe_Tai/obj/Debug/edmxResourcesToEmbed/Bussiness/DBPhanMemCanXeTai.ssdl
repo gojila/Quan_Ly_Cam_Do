@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhanMemCanXeTaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PhieuCan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoPhieu" Type="nvarchar" MaxLength="250" />
+    <Property Name="Ngay" Type="date" />
+    <Property Name="SoXe" Type="nvarchar" MaxLength="250" />
+    <Property Name="KhachHang" Type="nvarchar" MaxLength="250" />
+    <Property Name="Loaihang" Type="nvarchar" MaxLength="250" />
+    <Property Name="NgayCan1" Type="datetime" />
+    <Property Name="NgayCan2" Type="datetime" />
+    <Property Name="TrongLuongCan1" Type="money" />
+    <Property Name="TrongLuongCan2" Type="money" />
+    <Property Name="TrongLuongHang" Type="money" />
+    <Property Name="XuatNhap" Type="nvarchar" MaxLength="250" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedUser" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpatedUser" Type="int" />
+  </EntityType>
+  <EntityContainer Name="PhanMemCanXeTaiModelStoreContainer">
+    <EntitySet Name="PhieuCan" EntityType="Self.PhieuCan" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <CauHinhCSDL>
+    <MayChu>(local)</MayChu>
+    <SuDungTaiKhoanWindows>True</SuDungTaiKhoanWindows>
+    <TaiKhoanSQL />
+    <Password />
+    <CSDL>PhanMemCanXeTai</CSDL>
+    <TenCongTy>Thái Dương</TenCongTy>
+    <DiaChi>Ấp 5 - Lạc Tấn - Tân Trụ - Long An</DiaChi>
+    <DienThoai>123</DienThoai>
+    <Fax>123</Fax>
+  </CauHinhCSDL>
+</NewDataSet>

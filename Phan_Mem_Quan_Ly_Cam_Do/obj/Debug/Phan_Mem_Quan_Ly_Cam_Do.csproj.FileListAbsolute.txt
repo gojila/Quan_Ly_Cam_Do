@@ -554,15 +554,6 @@ E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\DevExpress.XtraSp
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\DevExpress.XtraTreeList.v18.1.dll
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\DevExpress.XtraVerticalGrid.v18.1.dll
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\DevExpress.XtraWizard.v18.1.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.BatchParser.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.ConnectionInfo.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.Dmf.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.Management.Sdk.Sfc.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.RegSvrEnum.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.ServiceBrokerEnum.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.Smo.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.SmoExtended.dll
-E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.SqlServer.SqlEnum.dll
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Microsoft.VisualBasic.dll
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\Phan_Mem_Quan_Ly_In_Tem.exe
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Cam_Do\bin\Debug\System.Data.DataSetExtensions.dll

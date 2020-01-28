@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhanMemCanXeTaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PhanMemCanXeTaiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PhieuCan" EntityType="PhanMemCanXeTaiModel.PhieuCan" />
+  </EntityContainer>
+  <EntityType Name="PhieuCan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoPhieu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="0" />
+    <Property Name="SoXe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="KhachHang" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Loaihang" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NgayCan1" Type="DateTime" Precision="3" />
+    <Property Name="NgayCan2" Type="DateTime" Precision="3" />
+    <Property Name="TrongLuongCan1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TrongLuongCan2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TrongLuongHang" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="XuatNhap" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedUser" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpatedUser" Type="Int32" />
+  </EntityType>
+</Schema>

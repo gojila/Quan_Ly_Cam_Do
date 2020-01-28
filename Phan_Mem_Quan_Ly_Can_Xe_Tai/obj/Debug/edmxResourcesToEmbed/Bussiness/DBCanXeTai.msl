@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhanMemCanXeTaiModelStoreContainer" CdmEntityContainer="PhanMemCanXeTaiEntities">
+    <EntitySetMapping Name="PhieuCan">
+      <EntityTypeMapping TypeName="PhanMemCanXeTaiModel.PhieuCan">
+        <MappingFragment StoreEntitySet="PhieuCan">
+          <ScalarProperty Name="UpatedUser" ColumnName="UpatedUser" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="XuatNhap" ColumnName="XuatNhap" />
+          <ScalarProperty Name="TrongLuongHang" ColumnName="TrongLuongHang" />
+          <ScalarProperty Name="TrongLuongCan2" ColumnName="TrongLuongCan2" />
+          <ScalarProperty Name="TrongLuongCan1" ColumnName="TrongLuongCan1" />
+          <ScalarProperty Name="NgayCan2" ColumnName="NgayCan2" />
+          <ScalarProperty Name="NgayCan1" ColumnName="NgayCan1" />
+          <ScalarProperty Name="Loaihang" ColumnName="Loaihang" />
+          <ScalarProperty Name="KhachHang" ColumnName="KhachHang" />
+          <ScalarProperty Name="SoXe" ColumnName="SoXe" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
