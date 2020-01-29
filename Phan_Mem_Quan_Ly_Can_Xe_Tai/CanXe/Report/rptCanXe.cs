@@ -13,12 +13,5 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe.Report
         {
             InitializeComponent();
         }
-
-        public rptCanXe(long STT)
-        {
-            InitializeComponent();
-            this.STT = STT;
-        }
-
     }
 }

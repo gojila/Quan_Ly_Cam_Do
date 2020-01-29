@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using Newtonsoft.Json;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Bussiness;
+using Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe.Report;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
 using System;
 using System.Collections.Generic;
@@ -61,17 +63,30 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 item.KhachHang = txtKhachHang.Text;
                 item.Loaihang = txtLoaiHang.Text;
                 item.Ngay = dtNgay.DateTime;
-                item.NgayCan1 = dtNgay.DateTime;
-                item.NgayCan2 = dtNgay.DateTime;
+                //item.NgayCan1 = dtNgay.DateTime;
+                //item.NgayCan2 = dtNgay.DateTime;
                 item.SoPhieu = txtSoPhieu.Text;
                 item.SoXe = txtSoXe.Text;
                 item.Status = 1;
-                item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                //item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                //item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
                 item.TrongLuongHang = 0;
                 item.UpatedUser = 1;
                 item.UpdatedDate = DateTime.Now;
                 item.XuatNhap = cbXuatNhap.SelectedText;
+
+                if (item.NgayCan1 != null)
+                {
+                    item.NgayCan1 = dtNgay.DateTime;
+                    item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                }
+                else
+                {
+                    item.NgayCan2 = dtNgay.DateTime;
+                    item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                }
+
+
 
                 db.PhieuCan.Add(item);
                 db.SaveChanges();
@@ -379,11 +394,60 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
         {
             try
             {
+                int[] selectedRows = gbList.GetSelectedRows();
 
+                if (selectedRows.Length > 0)
+                {
+                    var db = new PhanMemCanXeTaiEntities1();
+                    db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
+
+                    for (int i = 0; i < selectedRows.Length; i++)
+                    {
+                        var arg = gbList.GetRowCellValue(i, colId);
+                        if (arg != null)
+                        {
+                            var tempId = Convert.ToInt32(arg);
+                            var phieuCan = (from item in db.PhieuCan
+                                            where item.Id == tempId && !item.IsDeleted.Value
+                                            select item).FirstOrDefault();
+                            if (phieuCan != null)
+                            {
+                                var _rptCanXe_Master = new rptCanXe();
+
+                                _rptCanXe_Master.Parameters["TenCongTy"].Value = SqlHelper.CompanyName;
+                                _rptCanXe_Master.Parameters["DiaChi"].Value = SqlHelper.Address;
+                                _rptCanXe_Master.Parameters["DienThoai"].Value = SqlHelper.Phone;
+                                _rptCanXe_Master.Parameters["Fax"].Value = SqlHelper.Fax;
+
+                                _rptCanXe_Master.Parameters["SoPhieu"].Value = phieuCan.SoPhieu;
+                                _rptCanXe_Master.Parameters["Ngay"].Value = phieuCan.Ngay.Value.ToString("dd/MM/yyyy");
+                                _rptCanXe_Master.Parameters["KhachHang_TenKhachHang"].Value = phieuCan.KhachHang;
+                                _rptCanXe_Master.Parameters["KhachHang_DiaChi"].Value = "";
+                                _rptCanXe_Master.Parameters["BienSoXe"].Value = phieuCan.SoXe;
+                                _rptCanXe_Master.Parameters["LoaiHang"].Value = phieuCan.Loaihang;
+
+                                _rptCanXe_Master.Parameters["XuatNhap"].Value = phieuCan.XuatNhap;
+                                _rptCanXe_Master.Parameters["ThoiGianCanLan1"].Value = phieuCan.NgayCan1.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
+                                _rptCanXe_Master.Parameters["ThoiGianCanLan2"].Value = phieuCan.NgayCan2.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
+                                _rptCanXe_Master.Parameters["TrongLuongCanLan1"].Value = phieuCan.TrongLuongCan1.Value.ToString("##,##0.###");
+                                _rptCanXe_Master.Parameters["TrongLuongCanLan2"].Value = phieuCan.TrongLuongCan2.Value.ToString("##,##0.###");
+
+                                _rptCanXe_Master.Parameters["TrongLuongHangHoa"].Value = phieuCan.TrongLuongHang.Value.ToString("##,##0.###");
+
+                                _rptCanXe_Master.Parameters["BarCode"].Value = JsonConvert.SerializeObject(phieuCan);
+                                
+                                _rptCanXe_Master.AssignPrintTool(new ReportPrintTool(_rptCanXe_Master));
+                                _rptCanXe_Master.CreateDocument();
+                                ReportPrintTool printTool = new ReportPrintTool(_rptCanXe_Master);
+                                printTool.ShowPreview();
+                            }
+                        }
+                    }
+                }
             }
             catch(Exception ex)
             {
-                XtraMessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
