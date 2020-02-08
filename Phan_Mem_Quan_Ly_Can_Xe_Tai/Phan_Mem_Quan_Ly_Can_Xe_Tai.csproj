@@ -122,6 +122,7 @@
     <Compile Include="CanXe\Report\rptCanXe.Designer.cs">
       <DependentUpon>rptCanXe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\CommonEnum.cs" />
     <Compile Include="frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
