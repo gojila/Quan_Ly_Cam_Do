@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtGio = new DevExpress.XtraEditors.TimeEdit();
+            this.txtCanNang = new DevExpress.XtraEditors.CalcEdit();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
@@ -50,6 +50,7 @@
             this.bbiScale2_Grid = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.txtGio = new DevExpress.XtraEditors.TimeEdit();
             this.dtNgayCan2 = new DevExpress.XtraEditors.DateEdit();
             this.dtNgayCan1 = new DevExpress.XtraEditors.DateEdit();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -120,6 +121,8 @@
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.phieuCanTableAdapter = new Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe.DS.dsCanXeTableAdapters.PhieuCanTableAdapter();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -127,15 +130,15 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pm = new DevExpress.XtraBars.PopupMenu(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.txtCanNang = new DevExpress.XtraEditors.CalcEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.bbiIn_Grid = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTim_Grid = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan1.Properties.CalendarTimeProperties)).BeginInit();
@@ -184,10 +187,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pm)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -223,19 +225,29 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtGio
+            // txtCanNang
             // 
-            this.txtGio.EditValue = new System.DateTime(2020, 2, 8, 0, 0, 0, 0);
-            this.txtGio.Location = new System.Drawing.Point(1009, 62);
-            this.txtGio.MenuManager = this.bm;
-            this.txtGio.Name = "txtGio";
-            this.txtGio.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtGio.Properties.Appearance.Options.UseFont = true;
-            this.txtGio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txtCanNang.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.txtCanNang.Location = new System.Drawing.Point(1034, 92);
+            this.txtCanNang.MenuManager = this.bm;
+            this.txtCanNang.Name = "txtCanNang";
+            this.txtCanNang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 24F);
+            this.txtCanNang.Properties.Appearance.Options.UseFont = true;
+            this.txtCanNang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtGio.Size = new System.Drawing.Size(179, 26);
-            this.txtGio.StyleController = this.layoutControl1;
-            this.txtGio.TabIndex = 29;
+            this.txtCanNang.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtCanNang.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtCanNang.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtCanNang.Properties.NullValuePrompt = "No Data";
+            this.txtCanNang.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txtCanNang.Properties.ReadOnly = true;
+            this.txtCanNang.Size = new System.Drawing.Size(154, 46);
+            this.txtCanNang.StyleController = this.layoutControl1;
+            this.txtCanNang.TabIndex = 30;
             // 
             // bm
             // 
@@ -258,8 +270,10 @@
             this.bbiScale_Grid,
             this.bbiScale1_Grid,
             this.bbiScale2_Grid,
-            this.bbiEdit});
-            this.bm.MaxItemId = 15;
+            this.bbiEdit,
+            this.bbiIn_Grid,
+            this.bbiTim_Grid});
+            this.bm.MaxItemId = 17;
             this.bm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
             // 
@@ -403,6 +417,20 @@
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // txtGio
+            // 
+            this.txtGio.EditValue = new System.DateTime(2020, 2, 8, 0, 0, 0, 0);
+            this.txtGio.Location = new System.Drawing.Point(1034, 62);
+            this.txtGio.MenuManager = this.bm;
+            this.txtGio.Name = "txtGio";
+            this.txtGio.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtGio.Properties.Appearance.Options.UseFont = true;
+            this.txtGio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtGio.Size = new System.Drawing.Size(154, 26);
+            this.txtGio.StyleController = this.layoutControl1;
+            this.txtGio.TabIndex = 29;
             // 
             // dtNgayCan2
             // 
@@ -959,7 +987,7 @@
             // dtNgay
             // 
             this.dtNgay.EditValue = null;
-            this.dtNgay.Location = new System.Drawing.Point(1009, 32);
+            this.dtNgay.Location = new System.Drawing.Point(1034, 32);
             this.dtNgay.MenuManager = this.bm;
             this.dtNgay.Name = "dtNgay";
             this.dtNgay.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -970,20 +998,20 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtNgay.Properties.NullValuePrompt = "Ngày";
             this.dtNgay.Properties.NullValuePromptShowForEmptyValue = true;
-            this.dtNgay.Size = new System.Drawing.Size(179, 26);
+            this.dtNgay.Size = new System.Drawing.Size(154, 26);
             this.dtNgay.StyleController = this.layoutControl1;
             this.dtNgay.TabIndex = 8;
             // 
             // txtSoPhieu
             // 
-            this.txtSoPhieu.Location = new System.Drawing.Point(1009, 2);
+            this.txtSoPhieu.Location = new System.Drawing.Point(1034, 2);
             this.txtSoPhieu.MenuManager = this.bm;
             this.txtSoPhieu.Name = "txtSoPhieu";
             this.txtSoPhieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtSoPhieu.Properties.Appearance.Options.UseFont = true;
             this.txtSoPhieu.Properties.NullValuePrompt = "Số phiếu";
             this.txtSoPhieu.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtSoPhieu.Size = new System.Drawing.Size(179, 26);
+            this.txtSoPhieu.Size = new System.Drawing.Size(154, 26);
             this.txtSoPhieu.StyleController = this.layoutControl1;
             this.txtSoPhieu.TabIndex = 7;
             // 
@@ -1179,11 +1207,12 @@
             this.layoutControlItem23.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem23.Text = "Giờ:";
             this.layoutControlItem23.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem23.TextSize = new System.Drawing.Size(70, 19);
+            this.layoutControlItem23.TextSize = new System.Drawing.Size(95, 19);
             this.layoutControlItem23.TextToControlDistance = 5;
             // 
             // layoutControlItem9
             // 
+            this.layoutControlItem9.AllowHtmlStringInCaption = true;
             this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem9.Control = this.txtSoPhieu;
@@ -1193,13 +1222,14 @@
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(258, 30);
             this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem9.Text = "Số phiếu:";
+            this.layoutControlItem9.Text = "Số phiếu <color=\"red\">(*)</color>:";
             this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(70, 19);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(95, 19);
             this.layoutControlItem9.TextToControlDistance = 5;
             // 
             // layoutControlItem3
             // 
+            this.layoutControlItem3.AllowHtmlStringInCaption = true;
             this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem3.Control = this.dtNgay;
@@ -1209,20 +1239,22 @@
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(258, 30);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.Text = "Ngày:";
+            this.layoutControlItem3.Text = "Ngày <color=\"red\">(*)</color>:";
             this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(70, 19);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(95, 19);
             this.layoutControlItem3.TextToControlDistance = 5;
             // 
             // layoutControlItem5
             // 
+            this.layoutControlItem5.AllowHtmlStringInCaption = true;
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem5.Control = this.txtKhachHang;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.OptionsToolTip.AllowHtmlString = DevExpress.Utils.DefaultBoolean.False;
             this.layoutControlItem5.Size = new System.Drawing.Size(927, 30);
-            this.layoutControlItem5.Text = "Khách hàng:";
+            this.layoutControlItem5.Text = "Khách hàng <color=\"red\">(*)</color>:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(141, 19);
             // 
             // layoutControlItem1
@@ -1252,6 +1284,7 @@
             // 
             // layoutControlItem6
             // 
+            this.layoutControlItem6.AllowHtmlStringInCaption = true;
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem6.Control = this.txtSoXe;
@@ -1261,7 +1294,7 @@
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(302, 30);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.Text = "Số xe:";
+            this.layoutControlItem6.Text = "Số xe <color=\"red\">(*)</color>:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(141, 19);
             // 
             // layoutControlItem21
@@ -1332,6 +1365,32 @@
             this.layoutControlItem8.Text = "Ghi chú:";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(141, 19);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.txtCanNang;
+            this.layoutControlItem4.Location = new System.Drawing.Point(932, 90);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(0, 50);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(1, 50);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(258, 50);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.Text = "Cân:";
+            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(95, 13);
+            this.layoutControlItem4.TextToControlDistance = 5;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(932, 140);
+            this.emptySpaceItem1.MinSize = new System.Drawing.Size(10, 10);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(258, 55);
+            this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // phieuCanTableAdapter
             // 
             this.phieuCanTableAdapter.ClearBeforeFill = true;
@@ -1374,7 +1433,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScale_Grid),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScale1_Grid),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiScale2_Grid),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiEdit)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiEdit),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiIn_Grid),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTim_Grid)});
             this.pm.Manager = this.bm;
             this.pm.Name = "pm";
             // 
@@ -1382,55 +1443,19 @@
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // txtCanNang
+            // bbiIn_Grid
             // 
-            this.txtCanNang.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.txtCanNang.Location = new System.Drawing.Point(1009, 92);
-            this.txtCanNang.MenuManager = this.bm;
-            this.txtCanNang.Name = "txtCanNang";
-            this.txtCanNang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 24F);
-            this.txtCanNang.Properties.Appearance.Options.UseFont = true;
-            this.txtCanNang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtCanNang.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
-            this.txtCanNang.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtCanNang.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtCanNang.Properties.NullValuePrompt = "No Data";
-            this.txtCanNang.Properties.NullValuePromptShowForEmptyValue = true;
-            this.txtCanNang.Properties.ReadOnly = true;
-            this.txtCanNang.Size = new System.Drawing.Size(179, 46);
-            this.txtCanNang.StyleController = this.layoutControl1;
-            this.txtCanNang.TabIndex = 30;
+            this.bbiIn_Grid.Caption = "In";
+            this.bbiIn_Grid.Id = 15;
+            this.bbiIn_Grid.Name = "bbiIn_Grid";
+            this.bbiIn_Grid.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiIn_Grid_ItemClick);
             // 
-            // layoutControlItem4
+            // bbiTim_Grid
             // 
-            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem4.Control = this.txtCanNang;
-            this.layoutControlItem4.Location = new System.Drawing.Point(932, 90);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(0, 50);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(1, 50);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(258, 50);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.Text = "Cân:";
-            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(70, 13);
-            this.layoutControlItem4.TextToControlDistance = 5;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(932, 140);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(10, 10);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(258, 55);
-            this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.bbiTim_Grid.Caption = "Tìm";
+            this.bbiTim_Grid.Id = 16;
+            this.bbiTim_Grid.Name = "bbiTim_Grid";
+            this.bbiTim_Grid.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTim_Grid_ItemClick);
             // 
             // frmPhieuCanXe
             // 
@@ -1448,10 +1473,11 @@
             this.Load += new System.EventHandler(this.frmPhieuCanXe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtGio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtNgayCan1.Properties.CalendarTimeProperties)).EndInit();
@@ -1500,10 +1526,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCanNang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1612,5 +1637,7 @@
         private DevExpress.XtraEditors.CalcEdit txtCanNang;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiIn_Grid;
+        private DevExpress.XtraBars.BarButtonItem bbiTim_Grid;
     }
 }

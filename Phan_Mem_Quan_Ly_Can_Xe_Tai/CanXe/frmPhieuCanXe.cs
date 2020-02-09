@@ -20,6 +20,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 {
     public partial class frmPhieuCanXe : XtraForm
     {
+        public long Id = 0;
         public frmPhieuCanXe()
         {
             InitializeComponent();
@@ -51,6 +52,8 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 cbXuatNhap.SelectedIndex = 0;
 
                 txtSoPhieu.Text = SqlHelper.GenCode("PhieuCan", "SoPhieu", "CAN", 6);
+
+                this.Id = 0;
             }
             catch(Exception ex)
             {
@@ -413,77 +416,130 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
 
                 decimal tempDec = 0;
-                var item = new PhieuCan();
+                var now = DateTime.Now;
 
-                item.CreatedDate = DateTime.Now;
-                item.CreatedUser = 1;
-                item.GhiChu = txtGhiChu.Text;
-                item.IsDeleted = false;
-                item.KhachHang = txtKhachHang.Text;
-
-                item.Loaihang = txtLoaiHang.Text;
-                item.Ngay = dtNgay.DateTime;
-
-                item.SoPhieu = txtSoPhieu.Text;
-
-                item.SoXe = txtSoXe.Text;
-                item.Status = 1;
-
-                
-                item.UpatedUser = 1;
-                item.UpdatedDate = DateTime.Now;
-                item.XuatNhap = cbXuatNhap.SelectedText;
-
-                if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
+                if (this.Id == 0)
                 {
-                    item.NgayCan1 = dtNgay.DateTime;
-                    //item.NgayCan2 = dtNgay.DateTime;
+                    var item = new PhieuCan();
 
-                    item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    //item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
-                }
-                else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_2)
-                {
-                    //item.NgayCan1 = dtNgay.DateTime;
-                    item.NgayCan2 = dtNgay.DateTime;
+                    item.CreatedDate = DateTime.Now;
+                    item.CreatedUser = 1;
+                    item.GhiChu = txtGhiChu.Text;
+                    item.IsDeleted = false;
+                    item.KhachHang = txtKhachHang.Text;
 
-                    //item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
-                }
-                else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale)
-                {
-                    if (item.NgayCan1 == null || item.TrongLuongCan1 == null)
+                    item.Loaihang = txtLoaiHang.Text;
+                    item.Ngay = dtNgay.DateTime;
+                    item.SoPhieu = txtSoPhieu.Text;
+                    item.SoXe = txtSoXe.Text;
+                    item.Status = 1;
+
+                    item.UpatedUser = 1;
+                    item.UpdatedDate = DateTime.Now;
+                    item.XuatNhap = cbXuatNhap.SelectedText;
+
+                    if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
                     {
                         item.NgayCan1 = dtNgay.DateTime;
-                        //item.NgayCan2 = dtNgay.DateTime;
-
                         item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                        //item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
                         item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
                     }
-                    else if(item.NgayCan2 == null || item.TrongLuongCan2 == null)
+                    else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_2)
                     {
-                        //item.NgayCan1 = dtNgay.DateTime;
                         item.NgayCan2 = dtNgay.DateTime;
-
-                        //item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
                         item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
                         item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
                     }
+                    else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale)
+                    {
+                        if (item.NgayCan1 == null || item.TrongLuongCan1 == null)
+                        {
+                            item.NgayCan1 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second);
+                            item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        }
+                        else if (item.NgayCan2 == null || item.TrongLuongCan2 == null)
+                        {
+                            item.NgayCan2 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second); ;
+                            item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        }
+                    }
+                    else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Save)
+                    {
+                        item.NgayCan1 = dtNgay.DateTime;
+                        item.NgayCan2 = dtNgay.DateTime;
+
+                        item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                        item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                        item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                    }
+
+                    db.PhieuCan.Add(item);
                 }
-                else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Save)
+                else
                 {
-                    item.NgayCan1 = dtNgay.DateTime;
-                    item.NgayCan2 = dtNgay.DateTime;
+                    var item = (from pc in db.PhieuCan
+                                where pc.Id == this.Id && !pc.IsDeleted.Value
+                                select pc).FirstOrDefault();
+                    if (item != null)
+                    {
+                        item.GhiChu = txtGhiChu.Text;
+                        item.KhachHang = txtKhachHang.Text;
+                        item.Loaihang = txtLoaiHang.Text;
+                        item.Ngay = dtNgay.DateTime;
+                        item.SoPhieu = txtSoPhieu.Text;
 
-                    item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                    item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        item.SoXe = txtSoXe.Text;
+                        item.Status = 1;
+                        item.UpatedUser = 1;
+                        item.UpdatedDate = DateTime.Now;
+                        item.XuatNhap = cbXuatNhap.SelectedText;
+
+                        if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
+                        {
+                            item.NgayCan1 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second);
+                            item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        }
+                        else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_2)
+                        {
+                            item.NgayCan2 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second); ;
+                            item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        }
+                        else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale)
+                        {
+                            if (item.NgayCan1 == null || item.TrongLuongCan1 == null)
+                            {
+                                item.NgayCan1 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second); ;
+                                item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                                item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                            }
+                            else if (item.NgayCan2 == null || item.TrongLuongCan2 == null)
+                            {
+                                item.NgayCan2 = new DateTime(dtNgay.DateTime.Year, dtNgay.DateTime.Month, dtNgay.DateTime.Day, now.Hour, now.Minute, now.Second); ;
+                                item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                                item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                            }
+                        }
+                        else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Save)
+                        {
+                            item.NgayCan1 = dtNgayCan1.DateTime;
+                            item.NgayCan2 = dtNgayCan2.DateTime;
+
+                            item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Không tìm thấy phiếu cân này !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
-
-                db.PhieuCan.Add(item);
+                
                 db.SaveChanges();
 
                 XtraMessageBox.Show("Thao tác thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -758,6 +814,30 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             try
             {
                 calTrongLuongHang.EditValue = Math.Abs(Convert.ToDecimal(calCanLan1.EditValue) - Convert.ToDecimal(calCanLan2.EditValue));
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiTim_Grid_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                btnTim_Click(this, null);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiIn_Grid_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                btnPrint_Click(this, null);
             }
             catch (Exception ex)
             {

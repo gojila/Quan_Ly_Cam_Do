@@ -51,6 +51,9 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.cbComPort = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.calBaudRate = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMayChuSQL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTaiKhoanSQL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
@@ -61,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDienThoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFax.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbComPort.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calBaudRate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMayChuSQL
@@ -128,7 +133,7 @@
             // 
             this.btnDangNhap.ImageOptions.ImageIndex = 2;
             this.btnDangNhap.ImageOptions.ImageList = this.img;
-            this.btnDangNhap.Location = new System.Drawing.Point(167, 276);
+            this.btnDangNhap.Location = new System.Drawing.Point(167, 302);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(85, 23);
             this.btnDangNhap.TabIndex = 5;
@@ -198,7 +203,7 @@
             // 
             this.btnThoat.ImageOptions.ImageIndex = 16;
             this.btnThoat.ImageOptions.ImageList = this.img;
-            this.btnThoat.Location = new System.Drawing.Point(258, 276);
+            this.btnThoat.Location = new System.Drawing.Point(258, 302);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(85, 23);
             this.btnThoat.TabIndex = 6;
@@ -284,11 +289,44 @@
             this.labelControl11.TabIndex = 4;
             this.labelControl11.Text = "Địa chỉ:";
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(12, 279);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(115, 13);
+            this.labelControl8.TabIndex = 4;
+            this.labelControl8.Text = "Công COM / Baud Rate:";
+            // 
+            // cbComPort
+            // 
+            this.cbComPort.Location = new System.Drawing.Point(144, 276);
+            this.cbComPort.Name = "cbComPort";
+            this.cbComPort.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbComPort.Size = new System.Drawing.Size(176, 20);
+            this.cbComPort.TabIndex = 11;
+            // 
+            // calBaudRate
+            // 
+            this.calBaudRate.EditValue = new decimal(new int[] {
+            9600,
+            0,
+            0,
+            0});
+            this.calBaudRate.Location = new System.Drawing.Point(326, 276);
+            this.calBaudRate.Name = "calBaudRate";
+            this.calBaudRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calBaudRate.Size = new System.Drawing.Size(144, 20);
+            this.calBaudRate.TabIndex = 12;
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 305);
+            this.ClientSize = new System.Drawing.Size(482, 333);
+            this.Controls.Add(this.calBaudRate);
+            this.Controls.Add(this.cbComPort);
             this.Controls.Add(this.txtFax);
             this.Controls.Add(this.txtDienThoai);
             this.Controls.Add(this.cbSuDungTaiKhoanWindows);
@@ -296,6 +334,7 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.labelControl9);
+            this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.labelControl6);
@@ -325,6 +364,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDienThoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFax.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbComPort.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calBaudRate.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,7 +394,9 @@
         private DevExpress.XtraEditors.TextEdit txtDiaChi;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.Utils.ImageCollection img;
-
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.ComboBoxEdit cbComPort;
+        private DevExpress.XtraEditors.CalcEdit calBaudRate;
     }
 }
 

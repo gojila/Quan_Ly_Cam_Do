@@ -5,6 +5,7 @@ using System.IO;
 using System.Data.SqlClient;
 using DevExpress.XtraEditors;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
+using System.IO.Ports;
 
 namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
 {
@@ -226,6 +227,20 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
         private void CauHinhCSDL_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void loadComPortList()
+        {
+            cbComPort.Properties.Items.Clear();
+            string[] port = SerialPort.GetPortNames();
+            foreach (string item in port)
+            {
+                cbComPort.Properties.Items.Add(item);
+            }
+            if (port.Length > 0)
+            {
+                cbComPort.EditValue = port[0];
+            }
         }
     }
 }
