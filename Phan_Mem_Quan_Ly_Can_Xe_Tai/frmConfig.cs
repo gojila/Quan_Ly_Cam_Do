@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using DevExpress.XtraEditors;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
 using System.IO.Ports;
+using Newtonsoft.Json;
 
 namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
 {
@@ -33,6 +34,8 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             }
         }
 
+        public bool isRestart = false;
+
         public frmConfig()
         {
             InitializeComponent();
@@ -49,6 +52,10 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             dt.Columns.Add("DienThoai");
             dt.Columns.Add("Fax");
 
+            dt.Columns.Add("ComPort");
+            dt.Columns.Add("BaudRate");
+
+            LoadComPortList();
 
             var fi = new FileInfo(Application.StartupPath + "\\CauHinhCSDL.xml");
             if (!fi.Exists) return;
@@ -71,6 +78,9 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                     txtDiaChi.Text = dt.Rows[0]["DiaChi"].ToString();
                     txtDienThoai.Text = dt.Rows[0]["DienThoai"].ToString();
                     txtFax.Text = dt.Rows[0]["Fax"].ToString();
+                    
+                    cbComPort.Text = dt.Rows[0]["ComPort"].ToString();
+                    calBaudRate.EditValue = Convert.ToInt32(dt.Rows[0]["BaudRate"]);
 
                     if (!cbSuDungTaiKhoanWindows.Checked)
                     {
@@ -93,18 +103,28 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                     SqlHelper.User = txtTaiKhoanSQL.Text;
                     SqlHelper.Password = txtPassword.Text;
                     SqlHelper.Database = txtTenCSDL.Text;
+
+                    SqlHelper.ComPort = cbComPort.Text;
+                    SqlHelper.BaudRate = Convert.ToInt32(calBaudRate.EditValue);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (!isRestart)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -133,8 +153,9 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             SqlHelper.User = txtTaiKhoanSQL.Text;
             SqlHelper.Password = txtPassword.Text;
             SqlHelper.Database = txtTenCSDL.Text;
-            
 
+            SqlHelper.ComPort = cbComPort.Text;
+            SqlHelper.BaudRate = Convert.ToInt32(calBaudRate.EditValue);
 
             //this.Close();
 
@@ -146,7 +167,14 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             {
                 KetThucThanhCongEventHander();
                 Luu_Cau_Hinh();
-                Close();
+                if (isRestart)
+                {
+                    Application.Restart();
+                }
+                else
+                {
+                    Close();
+                }
             }
             else
             {
@@ -197,6 +225,9 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                 dt.Columns.Add("DienThoai");
                 dt.Columns.Add("Fax");
 
+                dt.Columns.Add("ComPort");
+                dt.Columns.Add("BaudRate");
+
                 dt.Rows.Clear();
                 dt.Rows.Add(
                     new object[] 
@@ -210,7 +241,10 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                         txtCongTy.Text,
                         txtDiaChi.Text,
                         txtDienThoai.Text,
-                        txtFax.Text
+                        txtFax.Text,
+
+                        cbComPort.Text,
+                        calBaudRate.EditValue.ToString()
                     }
                     );
 
@@ -220,7 +254,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             }
             catch(Exception ex)
             {
-                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -229,17 +263,24 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
 
         }
 
-        private void loadComPortList()
+        private void LoadComPortList()
         {
-            cbComPort.Properties.Items.Clear();
-            string[] port = SerialPort.GetPortNames();
-            foreach (string item in port)
+            try
             {
-                cbComPort.Properties.Items.Add(item);
+                cbComPort.Properties.Items.Clear();
+                string[] port = SerialPort.GetPortNames();
+                foreach (string item in port)
+                {
+                    cbComPort.Properties.Items.Add(item);
+                }
+                if (port.Length > 0)
+                {
+                    cbComPort.EditValue = port[0];
+                }
             }
-            if (port.Length > 0)
+            catch(Exception ex)
             {
-                cbComPort.EditValue = port[0];
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

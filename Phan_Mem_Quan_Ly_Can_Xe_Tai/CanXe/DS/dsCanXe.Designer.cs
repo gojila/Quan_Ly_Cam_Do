@@ -666,7 +666,6 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe.DS {
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
-                this.columnId.ReadOnly = true;
                 this.columnSoPhieu.MaxLength = 250;
                 this.columnSoXe.MaxLength = 250;
                 this.columnKhachHang.MaxLength = 250;
@@ -1715,29 +1714,9 @@ SELECT Id, SoPhieu, Ngay, SoXe, KhachHang, Loaihang, NgayCan1, NgayCan2, TrongLu
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id,
-       SoPhieu,
-       Ngay,
-       SoXe,
-       KhachHang,
-       Loaihang,
-       NgayCan1,
-       NgayCan2,
-       TrongLuongCan1,
-       TrongLuongCan2,
-       TrongLuongHang,
-       XuatNhap,
-       GhiChu,
-       [Status],
-       IsDeleted,
-       CreatedDate,
-       CreatedUser,
-       UpdatedDate,
-       UpatedUser
-FROM   PhieuCan AS pc WITH (NOLOCK)
-WHERE  (DATEDIFF(DAY, @FromDate, Ngay) >= 0)
-       AND (DATEDIFF(DAY, @ToDate, Ngay) <= 0)
-       AND pc.IsDeleted = 0";
+            this._commandCollection[0].CommandText = "SELECT *\r\nFROM   PhieuCan AS pc WITH (NOLOCK)\r\nWHERE  (DATEDIFF(DAY, @FromDate, N" +
+                "gay) >= 0)\r\n       AND (DATEDIFF(DAY, @ToDate, Ngay) <= 0)\r\n       AND pc.IsDele" +
+                "ted = 0";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

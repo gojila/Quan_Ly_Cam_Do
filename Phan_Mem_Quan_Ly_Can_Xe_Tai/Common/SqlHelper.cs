@@ -20,6 +20,8 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.Common
         public static string Address { get; set; } = "";
         public static string Phone { get; set; } = "";
         public static string Fax { get; set; } = "";
+        public static string ComPort { get; set; } = "";
+        public static int BaudRate { get; set; } = 9600;
         public static string ConnectionString { get; set; } = "";
         public static string GenCode(string tableName, string columnName, string fKey, int length)
         {

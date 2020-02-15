@@ -32,11 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGiaoDienChinh));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiCanXe = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPhieuCan = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiConfig = new DevExpress.XtraBars.BarButtonItem();
+            this.lblSQL = new DevExpress.XtraBars.BarHeaderItem();
+            this.lblComPort = new DevExpress.XtraBars.BarStaticItem();
+            this.lblBaudRate = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabMdi = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.img = new DevExpress.Utils.ImageCollection(this.components);
-            this.bbiPhieuCan = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
@@ -45,28 +50,81 @@
             // ribbonControl1
             // 
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Images = this.img;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.bbiCanXe,
-            this.bbiPhieuCan});
+            this.bbiPhieuCan,
+            this.bbiConfig,
+            this.lblSQL,
+            this.lblComPort,
+            this.lblBaudRate});
+            this.ribbonControl1.LargeImages = this.img;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.lblSQL);
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.lblComPort);
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.lblBaudRate);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(800, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(1224, 143);
             // 
             // bbiCanXe
             // 
             this.bbiCanXe.Caption = "Cân Xe";
+            this.bbiCanXe.Hint = "Cân Xe";
             this.bbiCanXe.Id = 2;
+            this.bbiCanXe.ImageOptions.LargeImageIndex = 5;
             this.bbiCanXe.Name = "bbiCanXe";
             this.bbiCanXe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCanXe_ItemClick);
+            // 
+            // bbiPhieuCan
+            // 
+            this.bbiPhieuCan.Caption = "Danh Sách";
+            this.bbiPhieuCan.Hint = "Danh Sách";
+            this.bbiPhieuCan.Id = 3;
+            this.bbiPhieuCan.ImageOptions.LargeImageIndex = 3;
+            this.bbiPhieuCan.Name = "bbiPhieuCan";
+            this.bbiPhieuCan.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbiPhieuCan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiPhieuCan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPhieuCan_ItemClick);
+            // 
+            // bbiConfig
+            // 
+            this.bbiConfig.Caption = "Cấu Hình";
+            this.bbiConfig.Id = 4;
+            this.bbiConfig.ImageOptions.ImageIndex = 0;
+            this.bbiConfig.ImageOptions.LargeImageIndex = 0;
+            this.bbiConfig.Name = "bbiConfig";
+            this.bbiConfig.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiConfig_ItemClick);
+            // 
+            // lblSQL
+            // 
+            this.lblSQL.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.lblSQL.Caption = "<color=\"red\">Máy chủ SQL:</color>";
+            this.lblSQL.Id = 5;
+            this.lblSQL.Name = "lblSQL";
+            // 
+            // lblComPort
+            // 
+            this.lblComPort.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.lblComPort.Caption = "<color=\"red\">Com Port:</color>";
+            this.lblComPort.Id = 6;
+            this.lblComPort.Name = "lblComPort";
+            // 
+            // lblBaudRate
+            // 
+            this.lblBaudRate.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            this.lblBaudRate.Caption = "<color=\"red\">Baud Rate:</color>";
+            this.lblBaudRate.Id = 8;
+            this.lblBaudRate.Name = "lblBaudRate";
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Chức năng";
             // 
@@ -75,7 +133,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiCanXe);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiPhieuCan);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Chức năng";
+            this.ribbonPageGroup1.Text = "Chức Năng";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiConfig);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Hệ Thống";
             // 
             // tabMdi
             // 
@@ -83,81 +147,26 @@
             // 
             // img
             // 
+            this.img.ImageSize = new System.Drawing.Size(32, 32);
             this.img.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("img.ImageStream")));
-            this.img.Images.SetKeyName(0, "24-7.png");
-            this.img.Images.SetKeyName(1, "A-baby-cot.png");
-            this.img.Images.SetKeyName(2, "Account.png");
-            this.img.Images.SetKeyName(3, "Add Event.png");
-            this.img.Images.SetKeyName(4, "Alarm-clock.png");
-            this.img.Images.SetKeyName(5, "A-rollaway-bed.png");
-            this.img.Images.SetKeyName(6, "Autoship.png");
-            this.img.Images.SetKeyName(7, "Baby.png");
-            this.img.Images.SetKeyName(8, "Binary-tree.png");
-            this.img.Images.SetKeyName(9, "Breakfast.png");
-            this.img.Images.SetKeyName(10, "Business-info.png");
-            this.img.Images.SetKeyName(11, "Calendar-selection-all.png");
-            this.img.Images.SetKeyName(12, "Calendar-selection-day.png");
-            this.img.Images.SetKeyName(13, "calendar-selection-month.png");
-            this.img.Images.SetKeyName(14, "Calendar-selection-week.png");
-            this.img.Images.SetKeyName(15, "Contact.png");
-            this.img.Images.SetKeyName(16, "Couple.png");
-            this.img.Images.SetKeyName(17, "Create-ticket.png");
-            this.img.Images.SetKeyName(18, "Direct-walkway.png");
-            this.img.Images.SetKeyName(19, "Distributor-report.png");
-            this.img.Images.SetKeyName(20, "Download.png");
-            this.img.Images.SetKeyName(21, "Drive.png");
-            this.img.Images.SetKeyName(22, "Earning-statement.png");
-            this.img.Images.SetKeyName(23, "Event-search.png");
-            this.img.Images.SetKeyName(24, "Female-user-accept.png");
-            this.img.Images.SetKeyName(25, "Female-user-add.png");
-            this.img.Images.SetKeyName(26, "Female-user-edit.png");
-            this.img.Images.SetKeyName(27, "Female-user-help.png");
-            this.img.Images.SetKeyName(28, "Female-user-info.png");
-            this.img.Images.SetKeyName(29, "Female-user-remove.png");
-            this.img.Images.SetKeyName(30, "Female-user-search.png");
-            this.img.Images.SetKeyName(31, "Female-user-warning.png");
-            this.img.Images.SetKeyName(32, "Geology-view.png");
-            this.img.Images.SetKeyName(33, "Globe-download.png");
-            this.img.Images.SetKeyName(34, "Globe-warning.png");
-            this.img.Images.SetKeyName(35, "Gift.png");
-            this.img.Images.SetKeyName(36, "Insert-hyperlink.png");
-            this.img.Images.SetKeyName(37, "Library.png");
-            this.img.Images.SetKeyName(38, "Library2.png");
-            this.img.Images.SetKeyName(39, "Link.png");
-            this.img.Images.SetKeyName(40, "Mail-search.png");
-            this.img.Images.SetKeyName(41, "Message-already-read.png");
-            this.img.Images.SetKeyName(42, "My-tickets.png");
-            this.img.Images.SetKeyName(43, "Order-history.png");
-            this.img.Images.SetKeyName(44, "Ordering.png");
-            this.img.Images.SetKeyName(45, "Packing1.png");
-            this.img.Images.SetKeyName(46, "Payment-card.png");
-            this.img.Images.SetKeyName(47, "Product-sale-report.png");
-            this.img.Images.SetKeyName(48, "Rank History.png");
-            this.img.Images.SetKeyName(49, "Reports.png");
-            this.img.Images.SetKeyName(50, "Sales-by-payment-method.png");
-            this.img.Images.SetKeyName(51, "Sales-report.png");
-            this.img.Images.SetKeyName(52, "Search-globe.png");
-            this.img.Images.SetKeyName(53, "Select-language.png");
-            this.img.Images.SetKeyName(54, "Upline.png");
-            this.img.Images.SetKeyName(55, "Upload.png");
-            this.img.Images.SetKeyName(56, "Web-management.png");
-            this.img.Images.SetKeyName(57, "Woman.png");
-            this.img.Images.SetKeyName(58, "Zoom-in.png");
-            this.img.Images.SetKeyName(59, "Zoom-out.png");
-            // 
-            // bbiPhieuCan
-            // 
-            this.bbiPhieuCan.Caption = "Phiếu Cân";
-            this.bbiPhieuCan.Id = 3;
-            this.bbiPhieuCan.Name = "bbiPhieuCan";
-            this.bbiPhieuCan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPhieuCan_ItemClick);
+            this.img.Images.SetKeyName(0, "iconfinder_21_4698594 - Copy.png");
+            this.img.Images.SetKeyName(1, "iconfinder_497_pen_calculator_scale_education_4212917 - Copy.png");
+            this.img.Images.SetKeyName(2, "iconfinder_constr_settings_1267297.png");
+            this.img.Images.SetKeyName(3, "iconfinder_checklist_3583297 - Copy.png");
+            this.img.Images.SetKeyName(4, "iconfinder_Data-20_4203024.png");
+            this.img.Images.SetKeyName(5, "iconfinder_finance-scale_532643.png");
+            this.img.Images.SetKeyName(6, "iconfinder_gear_1055051.png");
+            this.img.Images.SetKeyName(7, "iconfinder_hot-dogs-truck-food-delivery-street_3558109.png");
+            this.img.Images.SetKeyName(8, "iconfinder_Item_li_list_list_item_ul_1886963.png");
+            this.img.Images.SetKeyName(9, "iconfinder_wish-list_3583302.png");
             // 
             // frmGiaoDienChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1224, 450);
             this.Controls.Add(this.ribbonControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "frmGiaoDienChinh";
             this.Ribbon = this.ribbonControl1;
@@ -180,6 +189,11 @@
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager tabMdi;
         private DevExpress.Utils.ImageCollection img;
         private DevExpress.XtraBars.BarButtonItem bbiPhieuCan;
+        private DevExpress.XtraBars.BarButtonItem bbiConfig;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarHeaderItem lblSQL;
+        private DevExpress.XtraBars.BarStaticItem lblComPort;
+        private DevExpress.XtraBars.BarStaticItem lblBaudRate;
     }
 }
 

@@ -1,4 +1,8 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
+using Newtonsoft.Json;
+using Phan_Mem_Quan_Ly_Can_Xe_Tai.Bussiness;
+using Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe.Report;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
 using System;
 using System.Collections.Generic;
@@ -15,6 +19,26 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 {
     public partial class frmDanhSachPhieuCanXe : XtraForm
     {
+        public delegate void AddNewEventHander(object sender);
+        public event AddNewEventHander AddNew;
+        private void RaiseAddNewEventHander()
+        {
+            if (AddNew != null)
+            {
+                AddNew(this);
+            }
+        }
+
+        public delegate void EditEventHander(object sender, long Id);
+        public event EditEventHander Edit;
+        private void RaiseEditEventHander(long Id)
+        {
+            if (Edit != null)
+            {
+                Edit(this, Id);
+            }
+        }
+
         public frmDanhSachPhieuCanXe()
         {
             InitializeComponent();
@@ -156,12 +180,69 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 
         private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+                int[] selectedRows = gbList.GetSelectedRows();
 
+                if (selectedRows.Length > 0)
+                {
+                    var db = new PhanMemCanXeTaiEntities1();
+                    db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
+
+                    var _rptCanXe_Master = new rptCanXe();
+                    bool isSetMaster = false;
+
+                    for (int i = 0; i < selectedRows.Length; i++)
+                    {
+                        var arg = gbList.GetRowCellValue(selectedRows[i], colId);
+                        if (arg != null)
+                        {
+                            var tempId = Convert.ToInt32(arg);
+                            var phieuCan = (from item in db.PhieuCan
+                                            where item.Id == tempId && !item.IsDeleted.Value
+                                            select item).FirstOrDefault();
+                            if (phieuCan != null)
+                            {
+                                if (!isSetMaster)
+                                {
+                                    CommonAction.SetReport(this, phieuCan, ref _rptCanXe_Master);
+                                    _rptCanXe_Master.CreateDocument();
+
+                                    isSetMaster = true;
+                                }
+                                else
+                                {
+                                    var _rptCanXe = new rptCanXe();
+                                    CommonAction.SetReport(this, phieuCan, ref _rptCanXe);
+                                    _rptCanXe.CreateDocument();
+
+                                    _rptCanXe_Master.Pages.AddRange(_rptCanXe.Pages);
+                                }
+
+                                _rptCanXe_Master.PrintingSystem.ContinuousPageNumbering = true;
+                            }
+                        }
+                    }
+                    ReportPrintTool printTool = new ReportPrintTool(_rptCanXe_Master);
+                    printTool.ShowPreview();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bbiScaleTruck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            try
+            {
+                RaiseAddNewEventHander();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bbiView_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -180,7 +261,71 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                int[] selectedRows = gbList.GetSelectedRows();
+
+                if (selectedRows.Length > 0)
+                {
+                    if (XtraMessageBox.Show(this, "Bạn có chắc là muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                        return;
+
+                    var db = new PhanMemCanXeTaiEntities1();
+                    db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
+
+                    for (int i = 0; i < selectedRows.Length; i++)
+                    {
+                        var arg = gbList.GetRowCellValue(selectedRows[i], colId);
+                        if (arg != null)
+                        {
+                            var tempId = Convert.ToInt32(arg);
+                            var phieuCan = (from item in db.PhieuCan
+                                            where item.Id == tempId && !item.IsDeleted.Value
+                                            select item).FirstOrDefault();
+                            if (phieuCan != null)
+                            {
+                                phieuCan.IsDeleted = true;
+                                phieuCan.UpatedUser = 1;
+                                phieuCan.UpdatedDate = DateTime.Now;
+                            }
+                        }
+                    }
+
+                    db.SaveChanges();
+                    bbiView_ItemClick(this, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                int[] selectedRows = gbList.GetSelectedRows();
+
+                if (selectedRows.Length > 0)
+                {
+                    var arg = gbList.GetRowCellValue(selectedRows[selectedRows.Length - 1], colId);
+                    if (arg != null)
+                    {
+                        var Id = Convert.ToInt64(arg);
+                        RaiseEditEventHander(Id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

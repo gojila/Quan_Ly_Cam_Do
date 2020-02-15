@@ -10,5 +10,7 @@
     <DiaChi>Ấp 5 - Lạc Tấn - Tân Trụ - Long An</DiaChi>
     <DienThoai>123</DienThoai>
     <Fax>123</Fax>
+    <ComPort>COM1</ComPort>
+    <BaudRate>9600</BaudRate>
   </CauHinhCSDL>
 </NewDataSet>

@@ -83,25 +83,7 @@ SELECT Id, SoPhieu, Ngay, SoXe, KhachHang, Loaihang, NgayCan1, NgayCan2, TrongLu
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Id,
-       SoPhieu,
-       Ngay,
-       SoXe,
-       KhachHang,
-       Loaihang,
-       NgayCan1,
-       NgayCan2,
-       TrongLuongCan1,
-       TrongLuongCan2,
-       TrongLuongHang,
-       XuatNhap,
-       GhiChu,
-       [Status],
-       IsDeleted,
-       CreatedDate,
-       CreatedUser,
-       UpdatedDate,
-       UpatedUser
+                    <CommandText>SELECT *
 FROM   PhieuCan AS pc WITH (NOLOCK)
 WHERE  (DATEDIFF(DAY, @FromDate, Ngay) &gt;= 0)
        AND (DATEDIFF(DAY, @ToDate, Ngay) &lt;= 0)
@@ -209,10 +191,10 @@ SELECT Id, SoPhieu, Ngay, SoXe, KhachHang, Loaihang, NgayCan1, NgayCan2, TrongLu
   <xs:element name="dsCanXe" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:EnforceConstraints="False" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCanXe" msprop:Generator_UserDSName="dsCanXe">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PhieuCan" msprop:Generator_TableClassName="PhieuCanDataTable" msprop:Generator_TableVarName="tablePhieuCan" msprop:Generator_RowChangedName="PhieuCanRowChanged" msprop:Generator_TablePropName="PhieuCan" msprop:Generator_RowDeletingName="PhieuCanRowDeleting" msprop:Generator_RowChangingName="PhieuCanRowChanging" msprop:Generator_RowEvHandlerName="PhieuCanRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuCanRowDeleted" msprop:Generator_RowClassName="PhieuCanRow" msprop:Generator_UserTableName="PhieuCan" msprop:Generator_RowEvArgName="PhieuCanRowChangeEvent">
+        <xs:element name="PhieuCan" msprop:Generator_TableClassName="PhieuCanDataTable" msprop:Generator_TableVarName="tablePhieuCan" msprop:Generator_TablePropName="PhieuCan" msprop:Generator_RowDeletingName="PhieuCanRowDeleting" msprop:Generator_RowChangingName="PhieuCanRowChanging" msprop:Generator_RowEvHandlerName="PhieuCanRowChangeEventHandler" msprop:Generator_RowDeletedName="PhieuCanRowDeleted" msprop:Generator_UserTableName="PhieuCan" msprop:Generator_RowChangedName="PhieuCanRowChanged" msprop:Generator_RowEvArgName="PhieuCanRowChangeEvent" msprop:Generator_RowClassName="PhieuCanRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" minOccurs="0" />
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" minOccurs="0" />
               <xs:element name="SoPhieu" msprop:Generator_ColumnVarNameInTable="columnSoPhieu" msprop:Generator_ColumnPropNameInRow="SoPhieu" msprop:Generator_ColumnPropNameInTable="SoPhieuColumn" msprop:Generator_UserColumnName="SoPhieu" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

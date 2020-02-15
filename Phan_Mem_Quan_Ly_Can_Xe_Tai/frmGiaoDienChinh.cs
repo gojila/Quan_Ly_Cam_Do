@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using Newtonsoft.Json;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
 using System;
@@ -39,6 +40,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             else
             {
                 InitializeComponent();
+                LoadConfigInfo();
                 bbiCanXe_ItemClick(this, null);
             }
         }
@@ -57,6 +59,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
 
             //bbiCamDo_ItemClick(this, null);
             dangnhapthanhcong = true;
+            LoadConfigInfo();
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -94,6 +97,18 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                 {
                     _frmDanhSachPhieuCanXe = null;
                 };
+
+                _frmDanhSachPhieuCanXe.AddNew += (ss) => 
+                {
+                    bbiCanXe_ItemClick(this, null);
+                    _frmPhieuCanXe.AddNew();
+                };
+
+                _frmDanhSachPhieuCanXe.Edit += (ss, id)=> 
+                {
+                    bbiCanXe_ItemClick(this, null);
+                    _frmPhieuCanXe.SetEdit(id);
+                };
                 _frmDanhSachPhieuCanXe.MdiParent = this;
                 _frmDanhSachPhieuCanXe.Show();
             }
@@ -101,6 +116,35 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
             {
                 tabMdi.Pages[_frmDanhSachPhieuCanXe].MdiChild.Activate();
             }
+        }
+
+        private void bbiConfig_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var _frmConfig = new frmConfig();
+                _frmConfig.isRestart = true;
+                _frmConfig.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadConfigInfo()
+        {
+            try
+            {
+                lblComPort.Caption += SqlHelper.ComPort;
+                lblBaudRate.Caption += SqlHelper.BaudRate.ToString();
+                lblSQL.Caption += SqlHelper.Server;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

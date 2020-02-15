@@ -29,6 +29,67 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             bm.SetPopupContextMenu(gcList, pm);
         }
 
+        public void SetEdit(long Id)
+        {
+            try
+            {
+                this.Id = Id;
+                if (this.Id != 0)
+                {
+                    var db = new PhanMemCanXeTaiEntities1();
+                    db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
+                    var item = (from pc in db.PhieuCan
+                                where pc.Id == this.Id && !pc.IsDeleted.Value
+                                select pc).FirstOrDefault();
+                    if (item != null)
+                    {
+                        txtKhachHang.Text = item.KhachHang;
+                        txtLoaiHang.Text = item.Loaihang;
+                        cbXuatNhap.SelectedText = item.XuatNhap;
+                        txtSoXe.Text = item.SoXe;
+
+                        dtNgayCan1.EditValue = item.NgayCan1;
+                        dtNgayCan2.EditValue = item.NgayCan2;
+                        calCanLan1.EditValue = item.TrongLuongCan1;
+                        calCanLan2.EditValue = item.TrongLuongCan2;
+                        calTrongLuongHang.EditValue = item.TrongLuongHang;
+                        txtGhiChu.Text = item.GhiChu;
+
+                        txtSoPhieu.Text = item.SoPhieu;
+                        dtNgay.EditValue = item.Ngay;
+
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(this, "Không tìm thấy phiếu cân này !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnTim_Click(this, null);
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show(this, "Không tìm thấy mã" +
+                        " phiếu cân này !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnTim_Click(this, null);
+                }
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void AddNew()
+        {
+            try
+            {
+                bbiNew_ItemClick(this, null);
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
@@ -54,36 +115,33 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 txtSoPhieu.Text = SqlHelper.GenCode("PhieuCan", "SoPhieu", "CAN", 6);
 
                 this.Id = 0;
+
+                LoadAutoComplete();
             }
             catch(Exception ex)
             {
-                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void bbiScale_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Save((int)ScaleTypeSaveEnum.Scale);
+            this.Save((int)ScaleTypeSaveEnum.Scale, false);
         }
 
         private void bbiScale1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Save((int)ScaleTypeSaveEnum.Scale_1);
+            this.Save((int)ScaleTypeSaveEnum.Scale_1, false);
         }
 
         private void bbiScale2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Save((int)ScaleTypeSaveEnum.Scale_2);
+            this.Save((int)ScaleTypeSaveEnum.Scale_2, false);
         }
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Save((int)ScaleTypeSaveEnum.Save);
-        }
-
-        private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
+            this.Save((int)ScaleTypeSaveEnum.Save, false);
         }
 
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -206,8 +264,8 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 
                 if (!serialPort1.IsOpen)
                 {
-                    //serialPort1.PortName = cbCongCOM.Text;
-                    //serialPort1.BaudRate = 1200;
+                    serialPort1.PortName = SqlHelper.ComPort;
+                    serialPort1.BaudRate = SqlHelper.BaudRate;
                     serialPort1.Open();
                     txtCanNang.EditValue = 0;
                 }
@@ -300,9 +358,12 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                     var db = new PhanMemCanXeTaiEntities1();
                     db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
 
+                    var _rptCanXe_Master = new rptCanXe();
+                    bool isSetMaster = false;
+
                     for (int i = 0; i < selectedRows.Length; i++)
                     {
-                        var arg = gbList.GetRowCellValue(i, colId);
+                        var arg = gbList.GetRowCellValue(selectedRows[i], colId);
                         if (arg != null)
                         {
                             var tempId = Convert.ToInt32(arg);
@@ -311,40 +372,64 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                                             select item).FirstOrDefault();
                             if (phieuCan != null)
                             {
-                                var _rptCanXe_Master = new rptCanXe();
+                                if (!isSetMaster)
+                                {
+                                    SetReport(phieuCan, ref _rptCanXe_Master);
+                                    _rptCanXe_Master.CreateDocument();
 
-                                _rptCanXe_Master.Parameters["TenCongTy"].Value = SqlHelper.CompanyName;
-                                _rptCanXe_Master.Parameters["DiaChi"].Value = SqlHelper.Address;
-                                _rptCanXe_Master.Parameters["DienThoai"].Value = SqlHelper.Phone;
-                                _rptCanXe_Master.Parameters["Fax"].Value = SqlHelper.Fax;
+                                    isSetMaster = true;
+                                }
+                                else
+                                {
+                                    var _rptCanXe = new rptCanXe();
+                                    SetReport(phieuCan, ref _rptCanXe);
+                                    _rptCanXe.CreateDocument();
 
-                                _rptCanXe_Master.Parameters["SoPhieu"].Value = phieuCan.SoPhieu;
-                                _rptCanXe_Master.Parameters["Ngay"].Value = phieuCan.Ngay.Value.ToString("dd/MM/yyyy");
-                                _rptCanXe_Master.Parameters["KhachHang_TenKhachHang"].Value = phieuCan.KhachHang;
-                                _rptCanXe_Master.Parameters["KhachHang_DiaChi"].Value = "";
-                                _rptCanXe_Master.Parameters["BienSoXe"].Value = phieuCan.SoXe;
-                                _rptCanXe_Master.Parameters["LoaiHang"].Value = phieuCan.Loaihang;
+                                    _rptCanXe_Master.Pages.AddRange(_rptCanXe.Pages);
+                                }
 
-                                _rptCanXe_Master.Parameters["XuatNhap"].Value = phieuCan.XuatNhap;
-                                _rptCanXe_Master.Parameters["ThoiGianCanLan1"].Value = phieuCan.NgayCan1.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
-                                _rptCanXe_Master.Parameters["ThoiGianCanLan2"].Value = phieuCan.NgayCan2.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
-                                _rptCanXe_Master.Parameters["TrongLuongCanLan1"].Value = phieuCan.TrongLuongCan1.Value.ToString("##,##0.###");
-                                _rptCanXe_Master.Parameters["TrongLuongCanLan2"].Value = phieuCan.TrongLuongCan2.Value.ToString("##,##0.###");
-
-                                _rptCanXe_Master.Parameters["TrongLuongHangHoa"].Value = phieuCan.TrongLuongHang.Value.ToString("##,##0.###");
-
-                                _rptCanXe_Master.Parameters["BarCode"].Value = JsonConvert.SerializeObject(phieuCan);
-                                
-                                _rptCanXe_Master.AssignPrintTool(new ReportPrintTool(_rptCanXe_Master));
-                                _rptCanXe_Master.CreateDocument();
-                                ReportPrintTool printTool = new ReportPrintTool(_rptCanXe_Master);
-                                printTool.ShowPreview();
+                                _rptCanXe_Master.PrintingSystem.ContinuousPageNumbering = true;
+                                //_rptCanXe_Master.AssignPrintTool(new ReportPrintTool(_rptCanXe_Master));
                             }
                         }
                     }
+                    ReportPrintTool printTool = new ReportPrintTool(_rptCanXe_Master);
+                    printTool.ShowPreview();
                 }
             }
             catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetReport(PhieuCan phieuCan, ref rptCanXe _rptCanXe)
+        {
+            try
+            {
+                _rptCanXe.Parameters["TenCongTy"].Value = SqlHelper.CompanyName;
+                _rptCanXe.Parameters["DiaChi"].Value = SqlHelper.Address;
+                _rptCanXe.Parameters["DienThoai"].Value = SqlHelper.Phone;
+                _rptCanXe.Parameters["Fax"].Value = SqlHelper.Fax;
+
+                _rptCanXe.Parameters["SoPhieu"].Value = phieuCan.SoPhieu;
+                _rptCanXe.Parameters["Ngay"].Value = phieuCan.Ngay.Value.ToString("dd/MM/yyyy");
+                _rptCanXe.Parameters["KhachHang_TenKhachHang"].Value = phieuCan.KhachHang;
+                _rptCanXe.Parameters["KhachHang_DiaChi"].Value = "";
+                _rptCanXe.Parameters["BienSoXe"].Value = phieuCan.SoXe;
+                _rptCanXe.Parameters["LoaiHang"].Value = phieuCan.Loaihang;
+
+                _rptCanXe.Parameters["XuatNhap"].Value = phieuCan.XuatNhap;
+                _rptCanXe.Parameters["ThoiGianCanLan1"].Value = phieuCan.NgayCan1.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
+                _rptCanXe.Parameters["ThoiGianCanLan2"].Value = phieuCan.NgayCan2.Value.ToString("dd/MM/yyyy HH:mm:ss tt");
+                _rptCanXe.Parameters["TrongLuongCanLan1"].Value = phieuCan.TrongLuongCan1.Value.ToString("##,##0.###");
+                _rptCanXe.Parameters["TrongLuongCanLan2"].Value = phieuCan.TrongLuongCan2.Value.ToString("##,##0.###");
+
+                _rptCanXe.Parameters["TrongLuongHangHoa"].Value = phieuCan.TrongLuongHang.Value.ToString("##,##0.###");
+
+                _rptCanXe.Parameters["BarCode"].Value = JsonConvert.SerializeObject(phieuCan);
+            }
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -354,7 +439,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
         {
             try
             {
-                if (MessageBox.Show("Bạn có chắc là muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (XtraMessageBox.Show(this, "Bạn có chắc là muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     return;
 
                 gbList.Focus();
@@ -403,11 +488,11 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             }
         }
 
-        private bool Save(int ScaleTypeSave)
+        private bool Save(int ScaleTypeSave, bool isPrint)
         {
             try
             {
-                if (!Validate())
+                if (!ValidateSaveData(ScaleTypeSave))
                 {
                     return false;
                 }
@@ -417,6 +502,8 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 
                 decimal tempDec = 0;
                 var now = DateTime.Now;
+
+                var phieuCan_Print = new PhieuCan();
 
                 if (this.Id == 0)
                 {
@@ -436,7 +523,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
 
                     item.UpatedUser = 1;
                     item.UpdatedDate = DateTime.Now;
-                    item.XuatNhap = cbXuatNhap.SelectedText;
+                    item.XuatNhap = cbXuatNhap.Text;
 
                     if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
                     {
@@ -470,12 +557,14 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                         item.NgayCan1 = dtNgay.DateTime;
                         item.NgayCan2 = dtNgay.DateTime;
 
-                        item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                        item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                        item.TrongLuongCan1 = calCanLan1.Value;
+                        item.TrongLuongCan2 = calCanLan2.Value;
                         item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
                     }
 
                     db.PhieuCan.Add(item);
+
+                    phieuCan_Print = item;
                 }
                 else
                 {
@@ -494,7 +583,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                         item.Status = 1;
                         item.UpatedUser = 1;
                         item.UpdatedDate = DateTime.Now;
-                        item.XuatNhap = cbXuatNhap.SelectedText;
+                        item.XuatNhap = cbXuatNhap.Text;
 
                         if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
                         {
@@ -528,10 +617,12 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                             item.NgayCan1 = dtNgayCan1.DateTime;
                             item.NgayCan2 = dtNgayCan2.DateTime;
 
-                            item.TrongLuongCan1 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
-                            item.TrongLuongCan2 = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                            item.TrongLuongCan1 = calCanLan1.Value;
+                            item.TrongLuongCan2 = calCanLan2.Value;
                             item.TrongLuongHang = (item.TrongLuongCan1.Value > 0 && item.TrongLuongCan2.Value > 0) ? Math.Abs(item.TrongLuongCan1.Value - item.TrongLuongCan2.Value) : 0;
                         }
+
+                        phieuCan_Print = item;
                     }
                     else
                     {
@@ -541,8 +632,16 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 }
                 
                 db.SaveChanges();
-
                 XtraMessageBox.Show("Thao tác thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (isPrint)
+                {
+                    var _rptCanXe = new rptCanXe();
+                    SetReport(phieuCan_Print, ref _rptCanXe);
+                    ReportPrintTool printTool = new ReportPrintTool(_rptCanXe);
+                    printTool.ShowPreview();
+                }
+
                 bbiNew_ItemClick(this, null);
                 btnTim_Click(this, null);
 
@@ -555,7 +654,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             }
         }
 
-        private new bool Validate()
+        private bool ValidateSaveData(int ScaleTypeSave)
         {
             try
             {
@@ -587,6 +686,32 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                     return false;
                 }
 
+                if (calCanLan1.Value > 0 && dtNgayCan1.EditValue == null)
+                {
+                    XtraMessageBox.Show(this, "Vui lòng chọn ngày cân 1 !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dtNgayCan1.Focus();
+                    return false;
+                }
+
+                if (calCanLan2.Value > 0 && dtNgayCan2.EditValue == null)
+                {
+                    XtraMessageBox.Show(this, "Vui lòng chọn ngày cân 2 !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dtNgayCan2.Focus();
+                    return false;
+                }
+
+                decimal tempDec = 0;
+                var can = Decimal.TryParse(txtCanNang.Text, out tempDec) ? Convert.ToDecimal(txtCanNang.Text) : 0;
+                if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Save)
+                {
+                    if (calCanLan1.Value == 0 && calCanLan2.Value == 0)
+                    {
+                        XtraMessageBox.Show(this, "Không có dữ liệu cân lần 1 hoặc lần 2 !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                
+
                 return true;
             }
             catch(Exception ex)
@@ -603,38 +728,11 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                 int[] selectedRows = gbList.GetSelectedRows();
                 if (selectedRows.Length > 0)
                 {
-                    var db = new PhanMemCanXeTaiEntities1();
-                    db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
-                    var arg = gbList.GetRowCellValue(selectedRows[0], colId);
+                    var arg = gbList.GetRowCellValue(selectedRows[selectedRows.Length - 1], colId);
                     if (arg != null)
                     {
                         var IdPhieuCan = Convert.ToInt64(arg);
-                        var item = (from pc in db.PhieuCan
-                                    where pc.Id == IdPhieuCan && !pc.IsDeleted.Value
-                                    select pc).FirstOrDefault();
-                        if (item != null)
-                        {
-                            txtKhachHang.Text = item.KhachHang;
-                            txtLoaiHang.Text = item.Loaihang;
-                            cbXuatNhap.SelectedText = item.XuatNhap;
-                            txtSoXe.Text = item.SoXe;
-
-                            dtNgayCan1.EditValue = item.NgayCan1;
-                            dtNgayCan2.EditValue = item.NgayCan2;
-                            calCanLan1.EditValue = item.TrongLuongCan1;
-                            calCanLan2.EditValue = item.TrongLuongCan2;
-                            calTrongLuongHang.EditValue = item.TrongLuongHang;
-                            txtGhiChu.Text = item.GhiChu;
-
-                            txtSoPhieu.Text = item.SoPhieu;
-                            dtNgay.EditValue = item.Ngay;
-
-                        }
-                        else
-                        {
-                            XtraMessageBox.Show(this, "Không tìm thấy phiếu cân này !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            btnTim_Click(this, null);
-                        }
+                        SetEdit(IdPhieuCan);
                     }
                 }
             }
@@ -696,7 +794,7 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                     var db = new PhanMemCanXeTaiEntities1();
                     db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
 
-                    var arg = gbList.GetRowCellValue(selectedRows[0], colId);
+                    var arg = gbList.GetRowCellValue(selectedRows[selectedRows.Length - 1], colId);
                     if (arg != null)
                     {
                         var IdPhieuCan = Convert.ToInt64(arg);
@@ -708,6 +806,13 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                             decimal tempDec = 0;
                             if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_1)
                             {
+                                if (calCanLan1.Value > 0)
+                                {
+                                    if (XtraMessageBox.Show(this, "Bạn có chắc là muốn thay đổi cân lần 1 ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    {
+                                        return false;
+                                    }
+                                }
                                 item.NgayCan1 = dtNgay.DateTime;
                                 //item.NgayCan2 = dtNgay.DateTime;
 
@@ -717,6 +822,13 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                             }
                             else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale_2)
                             {
+                                if (calCanLan2.Value > 0)
+                                {
+                                    if (XtraMessageBox.Show(this, "Bạn có chắc là muốn thay đổi cân lần 2 ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    {
+                                        return false;
+                                    }
+                                }
                                 //item.NgayCan1 = dtNgay.DateTime;
                                 item.NgayCan2 = dtNgay.DateTime;
 
@@ -726,6 +838,11 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                             }
                             else if (ScaleTypeSave == (int)ScaleTypeSaveEnum.Scale)
                             {
+                                if (calCanLan1.Value > 0 && calCanLan2.Value > 0)
+                                {
+                                    XtraMessageBox.Show(this, "Lần cân 1 và 2 đã có giá trị. Không thể thực hiện thao tác này !", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                    return false;
+                                }
                                 if (item.NgayCan1 == null || item.TrongLuongCan1 == null)
                                 {
                                     item.NgayCan1 = dtNgay.DateTime;
@@ -801,7 +918,14 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
         {
             try
             {
-                calTrongLuongHang.EditValue = Math.Abs(Convert.ToDecimal(calCanLan1.EditValue) - Convert.ToDecimal(calCanLan2.EditValue));
+                if (calCanLan1.Value > 0 && calCanLan2.Value > 0)
+                {
+                    calTrongLuongHang.EditValue = Math.Abs(Convert.ToDecimal(calCanLan1.EditValue) - Convert.ToDecimal(calCanLan2.EditValue));
+                }
+                else
+                {
+                    calTrongLuongHang.EditValue = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -813,7 +937,14 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
         {
             try
             {
-                calTrongLuongHang.EditValue = Math.Abs(Convert.ToDecimal(calCanLan1.EditValue) - Convert.ToDecimal(calCanLan2.EditValue));
+                if (calCanLan1.Value > 0 && calCanLan2.Value > 0)
+                {
+                    calTrongLuongHang.EditValue = Math.Abs(Convert.ToDecimal(calCanLan1.EditValue) - Convert.ToDecimal(calCanLan2.EditValue));
+                }
+                else
+                {
+                    calTrongLuongHang.EditValue = 0;
+                }   
             }
             catch (Exception ex)
             {
@@ -838,6 +969,162 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
             try
             {
                 btnPrint_Click(this, null);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiSaveAndPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                this.Save((int)ScaleTypeSaveEnum.Save, true);
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadAutoComplete()
+        {
+            try
+            {
+                AutoCompleteStringCollection mangDanhSachKhachHang = new AutoCompleteStringCollection();
+                AutoCompleteStringCollection mangDanhSachSoXe = new AutoCompleteStringCollection();
+                AutoCompleteStringCollection mangDanhSachLoaiHang = new AutoCompleteStringCollection();
+
+                var db = new PhanMemCanXeTaiEntities1();
+                db.Database.Connection.ConnectionString = SqlHelper.ConnectionString;
+
+                var phieuCan = from pc in db.PhieuCan
+                               where !pc.IsDeleted.Value
+                               select pc;
+
+                mangDanhSachKhachHang.AddRange(phieuCan.Select(pc => pc.KhachHang).Distinct<string>().ToArray<string>());
+                mangDanhSachSoXe.AddRange(phieuCan.Select(pc => pc.SoXe).Distinct<string>().ToArray<string>());
+                mangDanhSachLoaiHang.AddRange(phieuCan.Select(pc => pc.Loaihang).Distinct<string>().ToArray<string>());
+
+                var txtKhacHang_AutoComplete = txtKhachHang.MaskBox;
+                var txtSoXe_AutoComplete = txtSoXe.MaskBox;
+                var txtLoaiHang_AutoComplete = txtLoaiHang.MaskBox;
+
+                SetAutoComplete(ref txtKhacHang_AutoComplete, mangDanhSachKhachHang);
+                SetAutoComplete(ref txtSoXe_AutoComplete, mangDanhSachSoXe);
+                SetAutoComplete(ref txtLoaiHang_AutoComplete, mangDanhSachLoaiHang);
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetAutoComplete(ref TextBoxMaskBox textBoxMaskBox, AutoCompleteStringCollection autoCompleteStringCollection)
+        {
+            try
+            {
+                textBoxMaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                textBoxMaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                textBoxMaskBox.AutoCompleteCustomSource = autoCompleteStringCollection;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCopyCan1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var canNang = txtCanNang.Value;
+                if (canNang != 0 && canNang != -1)
+                {
+                    if (calCanLan1.Value > 0)
+                    {
+
+                        if (XtraMessageBox.Show(this, "Bạn có chắc là muốn copy dữ liệu từ cân sang cân lần 1 không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                    calCanLan1.EditValue = canNang;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCopyCan2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var canNang = txtCanNang.Value;
+                if (canNang != 0 && canNang != -1)
+                {
+                    if (calCanLan2.Value > 0)
+                    {
+
+                        if (XtraMessageBox.Show(this, "Bạn có chắc là muốn copy dữ liệu từ cân sang cân lần 2 không ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                    calCanLan2.EditValue = canNang;
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bbiEdit_ItemClick(this, null);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnScale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bbiScale_Grid_ItemClick(this, null);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnScale1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bbiScale1_Grid_ItemClick(this, null);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(this, JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnScale2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bbiScale2_Grid_ItemClick(this, null);
             }
             catch (Exception ex)
             {
