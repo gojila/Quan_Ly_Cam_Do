@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Newtonsoft.Json;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Bussiness;
@@ -269,6 +270,15 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                     serialPort1.Open();
                     txtCanNang.EditValue = 0;
                 }
+
+                gbList.ShownEditor += (ss, ee) =>
+                {
+                    var view = ss as GridView;
+                    view.ActiveEditor.DoubleClick += (_ss, _ee)=> 
+                    {
+                        bbiEdit_ItemClick(this, null);
+                    };
+                };
             }
             catch(Exception ex)
             {

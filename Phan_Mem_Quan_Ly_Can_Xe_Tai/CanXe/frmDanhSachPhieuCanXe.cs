@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Newtonsoft.Json;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Bussiness;
@@ -54,6 +55,14 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe
                     rowIndex++;
                     _e.Info.DisplayText = rowIndex.ToString();
                 }
+            };
+            gbList.ShownEditor += (ss, ee) =>
+            {
+                var view = ss as GridView;
+                view.ActiveEditor.DoubleClick += (_ss, _ee) =>
+                {
+                    bbiEdit_ItemClick(this, null);
+                };
             };
             cbOption_SelectedIndexChanged(this, null);
             this.Reload();

@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using Newtonsoft.Json;
+using Phan_Mem_Quan_Ly_Cam_Do.QuanLyDuLieu;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.CanXe;
 using Phan_Mem_Quan_Ly_Can_Xe_Tai.Common;
 using System;
@@ -145,6 +146,59 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                 XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void bbiBackUp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var _xfmSaoLuu = new xfmSaoLuu();
+                _xfmSaoLuu.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiRestore_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var _xfmPhucHoi = new xfmPhucHoi();
+                _xfmPhucHoi.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblSQL_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bbiConfig_ItemClick(this, null);
+        }
+
+        private void lblComPort_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bbiConfig_ItemClick(this, null);
+        }
+
+        private void lblBaudRate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bbiConfig_ItemClick(this, null);
         }
     }
 }
