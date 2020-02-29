@@ -212,3 +212,4 @@ E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Can_Xe_Tai\bin\Debug\Phan_Mem_Quan
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Can_Xe_Tai\bin\Debug\Phan_Mem_Quan_Ly_Can_Xe_Tai.application
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Can_Xe_Tai\obj\Debug\Phan_Mem_Quan_Ly_Can_Xe_Tai.exe.manifest
 E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Can_Xe_Tai\obj\Debug\Phan_Mem_Quan_Ly_Can_Xe_Tai.application
+E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_Can_Xe_Tai\obj\Debug\Phan_Mem_Quan_Ly_Can_Xe_Tai.frmContact.resources

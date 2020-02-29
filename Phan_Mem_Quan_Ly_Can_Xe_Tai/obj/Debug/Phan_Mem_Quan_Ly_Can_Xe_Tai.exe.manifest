@@ -1963,14 +1963,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Phan_Mem_Quan_Ly_Can_Xe_Tai.exe" size="2975712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Phan_Mem_Quan_Ly_Can_Xe_Tai.exe" size="3367392">
       <assemblyIdentity name="Phan_Mem_Quan_Ly_Can_Xe_Tai" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NXXPPpfgZjQbbwHu/MrwzQxH9OkRODUPEKwxPiYDl7E=</dsig:DigestValue>
+        <dsig:DigestValue>NlQTOaTsjbTAbHrZD860+WERQo130oX7byo0DHuAyPk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

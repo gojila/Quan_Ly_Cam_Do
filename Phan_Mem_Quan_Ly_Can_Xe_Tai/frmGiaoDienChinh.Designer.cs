@@ -45,6 +45,9 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabMdi = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiGuide = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiContact = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdi)).BeginInit();
@@ -64,10 +67,12 @@
             this.lblBaudRate,
             this.bbiBackUp,
             this.bbiRestore,
-            this.bbiClose});
+            this.bbiClose,
+            this.bbiGuide,
+            this.bbiContact});
             this.ribbonControl1.LargeImages = this.img;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 14;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.lblSQL);
             this.ribbonControl1.PageHeaderItemLinks.Add(this.lblComPort);
@@ -176,7 +181,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Chức năng";
             // 
@@ -199,6 +205,31 @@
             // tabMdi
             // 
             this.tabMdi.MdiParent = this;
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiGuide);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiContact);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Trợ Giúp";
+            // 
+            // bbiGuide
+            // 
+            this.bbiGuide.Caption = "Hướng Dẫn";
+            this.bbiGuide.Id = 12;
+            this.bbiGuide.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiGuide.ImageOptions.Image")));
+            this.bbiGuide.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiGuide.ImageOptions.LargeImage")));
+            this.bbiGuide.Name = "bbiGuide";
+            this.bbiGuide.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiGuide_ItemClick);
+            // 
+            // bbiContact
+            // 
+            this.bbiContact.Caption = "Liên Hệ";
+            this.bbiContact.Id = 13;
+            this.bbiContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiContact.ImageOptions.Image")));
+            this.bbiContact.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiContact.ImageOptions.LargeImage")));
+            this.bbiContact.Name = "bbiContact";
+            this.bbiContact.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContact_ItemClick);
             // 
             // frmGiaoDienChinh
             // 
@@ -237,6 +268,9 @@
         private DevExpress.XtraBars.BarButtonItem bbiBackUp;
         private DevExpress.XtraBars.BarButtonItem bbiRestore;
         private DevExpress.XtraBars.BarButtonItem bbiClose;
+        private DevExpress.XtraBars.BarButtonItem bbiGuide;
+        private DevExpress.XtraBars.BarButtonItem bbiContact;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
 

@@ -283,5 +283,33 @@ namespace Phan_Mem_Quan_Ly_Can_Xe_Tai
                 XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void bbiGuide_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                string fileName = Application.StartupPath + @"\Huong_dan_su_dung.docx";
+                var process = new System.Diagnostics.Process();
+                process.StartInfo = new System.Diagnostics.ProcessStartInfo() { UseShellExecute = true, FileName = fileName };
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiContact_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var _frmContact = new frmContact();
+                _frmContact.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(JsonConvert.SerializeObject(ex), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
