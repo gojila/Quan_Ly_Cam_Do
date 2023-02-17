@@ -105,6 +105,8 @@
             this.txtNhaCungCap = new DevExpress.XtraEditors.ButtonEdit();
             this.txtTenTiem = new DevExpress.XtraEditors.ButtonEdit();
             this.txtDiaChi = new DevExpress.XtraEditors.ButtonEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSoNi = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVach.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHamLuongPho.Properties)).BeginInit();
@@ -124,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNhaCungCap.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoNi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -318,9 +321,9 @@
             // 
             this.btnIn.ImageOptions.ImageIndex = 62;
             this.btnIn.ImageOptions.ImageList = this.img;
-            this.btnIn.Location = new System.Drawing.Point(302, 485);
+            this.btnIn.Location = new System.Drawing.Point(302, 522);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(75, 23);
+            this.btnIn.Size = new System.Drawing.Size(75, 21);
             this.btnIn.TabIndex = 18;
             this.btnIn.Text = "In";
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -408,9 +411,9 @@
             // 
             this.btnTuyChinh.ImageOptions.ImageIndex = 4;
             this.btnTuyChinh.ImageOptions.ImageList = this.img;
-            this.btnTuyChinh.Location = new System.Drawing.Point(383, 485);
+            this.btnTuyChinh.Location = new System.Drawing.Point(383, 522);
             this.btnTuyChinh.Name = "btnTuyChinh";
-            this.btnTuyChinh.Size = new System.Drawing.Size(75, 23);
+            this.btnTuyChinh.Size = new System.Drawing.Size(75, 21);
             this.btnTuyChinh.TabIndex = 19;
             this.btnTuyChinh.Text = "Tùy Chỉnh";
             this.btnTuyChinh.Click += new System.EventHandler(this.btnTuyChinh_Click);
@@ -419,9 +422,9 @@
             // 
             this.btnDong.ImageOptions.ImageIndex = 14;
             this.btnDong.ImageOptions.ImageList = this.img;
-            this.btnDong.Location = new System.Drawing.Point(464, 487);
+            this.btnDong.Location = new System.Drawing.Point(464, 524);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(75, 22);
+            this.btnDong.Size = new System.Drawing.Size(75, 20);
             this.btnDong.TabIndex = 20;
             this.btnDong.Text = "Đóng";
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
@@ -429,7 +432,7 @@
             // txtCanNang
             // 
             this.txtCanNang.EditValue = "0";
-            this.txtCanNang.Location = new System.Drawing.Point(109, 300);
+            this.txtCanNang.Location = new System.Drawing.Point(109, 337);
             this.txtCanNang.Name = "txtCanNang";
             this.txtCanNang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 28F, System.Drawing.FontStyle.Bold);
             this.txtCanNang.Properties.Appearance.Options.UseFont = true;
@@ -443,7 +446,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(11, 329);
+            this.labelControl7.Location = new System.Drawing.Point(11, 366);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(51, 13);
             this.labelControl7.TabIndex = 9;
@@ -480,9 +483,9 @@
             // 
             this.btnTaoMoi.ImageOptions.ImageIndex = 30;
             this.btnTaoMoi.ImageOptions.ImageList = this.img;
-            this.btnTaoMoi.Location = new System.Drawing.Point(104, 485);
+            this.btnTaoMoi.Location = new System.Drawing.Point(104, 522);
             this.btnTaoMoi.Name = "btnTaoMoi";
-            this.btnTaoMoi.Size = new System.Drawing.Size(75, 23);
+            this.btnTaoMoi.Size = new System.Drawing.Size(75, 21);
             this.btnTaoMoi.TabIndex = 17;
             this.btnTaoMoi.Text = "Tạo Mới";
             this.btnTaoMoi.Click += new System.EventHandler(this.btnTaoMoi_Click);
@@ -557,38 +560,38 @@
             // cbLuuSauKhiIn
             // 
             this.cbLuuSauKhiIn.EditValue = true;
-            this.cbLuuSauKhiIn.Location = new System.Drawing.Point(109, 460);
+            this.cbLuuSauKhiIn.Location = new System.Drawing.Point(109, 497);
             this.cbLuuSauKhiIn.Name = "cbLuuSauKhiIn";
             this.cbLuuSauKhiIn.Properties.Caption = "Lưu dữ liệu sau khi in";
-            this.cbLuuSauKhiIn.Size = new System.Drawing.Size(130, 19);
+            this.cbLuuSauKhiIn.Size = new System.Drawing.Size(130, 20);
             this.cbLuuSauKhiIn.TabIndex = 16;
             // 
             // rdTuyChonIn
             // 
-            this.rdTuyChonIn.Location = new System.Drawing.Point(109, 358);
+            this.rdTuyChonIn.Location = new System.Drawing.Point(109, 395);
             this.rdTuyChonIn.Name = "rdTuyChonIn";
             this.rdTuyChonIn.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "In tem"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Xem trước khi in"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Tùy chỉnh trước khi in")});
-            this.rdTuyChonIn.Size = new System.Drawing.Size(543, 96);
+            this.rdTuyChonIn.Size = new System.Drawing.Size(543, 94);
             this.rdTuyChonIn.TabIndex = 15;
             // 
             // cbXoaTrongLuong
             // 
-            this.cbXoaTrongLuong.Location = new System.Drawing.Point(245, 460);
+            this.cbXoaTrongLuong.Location = new System.Drawing.Point(245, 497);
             this.cbXoaTrongLuong.Name = "cbXoaTrongLuong";
             this.cbXoaTrongLuong.Properties.Caption = "Xóa  trọng lượng sau khi in";
-            this.cbXoaTrongLuong.Size = new System.Drawing.Size(157, 19);
+            this.cbXoaTrongLuong.Size = new System.Drawing.Size(157, 20);
             this.cbXoaTrongLuong.TabIndex = 21;
             // 
             // btnXoaTrongLuong
             // 
             this.btnXoaTrongLuong.ImageOptions.ImageIndex = 48;
             this.btnXoaTrongLuong.ImageOptions.ImageList = this.img;
-            this.btnXoaTrongLuong.Location = new System.Drawing.Point(185, 485);
+            this.btnXoaTrongLuong.Location = new System.Drawing.Point(185, 522);
             this.btnXoaTrongLuong.Name = "btnXoaTrongLuong";
-            this.btnXoaTrongLuong.Size = new System.Drawing.Size(111, 23);
+            this.btnXoaTrongLuong.Size = new System.Drawing.Size(111, 21);
             this.btnXoaTrongLuong.TabIndex = 22;
             this.btnXoaTrongLuong.Text = "Xóa Trọng Lượng";
             this.btnXoaTrongLuong.Click += new System.EventHandler(this.btnXoaTrongLuong_Click);
@@ -629,11 +632,39 @@
             this.txtDiaChi.Size = new System.Drawing.Size(543, 30);
             this.txtDiaChi.TabIndex = 1;
             // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(11, 311);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(28, 13);
+            this.labelControl16.TabIndex = 3;
+            this.labelControl16.Text = "Số Ni:";
+            // 
+            // txtSoNi
+            // 
+            this.txtSoNi.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtSoNi.Location = new System.Drawing.Point(109, 300);
+            this.txtSoNi.Name = "txtSoNi";
+            this.txtSoNi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.txtSoNi.Properties.Appearance.Options.UseFont = true;
+            this.txtSoNi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtSoNi.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtSoNi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtSoNi.Properties.EditFormat.FormatString = "{0:##,##0.###}";
+            this.txtSoNi.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtSoNi.Size = new System.Drawing.Size(178, 30);
+            this.txtSoNi.TabIndex = 13;
+            // 
             // frmInTem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 520);
+            this.ClientSize = new System.Drawing.Size(665, 548);
             this.Controls.Add(this.btnXoaTrongLuong);
             this.Controls.Add(this.cbXoaTrongLuong);
             this.Controls.Add(this.rdTuyChonIn);
@@ -648,6 +679,7 @@
             this.Controls.Add(this.txtTongTrongLuong);
             this.Controls.Add(this.txtHot);
             this.Controls.Add(this.txtTrongLuong);
+            this.Controls.Add(this.txtSoNi);
             this.Controls.Add(this.txtSoLuongTem);
             this.Controls.Add(this.txtHotChu);
             this.Controls.Add(this.txtTrongLuongChu);
@@ -659,6 +691,7 @@
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControl8);
+            this.Controls.Add(this.labelControl16);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.labelControl5);
@@ -697,6 +730,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNhaCungCap.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoNi.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -744,5 +778,7 @@
         private DevExpress.XtraEditors.ButtonEdit txtNhaCungCap;
         private DevExpress.XtraEditors.ButtonEdit txtTenTiem;
         private DevExpress.XtraEditors.ButtonEdit txtDiaChi;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.CalcEdit txtSoNi;
     }
 }

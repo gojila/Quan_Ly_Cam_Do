@@ -4,17 +4,17 @@
   <description asmv2:publisher="Phan_Mem_Quan_Ly_In_Tem" asmv2:product="Phan_Mem_Quan_Ly_In_Tem" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Phan_Mem_Quan_Ly_In_Tem.exe.manifest" size="119048">
+    <dependentAssembly dependencyType="install" codebase="Phan_Mem_Quan_Ly_In_Tem.exe.manifest" size="111155">
       <assemblyIdentity name="Phan_Mem_Quan_Ly_In_Tem.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>S5hi/Fl5Pg0v5nW5UGFWTkXmpDI=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wf/TeY71fgJ5YHC+I9xra/BRBmJLGUeCRkkjzz85UJI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

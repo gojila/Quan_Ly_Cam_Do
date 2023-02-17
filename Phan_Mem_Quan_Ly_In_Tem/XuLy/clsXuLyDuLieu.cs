@@ -116,7 +116,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             }
         }
 
-        public void luuDuLieuExcel(string duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string loaiVang, string nhaCungCap, string hamLuongPho, string tenTiem, string diaChi, int soLuongTem)
+        public void luuDuLieuExcel(string duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string loaiVang, string nhaCungCap, string hamLuongPho, string tenTiem, string diaChi, int soLuongTem, int soni)
         {
             if (!File.Exists(duongDanFileExcel))
             {
@@ -155,7 +155,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 connExcel.Open();
                 //cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
 
-                cmdExcel.CommandText = @"INSERT INTO [" + SheetName + @"] ([Mã Vạch], [Tên Hàng], [Tổng Trọng Lượng], [Trọng Lượng], [Hột],  [Tiền Công], [Nhà Cung Cấp], [Hàm Lượng Phổ], [Tên Tiệm], [Địa Chỉ], [Số Lượng Tem]) VALUES(@MaVach, @TenHang, @TongTrongLuong, @TrongLuong, @Hot, @TienCong, @NhaCungCap, @HamLuongPho, @TenTiem, @DiaChi, @SoLuongTem)";
+                cmdExcel.CommandText = @"INSERT INTO [" + SheetName + @"] ([Mã Vạch], [Tên Hàng], [Tổng Trọng Lượng], [Trọng Lượng], [Hột],  [Tiền Công], [Nhà Cung Cấp], [Hàm Lượng Phổ], [Tên Tiệm], [Địa Chỉ], [Số Lượng Tem], [Ni]) VALUES(@MaVach, @TenHang, @TongTrongLuong, @TrongLuong, @Hot, @TienCong, @NhaCungCap, @HamLuongPho, @TenTiem, @DiaChi, @SoLuongTem,@SoNi)";
 
                 //cmdExcel.CommandText = "INSERT INTO [" + SheetName + "] ([Mã Vạch], [Tên Hàng], [Tổng Trọng Lượng], [Trọng Lượng], [Hột], [Tiền Công], [Loại Vàng], [Nhà Cung Cấp], [Hàm Lượng Phổ], [Số Lượng Tem]) VALUES(@MaVach, @TenHang, @TongTrongLuong, @TrongLuong, @Hot, @TienCong, @LoaiVang, @NhaCungCap, @HamLuongPho, @SoLuongTem)";
                 cmdExcel.Parameters.AddWithValue("@MaVach", "" + maVach.ToString() + "");
@@ -169,6 +169,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 cmdExcel.Parameters.AddWithValue("@TenTiem", "" + tenTiem.ToString() + "");
                 cmdExcel.Parameters.AddWithValue("@DiaChi", "" + diaChi.ToString() + "");
                 cmdExcel.Parameters.AddWithValue("@SoLuongTem", "" + soLuongTem.ToString() + "");
+                cmdExcel.Parameters.AddWithValue("@SoNi", "" + soni.ToString() + "");
                 //oda.SelectCommand = cmdExcel;
                 //oda.Fill(dt);
                 cmdExcel.ExecuteNonQuery();

@@ -210,7 +210,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"])),
                     _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"])),
                     dr["Tên Tiệm"].ToString(),
-                    dr["Địa Chỉ"].ToString()
+                    dr["Địa Chỉ"].ToString(),
+                    dr["Ni"] == DBNull.Value ? "" : dr["Ni"].ToString()
                     );
             }
 

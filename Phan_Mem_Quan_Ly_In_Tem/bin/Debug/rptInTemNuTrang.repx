@@ -1,414 +1,66 @@
-/// <XRTypeInfo>
-///   <AssemblyFullName>Phan_Mem_Quan_Ly_In_Tem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyFullName>
-///   <AssemblyLocation>E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_In_Tem\bin\Debug\Phan_Mem_Quan_Ly_In_Tem.exe</AssemblyLocation>
-///   <TypeName>Phan_Mem_Quan_Ly_In_Tem.rptInTemNuTrang</TypeName>
-///   <Localization>en-US</Localization>
-///   <Version>18.1</Version>
-///   <References>
-///     <Reference Path="E:\LamPhanMem\Quan_Ly_Cam_Do\Phan_Mem_Quan_Ly_In_Tem\bin\Debug\Phan_Mem_Quan_Ly_In_Tem.exe" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.SqlXml\v4.0_4.0.0.0__b77a5c561934e089\System.Data.SqlXml.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Security\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Security.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Numerics\v4.0_4.0.0.0__b77a5c561934e089\System.Numerics.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Accessibility\v4.0_4.0.0.0__b03f5f7f11d50a3a\Accessibility.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Deployment\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Deployment.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization.Formatters.Soap\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Serialization.Formatters.Soap.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Utils.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.Utils.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ComponentModel.DataAnnotations\v4.0_4.0.0.0__31bf3856ad364e35\System.ComponentModel.DataAnnotations.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\PresentationCore\v4.0_4.0.0.0__31bf3856ad364e35\PresentationCore.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\WindowsBase\v4.0_4.0.0.0__31bf3856ad364e35\WindowsBase.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xaml\v4.0_4.0.0.0__b77a5c561934e089\System.Xaml.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\UIAutomationTypes\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationTypes.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Input.Manipulations\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Input.Manipulations.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\UIAutomationProvider\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationProvider.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Remoting\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Remoting.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.DirectoryServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.DirectoryServices.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Caching\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.Caching.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.RegularExpressions\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.RegularExpressions.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Design\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Design.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_64\System.Data.OracleClient\v4.0_4.0.0.0__b77a5c561934e089\System.Data.OracleClient.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Drawing.Design\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.Design.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.ApplicationServices\v4.0_4.0.0.0__31bf3856ad364e35\System.Web.ApplicationServices.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.DirectoryServices.Protocols\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.DirectoryServices.Protocols.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceProcess\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.ServiceProcess.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration.Install\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.Install.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Runtime.Serialization\v4.0_4.0.0.0__b77a5c561934e089\System.Runtime.Serialization.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.ServiceModel.Internals\v4.0_4.0.0.0__31bf3856ad364e35\System.ServiceModel.Internals.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\SMDiagnostics\v4.0_4.0.0.0__b77a5c561934e089\SMDiagnostics.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.Services\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Utilities.v4.0\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Utilities.v4.0.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Framework\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Framework.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\Microsoft.Build.Tasks.v4.0\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.Build.Tasks.v4.0.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\UIAutomationClient\v4.0_4.0.0.0__31bf3856ad364e35\UIAutomationClient.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraBars.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraBars.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraEditors.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraEditors.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Data.Linq.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraLayout.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraLayout.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraGrid.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraGrid.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraPrinting.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraPrinting.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraTreeList.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraTreeList.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraReports.v18.1.Extensions\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraReports.v18.1.Extensions.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Utils.v18.1.UI\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.Utils.v18.1.UI.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraRichEdit.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraRichEdit.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Pdf.v18.1.Core\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.Pdf.v18.1.Core.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Images.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.Images.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraVerticalGrid.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraVerticalGrid.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.DataAccess.v18.1.UI\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.DataAccess.v18.1.UI.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.Diagram.v18.1.Core\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.Diagram.v18.1.Core.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraDiagram.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraDiagram.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.CodeParser.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.CodeParser.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraCharts.v18.1.Wizard\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraCharts.v18.1.Wizard.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraNavBar.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraNavBar.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraCharts.v18.1.Extensions\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraCharts.v18.1.Extensions.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\DevExpress.XtraPivotGrid.v18.1\v4.0_18.1.6.0__b88d1754d700e49a\DevExpress.XtraPivotGrid.v18.1.dll" />
-///     <Reference Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll" />
-///   </References>
-///   <Resources>
-///     <Resource Name="XtraReportSerialization.rptInTemNuTrang">
-/// zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAABAAAAAAAAAFBBRFBBRFAF9WM2AAAAAOMAAAAiWAB0AHIAYQBSAGUAcABvAHIAdAAuAEUAdgBlAG4AdABzAAAAAAABM3JwdEluVGVtTnVUcmFuZyxCZWZvcmVQcmludCxycHRJbk1hVmFjaF9CZWZvcmVQcmludA==</Resource>
-///   </Resources>
-/// </XRTypeInfo>
-namespace XtraReportSerialization {
-    
-    public class rptInTemNuTrang : DevExpress.XtraReports.UI.XtraReport {
-        private DevExpress.XtraReports.UI.DetailBand Detail;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel9;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel8;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel7;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel1;
-        private DevExpress.XtraReports.UI.XRBarCode xrBarCode1;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel5;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel4;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel6;
-        private DevExpress.XtraReports.Parameters.Parameter DiaChi;
-        private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
-        private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
-        private DevExpress.XtraReports.Parameters.Parameter TenTiem;
-        private System.Resources.ResourceManager _resources;
-        private string _resourceString;
-        public rptInTemNuTrang() {
-            this._resourceString = DevExpress.XtraReports.Serialization.XRResourceManager.GetResourceFor("XtraReportSerialization.rptInTemNuTrang");
-            this.InitializeComponent();
-        }
-        private System.Resources.ResourceManager resources {
-            get {
-                if (_resources == null) {
-                    this._resources = new DevExpress.XtraReports.Serialization.XRResourceManager(this._resourceString);
-                }
-                return this._resources;
-            }
-        }
-        private void InitializeComponent() {
-            DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
-            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.DiaChi = new DevExpress.XtraReports.Parameters.Parameter();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
-            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.TenTiem = new DevExpress.XtraReports.Parameters.Parameter();
-            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // Detail
-            // 
-            this.Detail.BorderWidth = 0F;
-            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-                        this.xrLabel9,
-                        this.xrLabel8,
-                        this.xrLabel7,
-                        this.xrLabel1,
-                        this.xrBarCode1,
-                        this.xrLabel5,
-                        this.xrLabel4,
-                        this.xrLabel3,
-                        this.xrLabel2,
-                        this.xrLabel6});
-            this.Detail.Dpi = 254F;
-            this.Detail.Name = "Detail";
-            this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.Detail.SnapLinePadding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.Detail.StylePriority.UseBorderWidth = false;
-            this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrLabel9
-            // 
-            this.xrLabel9.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel9.CanGrow = false;
-            this.xrLabel9.Dpi = 254F;
-            this.xrLabel9.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(325.7014F, 4.999998F);
-            this.xrLabel9.Name = "xrLabel9";
-            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 3, 0, 0, 254F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(125.8888F, 21F);
-            this.xrLabel9.StylePriority.UseFont = false;
-            this.xrLabel9.StylePriority.UsePadding = false;
-            this.xrLabel9.Text = "NCC: [NhaCungCap]";
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel1.BorderWidth = 0F;
-            this.xrLabel1.CanGrow = false;
-            this.xrLabel1.Dpi = 254F;
-            this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-                        new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TenHang]")});
-            this.xrLabel1.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel1.KeepTogether = true;
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(225.7014F, 5F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 0, 0, 0, 254F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(100F, 21F);
-            this.xrLabel1.StylePriority.UseBorders = false;
-            this.xrLabel1.StylePriority.UseBorderWidth = false;
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UsePadding = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ValueInfo = "259Đ Bà Mía Mỹ Lạc";
-            // 
-            // TopMargin
-            // 
-            this.TopMargin.BorderWidth = 0F;
-            this.TopMargin.Dpi = 254F;
-            this.TopMargin.HeightF = 0F;
-            this.TopMargin.Name = "TopMargin";
-            this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.TopMargin.SnapLinePadding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.TopMargin.StylePriority.UseBorderWidth = false;
-            this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrLabel8
-            // 
-            this.xrLabel8.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel8.CanGrow = false;
-            this.xrLabel8.Dpi = 254F;
-            this.xrLabel8.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel8.KeepTogether = true;
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(110F, 4.999991F);
-            this.xrLabel8.Name = "xrLabel8";
-            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 3, 0, 0, 254F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(110F, 21.00001F);
-            this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.StylePriority.UsePadding = false;
-            this.xrLabel8.StylePriority.UseTextAlignment = false;
-            this.xrLabel8.Text = "Hột: [HotChu]";
-            this.xrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrBarCode1
-            // 
-            this.xrBarCode1.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrBarCode1.AutoModule = true;
-            this.xrBarCode1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrBarCode1.BorderWidth = 0F;
-            this.xrBarCode1.Dpi = 254F;
-            this.xrBarCode1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-                        new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MaVach]")});
-            this.xrBarCode1.Font = new System.Drawing.Font("Arial", 5F);
-            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(232.75F, 47F);
-            this.xrBarCode1.Module = 5.08F;
-            this.xrBarCode1.Name = "xrBarCode1";
-            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(13, 13, 0, 0, 254F);
-            this.xrBarCode1.ShowText = false;
-            this.xrBarCode1.SizeF = new System.Drawing.SizeF(169.4445F, 21F);
-            this.xrBarCode1.StylePriority.UseBorders = false;
-            this.xrBarCode1.StylePriority.UseBorderWidth = false;
-            this.xrBarCode1.StylePriority.UseFont = false;
-            this.xrBarCode1.StylePriority.UsePadding = false;
-            this.xrBarCode1.StylePriority.UseTextAlignment = false;
-            code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto;
-            this.xrBarCode1.Symbology = code128Generator1;
-            this.xrBarCode1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel2
-            // 
-            this.xrLabel2.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel2.BorderWidth = 0F;
-            this.xrLabel2.CanGrow = false;
-            this.xrLabel2.Dpi = 254F;
-            this.xrLabel2.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel2.KeepTogether = true;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 68.00001F);
-            this.xrLabel2.Multiline = true;
-            this.xrLabel2.Name = "xrLabel2";
-            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 3, 0, 0, 254F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(110F, 21F);
-            this.xrLabel2.StylePriority.UseBorders = false;
-            this.xrLabel2.StylePriority.UseBorderWidth = false;
-            this.xrLabel2.StylePriority.UseFont = false;
-            this.xrLabel2.StylePriority.UsePadding = false;
-            this.xrLabel2.StylePriority.UseTextAlignment = false;
-            this.xrLabel2.Text = "Công: [TienCong!##,##0.###]";
-            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel6
-            // 
-            this.xrLabel6.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel6.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel6.BorderWidth = 0F;
-            this.xrLabel6.CanGrow = false;
-            this.xrLabel6.Dpi = 254F;
-            this.xrLabel6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-                        new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Parameters.DiaChi]")});
-            this.xrLabel6.Font = new System.Drawing.Font("Arial", 4.5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(225.7014F, 67.99999F);
-            this.xrLabel6.Name = "xrLabel6";
-            this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.xrLabel6.SizeF = new System.Drawing.SizeF(225.8888F, 21F);
-            this.xrLabel6.StylePriority.UseBorders = false;
-            this.xrLabel6.StylePriority.UseBorderWidth = false;
-            this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.StylePriority.UsePadding = false;
-            this.xrLabel6.StylePriority.UseTextAlignment = false;
-            this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // BottomMargin
-            // 
-            this.BottomMargin.BorderWidth = 0F;
-            this.BottomMargin.Dpi = 254F;
-            this.BottomMargin.HeightF = 0F;
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.BottomMargin.SnapLinePadding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.BottomMargin.StylePriority.UseBorderWidth = false;
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // TenTiem
-            // 
-            this.TenTiem.Name = "TenTiem";
-            this.TenTiem.ValueInfo = "DNTN Ngọc Ánh Mỹ Lạc";
-            // 
-            // xrLabel5
-            // 
-            this.xrLabel5.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel5.BorderWidth = 0F;
-            this.xrLabel5.CanGrow = false;
-            this.xrLabel5.Dpi = 254F;
-            this.xrLabel5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-                        new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Parameters.TenTiem]")});
-            this.xrLabel5.Font = new System.Drawing.Font("Arial", 4.5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(225.7014F, 26F);
-            this.xrLabel5.Name = "xrLabel5";
-            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(225.8889F, 21F);
-            this.xrLabel5.StylePriority.UseBorders = false;
-            this.xrLabel5.StylePriority.UseBorderWidth = false;
-            this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.StylePriority.UsePadding = false;
-            this.xrLabel5.StylePriority.UseTextAlignment = false;
-            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel4
-            // 
-            this.xrLabel4.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel4.BorderWidth = 0F;
-            this.xrLabel4.CanGrow = false;
-            this.xrLabel4.Dpi = 254F;
-            this.xrLabel4.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel4.KeepTogether = true;
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F);
-            this.xrLabel4.Multiline = true;
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 3, 0, 0, 254F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(110F, 21F);
-            this.xrLabel4.StylePriority.UseBorders = false;
-            this.xrLabel4.StylePriority.UseBorderWidth = false;
-            this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.StylePriority.UsePadding = false;
-            this.xrLabel4.StylePriority.UseTextAlignment = false;
-            this.xrLabel4.Text = "TTL: [TongTrongLuongChu]";
-            this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel7
-            // 
-            this.xrLabel7.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel7.CanGrow = false;
-            this.xrLabel7.Dpi = 254F;
-            this.xrLabel7.Font = new System.Drawing.Font("Arial", 5F, System.Drawing.FontStyle.Bold);
-            this.xrLabel7.KeepTogether = true;
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(110F, 67.99999F);
-            this.xrLabel7.Name = "xrLabel7";
-            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(1, 3, 0, 0, 254F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(110F, 21F);
-            this.xrLabel7.StylePriority.UseFont = false;
-            this.xrLabel7.StylePriority.UsePadding = false;
-            this.xrLabel7.StylePriority.UseTextAlignment = false;
-            this.xrLabel7.Text = "HLV: [HamLuongPho]";
-            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
-            this.xrLabel3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel3.BorderWidth = 0F;
-            this.xrLabel3.CanGrow = false;
-            this.xrLabel3.Dpi = 254F;
-            this.xrLabel3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.xrLabel3.KeepTogether = true;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 26F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 3, 0, 0, 254F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(223F, 42F);
-            this.xrLabel3.StylePriority.UseBorders = false;
-            this.xrLabel3.StylePriority.UseBorderWidth = false;
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.StylePriority.UsePadding = false;
-            this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "TL: [TrongLuongChu]";
-            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // rptInTemNuTrang
-            // 
-            this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-                        this.Detail,
-                        this.TopMargin,
-                        this.BottomMargin});
-            this.DataMember = "InMaVach";
-            this.Dpi = 254F;
-            this.DrawGrid = false;
-            this.Margins = new System.Drawing.Printing.Margins(10, 0, 0, 0);
-            this.Name = "rptInTemNuTrang";
-            this.PageHeight = 100;
-            this.PageWidth = 730;
-            this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
-            this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
-                        this.TenTiem,
-                        this.DiaChi});
-            this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
-            this.RequestParameters = false;
-            this.ShowPrintMarginsWarning = false;
-            this.SnapGridSize = 25F;
-            this.Version = "18.1";
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-        }
-    }
-}
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.4.0" Ref="1" ControlType="Phan_Mem_Quan_Ly_In_Tem.rptInTemNuTrang, Phan_Mem_Quan_Ly_In_Tem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptInTemNuTrang" SnapGridSize="25" DrawGrid="false" ReportUnit="TenthsOfAMillimeter" Margins="10, 0, 0, 0" PaperKind="Custom" PageWidth="730" PageHeight="100" Version="20.1" RequestParameters="false" ShowPrintMarginsWarning="false" EventsInfo="rptInTemNuTrang,BeforePrint,rptInMaVach_BeforePrint" DataMember="InMaVach" DataSource="#Ref-0" Dpi="254">
+  <Parameters>
+    <Item1 Ref="3" ValueInfo="Tiệm Vàng ABC" Name="TenTiem" />
+    <Item2 Ref="4" ValueInfo="460/5 - Đường số 3 - Tân An" Name="DiaChi" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="5" ControlType="DetailBand" Name="Detail" SnapLinePadding="0,0,0,0,254" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" BorderWidth="0">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRLabel" Name="xrLabel9" CanGrow="false" Text="NCC: [NhaCungCap]" AnchorVertical="Both" SizeF="100,21" LocationFloat="125,67.99998" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254">
+          <StylePriority Ref="7" UseFont="false" UsePadding="false" />
+        </Item1>
+        <Item2 Ref="8" ControlType="XRLabel" Name="xrLabel8" CanGrow="false" Text="Hột: [HotChu]" AnchorVertical="Both" SizeF="100,21.00001" LocationFloat="125,46.99998" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254">
+          <StylePriority Ref="9" UseFont="false" UsePadding="false" />
+        </Item2>
+        <Item3 Ref="10" ControlType="XRLabel" Name="xrLabel7" CanGrow="false" Text="HLV: [HamLuongPho]" AnchorVertical="Both" SizeF="100,21" LocationFloat="125,25.99998" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254">
+          <StylePriority Ref="11" UseFont="false" UsePadding="false" />
+        </Item3>
+        <Item4 Ref="12" ControlType="XRLabel" Name="xrLabel1" KeepTogether="true" Multiline="true" CanGrow="false" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="215,21" LocationFloat="10,4.999989" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="2,0,0,0,254" Borders="None" BorderWidth="0">
+          <ExpressionBindings>
+            <Item1 Ref="13" EventName="BeforePrint" PropertyName="Text" Expression="[TenHang]" />
+          </ExpressionBindings>
+          <StylePriority Ref="14" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="15" ControlType="XRBarCode" Name="xrBarCode1" Module="5.08" AutoModule="true" TextAlignment="MiddleCenter" ShowText="false" AnchorVertical="Both" AnchorHorizontal="Both" SizeF="162.8049,37.99999" LocationFloat="229.7014,30" Dpi="254" Font="Arial, 5pt" Padding="13,13,0,0,254" Borders="None" BorderWidth="0">
+          <Symbology Ref="16" Name="Code128" CharacterSet="CharsetAuto" />
+          <ExpressionBindings>
+            <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="[MaVach]" />
+          </ExpressionBindings>
+          <StylePriority Ref="18" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="19" ControlType="XRLabel" Name="xrLabel5" CanGrow="false" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="225.8889,24.99999" LocationFloat="229.7014,5.000004" Dpi="254" Font="Arial, 4.5pt, style=Bold" Padding="0,0,0,0,254" Borders="None" BorderWidth="0">
+          <ExpressionBindings>
+            <Item1 Ref="20" EventName="BeforePrint" PropertyName="Text" Expression="[Parameters.TenTiem]" />
+          </ExpressionBindings>
+          <StylePriority Ref="21" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="22" ControlType="XRLabel" Name="xrLabel4" KeepTogether="true" Multiline="true" CanGrow="false" Text="TTL: [TongTrongLuongChu]" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="115,21" LocationFloat="10.00001,25.99999" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254" Borders="None" BorderWidth="0">
+          <StylePriority Ref="23" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="24" ControlType="XRLabel" Name="xrLabel3" KeepTogether="true" Multiline="true" CanGrow="false" Text="TL: [TrongLuongChu]" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="115,21.00001" LocationFloat="10,46.99998" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254" Borders="None" BorderWidth="0">
+          <StylePriority Ref="25" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item8>
+        <Item9 Ref="26" ControlType="XRLabel" Name="xrLabel2" KeepTogether="true" Multiline="true" CanGrow="false" Text="Công: [TienCong!##,##0.###]" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="115,21" LocationFloat="10,68" Dpi="254" Font="Arial, 5pt, style=Bold" Padding="3,3,0,0,254" Borders="None" BorderWidth="0">
+          <StylePriority Ref="27" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="28" ControlType="XRLabel" Name="xrLabel6" CanGrow="false" AnchorVertical="Both" TextAlignment="MiddleLeft" SizeF="225.8888,21" LocationFloat="229.7014,69.99998" Dpi="254" Font="Arial, 4.5pt, style=Bold" Padding="0,0,0,0,254" Borders="None" BorderWidth="0">
+          <ExpressionBindings>
+            <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="[Parameters.DiaChi]" />
+          </ExpressionBindings>
+          <StylePriority Ref="30" UseFont="false" UsePadding="false" UseBorders="false" UseBorderWidth="false" UseTextAlignment="false" />
+        </Item10>
+      </Controls>
+      <StylePriority Ref="31" UseBorderWidth="false" />
+    </Item1>
+    <Item2 Ref="32" ControlType="TopMarginBand" Name="TopMargin" SnapLinePadding="0,0,0,0,254" HeightF="0" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" BorderWidth="0">
+      <StylePriority Ref="33" UseBorderWidth="false" />
+    </Item2>
+    <Item3 Ref="34" ControlType="BottomMarginBand" Name="BottomMargin" SnapLinePadding="0,0,0,0,254" HeightF="0" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" BorderWidth="0">
+      <StylePriority Ref="35" UseBorderWidth="false" />
+    </Item3>
+  </Bands>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v20.1" Ref="0" Content="~Xtra#NULL" Type="Phan_Mem_Quan_Ly_In_Tem.DS.dsDanhSachHangHoa" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

@@ -40,9 +40,9 @@
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.TenTiem = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.TenTiem = new DevExpress.XtraReports.Parameters.Parameter();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.dsDanhSachHangHoa1 = new Phan_Mem_Quan_Ly_In_Tem.DS.dsDanhSachHangHoa();
             ((System.ComponentModel.ISupportInitialize)(this.dsDanhSachHangHoa1)).BeginInit();
@@ -195,6 +195,7 @@
             // 
             // xrBarCode1
             // 
+            this.xrBarCode1.AnchorHorizontal = ((DevExpress.XtraReports.UI.HorizontalAnchorStyles)((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left | DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right)));
             this.xrBarCode1.AnchorVertical = ((DevExpress.XtraReports.UI.VerticalAnchorStyles)((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top | DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom)));
             this.xrBarCode1.AutoModule = true;
             this.xrBarCode1.Borders = DevExpress.XtraPrinting.BorderSide.None;
@@ -203,11 +204,12 @@
             this.xrBarCode1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MaVach]")});
             this.xrBarCode1.Font = new System.Drawing.Font("Arial", 5F);
-            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(236.75F, 30F);
+            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(229.7014F, 30F);
             this.xrBarCode1.Module = 5.08F;
             this.xrBarCode1.Name = "xrBarCode1";
-            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(13, 13, 0, 0, 254F);
-            this.xrBarCode1.SizeF = new System.Drawing.SizeF(169.4445F, 40F);
+            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            this.xrBarCode1.ShowText = false;
+            this.xrBarCode1.SizeF = new System.Drawing.SizeF(162.8049F, 37.99999F);
             this.xrBarCode1.StylePriority.UseBorders = false;
             this.xrBarCode1.StylePriority.UseBorderWidth = false;
             this.xrBarCode1.StylePriority.UseFont = false;
@@ -215,7 +217,7 @@
             this.xrBarCode1.StylePriority.UseTextAlignment = false;
             code128Generator1.CharacterSet = DevExpress.XtraPrinting.BarCode.Code128Charset.CharsetAuto;
             this.xrBarCode1.Symbology = code128Generator1;
-            this.xrBarCode1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrBarCode1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel5
             // 
@@ -237,11 +239,6 @@
             this.xrLabel5.StylePriority.UsePadding = false;
             this.xrLabel5.StylePriority.UseTextAlignment = false;
             this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // TenTiem
-            // 
-            this.TenTiem.Name = "TenTiem";
-            this.TenTiem.ValueInfo = "DNTN Ngọc Ánh Mỹ Lạc";
             // 
             // xrLabel3
             // 
@@ -287,6 +284,11 @@
             this.xrLabel2.Text = "Công: [TienCong!##,##0.###]";
             this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
+            // TenTiem
+            // 
+            this.TenTiem.Name = "TenTiem";
+            this.TenTiem.ValueInfo = "DNTN Ngọc Ánh Mỹ Lạc";
+            // 
             // BottomMargin
             // 
             this.BottomMargin.BorderWidth = 0F;
@@ -323,7 +325,7 @@
             this.RequestParameters = false;
             this.ShowPrintMarginsWarning = false;
             this.SnapGridSize = 25F;
-            this.Version = "18.1";
+            this.Version = "20.1";
             this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.rptInMaVach_BeforePrint);
             ((System.ComponentModel.ISupportInitialize)(this.dsDanhSachHangHoa1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -348,8 +350,5 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
         private DS.dsDanhSachHangHoa dsDanhSachHangHoa1;
-        
-
-
     }
 }

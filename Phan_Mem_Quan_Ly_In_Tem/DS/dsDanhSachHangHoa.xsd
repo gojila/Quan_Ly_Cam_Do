@@ -29,6 +29,7 @@
               <xs:element name="HotChu" msprop:Generator_ColumnVarNameInTable="columnHotChu" msprop:Generator_ColumnPropNameInRow="HotChu" msprop:Generator_ColumnPropNameInTable="HotChuColumn" msprop:Generator_UserColumnName="HotChu" type="xs:string" minOccurs="0" />
               <xs:element name="TenTiem" msprop:Generator_ColumnVarNameInTable="columnTenTiem" msprop:Generator_ColumnPropNameInRow="TenTiem" msprop:Generator_ColumnPropNameInTable="TenTiemColumn" msprop:Generator_UserColumnName="TenTiem" type="xs:string" minOccurs="0" />
               <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi" type="xs:string" minOccurs="0" />
+              <xs:element name="SoNi" msprop:Generator_ColumnVarNameInTable="columnSoNi" msprop:Generator_ColumnPropNameInRow="SoNi" msprop:Generator_ColumnPropNameInTable="SoNiColumn" msprop:Generator_UserColumnName="SoNi" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

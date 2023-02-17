@@ -231,7 +231,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 return;
             }
-            var rptMaVach = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text);
+            var rptMaVach = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value));
             string filePath = @"rptInTemNuTrang.repx";
             if (File.Exists(filePath))
             {
@@ -267,7 +267,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value));
+                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value));
                     RaiseXemEventHander();
                 }
             }
@@ -291,7 +291,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 return;
             }
 
-            var report = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text);
+            var report = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value));
             string filePath = @"rptInTemNuTrang.repx";
             if (File.Exists(filePath))
             {
@@ -319,7 +319,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value));
+                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value));
                     RaiseXemEventHander();
                 }
             }

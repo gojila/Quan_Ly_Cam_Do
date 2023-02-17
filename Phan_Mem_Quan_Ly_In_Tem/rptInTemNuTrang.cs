@@ -31,7 +31,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             RequestParameters = false;
         }
 
-        public rptInTemNuTrang(string tenTiem, string diaChi, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal tienCong, decimal hot, string loaiVang, string nhaCungCap, string hamLuongPho, int soLuongTem, string tongTrongLuongChu, string trongLuongChu, string hotChu)
+        public rptInTemNuTrang(string tenTiem, string diaChi, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal tienCong, decimal hot, string loaiVang, string nhaCungCap, string hamLuongPho, int soLuongTem, string tongTrongLuongChu, string trongLuongChu, string hotChu, int soNi)
         {
             InitializeComponent();
             
@@ -42,7 +42,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 DataRow drDongIn = dsDanhSachHangHoa1.InMaVach.NewRow();
 
                 drDongIn["MaVach"] = maVach;
-                drDongIn["TenHang"] = tenHang;
+                drDongIn["TenHang"] = tenHang + (soNi > 0 ? ("-Ni:" + soNi.ToString()) : "");
                 drDongIn["TongTrongLuong"] = tongTrongLuong;
                 drDongIn["TrongLuong"] = trongLuong;
                 drDongIn["TienCong"] = tienCong;
@@ -54,6 +54,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 drDongIn["TongTrongLuongChu"] = tongTrongLuongChu;
                 drDongIn["TrongLuongChu"] = trongLuongChu;
                 drDongIn["HotChu"] = hotChu;
+                drDongIn["SoNi"] = soNi;
 
                 dsDanhSachHangHoa1.InMaVach.Rows.Add(drDongIn);
                 dsDanhSachHangHoa1.InMaVach.AcceptChanges();
