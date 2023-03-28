@@ -20,7 +20,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Database
         public Nullable<long> ItemID { get; set; }
         public Nullable<long> ItemCode { get; set; }
         public string ItemName { get; set; }
-        public Nullable<decimal> LV { get; set; }
         public Nullable<decimal> TotalWeight { get; set; }
         public Nullable<decimal> GoldWeight { get; set; }
         public Nullable<decimal> StoneWeight { get; set; }
@@ -35,5 +34,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Database
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> DeletedUserID { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
+        public string GoldType { get; set; }
+        public string ItemBarcode { get; set; }
     }
 }

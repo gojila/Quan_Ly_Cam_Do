@@ -79,6 +79,7 @@
       <DependentUpon>frmSaleList.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Database\Category.cs">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
     </Compile>
@@ -113,6 +114,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsItem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Sale\dsSale.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSale.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Sale\dsSaleDetail.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -153,6 +159,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Business\Sale\frmSale.resx">
       <DependentUpon>frmSale.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Business\Sale\frmSaleList.resx">
       <DependentUpon>frmSaleList.cs</DependentUpon>
@@ -193,6 +200,17 @@
     </None>
     <None Include="DataSet\Sale\dsItem.xss">
       <DependentUpon>dsItem.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\Sale\dsSale.xsc">
+      <DependentUpon>dsSale.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\Sale\dsSale.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSale.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\Sale\dsSale.xss">
+      <DependentUpon>dsSale.xsd</DependentUpon>
     </None>
     <None Include="DataSet\Sale\dsSaleDetail.xsc">
       <DependentUpon>dsSaleDetail.xsd</DependentUpon>

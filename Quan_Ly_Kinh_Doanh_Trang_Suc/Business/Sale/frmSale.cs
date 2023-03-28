@@ -1,9 +1,13 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils.Menu;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Menu;
 using DevExpress.XtraGrid.Views.Grid;
+using Quan_Ly_Kinh_Doanh_Trang_Suc.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,8 +18,28 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
 {
     public partial class frmSale : XtraForm
     {
+        private ActionType _actionType;
+        private long _saleID = 0;
+
+        public delegate void SaveEventHander(object sender);
+        public event SaveEventHander SaveEvent;
+        private void RaiseSaveEventHander()
+        {
+            if (SaveEvent != null)
+            {
+                SaveEvent(this);
+            }
+        }
+
         public frmSale()
         {
+            InitializeComponent();
+        }
+
+        public frmSale(ActionType actionType, long saleID)
+        {
+            _actionType = actionType;
+            _saleID = saleID;
             InitializeComponent();
         }
 
@@ -57,6 +81,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                 };
             };
             ReloadItem();
+            Init();
         }
 
         private void ReloadItem()
@@ -69,6 +94,40 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             {
                 Common.Common.OpenErrorMessage(ex.Message);
             }
+        }
+
+        private void Init()
+        {
+            switch(_actionType)
+            {
+                case ActionType.AddNew:
+                    txtSaleNo.Text = "";
+                    txtSaleMan.Text = "";
+                    dtDocumentDate.DateTime = DateTime.Now;
+                    EmptyRow();
+                    break;
+                case ActionType.Update:
+                    using (var db = new Database.Quan_Ly_Kinh_Doanh_Trang_SucEntities())
+                    {
+                        var sale = db.Sales.Where(s => s.SaleID == this._saleID && !(s.IsDeleted ?? false)).FirstOrDefault();
+                        if (sale != null)
+                        {
+                            txtSaleNo.Text = sale.SaleCode;
+                            txtSaleMan.Text = sale.Sale1;
+                            dtDocumentDate.DateTime = sale.DocumentDate ?? DateTime.Now;
+                            this.sale_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Detail, this._saleID);
+                            gbList.BestFitColumns();
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void EmptyRow()
+        {           
+            var rowCount = gbList.DataRowCount;
+            for (var i = rowCount; i >= 0; i--)
+                gbList.DeleteRow(i);
         }
 
         private enum Column
@@ -103,7 +162,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
 
                 if (_mColumn == Column.None)
                 {
-                    if (e.Column.FieldName == colItemCode.FieldName)
+                    if (e.Column.FieldName == colItemName.FieldName)
                     {
                         _mColumn = Column.ItemName;
                     }
@@ -203,6 +262,300 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             {
                 Common.Common.OpenErrorMessage(ex.Message);
             }
+        }
+
+
+        private bool ValidateInput()
+        {
+            if(string.IsNullOrEmpty(txtSaleNo.Text))
+            {
+                Common.Common.OpenErrorMessage("Vui lòng nhập số hóa đơn !");
+                return false;
+            }
+            if(string.IsNullOrEmpty(txtSaleMan.Text))
+            {
+                Common.Common.OpenErrorMessage("Vui lòng nhập người bán !");
+                return false;
+            }
+            if(gbList.DataRowCount <= 0)
+            {
+                Common.Common.OpenErrorMessage("Vui lòng chọn sản phẩm !");
+                return false;
+            }    
+            return true;
+        }
+
+        private bool Save()
+        {
+            try {
+                if (!ValidateInput())
+                    return false;
+                switch (_actionType)
+                {
+                    case ActionType.AddNew:
+                        using (var db = new Database.Quan_Ly_Kinh_Doanh_Trang_SucEntities())
+                        {
+                            using (DbContextTransaction transaction = db.Database.BeginTransaction())
+                            {
+                                try
+                                {
+                                    // -----
+                                    // Sale
+                                    var sale = new Database.Sale();
+                                    sale.SaleCode = txtSaleNo.Text;
+                                    sale.CompanyID = 0;
+                                    sale.DocumentDate = dtDocumentDate.DateTime;
+                                    sale.LaborFee = 0;
+                                    sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
+                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
+                                    sale.DiscountRate = 0;
+                                    sale.DiscountAmount = 0;
+                                    sale.TaxRate = 0;
+                                    sale.TaxAmount = 0;
+                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.Sale1 = txtSaleMan.Text;
+                                    sale.Descriptions = "";
+                                    sale.IsDeleted = false;
+                                    sale.CreatedDate = DateTime.Now;
+                                    db.Sales.Add(sale);
+                                    db.SaveChanges();
+                                    // ---------
+                                    // Sales detail
+                                    for (var i = 0; i < gbList.DataRowCount; i++)
+                                    {
+                                        var saleDetail = new Database.Sale_Detail();
+                                        saleDetail.SaleID = sale.SaleID;
+                                        saleDetail.SaleCode = sale.SaleCode;
+                                        var itemID = Convert.ToInt64(gbList.GetRowCellValue(i, colItemName));
+                                        saleDetail.ItemID = itemID;
+                                        saleDetail.ItemCode = itemID;
+                                        saleDetail.ItemName = gbList.GetRowCellDisplayText(i, colItemName);
+                                        saleDetail.GoldType = gbList.GetRowCellValue(i, colGoldType).ToString();
+                                        var totalWeight = gbList.GetRowCellValue(i, colTotalWeight);
+                                        saleDetail.TotalWeight = totalWeight == null ? 0 : (decimal)totalWeight;
+                                        var goldWeight = gbList.GetRowCellValue(i, colGoldWeight);
+                                        saleDetail.GoldWeight = goldWeight == null ? 0 : (decimal)goldWeight;
+                                        var stoneWeight = gbList.GetRowCellValue(i, colStoneWeight);
+                                        saleDetail.StoneWeight = stoneWeight == null ? 0 : (decimal)stoneWeight;
+                                        var price = gbList.GetRowCellValue(i, colPrice);
+                                        saleDetail.Price = price == null ? 0 : (decimal)price;
+                                        var laborFee = gbList.GetRowCellValue(i, colLaborFee);
+                                        saleDetail.LaborFee = laborFee == null ? 0 : (decimal)laborFee;
+                                        var amount = gbList.GetRowCellValue(i, colAmount);
+                                        saleDetail.Amount = amount == null ? 0 : (decimal)amount;
+                                        saleDetail.Descriptions = gbList.GetRowCellValue(i, colDescriptions.FieldName).ToString();
+                                        saleDetail.IsDeleted = false;
+                                        saleDetail.CreatedDate = DateTime.Now;
+                                        db.Sale_Detail.Add(saleDetail);
+                                    }
+                                    db.SaveChanges();
+                                    transaction.Commit();
+                                    RaiseSaveEventHander();
+                                    Common.Common.OpenSuccessMessage("Lưu thành công");
+                                    return true;
+                                }
+                                catch (Exception ex)
+                                {
+                                    transaction.Rollback();
+                                    Common.Common.OpenErrorMessage(ex.Message);
+                                    return false;
+                                }
+                            }
+                        };
+                    case ActionType.Update:
+                        using (var db = new Database.Quan_Ly_Kinh_Doanh_Trang_SucEntities())
+                        {
+                            using (DbContextTransaction transaction = db.Database.BeginTransaction())
+                            {
+                                try
+                                {
+                                    // ----- 
+                                    // Update Sale
+                                    var sale = db.Sales.Where(s => s.SaleID == this._saleID).FirstOrDefault();
+                                    sale.SaleID = this._saleID;
+                                    sale.SaleCode = txtSaleNo.Text;
+                                    sale.CompanyID = 0;
+                                    sale.DocumentDate = dtDocumentDate.DateTime;
+                                    sale.LaborFee = 0;
+                                    sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
+                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
+                                    sale.DiscountRate = 0;
+                                    sale.DiscountAmount = 0;
+                                    sale.TaxRate = 0;
+                                    sale.TaxAmount = 0;
+                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.Sale1 = txtSaleMan.Text;
+                                    sale.Descriptions = "";                                    
+                                    sale.ModifiedDate = DateTime.Now;
+                                    db.Entry(sale).State = System.Data.Entity.EntityState.Modified;
+                                    db.SaveChanges();
+
+                                    // ----------
+                                    // Process Sales detail
+                                    var listDetails = db.Sale_Detail.Where(sd => sd.SaleID == sale.SaleID && !(sd.IsDeleted ?? false)).ToList();
+                                    var listSaleDetailIds = new List<long>();
+                                    // Add or update sale detail
+                                    for (var i = 0; i < gbList.DataRowCount; i++)
+                                    {
+                                        var saleDetailID = Convert.ToInt64(gbList.GetRowCellValue(i, colSaleDetailID));
+                                        listSaleDetailIds.Add(saleDetailID);
+                                        var saleDetail = listDetails.Find(sd => sd.SaleDetailID == saleDetailID);
+                                        if(saleDetail == null)
+                                        {
+                                            saleDetail = new Database.Sale_Detail();
+                                            saleDetail.IsDeleted = false;
+                                            saleDetail.CreatedDate = DateTime.Now;
+                                            db.Entry(saleDetail).State = EntityState.Added;
+                                        }
+                                        else
+                                        {
+                                            saleDetail.ModifiedDate = DateTime.Now;
+                                            db.Entry(saleDetail).State = EntityState.Modified;
+                                        }
+                                        saleDetail.SaleID = sale.SaleID;
+                                        saleDetail.SaleCode = sale.SaleCode;
+                                        var itemIDObj = gbList.GetRowCellValue(i, colItemName);
+                                        var itemID = Convert.ToInt64(itemIDObj);
+                                        saleDetail.ItemID = itemID;
+                                        saleDetail.ItemCode = itemID;
+                                        saleDetail.ItemName = gbList.GetRowCellDisplayText(i, colItemName);
+                                        saleDetail.GoldType = gbList.GetRowCellValue(i, colGoldType).ToString();
+                                        var totalWeight = gbList.GetRowCellValue(i, colTotalWeight);
+                                        saleDetail.TotalWeight = totalWeight == null ? 0 : (decimal)totalWeight;
+                                        var goldWeight = gbList.GetRowCellValue(i, colGoldWeight);
+                                        saleDetail.GoldWeight = goldWeight == null ? 0 : (decimal)goldWeight;
+                                        var stoneWeight = gbList.GetRowCellValue(i, colStoneWeight);
+                                        saleDetail.StoneWeight = stoneWeight == null ? 0 : (decimal)stoneWeight;
+                                        var price = gbList.GetRowCellValue(i, colPrice);
+                                        saleDetail.Price = price == null ? 0 : (decimal)price;
+                                        var laborFee = gbList.GetRowCellValue(i, colLaborFee);
+                                        saleDetail.LaborFee = laborFee == null ? 0 : (decimal)laborFee;
+                                        var amount = gbList.GetRowCellValue(i, colAmount);
+                                        saleDetail.Amount = amount == null ? 0 : (decimal)amount;
+                                        saleDetail.Descriptions = gbList.GetRowCellValue(i, colDescriptions.FieldName).ToString();                                                                        
+                                        //db.Sale_Detail.Add(saleDetail);
+                                    }
+                                    // Delete sale detail
+                                    var listDeleteSaleDetails = listDetails.Where(sd => !listSaleDetailIds.Contains(sd.SaleDetailID)).ToList();
+                                    if(listDeleteSaleDetails.Count > 0)
+                                    {
+                                        foreach(var saleDetailDel in listDeleteSaleDetails)
+                                        {
+                                            saleDetailDel.IsDeleted = true;
+                                            saleDetailDel.DeletedDate = DateTime.Now;
+                                            db.Entry(saleDetailDel).State = EntityState.Modified;
+                                        }
+                                    }
+                                    db.SaveChanges();
+                                    transaction.Commit();
+                                    RaiseSaveEventHander();
+                                    Common.Common.OpenSuccessMessage("Lưu thành công");
+                                    return true;
+                                }
+                                catch (Exception ex)
+                                {
+                                    transaction.Rollback();
+                                    Common.Common.OpenErrorMessage(ex.Message);
+                                    return false;
+                                }
+                            }                                
+                        }
+                            
+                    default:
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+                return false;
+            }            
+        }
+        
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void gbListItem_DoubleClick(object sender, EventArgs e)
+        {
+            var gridView = sender as GridView;
+            if (gridView == null)
+                return;
+
+            DataRow row = gridView.GetDataRow(gridView.FocusedRowHandle);
+            if (row == null) 
+                return;
+
+            var itemID = Convert.ToInt64(row[0]);
+            //var itemName = row[2];
+            gbList.ClearSelection();
+            for (var i = 0; i < gbList.DataRowCount; i++)
+            {
+                var arg = gbList.GetRowCellValue(i, colItemName);
+                var oldItemID = Convert.ToInt64(arg);
+                if(oldItemID == itemID)
+                {                    
+                    gbList.FocusedRowHandle = i;
+                    gbList.SelectRow(i);
+                    return;
+                }
+            }
+            gbList.AddNewRow();
+            gbList.ShowEditor();
+            gbList.SetFocusedRowCellValue(colItemName, itemID);
+        }
+
+        private void bbiSaveNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (Save())
+            {
+                this._actionType = ActionType.AddNew;
+                this._saleID = 0;
+                Init();
+            }
+        }
+
+        private void bbiSaveClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (Save())
+            {
+                this.Close();
+            }
+        }
+
+        private void bbiSavePrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (Save())
+            {
+                this.Close();
+            }
+        }
+
+        private void gbList_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.MenuType == GridMenuType.Row)
+            {
+                GridViewMenu menu = e.Menu as GridViewMenu;
+                if (menu != null)
+                {
+                    menu.Items.Clear(); // Clear the default menu items
+
+                    DXMenuItem item = new DXMenuItem("Xóa sản phẩm", OnCustomMenuItemClick);
+                    System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
+                    item.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.Image")));
+                    menu.Items.Add(item); // Add a custom menu item
+
+                    e.Menu = menu; // Set the context menu
+                }
+            }
+        }
+
+        // event click popup menu
+        private void OnCustomMenuItemClick(object sender, EventArgs e)
+        {            
+            int rowHandle = gbList.FocusedRowHandle; 
+            gbList.DeleteRow(rowHandle);
         }
     }
 }

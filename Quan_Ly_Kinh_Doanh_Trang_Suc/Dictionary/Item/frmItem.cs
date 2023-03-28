@@ -62,7 +62,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
         {
             try 
             {
-                if (!Validate()) 
+                if (!ValidateInput()) 
                 {
                     return false;
                 }
@@ -101,7 +101,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             }
         }
 
-        private bool Validate() 
+        private bool ValidateInput() 
         {
             if (string.IsNullOrEmpty(txtItemCode.Text)) 
             {
