@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dbd7854615ac412099f965b53cef726c" Name="Diagram1">
+      <Diagram DiagramId="dbd7854615ac412099f965b53cef726c" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Company" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Detail" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Detail" Width="1.875" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Item" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>

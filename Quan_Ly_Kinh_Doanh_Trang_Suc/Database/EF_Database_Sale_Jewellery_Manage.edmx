@@ -91,10 +91,11 @@
           <Property Name="SaleDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SaleID" Type="bigint" Nullable="false" />
           <Property Name="SaleCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="ItemBarcode" Type="nvarchar" MaxLength="4000" />
           <Property Name="ItemID" Type="bigint" />
           <Property Name="ItemCode" Type="bigint" />
           <Property Name="ItemName" Type="nvarchar" MaxLength="250" />
-          <Property Name="LV" Type="money" />
+          <Property Name="GoldType" Type="nvarchar" MaxLength="250" />
           <Property Name="TotalWeight" Type="money" />
           <Property Name="GoldWeight" Type="money" />
           <Property Name="StoneWeight" Type="money" />
@@ -193,7 +194,6 @@
           <Property Name="ItemID" Type="Int64" />
           <Property Name="ItemCode" Type="Int64" />
           <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="LV" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TotalWeight" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="GoldWeight" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="StoneWeight" Type="Decimal" Precision="19" Scale="4" />
@@ -208,6 +208,8 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="DeletedUserID" Type="Int32" />
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="GoldType" Type="String" Nullable="true" Unicode="true" FixedLength="false" MaxLength="250" />
+          <Property Name="ItemBarcode" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="Quan_Ly_Kinh_Doanh_Trang_SucEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
@@ -304,33 +306,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sale_Detail">
-            <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Detail">
-              <MappingFragment StoreEntitySet="Sale_Detail">
-                <ScalarProperty Name="SaleDetailID" ColumnName="SaleDetailID" />
-                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
-                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="LV" ColumnName="LV" />
-                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
-                <ScalarProperty Name="GoldWeight" ColumnName="GoldWeight" />
-                <ScalarProperty Name="StoneWeight" ColumnName="StoneWeight" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="LaborFee" ColumnName="LaborFee" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
-                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Item">
               <MappingFragment StoreEntitySet="Item">
@@ -349,6 +324,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Sale_Detail">
+            <EntityTypeMapping TypeName="IsTypeOf(Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Detail)">
+              <MappingFragment StoreEntitySet="Sale_Detail">
+                <ScalarProperty Name="GoldType" ColumnName="GoldType" />
+                <ScalarProperty Name="ItemBarcode" ColumnName="ItemBarcode" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LaborFee" ColumnName="LaborFee" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StoneWeight" ColumnName="StoneWeight" />
+                <ScalarProperty Name="GoldWeight" ColumnName="GoldWeight" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+                <ScalarProperty Name="SaleDetailID" ColumnName="SaleDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -363,8 +366,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
