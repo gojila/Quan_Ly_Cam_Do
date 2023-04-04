@@ -107,6 +107,9 @@
     <Compile Include="Database\Sale.cs">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Sale_Change_Item_Detail.cs">
+      <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Sale_Detail.cs">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
     </Compile>
@@ -251,6 +254,13 @@
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.edmx</DependentUpon>
       <LastGenOutput>EF_Database_Sale_Jewellery_Manage.cs</LastGenOutput>
     </Content>
+    <Content Include="DBScript\dbo.Category.Table.sql" />
+    <Content Include="DBScript\dbo.Company.Table.sql" />
+    <Content Include="DBScript\dbo.Item.Table.sql" />
+    <Content Include="DBScript\dbo.Sale.Table.sql" />
+    <Content Include="DBScript\dbo.Sale_Change_Item_Detail.Table.sql" />
+    <Content Include="DBScript\dbo.Sale_Detail.Table.sql" />
+    <Content Include="DBScript\Quan_Ly_Kinh_Doanh_Trang_Suc.Database.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

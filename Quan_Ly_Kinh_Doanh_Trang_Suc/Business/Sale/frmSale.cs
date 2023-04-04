@@ -80,6 +80,17 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     //bbiEdit_ItemClick(this, null);
                 };
             };
+
+            gbList_ChangeItem.CustomDrawRowIndicator += (_s, _e) =>
+            {
+                int rowIndex = _e.RowHandle;
+                if (rowIndex >= 0)
+                {
+                    rowIndex++;
+                    _e.Info.DisplayText = rowIndex.ToString();
+                }
+            };
+
             ReloadItem();
             Init();
         }
@@ -116,7 +127,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                             txtSaleMan.Text = sale.Sale1;
                             dtDocumentDate.DateTime = sale.DocumentDate ?? DateTime.Now;
                             this.sale_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Detail, this._saleID);
-                            gbList.BestFitColumns();
+                            sale_Change_Item_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Change_Item_Detail, _saleID);
                         }
                     }
                     break;
@@ -145,6 +156,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         }
 
         Column _mColumn;
+        Column _mColumn_ChangeItem;
 
         private void gbList_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -170,11 +182,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     {
                         _mColumn = Column.GoldType;
                     }
-                    else if (e.Column.FieldName == colGoldType.FieldName)
+                    else if (e.Column.FieldName == colTotalWeight.FieldName)
                     {
                         _mColumn = Column.TotalWeight;
                     }
-                    else if (e.Column.FieldName == colTotalWeight.FieldName)
+                    else if (e.Column.FieldName == colGoldWeight.FieldName)
                     {
                         _mColumn = Column.GoldWeight;
                     }
@@ -553,9 +565,117 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
 
         // event click popup menu
         private void OnCustomMenuItemClick(object sender, EventArgs e)
-        {            
-            int rowHandle = gbList.FocusedRowHandle; 
-            gbList.DeleteRow(rowHandle);
+        {
+            if (XtraMessageBox.Show("Bạn có chắc là muốn xóa sản phẩm này không ?", "Xóa sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+            {
+                gbList.DeleteSelectedRows();
+                gbList.UpdateCurrentRow();
+            }
+        }
+
+        private void gbList_ChangeItem_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            try 
+            {
+                decimal price = 0;
+                decimal goldWeight = 0;
+                decimal amount = 0;
+                decimal totalWeight = 0;
+
+                gbList_ChangeItem.ClearColumnErrors();
+                gbList_ChangeItem.UpdateCurrentRow();
+                if (_mColumn_ChangeItem == Column.Lock) return;
+
+                if (_mColumn_ChangeItem == Column.None)
+                {
+                    if (e.Column.FieldName == colItemID3.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.ItemName;
+                    }
+                    else if (e.Column.FieldName == colGoldType1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.GoldType;
+                    }
+                    else if (e.Column.FieldName == colTotalWeight1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.TotalWeight;
+                    }
+                    else if (e.Column.FieldName == colGoldWeight1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.GoldWeight;
+                    }
+                    else if (e.Column.FieldName == colStoneWeight.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.StoneWeight;
+                    }
+                    else if (e.Column.FieldName == colPrice.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.Price;
+                    }
+                    else if (e.Column.FieldName == colAmount.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.Amount;
+                    }
+                }
+
+                switch (_mColumn_ChangeItem)
+                {
+                    case Column.None:
+                        return;
+                    case Column.ItemName:
+                        _mColumn_ChangeItem = Column.Lock;
+                        gbList_ChangeItem.SetFocusedRowCellValue(colTotalWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colGoldWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colStoneWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colPrice1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, 0);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.GoldType:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.TotalWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+                        totalWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.GoldWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+                        goldWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        price = gbList_ChangeItem.GetFocusedRowCellValue(colPrice1) == null ? 0 : Convert.ToDecimal(gbList_ChangeItem.GetFocusedRowCellValue(colPrice1));
+                        amount = (price * goldWeight);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, amount);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.StoneWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.Price:
+                        _mColumn_ChangeItem = Column.Lock;
+                        price = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        goldWeight = gbList_ChangeItem.GetFocusedRowCellValue(colGoldWeight1) == null ? 0 : Convert.ToDecimal(gbList_ChangeItem.GetFocusedRowCellValue(colGoldWeight1));
+                        amount = (price * goldWeight);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, amount);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.Amount:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                }
+
+                gbList_ChangeItem.ClearColumnErrors();
+                _mColumn_ChangeItem = Column.None;
+            }
+            catch (Exception ex) 
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
         }
     }
 }
