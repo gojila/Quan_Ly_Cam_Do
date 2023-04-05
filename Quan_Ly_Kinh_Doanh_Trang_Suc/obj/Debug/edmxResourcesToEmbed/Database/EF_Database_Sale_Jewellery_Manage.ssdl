@@ -86,10 +86,11 @@
     <Property Name="SaleDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SaleID" Type="bigint" Nullable="false" />
     <Property Name="SaleCode" Type="nvarchar" MaxLength="250" />
+    <Property Name="ItemBarcode" Type="nvarchar" MaxLength="4000" />
     <Property Name="ItemID" Type="bigint" />
     <Property Name="ItemCode" Type="bigint" />
     <Property Name="ItemName" Type="nvarchar" MaxLength="250" />
-    <Property Name="LV" Type="money" />
+    <Property Name="GoldType" Type="nvarchar" MaxLength="250" />
     <Property Name="TotalWeight" Type="money" />
     <Property Name="GoldWeight" Type="money" />
     <Property Name="StoneWeight" Type="money" />

@@ -72,7 +72,6 @@
     <Property Name="ItemID" Type="Int64" />
     <Property Name="ItemCode" Type="Int64" />
     <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="LV" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="TotalWeight" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="GoldWeight" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="StoneWeight" Type="Decimal" Precision="19" Scale="4" />
@@ -87,6 +86,8 @@
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
     <Property Name="DeletedUserID" Type="Int32" />
     <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+    <Property Name="GoldType" Type="String" Nullable="true" Unicode="true" FixedLength="false" MaxLength="250" />
+    <Property Name="ItemBarcode" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="Quan_Ly_Kinh_Doanh_Trang_SucEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Category" />
