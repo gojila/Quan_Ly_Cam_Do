@@ -184,6 +184,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                 {
                                     sale.IsDeleted = true;
                                     sale.DeletedDate = DateTime.Now;
+                                    // ---- 
+                                    // Delete sale detail
                                     var saleDetails = (from _saleDetails in db.Sale_Detail
                                                        where _saleDetails.SaleID == tempId && !(_saleDetails.IsDeleted ?? false)
                                                        select _saleDetails).ToList();
@@ -194,7 +196,20 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                             sd.IsDeleted = true;
                                             sd.DeletedDate = DateTime.Now;
                                         }
-                                    }    
+                                    }
+                                    // -----
+                                    // Delete change item
+                                    var changeItems = (from _changeItems in db.Sale_Change_Item_Detail
+                                                       where _changeItems.SaleID == tempId && !(_changeItems.IsDeleted ?? false)
+                                                       select _changeItems).ToList();
+                                    if (changeItems != null && changeItems.Count > 0)
+                                    {
+                                        foreach (var ci in changeItems)
+                                        {
+                                            ci.IsDeleted = true;
+                                            ci.DeletedDate = DateTime.Now;
+                                        }
+                                    }
                                 }
                             }
                         }
