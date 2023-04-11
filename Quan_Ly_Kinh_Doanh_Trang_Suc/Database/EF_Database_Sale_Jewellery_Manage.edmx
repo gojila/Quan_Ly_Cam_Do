@@ -84,6 +84,32 @@
           <Property Name="DeletedUserID" Type="int" />
           <Property Name="DeletedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Sale_Change_Item_Detail">
+          <Key>
+            <PropertyRef Name="SaleChangeItemDetailID" />
+          </Key>
+          <Property Name="SaleChangeItemDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleID" Type="bigint" Nullable="false" />
+          <Property Name="SaleCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="ItemBarcode" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ItemID" Type="bigint" />
+          <Property Name="ItemCode" Type="bigint" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="250" />
+          <Property Name="GoldType" Type="nvarchar" MaxLength="250" />
+          <Property Name="TotalWeight" Type="money" />
+          <Property Name="GoldWeight" Type="money" />
+          <Property Name="StoneWeight" Type="money" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Descriptions" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedUserID" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Sale_Detail">
           <Key>
             <PropertyRef Name="SaleDetailID" />
@@ -116,6 +142,7 @@
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale_Change_Item_Detail" EntityType="Self.Sale_Change_Item_Detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale_Detail" EntityType="Self.Sale_Detail" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -217,6 +244,7 @@
           <EntitySet Name="Sales" EntityType="Self.Sale" />
           <EntitySet Name="Sale_Detail" EntityType="Self.Sale_Detail" />
           <EntitySet Name="Items" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Item" />
+          <EntitySet Name="Sale_Change_Item_Detail" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Change_Item_Detail" />
         </EntityContainer>
         <EntityType Name="Item">
           <Key>
@@ -226,6 +254,32 @@
           <Property Name="ItemCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int64" />
+          <Property Name="Descriptions" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserID" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sale_Change_Item_Detail">
+          <Key>
+            <PropertyRef Name="SaleChangeItemDetailID" />
+          </Key>
+          <Property Name="SaleChangeItemDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleID" Type="Int64" Nullable="false" />
+          <Property Name="SaleCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ItemBarcode" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="Int64" />
+          <Property Name="ItemCode" Type="Int64" />
+          <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GoldType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GoldWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StoneWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Descriptions" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="CreatedUserID" Type="Int32" />
@@ -349,6 +403,33 @@
                 <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
                 <ScalarProperty Name="SaleID" ColumnName="SaleID" />
                 <ScalarProperty Name="SaleDetailID" ColumnName="SaleDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale_Change_Item_Detail">
+            <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Change_Item_Detail">
+              <MappingFragment StoreEntitySet="Sale_Change_Item_Detail">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StoneWeight" ColumnName="StoneWeight" />
+                <ScalarProperty Name="GoldWeight" ColumnName="GoldWeight" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="GoldType" ColumnName="GoldType" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemBarcode" ColumnName="ItemBarcode" />
+                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+                <ScalarProperty Name="SaleChangeItemDetailID" ColumnName="SaleChangeItemDetailID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

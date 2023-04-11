@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Web Project\Quan_Ly_Trang_Suc\Quan_Ly_Kinh_Doanh_Trang_Suc\Database\EF_Database_Sale_Jewellery_Manage.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\LamPhanMem\Quan_Ly_Cam_Do\Quan_Ly_Kinh_Doanh_Trang_Suc\Database\EF_Database_Sale_Jewellery_Manage.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
