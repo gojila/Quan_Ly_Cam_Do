@@ -264,33 +264,44 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colCreatedDate,
             this.colModifiedDate});
             this.gbList.GridControl = this.gcList;
+            this.gbList.GroupPanelText = "Kéo cột và thả vào đây để nhóm dữ liệu";
             this.gbList.Name = "gbList";
             this.gbList.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gbList.OptionsBehavior.Editable = false;
+            this.gbList.OptionsView.ColumnAutoWidth = false;
             this.gbList.OptionsView.ShowFooter = true;
             this.gbList.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gbList_PopupMenuShowing);
             this.gbList.DoubleClick += new System.EventHandler(this.gbList_DoubleClick);
             // 
             // colSaleID
             // 
+            this.colSaleID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSaleID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSaleID.FieldName = "SaleID";
             this.colSaleID.Name = "colSaleID";
             // 
             // colCompanyID
             // 
+            this.colCompanyID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCompanyID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCompanyID.FieldName = "CompanyID";
             this.colCompanyID.Name = "colCompanyID";
             // 
             // colSaleCode
             // 
+            this.colSaleCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSaleCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSaleCode.Caption = "Số hóa đơn";
             this.colSaleCode.FieldName = "SaleCode";
             this.colSaleCode.Name = "colSaleCode";
             this.colSaleCode.Visible = true;
             this.colSaleCode.VisibleIndex = 0;
+            this.colSaleCode.Width = 77;
             // 
             // colSalePeople
             // 
+            this.colSalePeople.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSalePeople.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSalePeople.Caption = "Người bán";
             this.colSalePeople.FieldName = "Sale";
             this.colSalePeople.Name = "colSalePeople";
@@ -299,6 +310,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDocumentDate
             // 
+            this.colDocumentDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDocumentDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDocumentDate.Caption = "Ngày bán";
             this.colDocumentDate.FieldName = "DocumentDate";
             this.colDocumentDate.Name = "colDocumentDate";
@@ -307,6 +320,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colLaborFee
             // 
+            this.colLaborFee.AppearanceHeader.Options.UseTextOptions = true;
+            this.colLaborFee.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colLaborFee.Caption = "Tiền công";
             this.colLaborFee.ColumnEdit = this.rptCal;
             this.colLaborFee.FieldName = "LaborFee";
@@ -327,6 +342,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDocumentAmountBF
             // 
+            this.colDocumentAmountBF.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDocumentAmountBF.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDocumentAmountBF.ColumnEdit = this.rptCal;
             this.colDocumentAmountBF.FieldName = "DocumentAmountBF";
             this.colDocumentAmountBF.Name = "colDocumentAmountBF";
@@ -335,12 +352,15 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDiscountRate
             // 
+            this.colDiscountRate.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDiscountRate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDiscountRate.Caption = "Chiết khấu (%)";
             this.colDiscountRate.ColumnEdit = this.rptCalPercent;
             this.colDiscountRate.FieldName = "DiscountRate";
             this.colDiscountRate.Name = "colDiscountRate";
             this.colDiscountRate.Visible = true;
             this.colDiscountRate.VisibleIndex = 4;
+            this.colDiscountRate.Width = 96;
             // 
             // rptCalPercent
             // 
@@ -353,6 +373,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDiscountAmount
             // 
+            this.colDiscountAmount.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDiscountAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDiscountAmount.Caption = "Chiết khấu";
             this.colDiscountAmount.ColumnEdit = this.rptCal;
             this.colDiscountAmount.FieldName = "DiscountAmount";
@@ -364,6 +386,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colTaxRate
             // 
+            this.colTaxRate.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTaxRate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTaxRate.Caption = "Thuế (%)";
             this.colTaxRate.ColumnEdit = this.rptCalPercent;
             this.colTaxRate.FieldName = "TaxRate";
@@ -373,6 +397,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colTaxAmount
             // 
+            this.colTaxAmount.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTaxAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTaxAmount.Caption = "Thuế";
             this.colTaxAmount.ColumnEdit = this.rptCal;
             this.colTaxAmount.FieldName = "TaxAmount";
@@ -384,6 +410,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDocumentAmount
             // 
+            this.colDocumentAmount.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDocumentAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDocumentAmount.Caption = "Thành tiền";
             this.colDocumentAmount.ColumnEdit = this.rptCal;
             this.colDocumentAmount.FieldName = "DocumentAmount";
@@ -395,6 +423,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colDescriptions
             // 
+            this.colDescriptions.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDescriptions.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDescriptions.Caption = "Ghi chú";
             this.colDescriptions.FieldName = "Descriptions";
             this.colDescriptions.Name = "colDescriptions";
@@ -403,11 +433,15 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // colCreatedDate
             // 
+            this.colCreatedDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCreatedDate.FieldName = "CreatedDate";
             this.colCreatedDate.Name = "colCreatedDate";
             // 
             // colModifiedDate
             // 
+            this.colModifiedDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colModifiedDate.FieldName = "ModifiedDate";
             this.colModifiedDate.Name = "colModifiedDate";
             // 

@@ -35,6 +35,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bbiSaveNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveClose = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
@@ -48,7 +49,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bbiSaveNew = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
@@ -67,19 +67,21 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.layoutControl1.Controls.Add(this.txtItemCode);
             this.layoutControl1.Controls.Add(this.txtDescription);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 34);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 24);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(800, 331);
+            this.layoutControl1.Size = new System.Drawing.Size(533, 226);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(169, 42);
+            this.txtItemName.Location = new System.Drawing.Point(132, 30);
+            this.txtItemName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtItemName.MenuManager = this.bm;
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(619, 26);
+            this.txtItemName.Size = new System.Drawing.Size(393, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 5;
             // 
@@ -115,6 +117,15 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // bbiSaveNew
+            // 
+            this.bbiSaveNew.Caption = "Lưu && Tạo";
+            this.bbiSaveNew.Id = 3;
+            this.bbiSaveNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveNew.ImageOptions.Image")));
+            this.bbiSaveNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveNew.ImageOptions.LargeImage")));
+            this.bbiSaveNew.Name = "bbiSaveNew";
+            this.bbiSaveNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveNew_ItemClick);
+            // 
             // bbiSaveClose
             // 
             this.bbiSaveClose.Caption = "Lưu && Đóng";
@@ -148,47 +159,53 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.bm;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 34);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlTop.Size = new System.Drawing.Size(533, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 365);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 250);
             this.barDockControlBottom.Manager = this.bm;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(533, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 34);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.bm;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 331);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 226);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 34);
+            this.barDockControlRight.Location = new System.Drawing.Point(533, 24);
             this.barDockControlRight.Manager = this.bm;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 331);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 226);
             // 
             // txtItemCode
             // 
-            this.txtItemCode.Location = new System.Drawing.Point(169, 12);
+            this.txtItemCode.Location = new System.Drawing.Point(132, 8);
+            this.txtItemCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtItemCode.MenuManager = this.bm;
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(619, 26);
+            this.txtItemCode.Size = new System.Drawing.Size(393, 20);
             this.txtItemCode.StyleController = this.layoutControl1;
             this.txtItemCode.TabIndex = 4;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(169, 72);
+            this.txtDescription.Location = new System.Drawing.Point(132, 52);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescription.MenuManager = this.bm;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(619, 247);
+            this.txtDescription.Size = new System.Drawing.Size(393, 166);
             this.txtDescription.StyleController = this.layoutControl1;
             this.txtDescription.TabIndex = 6;
             // 
@@ -201,64 +218,56 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(800, 331);
+            this.Root.Size = new System.Drawing.Size(533, 226);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.AllowHtmlStringInCaption = true;
-            this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem1.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem1.Control = this.txtItemCode;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(780, 30);
-            this.layoutControlItem1.Text = "Mã Sản Phẩm <color=\"red\">(*)</color>";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(154, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(519, 22);
+            this.layoutControlItem1.Text = "Mã Sản Phẩm: <color=\"red\">(*)</color>";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(122, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.AllowHtmlStringInCaption = true;
-            this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem2.Control = this.txtItemName;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 22);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(780, 30);
-            this.layoutControlItem2.Text = "Sản Phẩm  <color=\"red\">(*)</color>";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(154, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(519, 22);
+            this.layoutControlItem2.Text = "Sản Phẩm:  <color=\"red\">(*)</color>";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(122, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.AllowHtmlStringInCaption = true;
-            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem3.Control = this.txtDescription;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(780, 251);
-            this.layoutControlItem3.Text = "Ghi Chú";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(154, 24);
-            // 
-            // bbiSaveNew
-            // 
-            this.bbiSaveNew.Caption = "Lưu && Tạo";
-            this.bbiSaveNew.Id = 3;
-            this.bbiSaveNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiSaveNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.bbiSaveNew.Name = "bbiSaveNew";
-            this.bbiSaveNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveNew_ItemClick);
+            this.layoutControlItem3.Size = new System.Drawing.Size(519, 168);
+            this.layoutControlItem3.Text = "Ghi Chú:";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(122, 16);
             // 
             // frmItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 365);
+            this.ClientSize = new System.Drawing.Size(533, 250);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

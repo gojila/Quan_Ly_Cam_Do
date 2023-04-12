@@ -34,13 +34,14 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSale = new DevExpress.XtraBars.BarButtonItem();
             this.bbiItem = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCategory = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.tabMdi = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbiCategory = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCustomer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMdi)).BeginInit();
             this.SuspendLayout();
@@ -53,14 +54,14 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             this.ribbonControl1.SearchEditItem,
             this.bbiSale,
             this.bbiItem,
-            this.bbiCategory});
+            this.bbiCategory,
+            this.bbiCustomer});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1254, 231);
+            this.ribbonControl1.Size = new System.Drawing.Size(836, 158);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // bbiSale
@@ -81,6 +82,14 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             this.bbiItem.Name = "bbiItem";
             this.bbiItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiItem_ItemClick);
             // 
+            // bbiCategory
+            // 
+            this.bbiCategory.Caption = "Loại Sản Phẩm";
+            this.bbiCategory.Id = 3;
+            this.bbiCategory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCategory.ImageOptions.Image")));
+            this.bbiCategory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCategory.ImageOptions.LargeImage")));
+            this.bbiCategory.Name = "bbiCategory";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -99,16 +108,16 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiCategory);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiItem);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiCustomer);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Danh Mục";
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 758);
-            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 514);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1254, 36);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(836, 24);
             // 
             // ribbonPage2
             // 
@@ -119,24 +128,24 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             // 
             this.tabMdi.MdiParent = this;
             // 
-            // bbiCategory
+            // bbiCustomer
             // 
-            this.bbiCategory.Caption = "Loại Sản Phẩm";
-            this.bbiCategory.Id = 3;
-            this.bbiCategory.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCategory.ImageOptions.Image")));
-            this.bbiCategory.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCategory.ImageOptions.LargeImage")));
-            this.bbiCategory.Name = "bbiCategory";
+            this.bbiCustomer.Caption = "Khách Hàng";
+            this.bbiCustomer.Id = 4;
+            this.bbiCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiCustomer.Name = "bbiCustomer";
+            this.bbiCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCustomer_ItemClick);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1254, 794);
+            this.ClientSize = new System.Drawing.Size(836, 538);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
@@ -161,6 +170,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
         private DevExpress.XtraBars.BarButtonItem bbiItem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem bbiCategory;
+        private DevExpress.XtraBars.BarButtonItem bbiCustomer;
     }
 }
 

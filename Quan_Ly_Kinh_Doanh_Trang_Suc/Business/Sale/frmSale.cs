@@ -171,6 +171,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                 decimal laborFee = 0;
                 decimal amount = 0;
                 decimal totalWeight = 0;
+                decimal stoneWeight = 0;
 
                 gbList.ClearColumnErrors();
                 gbList.UpdateCurrentRow();
@@ -234,16 +235,40 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     case Column.TotalWeight:
                         _mColumn = Column.Lock;
                         totalWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        goldWeight = totalWeight;
+                        gbList.SetFocusedRowCellValue(colGoldWeight, goldWeight);
+                        gbList.SetFocusedRowCellValue(colStoneWeight, 0);
+
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        amount = (price * goldWeight) + laborFee;
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.GoldWeight:
                         _mColumn = Column.Lock;
-
+                        goldWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        totalWeight = gbList.GetFocusedRowCellValue(colTotalWeight) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colTotalWeight));
+                        stoneWeight = totalWeight - goldWeight;
+                        gbList.SetFocusedRowCellValue(colStoneWeight, stoneWeight);
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.StoneWeight:
                         _mColumn = Column.Lock;
-
+                        stoneWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        totalWeight = gbList.GetFocusedRowCellValue(colTotalWeight) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colTotalWeight));
+                        goldWeight = totalWeight - stoneWeight;
+                        gbList.SetFocusedRowCellValue(colGoldWeight, goldWeight);
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.Price:
@@ -271,6 +296,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                         break;
                 }
 
+                CalculateDocumentAmt();
                 gbList.ClearColumnErrors();
                 _mColumn = Column.None;
             }
@@ -318,20 +344,24 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                     // -----
                                     // Sale
                                     var sale = new Database.Sale();
+
                                     sale.SaleCode = txtSaleNo.Text;
                                     sale.CompanyID = 0;
                                     sale.DocumentDate = dtDocumentDate.DateTime;
                                     sale.LaborFee = 0;
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
+                                    
                                     sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
                                     sale.DiscountRate = 0;
                                     sale.DiscountAmount = 0;
                                     sale.TaxRate = 0;
                                     sale.TaxAmount = 0;
+                                    
                                     sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
                                     sale.Sale1 = txtSaleMan.Text;
                                     sale.Descriptions = "";
                                     sale.IsDeleted = false;
+                                    
                                     sale.CreatedDate = DateTime.Now;
                                     db.Sales.Add(sale);
                                     db.SaveChanges();
@@ -415,21 +445,25 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                     // ----- 
                                     // Update Sale
                                     var sale = db.Sales.Where(s => s.SaleID == this._saleID).FirstOrDefault();
+                                    
                                     sale.SaleID = this._saleID;
                                     sale.SaleCode = txtSaleNo.Text;
                                     sale.CompanyID = 0;
                                     sale.DocumentDate = dtDocumentDate.DateTime;
                                     sale.LaborFee = 0;
+                                    
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
                                     sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
                                     sale.DiscountRate = 0;
                                     sale.DiscountAmount = 0;
                                     sale.TaxRate = 0;
+                                    
                                     sale.TaxAmount = 0;
                                     sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
                                     sale.Sale1 = txtSaleMan.Text;
                                     sale.Descriptions = "";                                    
                                     sale.ModifiedDate = DateTime.Now;
+                                    
                                     db.Entry(sale).State = System.Data.Entity.EntityState.Modified;
                                     db.SaveChanges();
 
@@ -757,6 +791,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                         break;
                 }
 
+                CalculateDocumentAmt();
                 gbList_ChangeItem.ClearColumnErrors();
                 _mColumn_ChangeItem = Column.None;
             }
@@ -792,6 +827,183 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             {
                 gbList_ChangeItem.DeleteSelectedRows();
                 gbList_ChangeItem.UpdateCurrentRow();
+            }
+        }
+
+        private decimal GetTotalAmountBf()
+        {
+            try
+            {
+                decimal discountAmt = txtDiscountAmount.Value;
+                decimal taxAmt = txtTaxAmount.Value;
+                decimal saleDetailTotalAmt = 0;
+                decimal saleChangeDetailTotalAmt = 0;
+                decimal documentAmountBF = 0;
+                foreach (DataRow dr in dsSaleDetail.Sale_Detail.Rows)
+                {
+                    if (dr.RowState != DataRowState.Deleted)
+                    {
+                        saleDetailTotalAmt += dr["Amount"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["Amount"]);
+                    }
+                }
+
+                foreach (DataRow dr in dsSaleDetail.Sale_Change_Item_Detail.Rows)
+                {
+                    if (dr.RowState != DataRowState.Deleted)
+                    {
+                        saleChangeDetailTotalAmt += dr["Amount"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["Amount"]);
+                    }
+                }
+
+                documentAmountBF = saleDetailTotalAmt - saleChangeDetailTotalAmt;
+                return documentAmountBF;
+            }
+            catch (Exception ex)
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+                return 0;
+            }
+        }
+
+        private void CalculateDocumentAmount()
+        {
+            try 
+            {
+                decimal discountAmt = txtDiscountAmount.Value;
+                decimal taxAmt = txtTaxAmount.Value;
+                decimal documentAmountBF = GetTotalAmountBf();
+                decimal documentAmount = 0;
+
+                documentAmount = documentAmountBF - discountAmt + taxAmt;
+                txtDocumentAmount.Value = documentAmount;
+            }
+            catch (Exception ex) 
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        DiscountUpdateStatus _discountStatus;
+        private enum DiscountUpdateStatus 
+        {
+            None = 0,
+            Lock = 1,
+        }
+
+        TaxUpdateStatus _taxStatus;
+        private enum TaxUpdateStatus
+        {
+            None = 0,
+            Lock = 1,
+        }
+
+        private void txtDiscountRate_EditValueChanged(object sender, EventArgs e)
+        {
+            try 
+            {
+                if (_discountStatus == DiscountUpdateStatus.None) 
+                {
+                    decimal discountRate = txtDiscountRate.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = discountRate == 0 ? 0 : (documentAmountBF / 100 * discountRate);
+
+                    _discountStatus = DiscountUpdateStatus.Lock;
+                    txtDiscountAmount.Value = discountAmt;
+                    CalculateDocumentAmt();
+                    _discountStatus = DiscountUpdateStatus.None;
+                }
+            }
+            catch (Exception ex) 
+            {
+                _discountStatus = DiscountUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtDiscountAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_discountStatus == DiscountUpdateStatus.None)
+                {
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountRate = documentAmountBF == 0 ? 0 : (discountAmt / documentAmountBF * 100);
+
+                    _discountStatus = DiscountUpdateStatus.Lock;
+                    txtDiscountRate.Value = discountRate;
+                    CalculateDocumentAmt();
+                    _discountStatus = DiscountUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _discountStatus = DiscountUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtTaxRate_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_taxStatus == TaxUpdateStatus.None)
+                {
+                    decimal taxRate = txtTaxRate.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBFTax = documentAmountBF - discountAmt;
+                    decimal taxAmt = documentAmountBFTax / 100 * taxRate;
+                    _taxStatus = TaxUpdateStatus.Lock;
+                    txtTaxAmount.Value = taxAmt;
+                    CalculateDocumentAmt();
+                    _taxStatus = TaxUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _taxStatus = TaxUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtTaxAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_taxStatus == TaxUpdateStatus.None)
+                {
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBFTax = documentAmountBF - discountAmt;
+                    decimal taxAmt = txtTaxAmount.Value;
+                    decimal taxRate = documentAmountBFTax == 0 ? 0 : (taxAmt / documentAmountBFTax * 100);
+                    _taxStatus = TaxUpdateStatus.Lock;
+                    txtTaxRate.Value = taxRate;
+                    CalculateDocumentAmt();
+                    _taxStatus = TaxUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _taxStatus = TaxUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void CalculateDocumentAmt() 
+        {
+            try
+            {
+                decimal documentAmountBF = GetTotalAmountBf();
+                decimal discountAmt = txtDiscountAmount.Value;
+                decimal taxAmt = txtTaxAmount.Value;
+                decimal documentAmt = documentAmountBF - discountAmt + taxAmt;
+                txtDocumentAmount.Value = documentAmt;
+            }
+            catch (Exception ex)
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
             }
         }
     }

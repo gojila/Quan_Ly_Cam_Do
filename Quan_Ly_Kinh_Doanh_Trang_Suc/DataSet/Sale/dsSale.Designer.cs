@@ -562,13 +562,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SaleRow FindBySaleID(long SaleID) {
-                return ((SaleRow)(this.Rows.Find(new object[] {
-                            SaleID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 SaleDataTable cln = ((SaleDataTable)(base.Clone()));
                 cln.InitVars();
@@ -640,14 +633,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale {
                 base.Columns.Add(this.columnModifiedUserID);
                 this.columnModifiedDate = new global::System.Data.DataColumn("ModifiedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnModifiedDate);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSaleID}, true));
                 this.columnSaleID.AutoIncrement = true;
                 this.columnSaleID.AutoIncrementSeed = -1;
                 this.columnSaleID.AutoIncrementStep = -1;
-                this.columnSaleID.AllowDBNull = false;
-                this.columnSaleID.ReadOnly = true;
-                this.columnSaleID.Unique = true;
                 this.columnSaleCode.MaxLength = 250;
                 this.columnSale.MaxLength = 250;
                 this.columnDescriptions.MaxLength = 250;
@@ -795,7 +783,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public long SaleID {
                 get {
-                    return ((long)(this[this.tableSale.SaleIDColumn]));
+                    try {
+                        return ((long)(this[this.tableSale.SaleIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SaleID\' in table \'Sale\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSale.SaleIDColumn] = value;
@@ -1056,6 +1049,18 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale {
                 set {
                     this[this.tableSale.ModifiedDateColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSaleIDNull() {
+                return this.IsNull(this.tableSale.SaleIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSaleIDNull() {
+                this[this.tableSale.SaleIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

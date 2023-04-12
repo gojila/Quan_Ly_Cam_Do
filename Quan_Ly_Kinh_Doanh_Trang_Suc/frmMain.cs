@@ -1,4 +1,5 @@
 ﻿using Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale;
+using Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Customer;
 using Quan_Ly_Kinh_Doanh_Trang_Suc.Dictionary.Item;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,24 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc
             else
             {
                 tabMdi.Pages[_frmItemList].MdiChild.Activate();
+            }
+        }
+        private frmCustomerList _frmCustomerList;
+        private void bbiCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (_frmCustomerList == null)
+            {
+                _frmCustomerList = new frmCustomerList();
+                _frmCustomerList.FormClosing += (ss, ex) =>
+                {
+                    _frmCustomerList = null;
+                };
+                _frmCustomerList.MdiParent = this;
+                _frmCustomerList.Show();
+            }
+            else
+            {
+                tabMdi.Pages[_frmCustomerList].MdiChild.Activate();
             }
         }
     }
