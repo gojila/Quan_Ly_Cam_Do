@@ -42,6 +42,24 @@
           <Property Name="DeletedUserID" Type="int" />
           <Property Name="DeletedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedUserID" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="DeletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="ItemID" />
@@ -65,16 +83,22 @@
           </Key>
           <Property Name="SaleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SaleCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="CustomerID" Type="bigint" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CustomerPhone" Type="nvarchar" MaxLength="250" />
+          <Property Name="CustomerAddress" Type="nvarchar" MaxLength="250" />
           <Property Name="CompanyID" Type="bigint" />
           <Property Name="DocumentDate" Type="datetime" />
           <Property Name="LaborFee" Type="money" />
+          <Property Name="TotalSaleAmount" Type="money" />
+          <Property Name="TotalChangeAmount" Type="money" />
           <Property Name="DocumentAmountBF" Type="money" />
           <Property Name="DiscountRate" Type="money" />
           <Property Name="DiscountAmount" Type="money" />
           <Property Name="TaxRate" Type="money" />
           <Property Name="TaxAmount" Type="money" />
           <Property Name="DocumentAmount" Type="money" />
-          <Property Name="Sale" Type="nvarchar" MaxLength="250" />
+          <Property Name="SaleMan" Type="nvarchar" MaxLength="250" />
           <Property Name="Descriptions" Type="nvarchar" MaxLength="250" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedUserID" Type="int" />
@@ -140,6 +164,7 @@
         <EntityContainer Name="Quan_Ly_Kinh_Doanh_Trang_SucModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale_Change_Item_Detail" EntityType="Self.Sale_Change_Item_Detail" Schema="dbo" store:Type="Tables" />
@@ -186,31 +211,6 @@
           <Property Name="DeletedUserID" Type="Int32" />
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="SaleID" />
-          </Key>
-          <Property Name="SaleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SaleCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyID" Type="Int64" />
-          <Property Name="DocumentDate" Type="DateTime" Precision="3" />
-          <Property Name="LaborFee" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DocumentAmountBF" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiscountRate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TaxRate" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TaxAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DocumentAmount" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Sale1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Descriptions" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="CreatedUserID" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedUserID" Type="Int32" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="DeletedUserID" Type="Int32" />
-          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Sale_Detail">
           <Key>
             <PropertyRef Name="SaleDetailID" />
@@ -241,10 +241,11 @@
         <EntityContainer Name="Quan_Ly_Kinh_Doanh_Trang_SucEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Companies" EntityType="Self.Company" />
-          <EntitySet Name="Sales" EntityType="Self.Sale" />
           <EntitySet Name="Sale_Detail" EntityType="Self.Sale_Detail" />
           <EntitySet Name="Items" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Item" />
           <EntitySet Name="Sale_Change_Item_Detail" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale_Change_Item_Detail" />
+          <EntitySet Name="Customer" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Customer" />
+          <EntitySet Name="Sale" EntityType="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale" />
         </EntityContainer>
         <EntityType Name="Item">
           <Key>
@@ -289,6 +290,55 @@
           <Property Name="DeletedUserID" Type="Int32" />
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserID" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="SaleID" />
+          </Key>
+          <Property Name="SaleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int64" />
+          <Property Name="CustomerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="DocumentDate" Type="DateTime" Precision="3" />
+          <Property Name="LaborFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalSaleAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalChangeAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DocumentAmountBF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DocumentAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SaleMan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descriptions" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedUserID" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -323,32 +373,6 @@
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
-                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale">
-              <MappingFragment StoreEntitySet="Sale">
-                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
-                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
-                <ScalarProperty Name="LaborFee" ColumnName="LaborFee" />
-                <ScalarProperty Name="DocumentAmountBF" ColumnName="DocumentAmountBF" />
-                <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
-                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
-                <ScalarProperty Name="DocumentAmount" ColumnName="DocumentAmount" />
-                <ScalarProperty Name="Sale1" ColumnName="Sale" />
                 <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
@@ -430,6 +454,57 @@
                 <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
                 <ScalarProperty Name="SaleID" ColumnName="SaleID" />
                 <ScalarProperty Name="SaleChangeItemDetailID" ColumnName="SaleChangeItemDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="Quan_Ly_Kinh_Doanh_Trang_SucModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedUserID" ColumnName="ModifiedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="SaleMan" ColumnName="SaleMan" />
+                <ScalarProperty Name="DocumentAmount" ColumnName="DocumentAmount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+                <ScalarProperty Name="DocumentAmountBF" ColumnName="DocumentAmountBF" />
+                <ScalarProperty Name="TotalChangeAmount" ColumnName="TotalChangeAmount" />
+                <ScalarProperty Name="TotalSaleAmount" ColumnName="TotalSaleAmount" />
+                <ScalarProperty Name="LaborFee" ColumnName="LaborFee" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

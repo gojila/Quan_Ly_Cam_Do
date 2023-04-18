@@ -16,16 +16,22 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Database
     {
         public long SaleID { get; set; }
         public string SaleCode { get; set; }
+        public Nullable<long> CustomerID { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerPhone { get; set; }
+        public string CustomerAddress { get; set; }
         public Nullable<long> CompanyID { get; set; }
         public Nullable<System.DateTime> DocumentDate { get; set; }
         public Nullable<decimal> LaborFee { get; set; }
+        public Nullable<decimal> TotalSaleAmount { get; set; }
+        public Nullable<decimal> TotalChangeAmount { get; set; }
         public Nullable<decimal> DocumentAmountBF { get; set; }
         public Nullable<decimal> DiscountRate { get; set; }
         public Nullable<decimal> DiscountAmount { get; set; }
         public Nullable<decimal> TaxRate { get; set; }
         public Nullable<decimal> TaxAmount { get; set; }
         public Nullable<decimal> DocumentAmount { get; set; }
-        public string Sale1 { get; set; }
+        public string SaleMan { get; set; }
         public string Descriptions { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> CreatedUserID { get; set; }

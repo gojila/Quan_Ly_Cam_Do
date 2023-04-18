@@ -46,7 +46,22 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.txtPhoneNo = new DevExpress.XtraEditors.TextEdit();
             this.glkeCustomer = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCustomer = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsCustomer();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPhoneNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDeleted4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtDocumentAmount = new DevExpress.XtraEditors.CalcEdit();
             this.txtDiscountAmount = new DevExpress.XtraEditors.CalcEdit();
             this.txtTaxAmount = new DevExpress.XtraEditors.CalcEdit();
@@ -183,8 +198,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.splitterItem2 = new DevExpress.XtraLayout.SplitterItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -198,6 +211,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.itemTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsItemTableAdapters.ItemTableAdapter();
             this.sale_DetailTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetailTableAdapters.Sale_DetailTableAdapter();
             this.sale_Change_Item_DetailTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetailTableAdapters.Sale_Change_Item_DetailTableAdapter();
+            this.customerTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsCustomerTableAdapters.CustomerTableAdapter();
+            this.splitterItem2 = new DevExpress.XtraLayout.SplitterItem();
+            this.splitterItem3 = new DevExpress.XtraLayout.SplitterItem();
+            this.splitterItem4 = new DevExpress.XtraLayout.SplitterItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
@@ -205,6 +223,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glkeCustomer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocumentAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmount.Properties)).BeginInit();
@@ -251,8 +271,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -263,6 +281,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -285,7 +307,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 24);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(305, 416, 975, 600);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(305, 128, 975, 600);
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(1266, 426);
             this.layoutControl1.TabIndex = 0;
@@ -294,11 +316,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // txtDescription
             // 
             this.txtDescription.EditValue = "";
-            this.txtDescription.Location = new System.Drawing.Point(375, 117);
+            this.txtDescription.Location = new System.Drawing.Point(485, 117);
             this.txtDescription.MenuManager = this.bm;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Properties.LinesCount = 4;
-            this.txtDescription.Size = new System.Drawing.Size(595, 38);
+            this.txtDescription.Size = new System.Drawing.Size(498, 35);
             this.txtDescription.StyleController = this.layoutControl1;
             this.txtDescription.TabIndex = 18;
             // 
@@ -404,42 +426,204 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(375, 69);
+            this.txtAddress.Location = new System.Drawing.Point(485, 69);
             this.txtAddress.MenuManager = this.bm;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(595, 20);
+            this.txtAddress.Size = new System.Drawing.Size(498, 20);
             this.txtAddress.StyleController = this.layoutControl1;
             this.txtAddress.TabIndex = 17;
             // 
             // txtPhoneNo
             // 
-            this.txtPhoneNo.Location = new System.Drawing.Point(375, 93);
+            this.txtPhoneNo.Location = new System.Drawing.Point(485, 93);
             this.txtPhoneNo.MenuManager = this.bm;
             this.txtPhoneNo.Name = "txtPhoneNo";
-            this.txtPhoneNo.Size = new System.Drawing.Size(595, 20);
+            this.txtPhoneNo.Size = new System.Drawing.Size(498, 20);
             this.txtPhoneNo.StyleController = this.layoutControl1;
             this.txtPhoneNo.TabIndex = 16;
             // 
             // glkeCustomer
             // 
             this.glkeCustomer.EditValue = "(Khách Hàng)";
-            this.glkeCustomer.Location = new System.Drawing.Point(375, 45);
+            this.glkeCustomer.Location = new System.Drawing.Point(485, 45);
             this.glkeCustomer.MenuManager = this.bm;
             this.glkeCustomer.Name = "glkeCustomer";
+            this.glkeCustomer.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.glkeCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.glkeCustomer.Properties.DataSource = this.customerBindingSource;
+            this.glkeCustomer.Properties.DisplayMember = "CustomerName";
             this.glkeCustomer.Properties.NullText = "(Khách Hàng)";
             this.glkeCustomer.Properties.PopupView = this.gridLookUpEdit1View;
-            this.glkeCustomer.Size = new System.Drawing.Size(595, 20);
+            this.glkeCustomer.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.glkeCustomer.Properties.ValueMember = "CustomerID";
+            this.glkeCustomer.Size = new System.Drawing.Size(498, 20);
             this.glkeCustomer.StyleController = this.layoutControl1;
             this.glkeCustomer.TabIndex = 15;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.dsCustomer;
+            // 
+            // dsCustomer
+            // 
+            this.dsCustomer.DataSetName = "dsCustomer";
+            this.dsCustomer.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // gridLookUpEdit1View
             // 
+            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCustomerID,
+            this.colCustomerCode,
+            this.colCustomerName,
+            this.colPhoneNo,
+            this.colAddress,
+            this.colDescription,
+            this.colIsDeleted4,
+            this.colCreatedUserID4,
+            this.colCreatedDate4,
+            this.colModifiedUserID4,
+            this.colModifiedDate4,
+            this.colDeletedUserID4,
+            this.colDeletedDate4});
             this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
             this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
             this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colCustomerID
+            // 
+            this.colCustomerID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerID.FieldName = "CustomerID";
+            this.colCustomerID.Name = "colCustomerID";
+            this.colCustomerID.OptionsColumn.ReadOnly = true;
+            this.colCustomerID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCustomerCode
+            // 
+            this.colCustomerCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerCode.Caption = "Mã Khách Hàng";
+            this.colCustomerCode.FieldName = "CustomerCode";
+            this.colCustomerCode.Name = "colCustomerCode";
+            this.colCustomerCode.OptionsColumn.ReadOnly = true;
+            this.colCustomerCode.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerCode.Visible = true;
+            this.colCustomerCode.VisibleIndex = 0;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerName.Caption = "Tên Khách Hàng";
+            this.colCustomerName.FieldName = "CustomerName";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.OptionsColumn.ReadOnly = true;
+            this.colCustomerName.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 1;
+            // 
+            // colPhoneNo
+            // 
+            this.colPhoneNo.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPhoneNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPhoneNo.Caption = "Số Điện Thoại";
+            this.colPhoneNo.FieldName = "PhoneNo";
+            this.colPhoneNo.Name = "colPhoneNo";
+            this.colPhoneNo.OptionsColumn.ReadOnly = true;
+            this.colPhoneNo.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colPhoneNo.Visible = true;
+            this.colPhoneNo.VisibleIndex = 2;
+            // 
+            // colAddress
+            // 
+            this.colAddress.AppearanceHeader.Options.UseTextOptions = true;
+            this.colAddress.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colAddress.Caption = "Địa Chỉ";
+            this.colAddress.FieldName = "Address";
+            this.colAddress.Name = "colAddress";
+            this.colAddress.OptionsColumn.ReadOnly = true;
+            this.colAddress.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colAddress.Visible = true;
+            this.colAddress.VisibleIndex = 3;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDescription.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDescription.Caption = "Ghi Chú";
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.OptionsColumn.ReadOnly = true;
+            this.colDescription.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 4;
+            // 
+            // colIsDeleted4
+            // 
+            this.colIsDeleted4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colIsDeleted4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colIsDeleted4.FieldName = "IsDeleted";
+            this.colIsDeleted4.Name = "colIsDeleted4";
+            this.colIsDeleted4.OptionsColumn.ReadOnly = true;
+            this.colIsDeleted4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCreatedUserID4
+            // 
+            this.colCreatedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedUserID4.FieldName = "CreatedUserID";
+            this.colCreatedUserID4.Name = "colCreatedUserID4";
+            this.colCreatedUserID4.OptionsColumn.ReadOnly = true;
+            this.colCreatedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCreatedDate4
+            // 
+            this.colCreatedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedDate4.FieldName = "CreatedDate";
+            this.colCreatedDate4.Name = "colCreatedDate4";
+            this.colCreatedDate4.OptionsColumn.ReadOnly = true;
+            this.colCreatedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colModifiedUserID4
+            // 
+            this.colModifiedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedUserID4.FieldName = "ModifiedUserID";
+            this.colModifiedUserID4.Name = "colModifiedUserID4";
+            this.colModifiedUserID4.OptionsColumn.ReadOnly = true;
+            this.colModifiedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colModifiedDate4
+            // 
+            this.colModifiedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedDate4.FieldName = "ModifiedDate";
+            this.colModifiedDate4.Name = "colModifiedDate4";
+            this.colModifiedDate4.OptionsColumn.ReadOnly = true;
+            this.colModifiedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colDeletedUserID4
+            // 
+            this.colDeletedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedUserID4.FieldName = "DeletedUserID";
+            this.colDeletedUserID4.Name = "colDeletedUserID4";
+            this.colDeletedUserID4.OptionsColumn.ReadOnly = true;
+            this.colDeletedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colDeletedDate4
+            // 
+            this.colDeletedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedDate4.FieldName = "DeletedDate";
+            this.colDeletedDate4.Name = "colDeletedDate4";
+            this.colDeletedDate4.OptionsColumn.ReadOnly = true;
+            this.colDeletedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // txtDocumentAmount
             // 
@@ -448,7 +632,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             0,
             0,
             0});
-            this.txtDocumentAmount.Location = new System.Drawing.Point(938, 392);
+            this.txtDocumentAmount.Location = new System.Drawing.Point(931, 392);
             this.txtDocumentAmount.MenuManager = this.bm;
             this.txtDocumentAmount.Name = "txtDocumentAmount";
             this.txtDocumentAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -459,7 +643,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtDocumentAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtDocumentAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtDocumentAmount.Properties.ReadOnly = true;
-            this.txtDocumentAmount.Size = new System.Drawing.Size(316, 22);
+            this.txtDocumentAmount.Size = new System.Drawing.Size(323, 22);
             this.txtDocumentAmount.StyleController = this.layoutControl1;
             this.txtDocumentAmount.TabIndex = 14;
             // 
@@ -470,7 +654,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             0,
             0,
             0});
-            this.txtDiscountAmount.Location = new System.Drawing.Point(295, 392);
+            this.txtDiscountAmount.Location = new System.Drawing.Point(300, 392);
             this.txtDiscountAmount.MenuManager = this.bm;
             this.txtDiscountAmount.Name = "txtDiscountAmount";
             this.txtDiscountAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -480,7 +664,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtDiscountAmount.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
             this.txtDiscountAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtDiscountAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtDiscountAmount.Size = new System.Drawing.Size(134, 22);
+            this.txtDiscountAmount.Size = new System.Drawing.Size(132, 22);
             this.txtDiscountAmount.StyleController = this.layoutControl1;
             this.txtDiscountAmount.TabIndex = 13;
             this.txtDiscountAmount.EditValueChanged += new System.EventHandler(this.txtDiscountAmount_EditValueChanged);
@@ -492,7 +676,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             0,
             0,
             0});
-            this.txtTaxAmount.Location = new System.Drawing.Point(711, 392);
+            this.txtTaxAmount.Location = new System.Drawing.Point(718, 392);
             this.txtTaxAmount.MenuManager = this.bm;
             this.txtTaxAmount.Name = "txtTaxAmount";
             this.txtTaxAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -502,7 +686,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtTaxAmount.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
             this.txtTaxAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTaxAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtTaxAmount.Size = new System.Drawing.Size(136, 22);
+            this.txtTaxAmount.Size = new System.Drawing.Size(122, 22);
             this.txtTaxAmount.StyleController = this.layoutControl1;
             this.txtTaxAmount.TabIndex = 12;
             this.txtTaxAmount.EditValueChanged += new System.EventHandler(this.txtTaxAmount_EditValueChanged);
@@ -514,7 +698,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             0,
             0,
             0});
-            this.txtTaxRate.Location = new System.Drawing.Point(548, 392);
+            this.txtTaxRate.Location = new System.Drawing.Point(551, 392);
             this.txtTaxRate.MenuManager = this.bm;
             this.txtTaxRate.Name = "txtTaxRate";
             this.txtTaxRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -524,7 +708,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtTaxRate.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
             this.txtTaxRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTaxRate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtTaxRate.Size = new System.Drawing.Size(81, 22);
+            this.txtTaxRate.Size = new System.Drawing.Size(85, 22);
             this.txtTaxRate.StyleController = this.layoutControl1;
             this.txtTaxRate.TabIndex = 11;
             this.txtTaxRate.EditValueChanged += new System.EventHandler(this.txtTaxRate_EditValueChanged);
@@ -546,7 +730,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.txtDiscountRate.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
             this.txtDiscountRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtDiscountRate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtDiscountRate.Size = new System.Drawing.Size(76, 22);
+            this.txtDiscountRate.Size = new System.Drawing.Size(81, 22);
             this.txtDiscountRate.StyleController = this.layoutControl1;
             this.txtDiscountRate.TabIndex = 10;
             this.txtDiscountRate.EditValueChanged += new System.EventHandler(this.txtDiscountRate_EditValueChanged);
@@ -555,7 +739,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.gcList_ChangeItem.DataMember = "Sale_Change_Item_Detail";
             this.gcList_ChangeItem.DataSource = this.saleChangeItemDetailBindingSource;
-            this.gcList_ChangeItem.Location = new System.Drawing.Point(284, 311);
+            this.gcList_ChangeItem.Location = new System.Drawing.Point(406, 330);
             this.gcList_ChangeItem.MainView = this.gbList_ChangeItem;
             this.gcList_ChangeItem.MenuManager = this.bm;
             this.gcList_ChangeItem.Name = "gcList_ChangeItem";
@@ -564,7 +748,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.rptCalWeight_ChangeItem,
             this.rptGridItemCode_ChangeItem,
             this.rptGridItemName_ChangeItem});
-            this.gcList_ChangeItem.Size = new System.Drawing.Size(958, 65);
+            this.gcList_ChangeItem.Size = new System.Drawing.Size(824, 34);
             this.gcList_ChangeItem.TabIndex = 9;
             this.gcList_ChangeItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gbList_ChangeItem});
@@ -1000,7 +1184,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // dtDocumentDate
             // 
             this.dtDocumentDate.EditValue = null;
-            this.dtDocumentDate.Location = new System.Drawing.Point(1075, 69);
+            this.dtDocumentDate.Location = new System.Drawing.Point(1088, 69);
             this.dtDocumentDate.MenuManager = this.bm;
             this.dtDocumentDate.Name = "dtDocumentDate";
             this.dtDocumentDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1012,27 +1196,27 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.dtDocumentDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.dtDocumentDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtDocumentDate.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dtDocumentDate.Size = new System.Drawing.Size(167, 20);
+            this.dtDocumentDate.Size = new System.Drawing.Size(154, 20);
             this.dtDocumentDate.StyleController = this.layoutControl1;
             this.dtDocumentDate.TabIndex = 8;
             // 
             // txtSaleNo
             // 
-            this.txtSaleNo.Location = new System.Drawing.Point(1075, 45);
+            this.txtSaleNo.Location = new System.Drawing.Point(1088, 45);
             this.txtSaleNo.MenuManager = this.bm;
             this.txtSaleNo.Name = "txtSaleNo";
             this.txtSaleNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.txtSaleNo.Properties.Appearance.Options.UseFont = true;
-            this.txtSaleNo.Size = new System.Drawing.Size(167, 20);
+            this.txtSaleNo.Size = new System.Drawing.Size(154, 20);
             this.txtSaleNo.StyleController = this.layoutControl1;
             this.txtSaleNo.TabIndex = 7;
             // 
             // txtSaleMan
             // 
-            this.txtSaleMan.Location = new System.Drawing.Point(1075, 93);
+            this.txtSaleMan.Location = new System.Drawing.Point(1088, 93);
             this.txtSaleMan.MenuManager = this.bm;
             this.txtSaleMan.Name = "txtSaleMan";
-            this.txtSaleMan.Size = new System.Drawing.Size(167, 20);
+            this.txtSaleMan.Size = new System.Drawing.Size(154, 20);
             this.txtSaleMan.StyleController = this.layoutControl1;
             this.txtSaleMan.TabIndex = 6;
             // 
@@ -1040,7 +1224,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.gcList.DataMember = "Sale_Detail";
             this.gcList.DataSource = this.dsSaleDetailBindingSource;
-            this.gcList.Location = new System.Drawing.Point(284, 204);
+            this.gcList.Location = new System.Drawing.Point(394, 211);
             this.gcList.MainView = this.gbList;
             this.gcList.MenuManager = this.bm;
             this.gcList.Name = "gcList";
@@ -1049,7 +1233,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.rptGridItemCode,
             this.rptGridItemName,
             this.rptCalWeight});
-            this.gcList.Size = new System.Drawing.Size(958, 58);
+            this.gcList.Size = new System.Drawing.Size(848, 72);
             this.gcList.TabIndex = 5;
             this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gbList});
@@ -1630,7 +1814,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.gcListItem.MainView = this.gbListItem;
             this.gcListItem.MenuManager = this.bm;
             this.gcListItem.Name = "gcListItem";
-            this.gcListItem.Size = new System.Drawing.Size(222, 331);
+            this.gcListItem.Size = new System.Drawing.Size(332, 331);
             this.gcListItem.TabIndex = 4;
             this.gcListItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gbListItem});
@@ -1779,12 +1963,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlGroup1,
             this.layoutControlGroup2,
             this.layoutControlGroup3,
-            this.layoutControlGroup4,
             this.layoutControlItem11,
-            this.layoutControlItem7,
-            this.layoutControlItem10,
             this.layoutControlItem8,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem10,
+            this.layoutControlItem7,
+            this.splitterItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1266, 426);
             this.Root.TextVisible = false;
@@ -1792,7 +1976,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // splitterItem1
             // 
             this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(250, 0);
+            this.splitterItem1.Location = new System.Drawing.Point(360, 0);
             this.splitterItem1.Name = "splitterItem1";
             this.splitterItem1.Size = new System.Drawing.Size(10, 380);
             // 
@@ -1803,7 +1987,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(250, 380);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(360, 380);
             this.layoutControlGroup1.Text = "Sản Phẩm";
             // 
             // layoutControlItem1
@@ -1811,7 +1995,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem1.Control = this.gcListItem;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(226, 335);
+            this.layoutControlItem1.Size = new System.Drawing.Size(336, 335);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -1820,16 +2004,16 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
             this.layoutControlItem14,
-            this.layoutControlItem15,
             this.layoutControlItem13,
             this.layoutControlItem4,
-            this.layoutControlItem12,
             this.layoutControlItem5,
+            this.layoutControlItem12,
             this.splitterItem2,
-            this.emptySpaceItem1});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(260, 0);
+            this.emptySpaceItem1,
+            this.layoutControlItem15});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(370, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(986, 159);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(876, 156);
             this.layoutControlGroup2.Text = "Thông Tin Bán Hàng";
             // 
             // layoutControlItem3
@@ -1837,9 +2021,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem3.Control = this.txtSaleMan;
-            this.layoutControlItem3.Location = new System.Drawing.Point(700, 48);
+            this.layoutControlItem3.Location = new System.Drawing.Point(603, 48);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(262, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(249, 24);
             this.layoutControlItem3.Text = "Người Bán:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(88, 17);
             // 
@@ -1850,7 +2034,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem14.Control = this.txtAddress;
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(690, 24);
+            this.layoutControlItem14.Size = new System.Drawing.Size(593, 24);
             this.layoutControlItem14.Text = "Địa Chỉ:";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(88, 17);
             // 
@@ -1860,8 +2044,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem15.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem15.Control = this.txtDescription;
             this.layoutControlItem15.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem15.MaxSize = new System.Drawing.Size(0, 39);
+            this.layoutControlItem15.MinSize = new System.Drawing.Size(105, 39);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(690, 42);
+            this.layoutControlItem15.Size = new System.Drawing.Size(593, 39);
+            this.layoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem15.Text = "Ghi Chú:";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(88, 16);
             // 
@@ -1872,7 +2059,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem13.Control = this.txtPhoneNo;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(690, 24);
+            this.layoutControlItem13.Size = new System.Drawing.Size(593, 24);
             this.layoutControlItem13.Text = "Điện Thoại:";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(88, 17);
             // 
@@ -1882,9 +2069,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem4.Control = this.txtSaleNo;
             this.layoutControlItem4.CustomizationFormText = "Số Hóa Đơn";
-            this.layoutControlItem4.Location = new System.Drawing.Point(700, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(603, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(262, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(249, 24);
             this.layoutControlItem4.Text = "Số Hóa Đơn:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 17);
             // 
@@ -1895,7 +2082,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem12.Control = this.glkeCustomer;
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(690, 24);
+            this.layoutControlItem12.Size = new System.Drawing.Size(593, 24);
             this.layoutControlItem12.Text = "Khách Hàng:";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(88, 16);
             // 
@@ -1904,34 +2091,21 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem5.Control = this.dtDocumentDate;
-            this.layoutControlItem5.Location = new System.Drawing.Point(700, 24);
+            this.layoutControlItem5.Location = new System.Drawing.Point(603, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(262, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(249, 24);
             this.layoutControlItem5.Text = "Ngày:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(88, 16);
-            // 
-            // splitterItem2
-            // 
-            this.splitterItem2.AllowHotTrack = true;
-            this.splitterItem2.Location = new System.Drawing.Point(690, 0);
-            this.splitterItem2.Name = "splitterItem2";
-            this.splitterItem2.Size = new System.Drawing.Size(10, 72);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(690, 72);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(272, 42);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(260, 159);
+            this.layoutControlItem2,
+            this.layoutControlGroup4,
+            this.splitterItem4});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(370, 166);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(986, 107);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(876, 214);
             this.layoutControlGroup3.Text = "Chi Tiết Bán Hàng";
             // 
             // layoutControlItem2
@@ -1939,7 +2113,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem2.Control = this.gcList;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(962, 62);
+            this.layoutControlItem2.Size = new System.Drawing.Size(852, 76);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -1947,9 +2121,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem6});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(260, 266);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 86);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(986, 114);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(852, 83);
             this.layoutControlGroup4.Text = "Chi Tiết Đổi Hàng";
             // 
             // layoutControlItem6
@@ -1957,7 +2131,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem6.Control = this.gcList_ChangeItem;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(962, 69);
+            this.layoutControlItem6.Size = new System.Drawing.Size(828, 38);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -1966,9 +2140,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem11.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem11.Control = this.txtDocumentAmount;
-            this.layoutControlItem11.Location = new System.Drawing.Point(839, 380);
+            this.layoutControlItem11.Location = new System.Drawing.Point(832, 380);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(407, 26);
+            this.layoutControlItem11.Size = new System.Drawing.Size(414, 26);
             this.layoutControlItem11.Text = "Thành Tiền:";
             this.layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem11.TextSize = new System.Drawing.Size(82, 17);
@@ -1981,7 +2155,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem7.Control = this.txtDiscountRate;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 380);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(202, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(207, 26);
             this.layoutControlItem7.Text = "Chiếu Khấu (%):";
             this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(117, 17);
@@ -1992,9 +2166,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem10.Control = this.txtDiscountAmount;
-            this.layoutControlItem10.Location = new System.Drawing.Point(202, 380);
+            this.layoutControlItem10.Location = new System.Drawing.Point(207, 380);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(219, 26);
+            this.layoutControlItem10.Size = new System.Drawing.Size(217, 26);
             this.layoutControlItem10.Text = "Chiết Khấu";
             this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(76, 17);
@@ -2005,9 +2179,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem8.Control = this.txtTaxRate;
-            this.layoutControlItem8.Location = new System.Drawing.Point(421, 380);
+            this.layoutControlItem8.Location = new System.Drawing.Point(424, 380);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(200, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(204, 26);
             this.layoutControlItem8.Text = "Thuế  VAT (%):";
             this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(110, 17);
@@ -2018,9 +2192,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem9.Control = this.txtTaxAmount;
-            this.layoutControlItem9.Location = new System.Drawing.Point(621, 380);
+            this.layoutControlItem9.Location = new System.Drawing.Point(628, 380);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(218, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(204, 26);
             this.layoutControlItem9.Text = "Thuế VAT:";
             this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem9.TextSize = new System.Drawing.Size(73, 17);
@@ -2042,6 +2216,39 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // sale_Change_Item_DetailTableAdapter
             // 
             this.sale_Change_Item_DetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // splitterItem2
+            // 
+            this.splitterItem2.AllowHotTrack = true;
+            this.splitterItem2.Location = new System.Drawing.Point(593, 0);
+            this.splitterItem2.Name = "splitterItem2";
+            this.splitterItem2.Size = new System.Drawing.Size(10, 111);
+            // 
+            // splitterItem3
+            // 
+            this.splitterItem3.AllowHotTrack = true;
+            this.splitterItem3.Location = new System.Drawing.Point(370, 156);
+            this.splitterItem3.Name = "splitterItem3";
+            this.splitterItem3.Size = new System.Drawing.Size(876, 10);
+            // 
+            // splitterItem4
+            // 
+            this.splitterItem4.AllowHotTrack = true;
+            this.splitterItem4.Location = new System.Drawing.Point(0, 76);
+            this.splitterItem4.Name = "splitterItem4";
+            this.splitterItem4.Size = new System.Drawing.Size(852, 10);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(603, 72);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 39);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmSale
             // 
@@ -2065,6 +2272,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glkeCustomer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocumentAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmount.Properties)).EndInit();
@@ -2111,8 +2320,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
@@ -2123,6 +2330,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2294,8 +2505,26 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         private DevExpress.XtraEditors.TextEdit txtPhoneNo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DataSet.Sale.dsCustomer dsCustomer;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private DataSet.Sale.dsCustomerTableAdapters.CustomerTableAdapter customerTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerCode;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
+        private DevExpress.XtraGrid.Columns.GridColumn colPhoneNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDeleted4;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate4;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedDate4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
         private DevExpress.XtraLayout.SplitterItem splitterItem2;
+        private DevExpress.XtraLayout.SplitterItem splitterItem4;
+        private DevExpress.XtraLayout.SplitterItem splitterItem3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }

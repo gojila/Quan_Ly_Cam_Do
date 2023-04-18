@@ -120,26 +120,10 @@
   <metadata name="bm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>93</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bbiSaveNew.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAALdEVYdFRpdGxlAFNhdmU7+ej5CQAAAFhJREFUOE9j
-        +P//P0UYTNjY2OwF4v8gDOWD2egYTW4viA8zAJciFDF0ORCfPgbAMDa1WA3Ah9HVYgiSgqlvAIhNDB41
-        AI8BpGJkA7ajSxKBt8MNIB//ZwAADD9XCxua/uoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bbiSaveNew.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAALdEVYdFRpdGxlAFNhdmU7+ej5CQAAARFJREFUWEft
-        lzEOwjAQBPOwSJGo+Dr/QMozTC7yWWvjzZ3IxWkopsA7GltQMaWUbqV7OJLu4UiqD/M8LxuvjaTgnp2y
-        WXR8aS/Ya+MryDu4Z6fajyD+ij0zjjtzMrIp+xnztSWYcdyZk9HLi8N8bQlmHHfmZPTy4jBfW4IZx505
-        Gb28OMzXlmDGcWdORi8vDvO1JZhx3JnDYL62BDOOO3MYzNeWYMZx/wWracpXgHf+H3D0gAduZ5AWtnFr
-        xa4UAWu7pAhY2yVFwNouKQLWdkkRsLZLioC1XVIErO2SImBtKm08cTuDtLCNWyviAy4D72wf8G7lC3jj
-        ne0D5Kv6+m8QiLSrn7Z6wB10D0fSPRxHmj7JG8KheK6pHQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="bbiSaveClose.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -204,8 +188,30 @@
         /oE5rIk5rEcYPADSsjauYx6lKgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>93</value>
+  <data name="bbiSaveNew.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAALdEVYdFRpdGxlAFNhdmU7+ej5CQAAAFhJREFUOE9j
+        +P//P0UYTNjY2OwF4v8gDOWD2egYTW4viA8zAJciFDF0ORCfPgbAMDa1WA3Ah9HVYgiSgqlvAIhNDB41
+        AI8BpGJkA7ajSxKBt8MNIB//ZwAADD9XCxua/uoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bbiSaveNew.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAALdEVYdFRpdGxlAFNhdmU7+ej5CQAAARFJREFUWEft
+        lzEOwjAQBPOwSJGo+Dr/QMozTC7yWWvjzZ3IxWkopsA7GltQMaWUbqV7OJLu4UiqD/M8LxuvjaTgnp2y
+        WXR8aS/Ya+MryDu4Z6fajyD+ij0zjjtzMrIp+xnztSWYcdyZk9HLi8N8bQlmHHfmZPTy4jBfW4IZx505
+        Gb28OMzXlmDGcWdORi8vDvO1JZhx3JnDYL62BDOOO3MYzNeWYMZx/wWracpXgHf+H3D0gAduZ5AWtnFr
+        xa4UAWu7pAhY2yVFwNouKQLWdkkRsLZLioC1XVIErO2SImBtKm08cTuDtLCNWyviAy4D72wf8G7lC3jj
+        ne0D5Kv6+m8QiLSrn7Z6wB10D0fSPRxHmj7JG8KheK6pHQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="customerBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="dsCustomer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1157, 56</value>
   </metadata>
   <metadata name="saleChangeItemDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>649, 56</value>
@@ -213,14 +219,29 @@
   <metadata name="dsSaleDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>204, 17</value>
   </metadata>
-  <metadata name="dsSaleDetail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>166, 56</value>
-  </metadata>
   <metadata name="itemBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>657, 17</value>
   </metadata>
   <metadata name="dsItemBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>490, 17</value>
+  </metadata>
+  <metadata name="dsSaleDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>204, 17</value>
+  </metadata>
+  <metadata name="dsSaleDetail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>166, 56</value>
+  </metadata>
+  <metadata name="dsItemBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>490, 17</value>
+  </metadata>
+  <metadata name="dsItem.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>401, 17</value>
+  </metadata>
+  <metadata name="dsCustomer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1157, 56</value>
+  </metadata>
+  <metadata name="dsSaleDetail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>166, 56</value>
   </metadata>
   <metadata name="dsItem.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>401, 17</value>
@@ -236,5 +257,8 @@
   </metadata>
   <metadata name="sale_Change_Item_DetailTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>898, 56</value>
+  </metadata>
+  <metadata name="customerTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>198, 95</value>
   </metadata>
 </root>

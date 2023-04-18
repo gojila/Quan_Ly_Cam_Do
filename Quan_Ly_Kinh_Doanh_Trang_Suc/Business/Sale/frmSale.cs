@@ -91,6 +91,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                 }
             };
 
+            this.customerTableAdapter.Fill(this.dsCustomer.Customer);
+
             ReloadItem();
             Init();
         }
@@ -115,17 +117,36 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     txtSaleNo.Text = "";
                     txtSaleMan.Text = "";
                     dtDocumentDate.DateTime = DateTime.Now;
+                    txtDiscountRate.Value = 0;
+                    txtDiscountAmount.Value = 0;
+                    txtTaxRate.Value = 0;
+                    txtTaxAmount.Value = 0;
+                    txtDocumentAmount.Value = 0;
+                    glkeCustomer.EditValue = null;
+
                     EmptyRow();
                     break;
                 case ActionType.Update:
                     using (var db = new Database.Quan_Ly_Kinh_Doanh_Trang_SucEntities())
                     {
-                        var sale = db.Sales.Where(s => s.SaleID == this._saleID && !(s.IsDeleted ?? false)).FirstOrDefault();
+                        var sale = db.Sale.Where(s => s.SaleID == this._saleID && !(s.IsDeleted ?? false)).FirstOrDefault();
                         if (sale != null)
                         {
                             txtSaleNo.Text = sale.SaleCode;
-                            txtSaleMan.Text = sale.Sale1;
+                            txtSaleMan.Text = sale.SaleMan;
                             dtDocumentDate.DateTime = sale.DocumentDate ?? DateTime.Now;
+
+                            txtDiscountRate.Value = sale.DiscountRate ?? 0;
+                            txtDiscountAmount.Value = sale.DiscountAmount ?? 0;
+                            txtTaxRate.Value = sale.TaxRate ?? 0;
+                            txtTaxAmount.Value = sale.TaxAmount ?? 0;
+                            txtDocumentAmount.Value = sale.DocumentAmount ?? 0;
+
+                            glkeCustomer.EditValue = sale.CustomerID;
+                            txtAddress.Text = sale.CustomerAddress;
+                            txtPhoneNo.Text = sale.CustomerPhone;
+                            txtDescription.Text = sale.Descriptions;
+
                             this.sale_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Detail, this._saleID);
                             sale_Change_Item_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Change_Item_Detail, _saleID);
                         }
@@ -351,19 +372,27 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                     sale.LaborFee = 0;
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
                                     
-                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
-                                    sale.DiscountRate = 0;
-                                    sale.DiscountAmount = 0;
-                                    sale.TaxRate = 0;
-                                    sale.TaxAmount = 0;
-                                    
-                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
-                                    sale.Sale1 = txtSaleMan.Text;
-                                    sale.Descriptions = "";
+                                    sale.DocumentAmount = txtDocumentAmount.Value; //colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.SaleMan = txtSaleMan.Text;
                                     sale.IsDeleted = false;
-                                    
+
+                                    sale.TotalChangeAmount = colAmount1.SummaryItem.HasValue ? Convert.ToDecimal(colAmount1.SummaryItem.SummaryValue) : 0;
+                                    sale.TotalSaleAmount = colAmount.SummaryItem.HasValue ? Convert.ToDecimal(colAmount.SummaryItem.SummaryValue) : 0;
+
+                                    sale.DocumentAmountBF = sale.TotalSaleAmount - sale.TotalChangeAmount;
+                                    sale.DiscountRate = txtDiscountRate.Value;
+                                    sale.DiscountAmount = txtDiscountAmount.Value;
+                                    sale.TaxRate = txtTaxRate.Value;
+                                    sale.TaxAmount = txtTaxAmount.Value;
+
+                                    sale.CustomerID = glkeCustomer.EditValue != null ? Convert.ToInt64(glkeCustomer.EditValue) : 0;
+                                    sale.CustomerName = glkeCustomer.Text;
+                                    sale.CustomerAddress = txtAddress.Text;
+                                    sale.CustomerPhone = txtPhoneNo.Text;
+                                    sale.Descriptions = txtDescription.Text;
+
                                     sale.CreatedDate = DateTime.Now;
-                                    db.Sales.Add(sale);
+                                    db.Sale.Add(sale);
                                     db.SaveChanges();
                                     // ---------
                                     // Sales detail
@@ -444,26 +473,34 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                 {
                                     // ----- 
                                     // Update Sale
-                                    var sale = db.Sales.Where(s => s.SaleID == this._saleID).FirstOrDefault();
+                                    var sale = db.Sale.Where(s => s.SaleID == this._saleID).FirstOrDefault();
                                     
                                     sale.SaleID = this._saleID;
                                     sale.SaleCode = txtSaleNo.Text;
                                     sale.CompanyID = 0;
                                     sale.DocumentDate = dtDocumentDate.DateTime;
-                                    sale.LaborFee = 0;
-                                    
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
-                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
-                                    sale.DiscountRate = 0;
-                                    sale.DiscountAmount = 0;
-                                    sale.TaxRate = 0;
                                     
                                     sale.TaxAmount = 0;
-                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
-                                    sale.Sale1 = txtSaleMan.Text;
-                                    sale.Descriptions = "";                                    
+                                    //sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.SaleMan = txtSaleMan.Text;                                                            
                                     sale.ModifiedDate = DateTime.Now;
-                                    
+
+                                    sale.TotalChangeAmount = colAmount1.SummaryItem.HasValue ? Convert.ToDecimal(colAmount1.SummaryItem.SummaryValue) : 0;
+                                    sale.TotalSaleAmount = colAmount.SummaryItem.HasValue ? Convert.ToDecimal(colAmount.SummaryItem.SummaryValue) : 0;
+
+                                    sale.DocumentAmountBF = sale.TotalSaleAmount - sale.TotalChangeAmount;
+                                    sale.DiscountRate = txtDiscountRate.Value;
+                                    sale.DiscountAmount = txtDiscountAmount.Value;
+                                    sale.TaxRate = txtTaxRate.Value;
+                                    sale.TaxAmount = txtTaxAmount.Value;
+
+                                    sale.CustomerID = glkeCustomer.EditValue != null ? Convert.ToInt64(glkeCustomer.EditValue) : 0;
+                                    sale.CustomerName = glkeCustomer.Text;
+                                    sale.CustomerAddress = txtAddress.Text;
+                                    sale.CustomerPhone = txtPhoneNo.Text;
+                                    sale.Descriptions = txtDescription.Text;
+                                    sale.DocumentAmount = txtDocumentAmount.Value;
                                     db.Entry(sale).State = System.Data.Entity.EntityState.Modified;
                                     db.SaveChanges();
 
@@ -862,24 +899,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             {
                 Common.Common.OpenErrorMessage(ex.Message);
                 return 0;
-            }
-        }
-
-        private void CalculateDocumentAmount()
-        {
-            try 
-            {
-                decimal discountAmt = txtDiscountAmount.Value;
-                decimal taxAmt = txtTaxAmount.Value;
-                decimal documentAmountBF = GetTotalAmountBf();
-                decimal documentAmount = 0;
-
-                documentAmount = documentAmountBF - discountAmt + taxAmt;
-                txtDocumentAmount.Value = documentAmount;
-            }
-            catch (Exception ex) 
-            {
-                Common.Common.OpenErrorMessage(ex.Message);
             }
         }
 

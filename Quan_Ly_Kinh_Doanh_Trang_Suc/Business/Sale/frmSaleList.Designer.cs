@@ -51,7 +51,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colSaleID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaleCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSalePeople = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDocumentDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLaborFee = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rptCal = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
@@ -65,6 +64,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDescriptions = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSaleMan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalChangeAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalSaleAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.saleTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleTableAdapters.SaleTableAdapter();
@@ -251,7 +256,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colSaleID,
             this.colCompanyID,
             this.colSaleCode,
-            this.colSalePeople,
             this.colDocumentDate,
             this.colLaborFee,
             this.colDocumentAmountBF,
@@ -262,9 +266,16 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDocumentAmount,
             this.colDescriptions,
             this.colCreatedDate,
-            this.colModifiedDate});
+            this.colModifiedDate,
+            this.colSaleMan,
+            this.colCustomerAddress,
+            this.colCustomerName,
+            this.colCustomerPhone,
+            this.colTotalChangeAmount,
+            this.colTotalSaleAmount});
             this.gbList.GridControl = this.gcList;
             this.gbList.GroupPanelText = "Kéo cột và thả vào đây để nhóm dữ liệu";
+            this.gbList.IndicatorWidth = 40;
             this.gbList.Name = "gbList";
             this.gbList.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
             this.gbList.OptionsBehavior.Editable = false;
@@ -279,6 +290,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colSaleID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSaleID.FieldName = "SaleID";
             this.colSaleID.Name = "colSaleID";
+            this.colSaleID.OptionsColumn.ReadOnly = true;
+            this.colSaleID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // colCompanyID
             // 
@@ -286,6 +299,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colCompanyID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCompanyID.FieldName = "CompanyID";
             this.colCompanyID.Name = "colCompanyID";
+            this.colCompanyID.OptionsColumn.ReadOnly = true;
+            this.colCompanyID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // colSaleCode
             // 
@@ -294,19 +309,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colSaleCode.Caption = "Số hóa đơn";
             this.colSaleCode.FieldName = "SaleCode";
             this.colSaleCode.Name = "colSaleCode";
+            this.colSaleCode.OptionsColumn.ReadOnly = true;
+            this.colSaleCode.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colSaleCode.Visible = true;
             this.colSaleCode.VisibleIndex = 0;
             this.colSaleCode.Width = 77;
-            // 
-            // colSalePeople
-            // 
-            this.colSalePeople.AppearanceHeader.Options.UseTextOptions = true;
-            this.colSalePeople.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colSalePeople.Caption = "Người bán";
-            this.colSalePeople.FieldName = "Sale";
-            this.colSalePeople.Name = "colSalePeople";
-            this.colSalePeople.Visible = true;
-            this.colSalePeople.VisibleIndex = 1;
             // 
             // colDocumentDate
             // 
@@ -315,8 +322,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDocumentDate.Caption = "Ngày bán";
             this.colDocumentDate.FieldName = "DocumentDate";
             this.colDocumentDate.Name = "colDocumentDate";
+            this.colDocumentDate.OptionsColumn.ReadOnly = true;
+            this.colDocumentDate.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDocumentDate.Visible = true;
-            this.colDocumentDate.VisibleIndex = 2;
+            this.colDocumentDate.VisibleIndex = 1;
             // 
             // colLaborFee
             // 
@@ -326,10 +335,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colLaborFee.ColumnEdit = this.rptCal;
             this.colLaborFee.FieldName = "LaborFee";
             this.colLaborFee.Name = "colLaborFee";
+            this.colLaborFee.OptionsColumn.ReadOnly = true;
+            this.colLaborFee.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colLaborFee.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LaborFee", "{0:##,##0.###}")});
             this.colLaborFee.Visible = true;
-            this.colLaborFee.VisibleIndex = 3;
+            this.colLaborFee.VisibleIndex = 6;
             // 
             // rptCal
             // 
@@ -344,11 +355,16 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.colDocumentAmountBF.AppearanceHeader.Options.UseTextOptions = true;
             this.colDocumentAmountBF.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDocumentAmountBF.Caption = "Tổng Tiền";
             this.colDocumentAmountBF.ColumnEdit = this.rptCal;
             this.colDocumentAmountBF.FieldName = "DocumentAmountBF";
             this.colDocumentAmountBF.Name = "colDocumentAmountBF";
+            this.colDocumentAmountBF.OptionsColumn.ReadOnly = true;
+            this.colDocumentAmountBF.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDocumentAmountBF.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "DocumentAmountBF", "{0:##,##0.###}")});
+            this.colDocumentAmountBF.Visible = true;
+            this.colDocumentAmountBF.VisibleIndex = 9;
             // 
             // colDiscountRate
             // 
@@ -358,8 +374,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDiscountRate.ColumnEdit = this.rptCalPercent;
             this.colDiscountRate.FieldName = "DiscountRate";
             this.colDiscountRate.Name = "colDiscountRate";
+            this.colDiscountRate.OptionsColumn.ReadOnly = true;
+            this.colDiscountRate.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDiscountRate.Visible = true;
-            this.colDiscountRate.VisibleIndex = 4;
+            this.colDiscountRate.VisibleIndex = 10;
             this.colDiscountRate.Width = 96;
             // 
             // rptCalPercent
@@ -379,10 +397,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDiscountAmount.ColumnEdit = this.rptCal;
             this.colDiscountAmount.FieldName = "DiscountAmount";
             this.colDiscountAmount.Name = "colDiscountAmount";
+            this.colDiscountAmount.OptionsColumn.ReadOnly = true;
+            this.colDiscountAmount.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDiscountAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "DiscountAmount", "{0:##,##0.###}")});
             this.colDiscountAmount.Visible = true;
-            this.colDiscountAmount.VisibleIndex = 5;
+            this.colDiscountAmount.VisibleIndex = 11;
             // 
             // colTaxRate
             // 
@@ -392,8 +412,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colTaxRate.ColumnEdit = this.rptCalPercent;
             this.colTaxRate.FieldName = "TaxRate";
             this.colTaxRate.Name = "colTaxRate";
+            this.colTaxRate.OptionsColumn.ReadOnly = true;
+            this.colTaxRate.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colTaxRate.Visible = true;
-            this.colTaxRate.VisibleIndex = 6;
+            this.colTaxRate.VisibleIndex = 12;
             // 
             // colTaxAmount
             // 
@@ -403,10 +425,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colTaxAmount.ColumnEdit = this.rptCal;
             this.colTaxAmount.FieldName = "TaxAmount";
             this.colTaxAmount.Name = "colTaxAmount";
+            this.colTaxAmount.OptionsColumn.ReadOnly = true;
+            this.colTaxAmount.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colTaxAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TaxAmount", "{0:##,##0.###}")});
             this.colTaxAmount.Visible = true;
-            this.colTaxAmount.VisibleIndex = 7;
+            this.colTaxAmount.VisibleIndex = 13;
             // 
             // colDocumentAmount
             // 
@@ -416,10 +440,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDocumentAmount.ColumnEdit = this.rptCal;
             this.colDocumentAmount.FieldName = "DocumentAmount";
             this.colDocumentAmount.Name = "colDocumentAmount";
+            this.colDocumentAmount.OptionsColumn.ReadOnly = true;
+            this.colDocumentAmount.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDocumentAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "DocumentAmount", "{0:##,##0.###}")});
             this.colDocumentAmount.Visible = true;
-            this.colDocumentAmount.VisibleIndex = 8;
+            this.colDocumentAmount.VisibleIndex = 14;
             // 
             // colDescriptions
             // 
@@ -428,8 +454,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDescriptions.Caption = "Ghi chú";
             this.colDescriptions.FieldName = "Descriptions";
             this.colDescriptions.Name = "colDescriptions";
+            this.colDescriptions.OptionsColumn.ReadOnly = true;
+            this.colDescriptions.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDescriptions.Visible = true;
-            this.colDescriptions.VisibleIndex = 9;
+            this.colDescriptions.VisibleIndex = 15;
             // 
             // colCreatedDate
             // 
@@ -437,6 +465,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colCreatedDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCreatedDate.FieldName = "CreatedDate";
             this.colCreatedDate.Name = "colCreatedDate";
+            this.colCreatedDate.OptionsColumn.ReadOnly = true;
+            this.colCreatedDate.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // colModifiedDate
             // 
@@ -444,6 +474,76 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colModifiedDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colModifiedDate.FieldName = "ModifiedDate";
             this.colModifiedDate.Name = "colModifiedDate";
+            this.colModifiedDate.OptionsColumn.ReadOnly = true;
+            this.colModifiedDate.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colSaleMan
+            // 
+            this.colSaleMan.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSaleMan.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSaleMan.Caption = "Người bán";
+            this.colSaleMan.FieldName = "SaleMan";
+            this.colSaleMan.Name = "colSaleMan";
+            this.colSaleMan.OptionsColumn.ReadOnly = true;
+            this.colSaleMan.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colSaleMan.Visible = true;
+            this.colSaleMan.VisibleIndex = 2;
+            // 
+            // colCustomerAddress
+            // 
+            this.colCustomerAddress.Caption = "Địa Chỉ";
+            this.colCustomerAddress.FieldName = "CustomerAddress";
+            this.colCustomerAddress.Name = "colCustomerAddress";
+            this.colCustomerAddress.OptionsColumn.ReadOnly = true;
+            this.colCustomerAddress.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerAddress.Visible = true;
+            this.colCustomerAddress.VisibleIndex = 4;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.Caption = "Khách Hàng";
+            this.colCustomerName.FieldName = "CustomerName";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.OptionsColumn.ReadOnly = true;
+            this.colCustomerName.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 3;
+            // 
+            // colCustomerPhone
+            // 
+            this.colCustomerPhone.Caption = "Điện Thoại";
+            this.colCustomerPhone.FieldName = "CustomerPhone";
+            this.colCustomerPhone.Name = "colCustomerPhone";
+            this.colCustomerPhone.OptionsColumn.ReadOnly = true;
+            this.colCustomerPhone.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerPhone.Visible = true;
+            this.colCustomerPhone.VisibleIndex = 5;
+            // 
+            // colTotalChangeAmount
+            // 
+            this.colTotalChangeAmount.Caption = "Đổi Hàng";
+            this.colTotalChangeAmount.ColumnEdit = this.rptCal;
+            this.colTotalChangeAmount.FieldName = "TotalChangeAmount";
+            this.colTotalChangeAmount.Name = "colTotalChangeAmount";
+            this.colTotalChangeAmount.OptionsColumn.ReadOnly = true;
+            this.colTotalChangeAmount.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colTotalChangeAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalChangeAmount", "{0:##,##0.###}")});
+            this.colTotalChangeAmount.Visible = true;
+            this.colTotalChangeAmount.VisibleIndex = 8;
+            // 
+            // colTotalSaleAmount
+            // 
+            this.colTotalSaleAmount.Caption = "Bán Hàng";
+            this.colTotalSaleAmount.ColumnEdit = this.rptCal;
+            this.colTotalSaleAmount.FieldName = "TotalSaleAmount";
+            this.colTotalSaleAmount.Name = "colTotalSaleAmount";
+            this.colTotalSaleAmount.OptionsColumn.ReadOnly = true;
+            this.colTotalSaleAmount.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colTotalSaleAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalSaleAmount", "{0:##,##0.###}")});
+            this.colTotalSaleAmount.Visible = true;
+            this.colTotalSaleAmount.VisibleIndex = 7;
             // 
             // Root
             // 
@@ -534,7 +634,12 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit rptCal;
-        private DevExpress.XtraGrid.Columns.GridColumn colSalePeople;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit rptCalPercent;
+        private DevExpress.XtraGrid.Columns.GridColumn colSaleMan;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerPhone;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalChangeAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalSaleAmount;
     }
 }

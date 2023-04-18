@@ -98,6 +98,9 @@
     <Compile Include="Database\Company.cs">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Customer.cs">
+      <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\EF_Database_Sale_Jewellery_Manage.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +127,11 @@
     </Compile>
     <Compile Include="Database\Sale_Detail.cs">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Sale\dsCustomer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCustomer.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Sale\dsItem.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -222,6 +230,17 @@
     </EntityDeploy>
     <None Include="Database\EF_Database_Sale_Jewellery_Manage.edmx.diagram">
       <DependentUpon>EF_Database_Sale_Jewellery_Manage.edmx</DependentUpon>
+    </None>
+    <None Include="DataSet\Sale\dsCustomer.xsc">
+      <DependentUpon>dsCustomer.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\Sale\dsCustomer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCustomer.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\Sale\dsCustomer.xss">
+      <DependentUpon>dsCustomer.xsd</DependentUpon>
     </None>
     <None Include="DataSet\Sale\dsItem.xsc">
       <DependentUpon>dsItem.xsd</DependentUpon>
