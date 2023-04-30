@@ -80,6 +80,19 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     //bbiEdit_ItemClick(this, null);
                 };
             };
+
+            gbList_ChangeItem.CustomDrawRowIndicator += (_s, _e) =>
+            {
+                int rowIndex = _e.RowHandle;
+                if (rowIndex >= 0)
+                {
+                    rowIndex++;
+                    _e.Info.DisplayText = rowIndex.ToString();
+                }
+            };
+
+            this.customerTableAdapter.Fill(this.dsCustomer.Customer);
+
             ReloadItem();
             Init();
         }
@@ -104,19 +117,38 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     txtSaleNo.Text = "";
                     txtSaleMan.Text = "";
                     dtDocumentDate.DateTime = DateTime.Now;
+                    txtDiscountRate.Value = 0;
+                    txtDiscountAmount.Value = 0;
+                    txtTaxRate.Value = 0;
+                    txtTaxAmount.Value = 0;
+                    txtDocumentAmount.Value = 0;
+                    glkeCustomer.EditValue = null;
+
                     EmptyRow();
                     break;
                 case ActionType.Update:
                     using (var db = new Database.Quan_Ly_Kinh_Doanh_Trang_SucEntities())
                     {
-                        var sale = db.Sales.Where(s => s.SaleID == this._saleID && !(s.IsDeleted ?? false)).FirstOrDefault();
+                        var sale = db.Sale.Where(s => s.SaleID == this._saleID && !(s.IsDeleted ?? false)).FirstOrDefault();
                         if (sale != null)
                         {
                             txtSaleNo.Text = sale.SaleCode;
-                            txtSaleMan.Text = sale.Sale1;
+                            txtSaleMan.Text = sale.SaleMan;
                             dtDocumentDate.DateTime = sale.DocumentDate ?? DateTime.Now;
+
+                            txtDiscountRate.Value = sale.DiscountRate ?? 0;
+                            txtDiscountAmount.Value = sale.DiscountAmount ?? 0;
+                            txtTaxRate.Value = sale.TaxRate ?? 0;
+                            txtTaxAmount.Value = sale.TaxAmount ?? 0;
+                            txtDocumentAmount.Value = sale.DocumentAmount ?? 0;
+
+                            glkeCustomer.EditValue = sale.CustomerID;
+                            txtAddress.Text = sale.CustomerAddress;
+                            txtPhoneNo.Text = sale.CustomerPhone;
+                            txtDescription.Text = sale.Descriptions;
+
                             this.sale_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Detail, this._saleID);
-                            gbList.BestFitColumns();
+                            sale_Change_Item_DetailTableAdapter.Fill(this.dsSaleDetail.Sale_Change_Item_Detail, _saleID);
                         }
                     }
                     break;
@@ -128,6 +160,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             var rowCount = gbList.DataRowCount;
             for (var i = rowCount; i >= 0; i--)
                 gbList.DeleteRow(i);
+
+            var rowCountChangeItem = gbList_ChangeItem.DataRowCount;
+            for (var i = rowCountChangeItem; i >= 0; i--)
+                gbList_ChangeItem.DeleteRow(i);
         }
 
         private enum Column
@@ -145,6 +181,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         }
 
         Column _mColumn;
+        Column _mColumn_ChangeItem;
 
         private void gbList_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -155,6 +192,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                 decimal laborFee = 0;
                 decimal amount = 0;
                 decimal totalWeight = 0;
+                decimal stoneWeight = 0;
 
                 gbList.ClearColumnErrors();
                 gbList.UpdateCurrentRow();
@@ -170,11 +208,11 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     {
                         _mColumn = Column.GoldType;
                     }
-                    else if (e.Column.FieldName == colGoldType.FieldName)
+                    else if (e.Column.FieldName == colTotalWeight.FieldName)
                     {
                         _mColumn = Column.TotalWeight;
                     }
-                    else if (e.Column.FieldName == colTotalWeight.FieldName)
+                    else if (e.Column.FieldName == colGoldWeight.FieldName)
                     {
                         _mColumn = Column.GoldWeight;
                     }
@@ -218,16 +256,40 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                     case Column.TotalWeight:
                         _mColumn = Column.Lock;
                         totalWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        goldWeight = totalWeight;
+                        gbList.SetFocusedRowCellValue(colGoldWeight, goldWeight);
+                        gbList.SetFocusedRowCellValue(colStoneWeight, 0);
+
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        amount = (price * goldWeight) + laborFee;
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.GoldWeight:
                         _mColumn = Column.Lock;
-
+                        goldWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        totalWeight = gbList.GetFocusedRowCellValue(colTotalWeight) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colTotalWeight));
+                        stoneWeight = totalWeight - goldWeight;
+                        gbList.SetFocusedRowCellValue(colStoneWeight, stoneWeight);
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.StoneWeight:
                         _mColumn = Column.Lock;
-
+                        stoneWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        totalWeight = gbList.GetFocusedRowCellValue(colTotalWeight) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colTotalWeight));
+                        goldWeight = totalWeight - stoneWeight;
+                        gbList.SetFocusedRowCellValue(colGoldWeight, goldWeight);
+                        price = gbList.GetFocusedRowCellValue(colPrice) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colPrice));
+                        laborFee = gbList.GetFocusedRowCellValue(colLaborFee) == null ? 0 : Convert.ToDecimal(gbList.GetFocusedRowCellValue(colLaborFee));
+                        amount = (price * goldWeight) + laborFee;
+                        gbList.SetFocusedRowCellValue(colAmount, amount);
                         _mColumn = Column.None;
                         break;
                     case Column.Price:
@@ -255,6 +317,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                         break;
                 }
 
+                CalculateDocumentAmt();
                 gbList.ClearColumnErrors();
                 _mColumn = Column.None;
             }
@@ -302,22 +365,34 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                     // -----
                                     // Sale
                                     var sale = new Database.Sale();
+
                                     sale.SaleCode = txtSaleNo.Text;
                                     sale.CompanyID = 0;
                                     sale.DocumentDate = dtDocumentDate.DateTime;
                                     sale.LaborFee = 0;
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
-                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
-                                    sale.DiscountRate = 0;
-                                    sale.DiscountAmount = 0;
-                                    sale.TaxRate = 0;
-                                    sale.TaxAmount = 0;
-                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
-                                    sale.Sale1 = txtSaleMan.Text;
-                                    sale.Descriptions = "";
+                                    
+                                    sale.DocumentAmount = txtDocumentAmount.Value; //colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.SaleMan = txtSaleMan.Text;
                                     sale.IsDeleted = false;
+
+                                    sale.TotalChangeAmount = colAmount1.SummaryItem.HasValue ? Convert.ToDecimal(colAmount1.SummaryItem.SummaryValue) : 0;
+                                    sale.TotalSaleAmount = colAmount.SummaryItem.HasValue ? Convert.ToDecimal(colAmount.SummaryItem.SummaryValue) : 0;
+
+                                    sale.DocumentAmountBF = sale.TotalSaleAmount - sale.TotalChangeAmount;
+                                    sale.DiscountRate = txtDiscountRate.Value;
+                                    sale.DiscountAmount = txtDiscountAmount.Value;
+                                    sale.TaxRate = txtTaxRate.Value;
+                                    sale.TaxAmount = txtTaxAmount.Value;
+
+                                    sale.CustomerID = glkeCustomer.EditValue != null ? Convert.ToInt64(glkeCustomer.EditValue) : 0;
+                                    sale.CustomerName = glkeCustomer.Text;
+                                    sale.CustomerAddress = txtAddress.Text;
+                                    sale.CustomerPhone = txtPhoneNo.Text;
+                                    sale.Descriptions = txtDescription.Text;
+
                                     sale.CreatedDate = DateTime.Now;
-                                    db.Sales.Add(sale);
+                                    db.Sale.Add(sale);
                                     db.SaveChanges();
                                     // ---------
                                     // Sales detail
@@ -348,6 +423,33 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                         saleDetail.CreatedDate = DateTime.Now;
                                         db.Sale_Detail.Add(saleDetail);
                                     }
+                                    // ---------
+                                    // Change item
+                                    for(var i = 0; i < gbList_ChangeItem.DataRowCount; i++)
+                                    {
+                                        var changeItem = new Database.Sale_Change_Item_Detail();
+                                        changeItem.SaleID = sale.SaleID;
+                                        changeItem.SaleCode = sale.SaleCode;
+                                        var itemID = Convert.ToInt64(gbList_ChangeItem.GetRowCellValue(i, colItemID3));
+                                        changeItem.ItemID = itemID;
+                                        changeItem.ItemCode = itemID;
+                                        changeItem.ItemName = gbList_ChangeItem.GetRowCellDisplayText(i, colItemID3);
+                                        changeItem.GoldType = gbList_ChangeItem.GetRowCellValue(i, colGoldType1).ToString();
+                                        var totalWeight = gbList_ChangeItem.GetRowCellValue(i, colTotalWeight1);
+                                        changeItem.TotalWeight = totalWeight == null ? 0 : (decimal)totalWeight;
+                                        var goldWeight = gbList_ChangeItem.GetRowCellValue(i, colGoldWeight1);
+                                        changeItem.GoldWeight = goldWeight == null ? 0 : (decimal)goldWeight;
+                                        var stoneWeight = gbList_ChangeItem.GetRowCellValue(i, colStoneWeight1);
+                                        changeItem.StoneWeight = stoneWeight == null ? 0 : (decimal)stoneWeight;
+                                        var price = gbList_ChangeItem.GetRowCellValue(i, colPrice1);
+                                        changeItem.Price = price == null ? 0 : (decimal)price;                                        
+                                        var amount = gbList_ChangeItem.GetRowCellValue(i, colAmount1);
+                                        changeItem.Amount = amount == null ? 0 : (decimal)amount;
+                                        changeItem.Descriptions = gbList_ChangeItem.GetRowCellValue(i, colDescriptions3.FieldName).ToString();
+                                        changeItem.IsDeleted = false;
+                                        changeItem.CreatedDate = DateTime.Now;
+                                        db.Sale_Change_Item_Detail.Add(changeItem);
+                                    }
                                     db.SaveChanges();
                                     transaction.Commit();
                                     RaiseSaveEventHander();
@@ -371,22 +473,34 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                 {
                                     // ----- 
                                     // Update Sale
-                                    var sale = db.Sales.Where(s => s.SaleID == this._saleID).FirstOrDefault();
+                                    var sale = db.Sale.Where(s => s.SaleID == this._saleID).FirstOrDefault();
+                                    
                                     sale.SaleID = this._saleID;
                                     sale.SaleCode = txtSaleNo.Text;
                                     sale.CompanyID = 0;
                                     sale.DocumentDate = dtDocumentDate.DateTime;
-                                    sale.LaborFee = 0;
                                     sale.LaborFee = colLaborFee.SummaryItem.HasValue ? (decimal)colLaborFee.SummaryItem.SummaryValue : 0;
-                                    sale.DocumentAmountBF = colPrice.SummaryItem.HasValue ? (decimal)colPrice.SummaryItem.SummaryValue : 0;
-                                    sale.DiscountRate = 0;
-                                    sale.DiscountAmount = 0;
-                                    sale.TaxRate = 0;
+                                    
                                     sale.TaxAmount = 0;
-                                    sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
-                                    sale.Sale1 = txtSaleMan.Text;
-                                    sale.Descriptions = "";                                    
+                                    //sale.DocumentAmount = colAmount.SummaryItem.HasValue ? (decimal)colAmount.SummaryItem.SummaryValue : 0;
+                                    sale.SaleMan = txtSaleMan.Text;                                                            
                                     sale.ModifiedDate = DateTime.Now;
+
+                                    sale.TotalChangeAmount = colAmount1.SummaryItem.HasValue ? Convert.ToDecimal(colAmount1.SummaryItem.SummaryValue) : 0;
+                                    sale.TotalSaleAmount = colAmount.SummaryItem.HasValue ? Convert.ToDecimal(colAmount.SummaryItem.SummaryValue) : 0;
+
+                                    sale.DocumentAmountBF = sale.TotalSaleAmount - sale.TotalChangeAmount;
+                                    sale.DiscountRate = txtDiscountRate.Value;
+                                    sale.DiscountAmount = txtDiscountAmount.Value;
+                                    sale.TaxRate = txtTaxRate.Value;
+                                    sale.TaxAmount = txtTaxAmount.Value;
+
+                                    sale.CustomerID = glkeCustomer.EditValue != null ? Convert.ToInt64(glkeCustomer.EditValue) : 0;
+                                    sale.CustomerName = glkeCustomer.Text;
+                                    sale.CustomerAddress = txtAddress.Text;
+                                    sale.CustomerPhone = txtPhoneNo.Text;
+                                    sale.Descriptions = txtDescription.Text;
+                                    sale.DocumentAmount = txtDocumentAmount.Value;
                                     db.Entry(sale).State = System.Data.Entity.EntityState.Modified;
                                     db.SaveChanges();
 
@@ -446,6 +560,63 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                             db.Entry(saleDetailDel).State = EntityState.Modified;
                                         }
                                     }
+
+                                    // --------
+                                    // Process change item detail
+                                    var listChangeItemDetails = db.Sale_Change_Item_Detail.Where(ci => ci.SaleID == sale.SaleID && !(ci.IsDeleted ?? false)).ToList();
+                                    var listChangeItemDetailIds = new List<long>();
+                                    // Add or update change item detail
+                                    for (var i = 0; i < gbList_ChangeItem.DataRowCount; i++)
+                                    {
+                                        var changeItemDetailID = Convert.ToInt64(gbList_ChangeItem.GetRowCellValue(i, colChangeItemDetailID));
+                                        listChangeItemDetailIds.Add(changeItemDetailID);
+                                        var changeItemDetail = listChangeItemDetails.Find(ci => ci.SaleChangeItemDetailID == changeItemDetailID);
+                                        if (changeItemDetail == null)
+                                        {
+                                            changeItemDetail = new Database.Sale_Change_Item_Detail();
+                                            changeItemDetail.IsDeleted = false;
+                                            changeItemDetail.CreatedDate = DateTime.Now;
+                                            db.Entry(changeItemDetail).State = EntityState.Added;
+                                        }
+                                        else
+                                        {
+                                            changeItemDetail.ModifiedDate = DateTime.Now;
+                                            db.Entry(changeItemDetail).State = EntityState.Modified;
+                                        }
+                                        changeItemDetail.SaleID = sale.SaleID;
+                                        changeItemDetail.SaleCode = sale.SaleCode;
+                                        var itemIDObj = gbList_ChangeItem.GetRowCellValue(i, colItemID3);
+                                        var itemID = Convert.ToInt64(itemIDObj);
+                                        changeItemDetail.ItemID = itemID;
+                                        changeItemDetail.ItemCode = itemID;
+                                        changeItemDetail.ItemName = gbList_ChangeItem.GetRowCellDisplayText(i, colItemID3);
+                                        changeItemDetail.GoldType = gbList_ChangeItem.GetRowCellValue(i, colGoldType).ToString();
+                                        var totalWeight = gbList_ChangeItem.GetRowCellValue(i, colTotalWeight1);
+                                        changeItemDetail.TotalWeight = totalWeight == null ? 0 : (decimal)totalWeight;
+                                        var goldWeight = gbList_ChangeItem.GetRowCellValue(i, colGoldWeight1);
+                                        changeItemDetail.GoldWeight = goldWeight == null ? 0 : (decimal)goldWeight;
+                                        var stoneWeight = gbList_ChangeItem.GetRowCellValue(i, colStoneWeight1);
+                                        changeItemDetail.StoneWeight = stoneWeight == null ? 0 : (decimal)stoneWeight;
+                                        var price = gbList_ChangeItem.GetRowCellValue(i, colPrice1);
+                                        changeItemDetail.Price = price == null ? 0 : (decimal)price;
+                                        
+                                        var amount = gbList_ChangeItem.GetRowCellValue(i, colAmount1);
+                                        changeItemDetail.Amount = amount == null ? 0 : (decimal)amount;
+                                        changeItemDetail.Descriptions = gbList_ChangeItem.GetRowCellValue(i, colDescriptions3.FieldName).ToString();
+                                        //db.Sale_Detail.Add(saleDetail);
+                                    }
+                                    // Delete sale change item details
+                                    var listDeleteChangeItemDetails = listChangeItemDetails.Where(ci => !listChangeItemDetailIds.Contains(ci.SaleChangeItemDetailID)).ToList();
+                                    if (listDeleteChangeItemDetails.Count > 0)
+                                    {
+                                        foreach (var changeItemDetailDel in listDeleteChangeItemDetails)
+                                        {
+                                            changeItemDetailDel.IsDeleted = true;
+                                            changeItemDetailDel.DeletedDate = DateTime.Now;
+                                            db.Entry(changeItemDetailDel).State = EntityState.Modified;
+                                        }
+                                    }
+
                                     db.SaveChanges();
                                     transaction.Commit();
                                     RaiseSaveEventHander();
@@ -551,11 +722,308 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             }
         }
 
-        // event click popup menu
+        // event click popup menu gb_List
         private void OnCustomMenuItemClick(object sender, EventArgs e)
-        {            
-            int rowHandle = gbList.FocusedRowHandle; 
-            gbList.DeleteRow(rowHandle);
+        {
+            if (XtraMessageBox.Show("Bạn có chắc là muốn xóa sản phẩm này không ?", "Xóa sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+            {
+                gbList.DeleteSelectedRows();
+                gbList.UpdateCurrentRow();
+            }
+        }
+
+        private void gbList_ChangeItem_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            try 
+            {
+                decimal price = 0;
+                decimal goldWeight = 0;
+                decimal amount = 0;
+                decimal totalWeight = 0;
+
+                gbList_ChangeItem.ClearColumnErrors();
+                gbList_ChangeItem.UpdateCurrentRow();
+                if (_mColumn_ChangeItem == Column.Lock) return;
+
+                if (_mColumn_ChangeItem == Column.None)
+                {
+                    if (e.Column.FieldName == colItemID3.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.ItemName;
+                    }
+                    else if (e.Column.FieldName == colGoldType1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.GoldType;
+                    }
+                    else if (e.Column.FieldName == colTotalWeight1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.TotalWeight;
+                    }
+                    else if (e.Column.FieldName == colGoldWeight1.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.GoldWeight;
+                    }
+                    else if (e.Column.FieldName == colStoneWeight.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.StoneWeight;
+                    }
+                    else if (e.Column.FieldName == colPrice.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.Price;
+                    }
+                    else if (e.Column.FieldName == colAmount.FieldName)
+                    {
+                        _mColumn_ChangeItem = Column.Amount;
+                    }
+                }
+
+                switch (_mColumn_ChangeItem)
+                {
+                    case Column.None:
+                        return;
+                    case Column.ItemName:
+                        _mColumn_ChangeItem = Column.Lock;
+                        gbList_ChangeItem.SetFocusedRowCellValue(colTotalWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colGoldWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colStoneWeight1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colPrice1, 0);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, 0);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.GoldType:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.TotalWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+                        totalWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.GoldWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+                        goldWeight = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        price = gbList_ChangeItem.GetFocusedRowCellValue(colPrice1) == null ? 0 : Convert.ToDecimal(gbList_ChangeItem.GetFocusedRowCellValue(colPrice1));
+                        amount = (price * goldWeight);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, amount);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.StoneWeight:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.Price:
+                        _mColumn_ChangeItem = Column.Lock;
+                        price = Convert.ToDecimal(e.Value == DBNull.Value ? 0 : e.Value);
+                        goldWeight = gbList_ChangeItem.GetFocusedRowCellValue(colGoldWeight1) == null ? 0 : Convert.ToDecimal(gbList_ChangeItem.GetFocusedRowCellValue(colGoldWeight1));
+                        amount = (price * goldWeight);
+                        gbList_ChangeItem.SetFocusedRowCellValue(colAmount1, amount);
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                    case Column.Amount:
+                        _mColumn_ChangeItem = Column.Lock;
+
+                        _mColumn_ChangeItem = Column.None;
+                        break;
+                }
+
+                CalculateDocumentAmt();
+                gbList_ChangeItem.ClearColumnErrors();
+                _mColumn_ChangeItem = Column.None;
+            }
+            catch (Exception ex) 
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void gbList_ChangeItem_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.MenuType == GridMenuType.Row)
+            {
+                GridViewMenu menu = e.Menu as GridViewMenu;
+                if (menu != null)
+                {
+                    menu.Items.Clear(); // Clear the default menu items
+
+                    DXMenuItem item = new DXMenuItem("Xóa sản phẩm", OnCustomChangeItemMenuItemClick);
+                    System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
+                    item.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.Image")));
+                    menu.Items.Add(item); // Add a custom menu item
+
+                    e.Menu = menu; // Set the context menu
+                }
+            }
+        }
+
+        // event click popup menu gbList_ChangeItem
+        private void OnCustomChangeItemMenuItemClick(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Bạn có chắc là muốn xóa sản phẩm này không ?", "Xóa sản phẩm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                gbList_ChangeItem.DeleteSelectedRows();
+                gbList_ChangeItem.UpdateCurrentRow();
+            }
+        }
+
+        private decimal GetTotalAmountBf()
+        {
+            try
+            {
+                decimal discountAmt = txtDiscountAmount.Value;
+                decimal taxAmt = txtTaxAmount.Value;
+                decimal saleDetailTotalAmt = 0;
+                decimal saleChangeDetailTotalAmt = 0;
+                decimal documentAmountBF = 0;
+                foreach (DataRow dr in dsSaleDetail.Sale_Detail.Rows)
+                {
+                    if (dr.RowState != DataRowState.Deleted)
+                    {
+                        saleDetailTotalAmt += dr["Amount"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["Amount"]);
+                    }
+                }
+
+                foreach (DataRow dr in dsSaleDetail.Sale_Change_Item_Detail.Rows)
+                {
+                    if (dr.RowState != DataRowState.Deleted)
+                    {
+                        saleChangeDetailTotalAmt += dr["Amount"] == DBNull.Value ? 0 : Convert.ToDecimal(dr["Amount"]);
+                    }
+                }
+
+                documentAmountBF = saleDetailTotalAmt - saleChangeDetailTotalAmt;
+                return documentAmountBF;
+            }
+            catch (Exception ex)
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+                return 0;
+            }
+        }
+
+        DiscountUpdateStatus _discountStatus;
+        private enum DiscountUpdateStatus 
+        {
+            None = 0,
+            Lock = 1,
+        }
+
+        TaxUpdateStatus _taxStatus;
+        private enum TaxUpdateStatus
+        {
+            None = 0,
+            Lock = 1,
+        }
+
+        private void txtDiscountRate_EditValueChanged(object sender, EventArgs e)
+        {
+            try 
+            {
+                if (_discountStatus == DiscountUpdateStatus.None) 
+                {
+                    decimal discountRate = txtDiscountRate.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = discountRate == 0 ? 0 : (documentAmountBF / 100 * discountRate);
+
+                    _discountStatus = DiscountUpdateStatus.Lock;
+                    txtDiscountAmount.Value = discountAmt;
+                    CalculateDocumentAmt();
+                    _discountStatus = DiscountUpdateStatus.None;
+                }
+            }
+            catch (Exception ex) 
+            {
+                _discountStatus = DiscountUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtDiscountAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_discountStatus == DiscountUpdateStatus.None)
+                {
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountRate = documentAmountBF == 0 ? 0 : (discountAmt / documentAmountBF * 100);
+
+                    _discountStatus = DiscountUpdateStatus.Lock;
+                    txtDiscountRate.Value = discountRate;
+                    CalculateDocumentAmt();
+                    _discountStatus = DiscountUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _discountStatus = DiscountUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtTaxRate_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_taxStatus == TaxUpdateStatus.None)
+                {
+                    decimal taxRate = txtTaxRate.Value;
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBFTax = documentAmountBF - discountAmt;
+                    decimal taxAmt = documentAmountBFTax / 100 * taxRate;
+                    _taxStatus = TaxUpdateStatus.Lock;
+                    txtTaxAmount.Value = taxAmt;
+                    CalculateDocumentAmt();
+                    _taxStatus = TaxUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _taxStatus = TaxUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void txtTaxAmount_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_taxStatus == TaxUpdateStatus.None)
+                {
+                    decimal documentAmountBF = GetTotalAmountBf();
+                    decimal discountAmt = txtDiscountAmount.Value;
+                    decimal documentAmountBFTax = documentAmountBF - discountAmt;
+                    decimal taxAmt = txtTaxAmount.Value;
+                    decimal taxRate = documentAmountBFTax == 0 ? 0 : (taxAmt / documentAmountBFTax * 100);
+                    _taxStatus = TaxUpdateStatus.Lock;
+                    txtTaxRate.Value = taxRate;
+                    CalculateDocumentAmt();
+                    _taxStatus = TaxUpdateStatus.None;
+                }
+            }
+            catch (Exception ex)
+            {
+                _taxStatus = TaxUpdateStatus.None;
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+        }
+
+        private void CalculateDocumentAmt() 
+        {
+            try
+            {
+                decimal documentAmountBF = GetTotalAmountBf();
+                decimal discountAmt = txtDiscountAmount.Value;
+                decimal taxAmt = txtTaxAmount.Value;
+                decimal documentAmt = documentAmountBF - discountAmt + taxAmt;
+                txtDocumentAmount.Value = documentAmt;
+            }
+            catch (Exception ex)
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
         }
     }
 }

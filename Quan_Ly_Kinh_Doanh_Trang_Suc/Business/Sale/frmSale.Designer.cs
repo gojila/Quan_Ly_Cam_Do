@@ -31,13 +31,8 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSale));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.dtDocumentDate = new DevExpress.XtraEditors.DateEdit();
+            this.txtDescription = new DevExpress.XtraEditors.MemoEdit();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bbiSaveNew = new DevExpress.XtraBars.BarButtonItem();
@@ -48,11 +43,82 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.txtAddress = new DevExpress.XtraEditors.TextEdit();
+            this.txtPhoneNo = new DevExpress.XtraEditors.TextEdit();
+            this.glkeCustomer = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsCustomer = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsCustomer();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPhoneNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDeleted4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedUserID4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedDate4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtDocumentAmount = new DevExpress.XtraEditors.CalcEdit();
+            this.txtDiscountAmount = new DevExpress.XtraEditors.CalcEdit();
+            this.txtTaxAmount = new DevExpress.XtraEditors.CalcEdit();
+            this.txtTaxRate = new DevExpress.XtraEditors.CalcEdit();
+            this.txtDiscountRate = new DevExpress.XtraEditors.CalcEdit();
+            this.gcList_ChangeItem = new DevExpress.XtraGrid.GridControl();
+            this.saleChangeItemDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSaleDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsSaleDetail = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetail();
+            this.gbList_ChangeItem = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colChangeItemDetailID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSaleID1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSaleCode1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemID3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rptGridItemName_ChangeItem = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsItem = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsItem();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemCode3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemName3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalWeight1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rptCalWeight_ChangeItem = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.colGoldWeight1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStoneWeight1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrice1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rptCal_ChangeItem = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.colLaborFee1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAmount1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescriptions3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDeleted3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedUserID3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCreatedDate3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedUserID3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedDate3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedUserID3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeletedDate3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemBarcode1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGoldType1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rptGridItemCode_ChangeItem = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.dtDocumentDate = new DevExpress.XtraEditors.DateEdit();
             this.txtSaleNo = new DevExpress.XtraEditors.TextEdit();
             this.txtSaleMan = new DevExpress.XtraEditors.TextEdit();
             this.gcList = new DevExpress.XtraGrid.GridControl();
-            this.dsSaleDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsSaleDetail = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetail();
             this.gbList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colSaleDetailID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSaleID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,9 +126,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colItemID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rptGridItemCode = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsItem = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsItem();
             this.repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -124,31 +187,71 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.colDeletedUserID1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDeletedDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.saleDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsItemTableAdapters.ItemTableAdapter();
             this.sale_DetailTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetailTableAdapters.Sale_DetailTableAdapter();
+            this.sale_Change_Item_DetailTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsSaleDetailTableAdapters.Sale_Change_Item_DetailTableAdapter();
+            this.customerTableAdapter = new Quan_Ly_Kinh_Doanh_Trang_Suc.DataSet.Sale.dsCustomerTableAdapters.CustomerTableAdapter();
+            this.splitterItem2 = new DevExpress.XtraLayout.SplitterItem();
+            this.splitterItem3 = new DevExpress.XtraLayout.SplitterItem();
+            this.splitterItem4 = new DevExpress.XtraLayout.SplitterItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSaleNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSaleMan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.glkeCustomer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDocumentAmount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaxAmount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaxRate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscountRate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcList_ChangeItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleChangeItemDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSaleDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSaleDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gbList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbList_ChangeItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemName_ChangeItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptCalWeight_ChangeItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptCal_ChangeItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode_ChangeItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSaleNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSaleMan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptGridItemName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -157,18 +260,45 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.gcListItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbListItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtDescription);
+            this.layoutControl1.Controls.Add(this.txtAddress);
+            this.layoutControl1.Controls.Add(this.txtPhoneNo);
+            this.layoutControl1.Controls.Add(this.glkeCustomer);
+            this.layoutControl1.Controls.Add(this.txtDocumentAmount);
+            this.layoutControl1.Controls.Add(this.txtDiscountAmount);
+            this.layoutControl1.Controls.Add(this.txtTaxAmount);
+            this.layoutControl1.Controls.Add(this.txtTaxRate);
+            this.layoutControl1.Controls.Add(this.txtDiscountRate);
+            this.layoutControl1.Controls.Add(this.gcList_ChangeItem);
             this.layoutControl1.Controls.Add(this.dtDocumentDate);
             this.layoutControl1.Controls.Add(this.txtSaleNo);
             this.layoutControl1.Controls.Add(this.txtSaleMan);
@@ -177,30 +307,22 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 24);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(945, 271, 975, 600);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(305, 128, 975, 600);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(923, 426);
+            this.layoutControl1.Size = new System.Drawing.Size(1266, 426);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // dtDocumentDate
+            // txtDescription
             // 
-            this.dtDocumentDate.EditValue = null;
-            this.dtDocumentDate.Location = new System.Drawing.Point(553, 45);
-            this.dtDocumentDate.MenuManager = this.bm;
-            this.dtDocumentDate.Name = "dtDocumentDate";
-            this.dtDocumentDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtDocumentDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtDocumentDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.dtDocumentDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtDocumentDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
-            this.dtDocumentDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dtDocumentDate.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dtDocumentDate.Size = new System.Drawing.Size(117, 20);
-            this.dtDocumentDate.StyleController = this.layoutControl1;
-            this.dtDocumentDate.TabIndex = 8;
+            this.txtDescription.EditValue = "";
+            this.txtDescription.Location = new System.Drawing.Point(485, 117);
+            this.txtDescription.MenuManager = this.bm;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Properties.LinesCount = 4;
+            this.txtDescription.Size = new System.Drawing.Size(498, 35);
+            this.txtDescription.StyleController = this.layoutControl1;
+            this.txtDescription.TabIndex = 18;
             // 
             // bm
             // 
@@ -276,7 +398,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.bm;
-            this.barDockControlTop.Size = new System.Drawing.Size(923, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1266, 24);
             // 
             // barDockControlBottom
             // 
@@ -284,7 +406,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
             this.barDockControlBottom.Manager = this.bm;
-            this.barDockControlBottom.Size = new System.Drawing.Size(923, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1266, 0);
             // 
             // barDockControlLeft
             // 
@@ -298,47 +420,343 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(923, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1266, 24);
             this.barDockControlRight.Manager = this.bm;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
             // 
-            // txtSaleNo
+            // txtAddress
             // 
-            this.txtSaleNo.Location = new System.Drawing.Point(312, 45);
-            this.txtSaleNo.MenuManager = this.bm;
-            this.txtSaleNo.Name = "txtSaleNo";
-            this.txtSaleNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F);
-            this.txtSaleNo.Properties.Appearance.Options.UseFont = true;
-            this.txtSaleNo.Size = new System.Drawing.Size(146, 20);
-            this.txtSaleNo.StyleController = this.layoutControl1;
-            this.txtSaleNo.TabIndex = 7;
+            this.txtAddress.Location = new System.Drawing.Point(485, 69);
+            this.txtAddress.MenuManager = this.bm;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(498, 20);
+            this.txtAddress.StyleController = this.layoutControl1;
+            this.txtAddress.TabIndex = 17;
             // 
-            // txtSaleMan
+            // txtPhoneNo
             // 
-            this.txtSaleMan.Location = new System.Drawing.Point(765, 45);
-            this.txtSaleMan.MenuManager = this.bm;
-            this.txtSaleMan.Name = "txtSaleMan";
-            this.txtSaleMan.Size = new System.Drawing.Size(134, 20);
-            this.txtSaleMan.StyleController = this.layoutControl1;
-            this.txtSaleMan.TabIndex = 6;
+            this.txtPhoneNo.Location = new System.Drawing.Point(485, 93);
+            this.txtPhoneNo.MenuManager = this.bm;
+            this.txtPhoneNo.Name = "txtPhoneNo";
+            this.txtPhoneNo.Size = new System.Drawing.Size(498, 20);
+            this.txtPhoneNo.StyleController = this.layoutControl1;
+            this.txtPhoneNo.TabIndex = 16;
             // 
-            // gcList
+            // glkeCustomer
             // 
-            this.gcList.DataMember = "Sale_Detail";
-            this.gcList.DataSource = this.dsSaleDetailBindingSource;
-            this.gcList.Location = new System.Drawing.Point(209, 81);
-            this.gcList.MainView = this.gbList;
-            this.gcList.MenuManager = this.bm;
-            this.gcList.Name = "gcList";
-            this.gcList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.rptCal,
-            this.rptGridItemCode,
-            this.rptGridItemName,
-            this.rptCalWeight});
-            this.gcList.Size = new System.Drawing.Size(702, 333);
-            this.gcList.TabIndex = 5;
-            this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gbList});
+            this.glkeCustomer.EditValue = "(Khách Hàng)";
+            this.glkeCustomer.Location = new System.Drawing.Point(485, 45);
+            this.glkeCustomer.MenuManager = this.bm;
+            this.glkeCustomer.Name = "glkeCustomer";
+            this.glkeCustomer.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.glkeCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.glkeCustomer.Properties.DataSource = this.customerBindingSource;
+            this.glkeCustomer.Properties.DisplayMember = "CustomerName";
+            this.glkeCustomer.Properties.NullText = "(Khách Hàng)";
+            this.glkeCustomer.Properties.PopupView = this.gridLookUpEdit1View;
+            this.glkeCustomer.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.glkeCustomer.Properties.ValueMember = "CustomerID";
+            this.glkeCustomer.Size = new System.Drawing.Size(498, 20);
+            this.glkeCustomer.StyleController = this.layoutControl1;
+            this.glkeCustomer.TabIndex = 15;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.dsCustomer;
+            // 
+            // dsCustomer
+            // 
+            this.dsCustomer.DataSetName = "dsCustomer";
+            this.dsCustomer.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCustomerID,
+            this.colCustomerCode,
+            this.colCustomerName,
+            this.colPhoneNo,
+            this.colAddress,
+            this.colDescription,
+            this.colIsDeleted4,
+            this.colCreatedUserID4,
+            this.colCreatedDate4,
+            this.colModifiedUserID4,
+            this.colModifiedDate4,
+            this.colDeletedUserID4,
+            this.colDeletedDate4});
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colCustomerID
+            // 
+            this.colCustomerID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerID.FieldName = "CustomerID";
+            this.colCustomerID.Name = "colCustomerID";
+            this.colCustomerID.OptionsColumn.ReadOnly = true;
+            this.colCustomerID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCustomerCode
+            // 
+            this.colCustomerCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerCode.Caption = "Mã Khách Hàng";
+            this.colCustomerCode.FieldName = "CustomerCode";
+            this.colCustomerCode.Name = "colCustomerCode";
+            this.colCustomerCode.OptionsColumn.ReadOnly = true;
+            this.colCustomerCode.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerCode.Visible = true;
+            this.colCustomerCode.VisibleIndex = 0;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCustomerName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCustomerName.Caption = "Tên Khách Hàng";
+            this.colCustomerName.FieldName = "CustomerName";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.OptionsColumn.ReadOnly = true;
+            this.colCustomerName.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 1;
+            // 
+            // colPhoneNo
+            // 
+            this.colPhoneNo.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPhoneNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPhoneNo.Caption = "Số Điện Thoại";
+            this.colPhoneNo.FieldName = "PhoneNo";
+            this.colPhoneNo.Name = "colPhoneNo";
+            this.colPhoneNo.OptionsColumn.ReadOnly = true;
+            this.colPhoneNo.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colPhoneNo.Visible = true;
+            this.colPhoneNo.VisibleIndex = 2;
+            // 
+            // colAddress
+            // 
+            this.colAddress.AppearanceHeader.Options.UseTextOptions = true;
+            this.colAddress.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colAddress.Caption = "Địa Chỉ";
+            this.colAddress.FieldName = "Address";
+            this.colAddress.Name = "colAddress";
+            this.colAddress.OptionsColumn.ReadOnly = true;
+            this.colAddress.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colAddress.Visible = true;
+            this.colAddress.VisibleIndex = 3;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDescription.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDescription.Caption = "Ghi Chú";
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.OptionsColumn.ReadOnly = true;
+            this.colDescription.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 4;
+            // 
+            // colIsDeleted4
+            // 
+            this.colIsDeleted4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colIsDeleted4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colIsDeleted4.FieldName = "IsDeleted";
+            this.colIsDeleted4.Name = "colIsDeleted4";
+            this.colIsDeleted4.OptionsColumn.ReadOnly = true;
+            this.colIsDeleted4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCreatedUserID4
+            // 
+            this.colCreatedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedUserID4.FieldName = "CreatedUserID";
+            this.colCreatedUserID4.Name = "colCreatedUserID4";
+            this.colCreatedUserID4.OptionsColumn.ReadOnly = true;
+            this.colCreatedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colCreatedDate4
+            // 
+            this.colCreatedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedDate4.FieldName = "CreatedDate";
+            this.colCreatedDate4.Name = "colCreatedDate4";
+            this.colCreatedDate4.OptionsColumn.ReadOnly = true;
+            this.colCreatedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colModifiedUserID4
+            // 
+            this.colModifiedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedUserID4.FieldName = "ModifiedUserID";
+            this.colModifiedUserID4.Name = "colModifiedUserID4";
+            this.colModifiedUserID4.OptionsColumn.ReadOnly = true;
+            this.colModifiedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colModifiedDate4
+            // 
+            this.colModifiedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedDate4.FieldName = "ModifiedDate";
+            this.colModifiedDate4.Name = "colModifiedDate4";
+            this.colModifiedDate4.OptionsColumn.ReadOnly = true;
+            this.colModifiedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colDeletedUserID4
+            // 
+            this.colDeletedUserID4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedUserID4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedUserID4.FieldName = "DeletedUserID";
+            this.colDeletedUserID4.Name = "colDeletedUserID4";
+            this.colDeletedUserID4.OptionsColumn.ReadOnly = true;
+            this.colDeletedUserID4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // colDeletedDate4
+            // 
+            this.colDeletedDate4.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedDate4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedDate4.FieldName = "DeletedDate";
+            this.colDeletedDate4.Name = "colDeletedDate4";
+            this.colDeletedDate4.OptionsColumn.ReadOnly = true;
+            this.colDeletedDate4.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            // 
+            // txtDocumentAmount
+            // 
+            this.txtDocumentAmount.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtDocumentAmount.Location = new System.Drawing.Point(931, 392);
+            this.txtDocumentAmount.MenuManager = this.bm;
+            this.txtDocumentAmount.Name = "txtDocumentAmount";
+            this.txtDocumentAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDocumentAmount.Properties.Appearance.Options.UseFont = true;
+            this.txtDocumentAmount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDocumentAmount.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtDocumentAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtDocumentAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtDocumentAmount.Properties.ReadOnly = true;
+            this.txtDocumentAmount.Size = new System.Drawing.Size(323, 22);
+            this.txtDocumentAmount.StyleController = this.layoutControl1;
+            this.txtDocumentAmount.TabIndex = 14;
+            // 
+            // txtDiscountAmount
+            // 
+            this.txtDiscountAmount.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtDiscountAmount.Location = new System.Drawing.Point(300, 392);
+            this.txtDiscountAmount.MenuManager = this.bm;
+            this.txtDiscountAmount.Name = "txtDiscountAmount";
+            this.txtDiscountAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDiscountAmount.Properties.Appearance.Options.UseFont = true;
+            this.txtDiscountAmount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDiscountAmount.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtDiscountAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtDiscountAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtDiscountAmount.Size = new System.Drawing.Size(132, 22);
+            this.txtDiscountAmount.StyleController = this.layoutControl1;
+            this.txtDiscountAmount.TabIndex = 13;
+            this.txtDiscountAmount.EditValueChanged += new System.EventHandler(this.txtDiscountAmount_EditValueChanged);
+            // 
+            // txtTaxAmount
+            // 
+            this.txtTaxAmount.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTaxAmount.Location = new System.Drawing.Point(718, 392);
+            this.txtTaxAmount.MenuManager = this.bm;
+            this.txtTaxAmount.Name = "txtTaxAmount";
+            this.txtTaxAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTaxAmount.Properties.Appearance.Options.UseFont = true;
+            this.txtTaxAmount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTaxAmount.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtTaxAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtTaxAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTaxAmount.Size = new System.Drawing.Size(122, 22);
+            this.txtTaxAmount.StyleController = this.layoutControl1;
+            this.txtTaxAmount.TabIndex = 12;
+            this.txtTaxAmount.EditValueChanged += new System.EventHandler(this.txtTaxAmount_EditValueChanged);
+            // 
+            // txtTaxRate
+            // 
+            this.txtTaxRate.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtTaxRate.Location = new System.Drawing.Point(551, 392);
+            this.txtTaxRate.MenuManager = this.bm;
+            this.txtTaxRate.Name = "txtTaxRate";
+            this.txtTaxRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTaxRate.Properties.Appearance.Options.UseFont = true;
+            this.txtTaxRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTaxRate.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtTaxRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtTaxRate.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTaxRate.Size = new System.Drawing.Size(85, 22);
+            this.txtTaxRate.StyleController = this.layoutControl1;
+            this.txtTaxRate.TabIndex = 11;
+            this.txtTaxRate.EditValueChanged += new System.EventHandler(this.txtTaxRate_EditValueChanged);
+            // 
+            // txtDiscountRate
+            // 
+            this.txtDiscountRate.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.txtDiscountRate.Location = new System.Drawing.Point(134, 392);
+            this.txtDiscountRate.MenuManager = this.bm;
+            this.txtDiscountRate.Name = "txtDiscountRate";
+            this.txtDiscountRate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDiscountRate.Properties.Appearance.Options.UseFont = true;
+            this.txtDiscountRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDiscountRate.Properties.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.txtDiscountRate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtDiscountRate.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtDiscountRate.Size = new System.Drawing.Size(81, 22);
+            this.txtDiscountRate.StyleController = this.layoutControl1;
+            this.txtDiscountRate.TabIndex = 10;
+            this.txtDiscountRate.EditValueChanged += new System.EventHandler(this.txtDiscountRate_EditValueChanged);
+            // 
+            // gcList_ChangeItem
+            // 
+            this.gcList_ChangeItem.DataMember = "Sale_Change_Item_Detail";
+            this.gcList_ChangeItem.DataSource = this.saleChangeItemDetailBindingSource;
+            this.gcList_ChangeItem.Location = new System.Drawing.Point(406, 330);
+            this.gcList_ChangeItem.MainView = this.gbList_ChangeItem;
+            this.gcList_ChangeItem.MenuManager = this.bm;
+            this.gcList_ChangeItem.Name = "gcList_ChangeItem";
+            this.gcList_ChangeItem.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.rptCal_ChangeItem,
+            this.rptCalWeight_ChangeItem,
+            this.rptGridItemCode_ChangeItem,
+            this.rptGridItemName_ChangeItem});
+            this.gcList_ChangeItem.Size = new System.Drawing.Size(824, 34);
+            this.gcList_ChangeItem.TabIndex = 9;
+            this.gcList_ChangeItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gbList_ChangeItem});
+            // 
+            // saleChangeItemDetailBindingSource
+            // 
+            this.saleChangeItemDetailBindingSource.DataSource = this.dsSaleDetailBindingSource;
+            this.saleChangeItemDetailBindingSource.Position = 0;
             // 
             // dsSaleDetailBindingSource
             // 
@@ -351,6 +769,474 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.dsSaleDetail.DataSetName = "dsSaleDetail";
             this.dsSaleDetail.EnforceConstraints = false;
             this.dsSaleDetail.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gbList_ChangeItem
+            // 
+            this.gbList_ChangeItem.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colChangeItemDetailID,
+            this.colSaleID1,
+            this.colSaleCode1,
+            this.colItemID3,
+            this.colItemCode3,
+            this.colItemName3,
+            this.colTotalWeight1,
+            this.colGoldWeight1,
+            this.colStoneWeight1,
+            this.colPrice1,
+            this.colLaborFee1,
+            this.colAmount1,
+            this.colDescriptions3,
+            this.colIsDeleted3,
+            this.colCreatedUserID3,
+            this.colCreatedDate3,
+            this.colModifiedUserID3,
+            this.colModifiedDate3,
+            this.colDeletedUserID3,
+            this.colDeletedDate3,
+            this.colItemBarcode1,
+            this.colGoldType1});
+            this.gbList_ChangeItem.GridControl = this.gcList_ChangeItem;
+            this.gbList_ChangeItem.IndicatorWidth = 40;
+            this.gbList_ChangeItem.Name = "gbList_ChangeItem";
+            this.gbList_ChangeItem.OptionsNavigation.EnterMoveNextColumn = true;
+            this.gbList_ChangeItem.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gbList_ChangeItem.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.gbList_ChangeItem.OptionsView.ShowFooter = true;
+            this.gbList_ChangeItem.OptionsView.ShowGroupPanel = false;
+            this.gbList_ChangeItem.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gbList_ChangeItem_PopupMenuShowing);
+            this.gbList_ChangeItem.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gbList_ChangeItem_CellValueChanged);
+            // 
+            // colChangeItemDetailID
+            // 
+            this.colChangeItemDetailID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colChangeItemDetailID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colChangeItemDetailID.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colChangeItemDetailID.FieldName = "SaleChangeItemDetailID";
+            this.colChangeItemDetailID.Name = "colChangeItemDetailID";
+            // 
+            // colSaleID1
+            // 
+            this.colSaleID1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSaleID1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSaleID1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colSaleID1.FieldName = "SaleID";
+            this.colSaleID1.Name = "colSaleID1";
+            // 
+            // colSaleCode1
+            // 
+            this.colSaleCode1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSaleCode1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSaleCode1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colSaleCode1.FieldName = "SaleCode";
+            this.colSaleCode1.Name = "colSaleCode1";
+            // 
+            // colItemID3
+            // 
+            this.colItemID3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemID3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemID3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colItemID3.Caption = "Sản Phẩm";
+            this.colItemID3.ColumnEdit = this.rptGridItemName_ChangeItem;
+            this.colItemID3.FieldName = "ItemID";
+            this.colItemID3.Name = "colItemID3";
+            this.colItemID3.Visible = true;
+            this.colItemID3.VisibleIndex = 0;
+            this.colItemID3.Width = 163;
+            // 
+            // rptGridItemName_ChangeItem
+            // 
+            this.rptGridItemName_ChangeItem.AutoHeight = false;
+            this.rptGridItemName_ChangeItem.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rptGridItemName_ChangeItem.DataSource = this.itemBindingSource;
+            this.rptGridItemName_ChangeItem.DisplayMember = "ItemName";
+            this.rptGridItemName_ChangeItem.Name = "rptGridItemName_ChangeItem";
+            this.rptGridItemName_ChangeItem.NullText = "(Chọn sản phẩm)";
+            this.rptGridItemName_ChangeItem.PopupView = this.gridView3;
+            this.rptGridItemName_ChangeItem.ValueMember = "ItemID";
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataMember = "Item";
+            this.itemBindingSource.DataSource = this.dsItemBindingSource;
+            // 
+            // dsItemBindingSource
+            // 
+            this.dsItemBindingSource.DataSource = this.dsItem;
+            this.dsItemBindingSource.Position = 0;
+            // 
+            // dsItem
+            // 
+            this.dsItem.DataSetName = "dsItem";
+            this.dsItem.EnforceConstraints = false;
+            this.dsItem.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17,
+            this.gridColumn18,
+            this.gridColumn19,
+            this.gridColumn20,
+            this.gridColumn21,
+            this.gridColumn22,
+            this.gridColumn23,
+            this.gridColumn24});
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.FieldName = "ItemID";
+            this.gridColumn13.Name = "gridColumn13";
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Mã Sản Phẩm";
+            this.gridColumn14.FieldName = "ItemCode";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Tên Sản Phẩm";
+            this.gridColumn15.FieldName = "ItemName";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 1;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.FieldName = "CategoryID";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.FieldName = "Descriptions";
+            this.gridColumn17.Name = "gridColumn17";
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.FieldName = "IsDeleted";
+            this.gridColumn18.Name = "gridColumn18";
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.FieldName = "CreatedUserID";
+            this.gridColumn19.Name = "gridColumn19";
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.FieldName = "CreatedDate";
+            this.gridColumn20.Name = "gridColumn20";
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.FieldName = "ModifiedUserID";
+            this.gridColumn21.Name = "gridColumn21";
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.FieldName = "ModifiedDate";
+            this.gridColumn22.Name = "gridColumn22";
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.FieldName = "DeletedUserID";
+            this.gridColumn23.Name = "gridColumn23";
+            // 
+            // gridColumn24
+            // 
+            this.gridColumn24.FieldName = "DeletedDate";
+            this.gridColumn24.Name = "gridColumn24";
+            // 
+            // colItemCode3
+            // 
+            this.colItemCode3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemCode3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemCode3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colItemCode3.FieldName = "ItemCode";
+            this.colItemCode3.Name = "colItemCode3";
+            // 
+            // colItemName3
+            // 
+            this.colItemName3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemName3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemName3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colItemName3.ColumnEdit = this.rptGridItemName_ChangeItem;
+            this.colItemName3.FieldName = "ItemName";
+            this.colItemName3.Name = "colItemName3";
+            this.colItemName3.Width = 168;
+            // 
+            // colTotalWeight1
+            // 
+            this.colTotalWeight1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTotalWeight1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTotalWeight1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colTotalWeight1.Caption = "Tổng Cân";
+            this.colTotalWeight1.ColumnEdit = this.rptCalWeight_ChangeItem;
+            this.colTotalWeight1.FieldName = "TotalWeight";
+            this.colTotalWeight1.Name = "colTotalWeight1";
+            this.colTotalWeight1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalWeight", "{0:##,##0.###}")});
+            this.colTotalWeight1.Visible = true;
+            this.colTotalWeight1.VisibleIndex = 2;
+            this.colTotalWeight1.Width = 62;
+            // 
+            // rptCalWeight_ChangeItem
+            // 
+            this.rptCalWeight_ChangeItem.AutoHeight = false;
+            this.rptCalWeight_ChangeItem.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rptCalWeight_ChangeItem.DisplayFormat.FormatString = "{0:##,##0.###} Chỉ";
+            this.rptCalWeight_ChangeItem.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.rptCalWeight_ChangeItem.Name = "rptCalWeight_ChangeItem";
+            // 
+            // colGoldWeight1
+            // 
+            this.colGoldWeight1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGoldWeight1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGoldWeight1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colGoldWeight1.Caption = "TL Vàng";
+            this.colGoldWeight1.ColumnEdit = this.rptCalWeight_ChangeItem;
+            this.colGoldWeight1.FieldName = "GoldWeight";
+            this.colGoldWeight1.Name = "colGoldWeight1";
+            this.colGoldWeight1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "GoldWeight", "{0:##,##0.###}")});
+            this.colGoldWeight1.Visible = true;
+            this.colGoldWeight1.VisibleIndex = 3;
+            this.colGoldWeight1.Width = 72;
+            // 
+            // colStoneWeight1
+            // 
+            this.colStoneWeight1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colStoneWeight1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colStoneWeight1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colStoneWeight1.Caption = "TL Hột";
+            this.colStoneWeight1.ColumnEdit = this.rptCalWeight_ChangeItem;
+            this.colStoneWeight1.FieldName = "StoneWeight";
+            this.colStoneWeight1.Name = "colStoneWeight1";
+            this.colStoneWeight1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "StoneWeight", "{0:##,##0.###}")});
+            this.colStoneWeight1.Visible = true;
+            this.colStoneWeight1.VisibleIndex = 4;
+            this.colStoneWeight1.Width = 64;
+            // 
+            // colPrice1
+            // 
+            this.colPrice1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPrice1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPrice1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colPrice1.Caption = "Đơn Giá";
+            this.colPrice1.ColumnEdit = this.rptCal_ChangeItem;
+            this.colPrice1.FieldName = "Price";
+            this.colPrice1.Name = "colPrice1";
+            this.colPrice1.Visible = true;
+            this.colPrice1.VisibleIndex = 5;
+            this.colPrice1.Width = 101;
+            // 
+            // rptCal_ChangeItem
+            // 
+            this.rptCal_ChangeItem.AutoHeight = false;
+            this.rptCal_ChangeItem.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rptCal_ChangeItem.DisplayFormat.FormatString = "{0:##,##0.###}";
+            this.rptCal_ChangeItem.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.rptCal_ChangeItem.Name = "rptCal_ChangeItem";
+            // 
+            // colLaborFee1
+            // 
+            this.colLaborFee1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colLaborFee1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colLaborFee1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colLaborFee1.FieldName = "LaborFee";
+            this.colLaborFee1.Name = "colLaborFee1";
+            // 
+            // colAmount1
+            // 
+            this.colAmount1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colAmount1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colAmount1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colAmount1.Caption = "Thành Tiền";
+            this.colAmount1.ColumnEdit = this.rptCal_ChangeItem;
+            this.colAmount1.FieldName = "Amount";
+            this.colAmount1.Name = "colAmount1";
+            this.colAmount1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:##,##0.###}")});
+            this.colAmount1.Visible = true;
+            this.colAmount1.VisibleIndex = 6;
+            this.colAmount1.Width = 137;
+            // 
+            // colDescriptions3
+            // 
+            this.colDescriptions3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDescriptions3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDescriptions3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colDescriptions3.Caption = "Ghi Chú";
+            this.colDescriptions3.FieldName = "Descriptions";
+            this.colDescriptions3.Name = "colDescriptions3";
+            this.colDescriptions3.Visible = true;
+            this.colDescriptions3.VisibleIndex = 7;
+            this.colDescriptions3.Width = 204;
+            // 
+            // colIsDeleted3
+            // 
+            this.colIsDeleted3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colIsDeleted3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colIsDeleted3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colIsDeleted3.FieldName = "IsDeleted";
+            this.colIsDeleted3.Name = "colIsDeleted3";
+            // 
+            // colCreatedUserID3
+            // 
+            this.colCreatedUserID3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedUserID3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedUserID3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colCreatedUserID3.FieldName = "CreatedUserID";
+            this.colCreatedUserID3.Name = "colCreatedUserID3";
+            // 
+            // colCreatedDate3
+            // 
+            this.colCreatedDate3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCreatedDate3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCreatedDate3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colCreatedDate3.FieldName = "CreatedDate";
+            this.colCreatedDate3.Name = "colCreatedDate3";
+            // 
+            // colModifiedUserID3
+            // 
+            this.colModifiedUserID3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedUserID3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedUserID3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colModifiedUserID3.FieldName = "ModifiedUserID";
+            this.colModifiedUserID3.Name = "colModifiedUserID3";
+            // 
+            // colModifiedDate3
+            // 
+            this.colModifiedDate3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colModifiedDate3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colModifiedDate3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colModifiedDate3.FieldName = "ModifiedDate";
+            this.colModifiedDate3.Name = "colModifiedDate3";
+            // 
+            // colDeletedUserID3
+            // 
+            this.colDeletedUserID3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedUserID3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedUserID3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colDeletedUserID3.FieldName = "DeletedUserID";
+            this.colDeletedUserID3.Name = "colDeletedUserID3";
+            // 
+            // colDeletedDate3
+            // 
+            this.colDeletedDate3.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeletedDate3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeletedDate3.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colDeletedDate3.FieldName = "DeletedDate";
+            this.colDeletedDate3.Name = "colDeletedDate3";
+            // 
+            // colItemBarcode1
+            // 
+            this.colItemBarcode1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemBarcode1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemBarcode1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colItemBarcode1.FieldName = "ItemBarcode";
+            this.colItemBarcode1.Name = "colItemBarcode1";
+            // 
+            // colGoldType1
+            // 
+            this.colGoldType1.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGoldType1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGoldType1.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.colGoldType1.Caption = "Loại Vàng";
+            this.colGoldType1.FieldName = "GoldType";
+            this.colGoldType1.Name = "colGoldType1";
+            this.colGoldType1.Visible = true;
+            this.colGoldType1.VisibleIndex = 1;
+            this.colGoldType1.Width = 89;
+            // 
+            // rptGridItemCode_ChangeItem
+            // 
+            this.rptGridItemCode_ChangeItem.AutoHeight = false;
+            this.rptGridItemCode_ChangeItem.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rptGridItemCode_ChangeItem.DataSource = this.itemBindingSource;
+            this.rptGridItemCode_ChangeItem.DisplayMember = "ItemCode";
+            this.rptGridItemCode_ChangeItem.Name = "rptGridItemCode_ChangeItem";
+            this.rptGridItemCode_ChangeItem.NullText = "(Chọn sản phẩm)";
+            this.rptGridItemCode_ChangeItem.PopupView = this.gridView2;
+            this.rptGridItemCode_ChangeItem.ValueMember = "ItemID";
+            // 
+            // gridView2
+            // 
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // dtDocumentDate
+            // 
+            this.dtDocumentDate.EditValue = null;
+            this.dtDocumentDate.Location = new System.Drawing.Point(1088, 69);
+            this.dtDocumentDate.MenuManager = this.bm;
+            this.dtDocumentDate.Name = "dtDocumentDate";
+            this.dtDocumentDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtDocumentDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtDocumentDate.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.dtDocumentDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtDocumentDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dtDocumentDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtDocumentDate.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.dtDocumentDate.Size = new System.Drawing.Size(154, 20);
+            this.dtDocumentDate.StyleController = this.layoutControl1;
+            this.dtDocumentDate.TabIndex = 8;
+            // 
+            // txtSaleNo
+            // 
+            this.txtSaleNo.Location = new System.Drawing.Point(1088, 45);
+            this.txtSaleNo.MenuManager = this.bm;
+            this.txtSaleNo.Name = "txtSaleNo";
+            this.txtSaleNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F);
+            this.txtSaleNo.Properties.Appearance.Options.UseFont = true;
+            this.txtSaleNo.Size = new System.Drawing.Size(154, 20);
+            this.txtSaleNo.StyleController = this.layoutControl1;
+            this.txtSaleNo.TabIndex = 7;
+            // 
+            // txtSaleMan
+            // 
+            this.txtSaleMan.Location = new System.Drawing.Point(1088, 93);
+            this.txtSaleMan.MenuManager = this.bm;
+            this.txtSaleMan.Name = "txtSaleMan";
+            this.txtSaleMan.Size = new System.Drawing.Size(154, 20);
+            this.txtSaleMan.StyleController = this.layoutControl1;
+            this.txtSaleMan.TabIndex = 6;
+            // 
+            // gcList
+            // 
+            this.gcList.DataMember = "Sale_Detail";
+            this.gcList.DataSource = this.dsSaleDetailBindingSource;
+            this.gcList.Location = new System.Drawing.Point(394, 211);
+            this.gcList.MainView = this.gbList;
+            this.gcList.MenuManager = this.bm;
+            this.gcList.Name = "gcList";
+            this.gcList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.rptCal,
+            this.rptGridItemCode,
+            this.rptGridItemName,
+            this.rptCalWeight});
+            this.gcList.Size = new System.Drawing.Size(848, 72);
+            this.gcList.TabIndex = 5;
+            this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gbList});
             // 
             // gbList
             // 
@@ -433,10 +1319,9 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.rptGridItemCode.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.True;
             this.rptGridItemCode.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.rptGridItemCode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)});
             this.rptGridItemCode.DataSource = this.itemBindingSource;
             this.rptGridItemCode.DisplayMember = "ItemCode";
             this.rptGridItemCode.Name = "rptGridItemCode";
@@ -444,22 +1329,6 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.rptGridItemCode.PopupView = this.repositoryItemGridLookUpEdit1View;
             this.rptGridItemCode.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.rptGridItemCode.ValueMember = "ItemID";
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataMember = "Item";
-            this.itemBindingSource.DataSource = this.dsItemBindingSource;
-            // 
-            // dsItemBindingSource
-            // 
-            this.dsItemBindingSource.DataSource = this.dsItem;
-            this.dsItemBindingSource.Position = 0;
-            // 
-            // dsItem
-            // 
-            this.dsItem.DataSetName = "dsItem";
-            this.dsItem.EnforceConstraints = false;
-            this.dsItem.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // repositoryItemGridLookUpEdit1View
             // 
@@ -945,7 +1814,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.gcListItem.MainView = this.gbListItem;
             this.gcListItem.MenuManager = this.bm;
             this.gcListItem.Name = "gcListItem";
-            this.gcListItem.Size = new System.Drawing.Size(159, 357);
+            this.gcListItem.Size = new System.Drawing.Size(332, 331);
             this.gcListItem.TabIndex = 4;
             this.gcListItem.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gbListItem});
@@ -1090,29 +1959,26 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
             this.splitterItem1,
             this.layoutControlGroup1,
-            this.layoutControlGroup2});
+            this.layoutControlGroup2,
+            this.layoutControlGroup3,
+            this.layoutControlItem11,
+            this.layoutControlItem8,
+            this.layoutControlItem9,
+            this.layoutControlItem10,
+            this.layoutControlItem7,
+            this.splitterItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(923, 426);
+            this.Root.Size = new System.Drawing.Size(1266, 426);
             this.Root.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.gcList;
-            this.layoutControlItem2.Location = new System.Drawing.Point(197, 69);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(706, 337);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
             // 
             // splitterItem1
             // 
             this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(187, 0);
+            this.splitterItem1.Location = new System.Drawing.Point(360, 0);
             this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(10, 406);
+            this.splitterItem1.Size = new System.Drawing.Size(10, 380);
             // 
             // layoutControlGroup1
             // 
@@ -1121,7 +1987,7 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(187, 406);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(360, 380);
             this.layoutControlGroup1.Text = "Sản Phẩm";
             // 
             // layoutControlItem1
@@ -1129,20 +1995,73 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem1.Control = this.gcListItem;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(163, 361);
+            this.layoutControlItem1.Size = new System.Drawing.Size(336, 335);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3,
+            this.layoutControlItem14,
+            this.layoutControlItem13,
             this.layoutControlItem4,
             this.layoutControlItem5,
-            this.layoutControlItem3});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(197, 0);
+            this.layoutControlItem12,
+            this.splitterItem2,
+            this.emptySpaceItem1,
+            this.layoutControlItem15});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(370, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(706, 69);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(876, 156);
             this.layoutControlGroup2.Text = "Thông Tin Bán Hàng";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem3.Control = this.txtSaleMan;
+            this.layoutControlItem3.Location = new System.Drawing.Point(603, 48);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(249, 24);
+            this.layoutControlItem3.Text = "Người Bán:";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(88, 17);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem14.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem14.Control = this.txtAddress;
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(593, 24);
+            this.layoutControlItem14.Text = "Địa Chỉ:";
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(88, 17);
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem15.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem15.Control = this.txtDescription;
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem15.MaxSize = new System.Drawing.Size(0, 39);
+            this.layoutControlItem15.MinSize = new System.Drawing.Size(105, 39);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(593, 39);
+            this.layoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem15.Text = "Ghi Chú:";
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(88, 16);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem13.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem13.Control = this.txtPhoneNo;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(593, 24);
+            this.layoutControlItem13.Text = "Điện Thoại:";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(88, 17);
             // 
             // layoutControlItem4
             // 
@@ -1150,33 +2069,141 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem4.Control = this.txtSaleNo;
             this.layoutControlItem4.CustomizationFormText = "Số Hóa Đơn";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(603, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(241, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(249, 24);
             this.layoutControlItem4.Text = "Số Hóa Đơn:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 17);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem12.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem12.Control = this.glkeCustomer;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(593, 24);
+            this.layoutControlItem12.Text = "Khách Hàng:";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(88, 16);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem5.Control = this.dtDocumentDate;
-            this.layoutControlItem5.Location = new System.Drawing.Point(241, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(603, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(212, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(249, 24);
             this.layoutControlItem5.Text = "Ngày:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(88, 16);
             // 
-            // layoutControlItem3
+            // layoutControlGroup3
             // 
-            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem3.Control = this.txtSaleMan;
-            this.layoutControlItem3.Location = new System.Drawing.Point(453, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(229, 24);
-            this.layoutControlItem3.Text = "Người Bán:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(88, 17);
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.layoutControlGroup4,
+            this.splitterItem4});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(370, 166);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(876, 214);
+            this.layoutControlGroup3.Text = "Chi Tiết Bán Hàng";
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.gcList;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(852, 76);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6});
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 86);
+            this.layoutControlGroup4.Name = "layoutControlGroup4";
+            this.layoutControlGroup4.Size = new System.Drawing.Size(852, 83);
+            this.layoutControlGroup4.Text = "Chi Tiết Đổi Hàng";
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.gcList_ChangeItem;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(828, 38);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem11.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem11.Control = this.txtDocumentAmount;
+            this.layoutControlItem11.Location = new System.Drawing.Point(832, 380);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(414, 26);
+            this.layoutControlItem11.Text = "Thành Tiền:";
+            this.layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(82, 17);
+            this.layoutControlItem11.TextToControlDistance = 5;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem7.Control = this.txtDiscountRate;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 380);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(207, 26);
+            this.layoutControlItem7.Text = "Chiếu Khấu (%):";
+            this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(117, 17);
+            this.layoutControlItem7.TextToControlDistance = 5;
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem10.Control = this.txtDiscountAmount;
+            this.layoutControlItem10.Location = new System.Drawing.Point(207, 380);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(217, 26);
+            this.layoutControlItem10.Text = "Chiết Khấu";
+            this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(76, 17);
+            this.layoutControlItem10.TextToControlDistance = 5;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem8.Control = this.txtTaxRate;
+            this.layoutControlItem8.Location = new System.Drawing.Point(424, 380);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(204, 26);
+            this.layoutControlItem8.Text = "Thuế  VAT (%):";
+            this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(110, 17);
+            this.layoutControlItem8.TextToControlDistance = 5;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem9.Control = this.txtTaxAmount;
+            this.layoutControlItem9.Location = new System.Drawing.Point(628, 380);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(204, 26);
+            this.layoutControlItem9.Text = "Thuế VAT:";
+            this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(73, 17);
+            this.layoutControlItem9.TextToControlDistance = 5;
+            // 
+            // saleDetailBindingSource
+            // 
+            this.saleDetailBindingSource.DataMember = "Sale_Detail";
+            this.saleDetailBindingSource.DataSource = this.dsSaleDetailBindingSource;
             // 
             // itemTableAdapter
             // 
@@ -1186,11 +2213,48 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             // 
             this.sale_DetailTableAdapter.ClearBeforeFill = true;
             // 
+            // sale_Change_Item_DetailTableAdapter
+            // 
+            this.sale_Change_Item_DetailTableAdapter.ClearBeforeFill = true;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // splitterItem2
+            // 
+            this.splitterItem2.AllowHotTrack = true;
+            this.splitterItem2.Location = new System.Drawing.Point(593, 0);
+            this.splitterItem2.Name = "splitterItem2";
+            this.splitterItem2.Size = new System.Drawing.Size(10, 111);
+            // 
+            // splitterItem3
+            // 
+            this.splitterItem3.AllowHotTrack = true;
+            this.splitterItem3.Location = new System.Drawing.Point(370, 156);
+            this.splitterItem3.Name = "splitterItem3";
+            this.splitterItem3.Size = new System.Drawing.Size(876, 10);
+            // 
+            // splitterItem4
+            // 
+            this.splitterItem4.AllowHotTrack = true;
+            this.splitterItem4.Location = new System.Drawing.Point(0, 76);
+            this.splitterItem4.Name = "splitterItem4";
+            this.splitterItem4.Size = new System.Drawing.Size(852, 10);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(603, 72);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 39);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // frmSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 450);
+            this.ClientSize = new System.Drawing.Size(1266, 450);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1203,19 +2267,40 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             this.Load += new System.EventHandler(this.frmSale_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSaleNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSaleMan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhoneNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.glkeCustomer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDocumentAmount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaxAmount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaxRate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscountRate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcList_ChangeItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleChangeItemDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSaleDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsSaleDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gbList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbList_ChangeItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemName_ChangeItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptCalWeight_ChangeItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptCal_ChangeItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode_ChangeItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDocumentDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSaleNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSaleMan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gbList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptGridItemCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemGridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptGridItemName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -1224,14 +2309,31 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
             ((System.ComponentModel.ISupportInitialize)(this.gcListItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbListItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1337,5 +2439,92 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         private DevExpress.XtraGrid.Columns.GridColumn colGoldType;
         private DataSet.Sale.dsSaleDetail dsSaleDetail;
         private DataSet.Sale.dsSaleDetailTableAdapters.Sale_DetailTableAdapter sale_DetailTableAdapter;
+        private DevExpress.XtraGrid.GridControl gcList_ChangeItem;
+        private System.Windows.Forms.BindingSource saleDetailBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView gbList_ChangeItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colChangeItemDetailID;
+        private DevExpress.XtraGrid.Columns.GridColumn colSaleID1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSaleCode1;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemID3;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemCode3;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemName3;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalWeight1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit rptCal_ChangeItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colGoldWeight1;
+        private DevExpress.XtraGrid.Columns.GridColumn colStoneWeight1;
+        private DevExpress.XtraGrid.Columns.GridColumn colPrice1;
+        private DevExpress.XtraGrid.Columns.GridColumn colLaborFee1;
+        private DevExpress.XtraGrid.Columns.GridColumn colAmount1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescriptions3;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDeleted3;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedUserID3;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate3;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedUserID3;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate3;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedUserID3;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedDate3;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemBarcode1;
+        private DevExpress.XtraGrid.Columns.GridColumn colGoldType1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit rptCalWeight_ChangeItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit rptGridItemName_ChangeItem;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit rptGridItemCode_ChangeItem;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
+        private System.Windows.Forms.BindingSource saleChangeItemDetailBindingSource;
+        private DataSet.Sale.dsSaleDetailTableAdapters.Sale_Change_Item_DetailTableAdapter sale_Change_Item_DetailTableAdapter;
+        private DevExpress.XtraEditors.CalcEdit txtDocumentAmount;
+        private DevExpress.XtraEditors.CalcEdit txtDiscountAmount;
+        private DevExpress.XtraEditors.CalcEdit txtTaxAmount;
+        private DevExpress.XtraEditors.CalcEdit txtTaxRate;
+        private DevExpress.XtraEditors.CalcEdit txtDiscountRate;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private DevExpress.XtraEditors.GridLookUpEdit glkeCustomer;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraEditors.MemoEdit txtDescription;
+        private DevExpress.XtraEditors.TextEdit txtAddress;
+        private DevExpress.XtraEditors.TextEdit txtPhoneNo;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DataSet.Sale.dsCustomer dsCustomer;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private DataSet.Sale.dsCustomerTableAdapters.CustomerTableAdapter customerTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerCode;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
+        private DevExpress.XtraGrid.Columns.GridColumn colPhoneNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDeleted4;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate4;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedUserID4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeletedDate4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+        private DevExpress.XtraLayout.SplitterItem splitterItem2;
+        private DevExpress.XtraLayout.SplitterItem splitterItem4;
+        private DevExpress.XtraLayout.SplitterItem splitterItem3;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }

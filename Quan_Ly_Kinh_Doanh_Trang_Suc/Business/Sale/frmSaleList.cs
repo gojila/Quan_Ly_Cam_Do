@@ -119,14 +119,38 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
         }
 
         private void frmSaleList_Load(object sender, EventArgs e)
-        {            
+        {
+            gbList.CustomDrawRowIndicator += (_s, _e) =>
+            {
+                int rowIndex = _e.RowHandle;
+                if (rowIndex >= 0)
+                {
+                    rowIndex++;
+                    _e.Info.DisplayText = rowIndex.ToString();
+                }
+            };
+            gbList.ShownEditor += (ss, ee) =>
+            {
+                var view = ss as GridView;
+                view.ActiveEditor.DoubleClick += (_ss, _ee) =>
+                {
+                    bbiEdit_ItemClick(this, null);
+                };
+            };
             Reload();
         }
 
         private void Reload()
         {
-            // TODO: This line of code loads data into the 'dsSale.Sale' table. You can move, or remove it, as needed.
-            this.saleTableAdapter.Fill(this.dsSale.Sale);
+            try 
+            {
+                this.saleTableAdapter.Fill(this.dsSale.Sale);
+            }
+            catch (Exception ex) 
+            {
+                Common.Common.OpenErrorMessage(ex.Message);
+            }
+            
         }
 
         private void New()
@@ -177,13 +201,15 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                             if (arg != null)
                             {
                                 var tempId = Convert.ToInt32(arg);
-                                var sale = (from _sale in db.Sales
+                                var sale = (from _sale in db.Sale
                                             where _sale.SaleID == tempId && !(_sale.IsDeleted ?? false)
                                             select _sale).FirstOrDefault();
                                 if (sale != null)
                                 {
                                     sale.IsDeleted = true;
                                     sale.DeletedDate = DateTime.Now;
+                                    // ---- 
+                                    // Delete sale detail
                                     var saleDetails = (from _saleDetails in db.Sale_Detail
                                                        where _saleDetails.SaleID == tempId && !(_saleDetails.IsDeleted ?? false)
                                                        select _saleDetails).ToList();
@@ -194,7 +220,20 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Business.Sale
                                             sd.IsDeleted = true;
                                             sd.DeletedDate = DateTime.Now;
                                         }
-                                    }    
+                                    }
+                                    // -----
+                                    // Delete change item
+                                    var changeItems = (from _changeItems in db.Sale_Change_Item_Detail
+                                                       where _changeItems.SaleID == tempId && !(_changeItems.IsDeleted ?? false)
+                                                       select _changeItems).ToList();
+                                    if (changeItems != null && changeItems.Count > 0)
+                                    {
+                                        foreach (var ci in changeItems)
+                                        {
+                                            ci.IsDeleted = true;
+                                            ci.DeletedDate = DateTime.Now;
+                                        }
+                                    }
                                 }
                             }
                         }

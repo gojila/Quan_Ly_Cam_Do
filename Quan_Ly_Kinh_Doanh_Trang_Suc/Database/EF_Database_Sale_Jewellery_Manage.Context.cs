@@ -27,8 +27,10 @@ namespace Quan_Ly_Kinh_Doanh_Trang_Suc.Database
     
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Sale_Detail> Sale_Detail { get; set; }
         public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Sale_Change_Item_Detail> Sale_Change_Item_Detail { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Sale> Sale { get; set; }
     }
 }
