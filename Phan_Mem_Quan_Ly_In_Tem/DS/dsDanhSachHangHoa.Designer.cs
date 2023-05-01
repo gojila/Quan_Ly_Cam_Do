@@ -309,6 +309,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             private global::System.Data.DataColumn columnSoNi;
             
+            private global::System.Data.DataColumn columnKyHieuVang;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public InMaVachDataTable() {
@@ -464,6 +466,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KyHieuVangColumn {
+                get {
+                    return this.columnKyHieuVang;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,7 +509,23 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public InMaVachRow AddInMaVachRow(string MaVach, string TenHang, decimal TongTrongLuong, decimal TrongLuong, decimal TienCong, decimal Hot, string NhaCungCap, string HamLuongPho, int SoLuongTem, string TongTrongLuongChu, string TrongLuongChu, string HotChu, string TenTiem, string DiaChi, string SoNi) {
+            public InMaVachRow AddInMaVachRow(
+                        string MaVach, 
+                        string TenHang, 
+                        decimal TongTrongLuong, 
+                        decimal TrongLuong, 
+                        decimal TienCong, 
+                        decimal Hot, 
+                        string NhaCungCap, 
+                        string HamLuongPho, 
+                        int SoLuongTem, 
+                        string TongTrongLuongChu, 
+                        string TrongLuongChu, 
+                        string HotChu, 
+                        string TenTiem, 
+                        string DiaChi, 
+                        string SoNi, 
+                        string KyHieuVang) {
                 InMaVachRow rowInMaVachRow = ((InMaVachRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaVach,
@@ -516,7 +542,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
                         HotChu,
                         TenTiem,
                         DiaChi,
-                        SoNi};
+                        SoNi,
+                        KyHieuVang};
                 rowInMaVachRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInMaVachRow);
                 return rowInMaVachRow;
@@ -554,6 +581,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
                 this.columnTenTiem = base.Columns["TenTiem"];
                 this.columnDiaChi = base.Columns["DiaChi"];
                 this.columnSoNi = base.Columns["SoNi"];
+                this.columnKyHieuVang = base.Columns["KyHieuVang"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,6 +617,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
                 base.Columns.Add(this.columnDiaChi);
                 this.columnSoNi = new global::System.Data.DataColumn("SoNi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSoNi);
+                this.columnKyHieuVang = new global::System.Data.DataColumn("KyHieuVang", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKyHieuVang);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,6 +1001,22 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string KyHieuVang {
+                get {
+                    try {
+                        return ((string)(this[this.tableInMaVach.KyHieuVangColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KyHieuVang\' in table \'InMaVach\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInMaVach.KyHieuVangColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsMaVachNull() {
                 return this.IsNull(this.tableInMaVach.MaVachColumn);
             }
@@ -1147,6 +1193,18 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSoNiNull() {
                 this[this.tableInMaVach.SoNiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKyHieuVangNull() {
+                return this.IsNull(this.tableInMaVach.KyHieuVangColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKyHieuVangNull() {
+                this[this.tableInMaVach.KyHieuVangColumn] = global::System.Convert.DBNull;
             }
         }
         

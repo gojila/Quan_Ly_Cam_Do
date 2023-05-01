@@ -31,7 +31,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             RequestParameters = false;
         }
 
-        public rptInTemNuTrang(string tenTiem, string diaChi, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal tienCong, decimal hot, string loaiVang, string nhaCungCap, string hamLuongPho, int soLuongTem, string tongTrongLuongChu, string trongLuongChu, string hotChu, int soNi)
+        public rptInTemNuTrang(string tenTiem, string diaChi, string tenTiemNCC, string diaChiNCC, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal tienCong, decimal hot, string loaiVang, string nhaCungCap, string hamLuongPho, int soLuongTem, string tongTrongLuongChu, string trongLuongChu, string hotChu, int soNi, string kyHieuVang)
         {
             InitializeComponent();
             
@@ -42,7 +42,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 DataRow drDongIn = dsDanhSachHangHoa1.InMaVach.NewRow();
 
                 drDongIn["MaVach"] = maVach;
-                drDongIn["TenHang"] = tenHang + (soNi > 0 ? ("-Ni:" + soNi.ToString()) : "");
+                //drDongIn["TenHang"] = tenHang + (soNi > 0 ? ("-Ni:" + soNi.ToString()) : "");
+                drDongIn["TenHang"] = tenHang;
                 drDongIn["TongTrongLuong"] = tongTrongLuong;
                 drDongIn["TrongLuong"] = trongLuong;
                 drDongIn["TienCong"] = tienCong;
@@ -55,13 +56,17 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 drDongIn["TrongLuongChu"] = trongLuongChu;
                 drDongIn["HotChu"] = hotChu;
                 drDongIn["SoNi"] = soNi;
+                drDongIn["KyHieuVang"] = kyHieuVang;
+
+                drDongIn["TenTiem"] = tenTiemNCC;
+                drDongIn["DiaChi"] = diaChiNCC;
 
                 dsDanhSachHangHoa1.InMaVach.Rows.Add(drDongIn);
                 dsDanhSachHangHoa1.InMaVach.AcceptChanges();
             }
 
-            TenTiem.Value = tenTiem;
-            DiaChi.Value = diaChi;
+            //TenTiem.Value = tenTiem;
+            //DiaChi.Value = diaChi;
             RequestParameters = false;
         }
 

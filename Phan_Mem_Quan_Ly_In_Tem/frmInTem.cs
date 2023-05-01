@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.UserDesigner;
+using Phan_Mem_Quan_Ly_In_Tem.MauTemIn;
 using Phan_Mem_Quan_Ly_In_Tem.XuLy;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace Phan_Mem_Quan_Ly_In_Tem
 {
@@ -41,6 +43,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         string duongDanFileExcel = "";
         string tenMayIn = "";
+        string tenTiem = "";
+        string diaChiTiem = "";
         clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
 
         public frmInTem()
@@ -49,14 +53,16 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             TaoMoi();
         }
 
-        public frmInTem(string _tenTiem, string _diaChi, string tenCongCOM, string _duongDanFileExcel, string _tenMayIn)
+        public frmInTem(string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _duongDanFileExcel, string _tenMayIn)
         {
             InitializeComponent();
             duongDanFileExcel = _duongDanFileExcel;
 
-            txtTenTiem.Text = _tenTiem;
-            txtDiaChi.Text = _diaChi;
+            txtTenTiemNCC.Text = _tenTiemNCC;
+            txtDiaChiNCC.Text = _diaChiNCC;
             tenMayIn = _tenMayIn;
+            tenTiem = _tenTiemNCC;
+            diaChiTiem = _diaChiNCC;
 
             TaoMoi();
 
@@ -83,14 +89,15 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             
         //}
 
-        public frmInTem(string _tenTiem, string _diaChi, string tenCongCOM, string _tenMayIn, string _duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string nhaCungCap, string hamLuongPho, int soLuongTem)
+        public frmInTem(string _tenTiem, string _diaChi, string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _tenMayIn, string _duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string nhaCungCap, string hamLuongPho, int soLuongTem)
         {
             InitializeComponent();
             duongDanFileExcel = _duongDanFileExcel;
-            txtTenTiem.Text = _tenTiem;
-            txtDiaChi.Text = _diaChi;
+            txtTenTiemNCC.Text = _tenTiemNCC;
+            txtDiaChiNCC.Text = _diaChiNCC;
             tenMayIn = _tenMayIn;
-
+            tenTiem = _tenTiem;
+            diaChiTiem = _diaChi;
             TaoMoi();
 
             if (!Com.IsOpen && !string.IsNullOrEmpty(tenCongCOM))
@@ -113,7 +120,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             txtTrongLuong.Value = trongLuong;
             txtHot.Value = hot;
             txtTienCong.Value = tienCong;
-            txtNhaCungCap.Text = nhaCungCap;
+            txtNhaCungCapCode.Text = nhaCungCap;
             txtHamLuongPho.Text = hamLuongPho;
             txtSoLuongTem.Value = soLuongTem;
         }
@@ -178,33 +185,44 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     mangDanhSachTenTiem.Add(dr["Tên Tiệm"].ToString());
                 }
 
-                var txtNhaCungCap_AutoComplete = txtNhaCungCap.MaskBox;
+                var txtNhaCungCap_AutoComplete = txtNhaCungCapCode.MaskBox;
                 txtNhaCungCap_AutoComplete.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtNhaCungCap_AutoComplete.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtNhaCungCap_AutoComplete.AutoCompleteCustomSource = mangDanhSachNhaCungCap;
 
-                var txtDiaChi_AutoComplete = txtDiaChi.MaskBox;
+                var txtDiaChi_AutoComplete = txtDiaChiNCC.MaskBox;
                 txtDiaChi_AutoComplete.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtDiaChi_AutoComplete.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtDiaChi_AutoComplete.AutoCompleteCustomSource = mangDanhSachDiaChi;
 
-                var txtTenTiem_AutoComplete = txtTenTiem.MaskBox;
+                var txtTenTiem_AutoComplete = txtTenTiemNCC.MaskBox;
                 txtTenTiem_AutoComplete.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtTenTiem_AutoComplete.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtTenTiem_AutoComplete.AutoCompleteCustomSource = mangDanhSachTenTiem;
             }
             
         }
-
+        private void DisplayText(string canNang)
+        {
+            BeginInvoke(new EventHandler(delegate
+            {
+                txtCanNang.Text = canNang;
+                txtTongTrongLuong.Value = chuyenCanNang(canNang);
+            }));
+        }
         private void Com_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string canNang = "";
+            if (!Com.IsOpen)
+                return;
+
             if (Com.IsOpen)
             {
-                canNang = Com.ReadExisting();
-                txtCanNang.Text = canNang;
-                txtTongTrongLuong.Value = chuyenCanNang(canNang);
-                //rdgTuyChonCanNang_SelectedIndexChanged(this, null);
+                canNang = Com.ReadLine();
+                //canNang = Com.ReadExisting();
+                //txtCanNang.Text = canNang;
+                //txtTongTrongLuong.Value = chuyenCanNang(canNang);
+                DisplayText(canNang);
             }
         }
 
@@ -231,13 +249,19 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 return;
             }
-            var rptMaVach = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value));
+            var _clsXuLyDuLieu = new clsXuLyDuLieu();
+            txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+            var rptMaVach = new rptInTemNuTrang(tenTiem, diaChiTiem, txtTenTiemNCC.Text, txtDiaChiNCC.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
             string filePath = @"rptInTemNuTrang.repx";
+            if (!string.IsNullOrEmpty(txtMauTem.Text))
+            {
+                filePath = txtMauTem.Text;
+            }
             if (File.Exists(filePath))
             {
                 rptMaVach.LoadLayout(filePath);
-                rptMaVach.Parameters["TenTiem"].Value = txtTenTiem.Text;
-                rptMaVach.Parameters["DiaChi"].Value = txtDiaChi.Text;
+                rptMaVach.Parameters["TenTiem"].Value = tenTiem;
+                rptMaVach.Parameters["DiaChi"].Value = diaChiTiem;
             }
 
             rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
@@ -267,7 +291,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value));
+                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
                     RaiseXemEventHander();
                 }
             }
@@ -290,14 +314,19 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 return;
             }
-
-            var report = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value));
+            var _clsXuLyDuLieu = new clsXuLyDuLieu();
+            txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+            var report = new rptInTemNuTrang(tenTiem, diaChiTiem, txtTenTiemNCC.Text, txtDiaChiNCC.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
             string filePath = @"rptInTemNuTrang.repx";
+            if (!string.IsNullOrEmpty(txtMauTem.Text)) 
+            {
+                filePath = txtMauTem.Text;
+            }
             if (File.Exists(filePath))
             {
                 report.LoadLayout(filePath);
-                report.Parameters["TenTiem"].Value = txtTenTiem.Text;
-                report.Parameters["DiaChi"].Value = txtDiaChi.Text;
+                report.Parameters["TenTiem"].Value = tenTiem;
+                report.Parameters["DiaChi"].Value = diaChiTiem;
             }
             ReportDesignTool dt = new ReportDesignTool(report);
             //ReportDesignTool dt = new ReportDesignTool(new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text));
@@ -319,7 +348,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, txtTenTiem.Text, txtDiaChi.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value));
+                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
                     RaiseXemEventHander();
                 }
             }
@@ -336,7 +365,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             txtTongTrongLuong.Value = 0;
             txtTrongLuong.Value = 0;
             txtHot.Value = 0;
-            txtNhaCungCap.Text = "";
+            txtNhaCungCapCode.Text = "";
             txtHamLuongPho.Text = "";
             txtTienCong.Value = 0;
             txtSoLuongTem.Value = 1;
@@ -365,7 +394,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         public decimal chuyenCanNang(string giaTriCan)
         {
             //  0.014785TT
-
+            giaTriCan = giaTriCan.Replace(System.Environment.NewLine, "");
             string chuoi = giaTriCan;
             var laySo = (from t in chuoi
                          where char.IsDigit(t) || t.Equals('.')
@@ -510,9 +539,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) => 
                 {
-                    txtNhaCungCap.Text = nhacungcap;
-                    txtTenTiem.Text = tentiem;
-                    txtDiaChi.Text = diachi;
+                    txtNhaCungCapCode.Text = nhacungcap;
+                    txtTenTiemNCC.Text = tentiem;
+                    txtDiaChiNCC.Text = diachi;
                 };
                 frmChonNhaCungCap.ShowDialog();   
             }
@@ -526,9 +555,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) =>
                 {
-                    txtNhaCungCap.Text = nhacungcap;
-                    txtTenTiem.Text = tentiem;
-                    txtDiaChi.Text = diachi;
+                    txtNhaCungCapCode.Text = nhacungcap;
+                    txtTenTiemNCC.Text = tentiem;
+                    txtDiaChiNCC.Text = diachi;
                 };
                 frmChonNhaCungCap.ShowDialog();
             }
@@ -542,11 +571,42 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) =>
                 {
-                    txtNhaCungCap.Text = nhacungcap;
-                    txtTenTiem.Text = tentiem;
-                    txtDiaChi.Text = diachi;
+                    txtNhaCungCapCode.Text = nhacungcap;
+                    txtTenTiemNCC.Text = tentiem;
+                    txtDiaChiNCC.Text = diachi;
                 };
                 frmChonNhaCungCap.ShowDialog();
+            }
+        }
+
+        private void txtMauTem_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            try
+            {
+                var _frmMauTemIn = new frmMauTemIn(duongDanFileExcel);
+                _frmMauTemIn.SetSelectState();
+                _frmMauTemIn.Select += (ss, path) => 
+                {
+                    txtMauTem.Text = path;
+                };
+                _frmMauTemIn.ShowDialog();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmInTem_Load(object sender, EventArgs e)
+        {
+            try 
+            {
+                clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                txtMauTem.Text = _clsXuLyDuLieu.getMauTemInMacDinh(duongDanFileExcel);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

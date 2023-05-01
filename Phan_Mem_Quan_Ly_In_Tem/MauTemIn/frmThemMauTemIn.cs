@@ -63,6 +63,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
                 var result = _clsXuLyDuLieu.luuMauTemIn(path, this.id, txtTenMauTem.Text, txtDuongDan.Text, txtGhiChu.Text, (cbMacDinh.Checked ? "Y" : "N"));
                 if (result) 
                 {
+                    MessageBox.Show(this, "Lưu thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RaiseReloadEventHander();
                     this.Close();
                 }

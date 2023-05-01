@@ -105,6 +105,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.txtDuongDan.Name = "txtDuongDan";
             this.txtDuongDan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtDuongDan.Properties.ReadOnly = true;
             this.txtDuongDan.Size = new System.Drawing.Size(521, 20);
             this.txtDuongDan.StyleController = this.layoutControl1;
             this.txtDuongDan.TabIndex = 5;

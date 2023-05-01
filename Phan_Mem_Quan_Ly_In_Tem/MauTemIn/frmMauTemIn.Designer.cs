@@ -42,12 +42,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colLaMacDinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bbiSelect = new DevExpress.XtraBars.BarButtonItem();
             this.bbiView = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAdd = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiSelect = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -56,6 +56,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pm = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.colGhiChu = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
@@ -107,7 +108,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colID,
             this.colTenTemIn,
             this.colDuongDan,
-            this.colLaMacDinh});
+            this.colLaMacDinh,
+            this.colGhiChu});
             this.gbList.GridControl = this.gcList;
             this.gbList.IndicatorWidth = 40;
             this.gbList.Name = "gbList";
@@ -124,6 +126,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colID.FieldName = "ID";
             this.colID.Name = "colID";
             this.colID.OptionsColumn.ReadOnly = true;
+            this.colID.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             // 
             // colTenTemIn
             // 
@@ -133,6 +136,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colTenTemIn.FieldName = "TenMauTem";
             this.colTenTemIn.Name = "colTenTemIn";
             this.colTenTemIn.OptionsColumn.ReadOnly = true;
+            this.colTenTemIn.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colTenTemIn.Visible = true;
             this.colTenTemIn.VisibleIndex = 0;
             this.colTenTemIn.Width = 87;
@@ -145,6 +149,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colDuongDan.FieldName = "DuongDan";
             this.colDuongDan.Name = "colDuongDan";
             this.colDuongDan.OptionsColumn.ReadOnly = true;
+            this.colDuongDan.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colDuongDan.Visible = true;
             this.colDuongDan.VisibleIndex = 1;
             this.colDuongDan.Width = 78;
@@ -157,6 +162,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.colLaMacDinh.FieldName = "LaMacDinh";
             this.colLaMacDinh.Name = "colLaMacDinh";
             this.colLaMacDinh.OptionsColumn.ReadOnly = true;
+            this.colLaMacDinh.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
             this.colLaMacDinh.Visible = true;
             this.colLaMacDinh.VisibleIndex = 2;
             // 
@@ -196,6 +202,16 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // bbiSelect
+            // 
+            this.bbiSelect.Caption = "Chọn";
+            this.bbiSelect.Id = 6;
+            this.bbiSelect.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.selectall2_16x16;
+            this.bbiSelect.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.selectall2_32x32;
+            this.bbiSelect.Name = "bbiSelect";
+            this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbiSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSelect_ItemClick);
             // 
             // bbiView
             // 
@@ -241,16 +257,6 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.bbiClose.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.LargeImage")));
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
-            // 
-            // bbiSelect
-            // 
-            this.bbiSelect.Caption = "Chọn";
-            this.bbiSelect.Id = 6;
-            this.bbiSelect.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.selectpivottable_16x16;
-            this.bbiSelect.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.selectpivottable_32x32;
-            this.bbiSelect.Name = "bbiSelect";
-            this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.bbiSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSelect_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -320,6 +326,18 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             this.pm.Manager = this.bm;
             this.pm.Name = "pm";
             // 
+            // colGhiChu
+            // 
+            this.colGhiChu.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGhiChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGhiChu.Caption = "Ghi Chú";
+            this.colGhiChu.FieldName = "GhiChu";
+            this.colGhiChu.Name = "colGhiChu";
+            this.colGhiChu.OptionsColumn.ReadOnly = true;
+            this.colGhiChu.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colGhiChu.Visible = true;
+            this.colGhiChu.VisibleIndex = 3;
+            // 
             // frmMauTemIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,5 +395,6 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
         private DevExpress.XtraBars.PopupMenu pm;
         private DevExpress.XtraBars.BarButtonItem bbiDelete_Pop;
         private DevExpress.XtraBars.BarButtonItem bbiSelect;
+        private DevExpress.XtraGrid.Columns.GridColumn colGhiChu;
     }
 }

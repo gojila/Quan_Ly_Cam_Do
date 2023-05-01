@@ -1,4 +1,5 @@
-﻿using Phan_Mem_Quan_Ly_In_Tem.XuLy;
+﻿using Phan_Mem_Quan_Ly_In_Tem.MauTemIn;
+using Phan_Mem_Quan_Ly_In_Tem.XuLy;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,7 +212,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"])),
                     dr["Tên Tiệm"].ToString(),
                     dr["Địa Chỉ"].ToString(),
-                    dr["Ni"] == DBNull.Value ? "" : dr["Ni"].ToString()
+                    dr["Số Ni"] == DBNull.Value ? "" : dr["Số Ni"].ToString(),
+                    dr["Ký Hiệu Vàng"] == DBNull.Value ? "" : dr["Ký Hiệu Vàng"].ToString()
                     );
             }
 
@@ -277,17 +279,17 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             int soLuongTem = 0;
             Int32.TryParse(gbList.GetFocusedRowCellValue(colSoLuongTem).ToString(), out soLuongTem);
 
-            string tenTiem = gbList.GetFocusedRowCellValue(colTenTiem).ToString();
-            string diaChi = gbList.GetFocusedRowCellValue(colDiaChi).ToString();
+            string tenTiemNCC = gbList.GetFocusedRowCellValue(colTenTiem).ToString();
+            string diaChiNCC = gbList.GetFocusedRowCellValue(colDiaChi).ToString();
 
-            //string tenTiem = bbiTenTiem.EditValue == null ? "" : bbiTenTiem.EditValue.ToString();
-            //string diaChi = bbiDiaChi.EditValue == null ? "" : bbiDiaChi.EditValue.ToString();            
+            string tenTiem = bbiTenTiem.EditValue == null ? "" : bbiTenTiem.EditValue.ToString();
+            string diaChi = bbiDiaChi.EditValue == null ? "" : bbiDiaChi.EditValue.ToString();            
 
             string tenCongCOM = bbiCongCOM.EditValue == null ? "" : bbiCongCOM.EditValue.ToString();
             string tenMayIn = bbiMayIn.EditValue == null ? "" : bbiMayIn.EditValue.ToString();
             string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
 
-            var _frmIntem = new frmInTem(tenTiem, diaChi, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCap, hamLuongPho, soLuongTem);
+            var _frmIntem = new frmInTem(tenTiem, diaChi, tenTiemNCC, diaChiNCC, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCap, hamLuongPho, soLuongTem);
             _frmIntem.Xem += () =>
             {
                 bbiXem_ItemClick(this, null);
@@ -322,6 +324,20 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             var _frmKetNoiCanTuDong = new frmKetNoiCanTuDong();
             _frmKetNoiCanTuDong.ShowDialog();
+        }
+
+        private void bbiMauTem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try 
+            {
+                string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
+                var _frmMauTemIn = new frmMauTemIn(duongDanFileExcel);
+                _frmMauTemIn.ShowDialog();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
