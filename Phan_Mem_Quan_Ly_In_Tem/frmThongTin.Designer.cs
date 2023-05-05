@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongTin));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -37,133 +42,95 @@
             this.txtTenTiem = new DevExpress.XtraEditors.TextEdit();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.txtCongCOM = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDong = new DevExpress.XtraEditors.SimpleButton();
+            this.img = new DevExpress.Utils.ImageCollection(this.components);
             this.txtDuongDanDuLieu = new DevExpress.XtraEditors.ButtonEdit();
             this.txtTenMayIn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.img = new DevExpress.Utils.ImageCollection();
+            this.bm = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(8, 23);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(8, 39);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(47, 13);
+            this.labelControl1.Size = new System.Drawing.Size(68, 17);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Tên Tiệm:";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(8, 59);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(8, 75);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(38, 13);
+            this.labelControl2.Size = new System.Drawing.Size(53, 17);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Địa Chỉ:";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(8, 95);
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(8, 111);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(55, 13);
+            this.labelControl3.Size = new System.Drawing.Size(79, 17);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "Cổng COM:";
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(8, 167);
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(8, 183);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(134, 13);
+            this.labelControl5.Size = new System.Drawing.Size(191, 17);
             this.labelControl5.TabIndex = 2;
             this.labelControl5.Text = "Đường Dẫn Dữ Liệu (Excel):";
             // 
             // txtTenTiem
             // 
-            this.txtTenTiem.Location = new System.Drawing.Point(148, 12);
+            this.txtTenTiem.Location = new System.Drawing.Point(205, 30);
             this.txtTenTiem.Name = "txtTenTiem";
             this.txtTenTiem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtTenTiem.Properties.Appearance.Options.UseFont = true;
-            this.txtTenTiem.Size = new System.Drawing.Size(464, 30);
+            this.txtTenTiem.Size = new System.Drawing.Size(822, 30);
             this.txtTenTiem.TabIndex = 4;
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(148, 48);
+            this.txtDiaChi.Location = new System.Drawing.Point(205, 66);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(464, 30);
+            this.txtDiaChi.Size = new System.Drawing.Size(822, 30);
             this.txtDiaChi.TabIndex = 5;
             // 
             // txtCongCOM
             // 
-            this.txtCongCOM.Location = new System.Drawing.Point(148, 84);
+            this.txtCongCOM.Location = new System.Drawing.Point(205, 102);
             this.txtCongCOM.Name = "txtCongCOM";
             this.txtCongCOM.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.txtCongCOM.Properties.Appearance.Options.UseFont = true;
             this.txtCongCOM.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtCongCOM.Size = new System.Drawing.Size(464, 30);
+            this.txtCongCOM.Size = new System.Drawing.Size(822, 30);
             this.txtCongCOM.TabIndex = 7;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.ImageIndex = 40;
-            this.btnLuu.ImageList = this.img;
-            this.btnLuu.Location = new System.Drawing.Point(244, 192);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
-            this.btnLuu.TabIndex = 8;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnDong
-            // 
-            this.btnDong.ImageIndex = 16;
-            this.btnDong.ImageList = this.img;
-            this.btnDong.Location = new System.Drawing.Point(326, 192);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(75, 23);
-            this.btnDong.TabIndex = 9;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
-            // txtDuongDanDuLieu
-            // 
-            this.txtDuongDanDuLieu.Location = new System.Drawing.Point(148, 156);
-            this.txtDuongDanDuLieu.Name = "txtDuongDanDuLieu";
-            this.txtDuongDanDuLieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.txtDuongDanDuLieu.Properties.Appearance.Options.UseFont = true;
-            this.txtDuongDanDuLieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", "Chon", null, true)});
-            this.txtDuongDanDuLieu.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDuongDanDuLieu_Properties_ButtonClick);
-            this.txtDuongDanDuLieu.Size = new System.Drawing.Size(464, 30);
-            this.txtDuongDanDuLieu.TabIndex = 10;
-            // 
-            // txtTenMayIn
-            // 
-            this.txtTenMayIn.Location = new System.Drawing.Point(148, 120);
-            this.txtTenMayIn.Name = "txtTenMayIn";
-            this.txtTenMayIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.txtTenMayIn.Properties.Appearance.Options.UseFont = true;
-            this.txtTenMayIn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTenMayIn.Size = new System.Drawing.Size(464, 30);
-            this.txtTenMayIn.TabIndex = 7;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(8, 131);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(37, 13);
-            this.labelControl4.TabIndex = 2;
-            this.labelControl4.Text = "Máy In:";
             // 
             // img
             // 
@@ -244,14 +211,123 @@
             this.img.Images.SetKeyName(72, "vector-printer-icon-14574274.jpg");
             this.img.Images.SetKeyName(73, "vspc-icon-256.png");
             // 
+            // txtDuongDanDuLieu
+            // 
+            this.txtDuongDanDuLieu.Location = new System.Drawing.Point(205, 174);
+            this.txtDuongDanDuLieu.Name = "txtDuongDanDuLieu";
+            this.txtDuongDanDuLieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.txtDuongDanDuLieu.Properties.Appearance.Options.UseFont = true;
+            this.txtDuongDanDuLieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtDuongDanDuLieu.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDuongDanDuLieu_Properties_ButtonClick);
+            this.txtDuongDanDuLieu.Size = new System.Drawing.Size(822, 30);
+            this.txtDuongDanDuLieu.TabIndex = 10;
+            // 
+            // txtTenMayIn
+            // 
+            this.txtTenMayIn.Location = new System.Drawing.Point(205, 138);
+            this.txtTenMayIn.Name = "txtTenMayIn";
+            this.txtTenMayIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.txtTenMayIn.Properties.Appearance.Options.UseFont = true;
+            this.txtTenMayIn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTenMayIn.Size = new System.Drawing.Size(822, 30);
+            this.txtTenMayIn.TabIndex = 7;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(8, 147);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(49, 16);
+            this.labelControl4.TabIndex = 2;
+            this.labelControl4.Text = "Máy In:";
+            // 
+            // bm
+            // 
+            this.bm.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar2});
+            this.bm.DockControls.Add(this.barDockControlTop);
+            this.bm.DockControls.Add(this.barDockControlBottom);
+            this.bm.DockControls.Add(this.barDockControlLeft);
+            this.bm.DockControls.Add(this.barDockControlRight);
+            this.bm.Form = this;
+            this.bm.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bbiSave,
+            this.bbiClose});
+            this.bm.MainMenu = this.bar2;
+            this.bm.MaxItemId = 2;
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiClose, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
+            // 
+            // bbiSave
+            // 
+            this.bbiSave.Caption = "Lưu";
+            this.bbiSave.Id = 0;
+            this.bbiSave.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.saveas_16x16;
+            this.bbiSave.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.saveas_32x32;
+            this.bbiSave.Name = "bbiSave";
+            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
+            // 
+            // bbiClose
+            // 
+            this.bbiClose.Caption = "Đóng";
+            this.bbiClose.Id = 1;
+            this.bbiClose.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_16x16;
+            this.bbiClose.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_32x32;
+            this.bbiClose.Name = "bbiClose";
+            this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.bm;
+            this.barDockControlTop.Size = new System.Drawing.Size(1039, 24);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 217);
+            this.barDockControlBottom.Manager = this.bm;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1039, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.bm;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 193);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1039, 24);
+            this.barDockControlRight.Manager = this.bm;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 193);
+            // 
             // frmThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 224);
+            this.ClientSize = new System.Drawing.Size(1039, 217);
             this.Controls.Add(this.txtDuongDanDuLieu);
-            this.Controls.Add(this.btnDong);
-            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.txtTenMayIn);
             this.Controls.Add(this.txtCongCOM);
             this.Controls.Add(this.txtDiaChi);
@@ -261,6 +337,10 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmThongTin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -268,9 +348,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,11 +366,17 @@
         private DevExpress.XtraEditors.TextEdit txtTenTiem;
         private DevExpress.XtraEditors.TextEdit txtDiaChi;
         private DevExpress.XtraEditors.ComboBoxEdit txtCongCOM;
-        private DevExpress.XtraEditors.SimpleButton btnLuu;
-        private DevExpress.XtraEditors.SimpleButton btnDong;
         private DevExpress.XtraEditors.ButtonEdit txtDuongDanDuLieu;
         private DevExpress.XtraEditors.ComboBoxEdit txtTenMayIn;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.Utils.ImageCollection img;
+        private DevExpress.XtraBars.BarManager bm;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarButtonItem bbiSave;
+        private DevExpress.XtraBars.BarButtonItem bbiClose;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }

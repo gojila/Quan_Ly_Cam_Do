@@ -199,18 +199,18 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             decimal phanLe_PhanLy = (decimal)((int)((giaTriCanNang - (int)giaTriCanNang) * 100)) / 100;
             decimal phanLe_TieuLy = Math.Round((giaTriCanNang - (phanChi + phanLe_PhanLy)), 4);
 
-            if (phanLe_TieuLy >= 0 && phanLe_TieuLy < 0.0030m)
-            {
-                phanLe_TieuLy = 0;
-            }
-            else if (phanLe_TieuLy >= 0.0030m && phanLe_TieuLy < 0.0080m)
-            {
-                phanLe_TieuLy = 0.005m;
-            }
-            else if (phanLe_TieuLy >= 0.0080m && phanLe_TieuLy < 0.01m)
-            {
-                phanLe_TieuLy = 0.01m;
-            }
+            //if (phanLe_TieuLy >= 0 && phanLe_TieuLy < 0.0030m)
+            //{
+            //    phanLe_TieuLy = 0;
+            //}
+            //else if (phanLe_TieuLy >= 0.0030m && phanLe_TieuLy < 0.0080m)
+            //{
+            //    phanLe_TieuLy = 0.005m;
+            //}
+            //else if (phanLe_TieuLy >= 0.0080m && phanLe_TieuLy < 0.01m)
+            //{
+            //    phanLe_TieuLy = 0.01m;
+            //}
 
             decimal canNang = phanChi + phanLe_PhanLy + phanLe_TieuLy;
             //MessageBox.Show(canNang.ToString());
@@ -238,12 +238,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             if (chi != 0)
             {
                 //return chi.ToString() + "c" + ((phan == 0 && ly == 0 && dem == 0 && tieudem == 0) ? "" : phan.ToString()) + ((ly == 0 && dem == 0 && tieudem == 0) ? "" : ly.ToString()) + ((dem == 0 && tieudem == 0) ? "" : dem.ToString()) + (tieudem == 0 ? "" : tieudem.ToString());
-                return chi.ToString() + "c" + phan.ToString() + ly.ToString() + dem.ToString() + tieudem.ToString();
+                //return chi.ToString() + "c" + phan.ToString() + ly.ToString() + dem.ToString() + tieudem.ToString();
+                return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
             }
             else if (phan != 0)
             {
                 //return phan.ToString() + "p" + ((ly == 0 && dem == 0 && tieudem == 0) ? "" : ly.ToString()) + ((dem == 0 && tieudem == 0) ? "" : dem.ToString()) + (tieudem == 0 ? "" : tieudem.ToString());
-                return phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                //return phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                return phan.ToString() + "p" + ly.ToString() + "l" + dem.ToString() + tieudem.ToString();
             }
             else if (ly != 0)
             {

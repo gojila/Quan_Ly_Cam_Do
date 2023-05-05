@@ -141,21 +141,52 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void txtDuongDanDuLieu_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Tag.ToString() == "Chon")
+            try 
             {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "(*.xls, *.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
+                if (e.Button.Tag.ToString() == "Chon")
+                {
+                    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                    openFileDialog1.Filter = "(*.xls, *.xlsx)|*.xls;*.xlsx|All files (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
 
-                openFileDialog1.Multiselect = false;
+                    openFileDialog1.Multiselect = false;
 
-                // Call the ShowDialog method to show the dialog box.
-                if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                    return;
+                    // Call the ShowDialog method to show the dialog box.
+                    if (openFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        return;
 
-                string path = openFileDialog1.FileName;
-                txtDuongDanDuLieu.Text = path;
+                    string path = openFileDialog1.FileName;
+                    txtDuongDanDuLieu.Text = path;
+                }
             }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try 
+            {
+                clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                if (_clsXuLyDuLieu.luuThongTin(txtTenTiem.Text, txtDiaChi.Text, txtCongCOM.Text, txtDuongDanDuLieu.Text, txtTenMayIn.Text))
+                {
+                    MessageBox.Show(this, "Thao tác thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RaiseNapLaiEventHander();
+                    this.Close();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

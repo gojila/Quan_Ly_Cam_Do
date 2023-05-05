@@ -144,7 +144,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(11, 95);
+            this.labelControl1.Location = new System.Drawing.Point(12, 93);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(63, 17);
             this.labelControl1.TabIndex = 0;
@@ -154,7 +154,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(11, 239);
+            this.labelControl2.Location = new System.Drawing.Point(11, 237);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(31, 17);
             this.labelControl2.TabIndex = 1;
@@ -165,7 +165,7 @@
             this.labelControl3.AllowHtmlString = true;
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(529, 97);
+            this.labelControl3.Location = new System.Drawing.Point(529, 93);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(89, 16);
             this.labelControl3.TabIndex = 2;
@@ -175,7 +175,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(11, 165);
+            this.labelControl4.Location = new System.Drawing.Point(12, 165);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(136, 17);
             this.labelControl4.TabIndex = 3;
@@ -185,7 +185,7 @@
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(11, 203);
+            this.labelControl5.Location = new System.Drawing.Point(11, 201);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(96, 17);
             this.labelControl5.TabIndex = 3;
@@ -196,7 +196,7 @@
             this.labelControl6.AllowHtmlString = true;
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(11, 275);
+            this.labelControl6.Location = new System.Drawing.Point(11, 272);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(99, 16);
             this.labelControl6.TabIndex = 3;
@@ -206,7 +206,7 @@
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl8.Appearance.Options.UseFont = true;
-            this.labelControl8.Location = new System.Drawing.Point(11, 131);
+            this.labelControl8.Location = new System.Drawing.Point(11, 129);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(159, 17);
             this.labelControl8.TabIndex = 3;
@@ -216,7 +216,7 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(527, 133);
+            this.labelControl9.Location = new System.Drawing.Point(529, 131);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(169, 17);
             this.labelControl9.TabIndex = 3;
@@ -226,7 +226,7 @@
             // 
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(527, 277);
+            this.labelControl10.Location = new System.Drawing.Point(529, 275);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(106, 17);
             this.labelControl10.TabIndex = 3;
@@ -243,7 +243,7 @@
             // 
             // txtTenHang
             // 
-            this.txtTenHang.Location = new System.Drawing.Point(713, 86);
+            this.txtTenHang.Location = new System.Drawing.Point(713, 87);
             this.txtTenHang.Name = "txtTenHang";
             this.txtTenHang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.txtTenHang.Properties.Appearance.Options.UseFont = true;
@@ -485,7 +485,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(11, 366);
+            this.labelControl7.Location = new System.Drawing.Point(11, 364);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(73, 17);
             this.labelControl7.TabIndex = 9;
@@ -535,7 +535,7 @@
             // 
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(11, 23);
+            this.labelControl11.Location = new System.Drawing.Point(12, 21);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(103, 17);
             this.labelControl11.TabIndex = 0;
@@ -545,7 +545,7 @@
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl12.Appearance.Options.UseFont = true;
-            this.labelControl12.Location = new System.Drawing.Point(11, 59);
+            this.labelControl12.Location = new System.Drawing.Point(12, 57);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(88, 17);
             this.labelControl12.TabIndex = 3;
@@ -582,7 +582,7 @@
             // 
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(527, 169);
+            this.labelControl13.Location = new System.Drawing.Point(529, 167);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(181, 17);
             this.labelControl13.TabIndex = 3;
@@ -592,7 +592,7 @@
             // 
             this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(527, 205);
+            this.labelControl14.Location = new System.Drawing.Point(529, 203);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(141, 17);
             this.labelControl14.TabIndex = 3;
@@ -602,7 +602,7 @@
             // 
             this.labelControl15.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl15.Appearance.Options.UseFont = true;
-            this.labelControl15.Location = new System.Drawing.Point(527, 241);
+            this.labelControl15.Location = new System.Drawing.Point(529, 239);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(76, 17);
             this.labelControl15.TabIndex = 1;
@@ -695,7 +695,7 @@
             // 
             this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl16.Appearance.Options.UseFont = true;
-            this.labelControl16.Location = new System.Drawing.Point(11, 311);
+            this.labelControl16.Location = new System.Drawing.Point(12, 309);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(41, 17);
             this.labelControl16.TabIndex = 3;
@@ -738,7 +738,7 @@
             // 
             this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Location = new System.Drawing.Point(11, 406);
+            this.labelControl17.Location = new System.Drawing.Point(11, 398);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(68, 17);
             this.labelControl17.TabIndex = 9;
@@ -746,7 +746,7 @@
             // 
             // txtKyHieuVang
             // 
-            this.txtKyHieuVang.Location = new System.Drawing.Point(713, 302);
+            this.txtKyHieuVang.Location = new System.Drawing.Point(713, 300);
             this.txtKyHieuVang.Name = "txtKyHieuVang";
             this.txtKyHieuVang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.txtKyHieuVang.Properties.Appearance.Options.UseFont = true;
@@ -757,11 +757,11 @@
             // 
             this.labelControl18.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl18.Appearance.Options.UseFont = true;
-            this.labelControl18.Location = new System.Drawing.Point(527, 313);
+            this.labelControl18.Location = new System.Drawing.Point(529, 309);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(98, 17);
+            this.labelControl18.Size = new System.Drawing.Size(135, 17);
             this.labelControl18.TabIndex = 3;
-            this.labelControl18.Text = "Ký Hiệu Vàng:";
+            this.labelControl18.Text = "Ký Hiệu Vàng (KH):";
             // 
             // frmInTem
             // 
@@ -812,7 +812,7 @@
             this.Controls.Add(this.txtNhaCungCapCode);
             this.Controls.Add(this.txtTenTiemNCC);
             this.Controls.Add(this.txtDiaChiNCC);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmInTem.IconOptions.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmInTem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

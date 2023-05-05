@@ -9,10 +9,11 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
 using Phan_Mem_Quan_Ly_In_Tem.XuLy;
+using DevExpress.XtraEditors;
 
 namespace Phan_Mem_Quan_Ly_In_Tem
 {
-    public partial class frmDanhSachNhaCungCap : Form
+    public partial class frmDanhSachNhaCungCap : XtraForm
     {
         private string duongDanFileExcel = "";
 

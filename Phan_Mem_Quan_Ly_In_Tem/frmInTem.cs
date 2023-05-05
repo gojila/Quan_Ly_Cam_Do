@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.UserDesigner;
 using Phan_Mem_Quan_Ly_In_Tem.MauTemIn;
 using Phan_Mem_Quan_Ly_In_Tem.XuLy;
@@ -16,7 +17,7 @@ using System.Windows.Threading;
 
 namespace Phan_Mem_Quan_Ly_In_Tem
 {
-    public partial class frmInTem : Form
+    public partial class frmInTem : XtraForm
     {
 
         public delegate void ChoInEventHander(object sender, string mavach, string tenhang, decimal tongtrongluong, decimal trongluong, decimal hot, string nhacungcap, string hamluongpho, decimal tiencong, int soluongtem);
@@ -74,9 +75,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     Com.Open();
                     Com.DataReceived += Com_DataReceived;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -108,9 +109,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     Com.Open();
                     Com.DataReceived += Com_DataReceived;
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -213,26 +214,46 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         private void Com_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string canNang = "";
-            if (!Com.IsOpen)
-                return;
-
-            if (Com.IsOpen)
+            try 
             {
-                canNang = Com.ReadLine();
-                //canNang = Com.ReadExisting();
-                //txtCanNang.Text = canNang;
-                //txtTongTrongLuong.Value = chuyenCanNang(canNang);
-                DisplayText(canNang);
+                if (!Com.IsOpen)
+                    return;
+
+                if (Com != null && Com.IsOpen)
+                {
+                    canNang = Com.ReadLine();
+                    //canNang = Com.ReadExisting();
+                    //txtCanNang.Text = canNang;
+                    //txtTongTrongLuong.Value = chuyenCanNang(canNang);
+                    DisplayText(canNang);
+                }
             }
+            catch (System.IO.IOException error)
+            {
+                return;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnDong_Click(object sender, EventArgs e)
         {
-            if(Com.IsOpen)
+            try 
             {
-                Com.Close();
+                if (Com != null && Com.IsOpen)
+                {
+                    Com.Close();
+                    Com.Dispose();
+                }
+                this.Close();
             }
-            this.Close();
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void frmKetNoiCan_FormClosing(object sender, FormClosingEventArgs e)
@@ -297,7 +318,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (cbXoaTrongLuong.Checked)
@@ -354,7 +375,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -405,9 +426,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
             string[] mangChuSo = (new string(laySo)).Split('.');
 
-            phanNguyen = Convert.ToDecimal(mangChuSo[0]);
-            phanThapPhan = Convert.ToDecimal(mangChuSo[1]) / Convert.ToDecimal(Math.Pow(10, mangChuSo[1].ToString().Length));
-
+            if (mangChuSo.Length > 0) 
+            {
+                phanNguyen = Convert.ToDecimal(mangChuSo[0]);
+            }
+            if (mangChuSo.Length > 1) 
+            {
+                phanThapPhan = Convert.ToDecimal(mangChuSo[1]) / Convert.ToDecimal(Math.Pow(10, mangChuSo[1].ToString().Length));
+            }
             decimal giaTri = 0;
             giaTri = phanNguyen + phanThapPhan;
 
@@ -494,33 +520,61 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void txtHot_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Tag.ToString() == "Xoa")
+            try 
             {
-                txtHot.Value = 0;
+                if (e.Button.Tag.ToString() == "Xoa")
+                {
+                    txtHot.Value = 0;
+                }
+            }
+            catch (Exception ex) 
+            {
+                return;
             }
         }
 
         private void txtTienCong_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Tag.ToString() == "Xoa")
+            try 
             {
-                txtTienCong.Value = 0;
+                if (e.Button.Tag.ToString() == "Xoa")
+                {
+                    txtTienCong.Value = 0;
+                }
+            }
+            catch (Exception ex) 
+            {
+                return;
             }
         }
 
         private void txtTrongLuong_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Tag.ToString() == "Xoa")
+            try 
             {
-                txtTrongLuong.Value = 0;
+                if (e.Button.Tag.ToString() == "Xoa")
+                {
+                    txtTrongLuong.Value = 0;
+                }
+            }
+            catch (Exception ex) 
+            {
+                return;
             }
         }
 
         private void txtTongTrongLuong_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Tag.ToString() == "Xoa")
+            try
             {
-                txtTongTrongLuong.Value = 0;
+                if (e.Button.Tag.ToString() == "Xoa")
+                {
+                    txtTongTrongLuong.Value = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
             }
         }
 

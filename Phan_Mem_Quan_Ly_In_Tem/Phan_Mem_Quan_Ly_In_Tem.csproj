@@ -306,6 +306,10 @@
     <None Include="Resources\selectall2_32x32.png" />
     <None Include="Resources\emailtemplate_16x16.png" />
     <None Include="Resources\emailtemplate_32x32.png" />
+    <None Include="Resources\close_16x16.png" />
+    <None Include="Resources\close_32x32.png" />
+    <None Include="Resources\saveas_16x16.png" />
+    <None Include="Resources\saveas_32x32.png" />
     <Content Include="Resources\selectpivottable_16x16.png" />
     <Content Include="Resources\selectpivottable_32x32.png" />
   </ItemGroup>
