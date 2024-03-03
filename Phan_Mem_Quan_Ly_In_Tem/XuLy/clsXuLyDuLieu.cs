@@ -191,7 +191,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             
         }
 
-        public string chuyenGiaTriSangNoiDung(decimal giaTriCanNang)
+        public string chuyenGiaTriSangNoiDung(decimal giaTriCanNang, string dinhDang)
         {
             //decimal canNang = Math.Round(giaTriCanNang, 3);
 
@@ -239,13 +239,64 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             {
                 //return chi.ToString() + "c" + ((phan == 0 && ly == 0 && dem == 0 && tieudem == 0) ? "" : phan.ToString()) + ((ly == 0 && dem == 0 && tieudem == 0) ? "" : ly.ToString()) + ((dem == 0 && tieudem == 0) ? "" : dem.ToString()) + (tieudem == 0 ? "" : tieudem.ToString());
                 //return chi.ToString() + "c" + phan.ToString() + ly.ToString() + dem.ToString() + tieudem.ToString();
-                return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                if (phan == 0 && ly == 0 && dem == 0 && tieudem == 0)
+                {
+                    return chi.ToString() + "c";
+                }
+                //else if (ly == 0 && dem == 0 && tieudem == 0)
+                //{
+                //    return chi.ToString() + "c" + phan.ToString() + "p";
+                //}
+                //else if (dem == 0 && tieudem == 0)
+                //{
+                //    return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString();
+                //}
+                //else if (tieudem == 0)
+                //{
+                //    return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString() + dem.ToString();
+                //}
+                else 
+                {
+                    if (string.IsNullOrEmpty(dinhDang))
+                    {
+                        return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                    }
+                    else 
+                    {
+                        string result = dinhDang;
+                        result = result.Replace("[c]", chi.ToString()).Replace("[p]", phan.ToString()).Replace("[l]", ly.ToString()).Replace("[d]", dem.ToString()).Replace("[td]", tieudem.ToString());
+                        return result;
+                    }
+                    //Chi 2
+                    //[c]c[p]p[l][d][td]
+                    //return chi.ToString() + "c" + phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                    //end Chi 2
+                    //10
+                    //[c]c[p][l][d].[td]
+                    //return chi.ToString() + "c" + phan.ToString() + ly.ToString() + dem.ToString() + "." + tieudem.ToString();
+                    //end 10
+                }
             }
             else if (phan != 0)
             {
                 //return phan.ToString() + "p" + ((ly == 0 && dem == 0 && tieudem == 0) ? "" : ly.ToString()) + ((dem == 0 && tieudem == 0) ? "" : dem.ToString()) + (tieudem == 0 ? "" : tieudem.ToString());
                 //return phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
-                return phan.ToString() + "p" + ly.ToString() + "l" + dem.ToString() + tieudem.ToString();
+                if (ly == 0 && dem == 0 && tieudem == 0)
+                {
+                    return phan.ToString() + "p";
+                }
+                //else if (dem == 0 && tieudem == 0)
+                //{
+                //    return phan.ToString() + "p" + ly.ToString();
+                //}
+                //else if (tieudem == 0)
+                //{
+                //    return phan.ToString() + "p" + ly.ToString() + dem.ToString();
+                //}
+                else 
+                {
+                    return phan.ToString() + "p" + ly.ToString() + dem.ToString() + tieudem.ToString();
+                }
             }
             else if (ly != 0)
             {
@@ -271,29 +322,70 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             }
             else if (dem != 0)
             {
-                return "0ly" + dem.ToString();
+                return "0ly" + dem.ToString() + tieudem.ToString();
             }
             else
             {
-                return "0,0000";
+                return "0,000";
             }
 
 
             //return ((luong * 10) + chi).ToString() + "C" + phan + "P" + ly + "L" + tieuly;
         }
 
-        public bool luuThongTin(string tenTiem, string diaChi, string tenCongCOM, string duongDanDuLieu, string tenMayIn)
+        public bool luuThongTin(string tenTiem, string diaChi, string tenCongCOM, string duongDanDuLieu, string tenMayIn, string dinhDang)
         {
             try
             {
                 var ds = new DataSet();
-                var dt = new DataTable("ThongTinTiem");
+                var dt = docThongTin();
 
+                /*
+                var dt = new DataTable("ThongTinTiem");
                 dt.Columns.Add("TenTiem");
                 dt.Columns.Add("DiaChi");
                 dt.Columns.Add("CongCOM");
                 dt.Columns.Add("FileExcel");
                 dt.Columns.Add("MayIn");
+                dt.Columns.Add("DinhDang");
+                */
+
+                string _tenTiem = dt.Rows[0]["TenTiem"] == DBNull.Value ? "" : dt.Rows[0]["TenTiem"].ToString();
+                string _diaChi = dt.Rows[0]["DiaChi"] == DBNull.Value ? "" : dt.Rows[0]["DiaChi"].ToString();
+                string _tenCongCOM = dt.Rows[0]["CongCOM"] == DBNull.Value ? "" : dt.Rows[0]["CongCOM"].ToString();
+                string _tenMayIn = dt.Rows[0]["MayIn"] == DBNull.Value ? "" : dt.Rows[0]["MayIn"].ToString();
+                string _duongDanDuLieu = dt.Rows[0]["FileExcel"] == DBNull.Value ? "" : dt.Rows[0]["FileExcel"].ToString();
+                string _dinhDang = dt.Rows[0]["DinhDang"] == DBNull.Value ? "" : dt.Rows[0]["DinhDang"].ToString();
+
+                if (string.IsNullOrEmpty(tenTiem)) 
+                {
+                    tenTiem = _tenTiem;
+                }
+
+                if (string.IsNullOrEmpty(diaChi))
+                {
+                    diaChi = _diaChi;
+                }
+
+                if (string.IsNullOrEmpty(tenCongCOM))
+                {
+                    tenCongCOM = _tenCongCOM;
+                }
+
+                if (string.IsNullOrEmpty(duongDanDuLieu))
+                {
+                    duongDanDuLieu = _duongDanDuLieu;
+                }
+
+                if (string.IsNullOrEmpty(tenMayIn))
+                {
+                    tenMayIn = _tenMayIn;
+                }
+
+                if (string.IsNullOrEmpty(dinhDang))
+                {
+                    dinhDang = _dinhDang;
+                }
 
                 dt.Rows.Clear();
                 dt.Rows.Add(
@@ -303,7 +395,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                         diaChi,
                         tenCongCOM,
                         duongDanDuLieu,
-                        tenMayIn
+                        tenMayIn,
+                        dinhDang
                     }
                     );
 
@@ -634,6 +727,33 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             {
                 MessageBox.Show(ex.Message);
                 return "";
+            }
+        }
+
+        public DataTable docThongTin()
+        {
+            try 
+            {
+                var dt = new DataTable("ThongTinTiem");
+
+                dt.Columns.Add("TenTiem");
+                dt.Columns.Add("DiaChi");
+                dt.Columns.Add("CongCOM");
+                dt.Columns.Add("FileExcel");
+                dt.Columns.Add("MayIn");
+                dt.Columns.Add("DinhDang");
+
+                var fi = new FileInfo(Application.StartupPath + "\\ThongTinTiem.xml");
+                if (fi.Exists)
+                {
+                    dt.ReadXml(Application.StartupPath + "\\ThongTinTiem.xml");
+                }
+                return dt;
+            }
+            catch (Exception ex) 
+            {
+                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }

@@ -40,6 +40,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             dt.Columns.Add("CongCOM");
             dt.Columns.Add("FileExcel");
             dt.Columns.Add("MayIn");
+            dt.Columns.Add("DinhDang");
 
             var fi = new FileInfo(Application.StartupPath + "\\ThongTinTiem.xml");
             if (!fi.Exists) 
@@ -62,6 +63,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                         txtCongCOM.Text = dt.Rows[0]["CongCOM"] == DBNull.Value ? "" : dt.Rows[0]["CongCOM"].ToString();
                         txtTenMayIn.Text = dt.Rows[0]["MayIn"] == DBNull.Value ? "" : dt.Rows[0]["MayIn"].ToString();
                         txtDuongDanDuLieu.Text = dt.Rows[0]["FileExcel"] == DBNull.Value ? "" : dt.Rows[0]["FileExcel"].ToString();
+                        txtDinhDang.Text = dt.Rows[0]["DinhDang"] == DBNull.Value ? "" : dt.Rows[0]["DinhDang"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -91,48 +93,48 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    var ds = new DataSet();
-            //    var dt = new DataTable("ThongTinTiem");
+        //private void btnLuu_Click(object sender, EventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    var ds = new DataSet();
+        //    //    var dt = new DataTable("ThongTinTiem");
 
-            //    dt.Columns.Add("TenTiem");
-            //    dt.Columns.Add("DiaChi");
-            //    dt.Columns.Add("CongCOM");
-            //    dt.Columns.Add("FileExcel");
+        //    //    dt.Columns.Add("TenTiem");
+        //    //    dt.Columns.Add("DiaChi");
+        //    //    dt.Columns.Add("CongCOM");
+        //    //    dt.Columns.Add("FileExcel");
 
-            //    dt.Rows.Clear();
-            //    dt.Rows.Add(
-            //        new object[] 
-            //        { 
-            //            txtTenTiem.Text,
-            //            txtDiaChi.Text,
-            //            txtCongCOM.Text,
-            //            txtDuongDanDuLieu.Text
-            //        }
-            //        );
+        //    //    dt.Rows.Clear();
+        //    //    dt.Rows.Add(
+        //    //        new object[] 
+        //    //        { 
+        //    //            txtTenTiem.Text,
+        //    //            txtDiaChi.Text,
+        //    //            txtCongCOM.Text,
+        //    //            txtDuongDanDuLieu.Text
+        //    //        }
+        //    //        );
 
-            //    ds.Tables.Add(dt);
-            //    ds.WriteXml("ThongTinTiem.xml");
+        //    //    ds.Tables.Add(dt);
+        //    //    ds.WriteXml("ThongTinTiem.xml");
 
-            //    RaiseNapLaiEventHander();
-            //    this.Close();
+        //    //    RaiseNapLaiEventHander();
+        //    //    this.Close();
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    //}
 
-            clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
-            if(_clsXuLyDuLieu.luuThongTin(txtTenTiem.Text, txtDiaChi.Text, txtCongCOM.Text, txtDuongDanDuLieu.Text, txtTenMayIn.Text))
-            {
-                RaiseNapLaiEventHander();
-                this.Close();
-            }
-        }
+        //    clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+        //    if(_clsXuLyDuLieu.luuThongTin(txtTenTiem.Text, txtDiaChi.Text, txtCongCOM.Text, txtDuongDanDuLieu.Text, txtTenMayIn.Text, txtDinhDang.Text))
+        //    {
+        //        RaiseNapLaiEventHander();
+        //        this.Close();
+        //    }
+        //}
 
         private void btnDong_Click(object sender, EventArgs e)
         {
@@ -170,7 +172,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             try 
             {
                 clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
-                if (_clsXuLyDuLieu.luuThongTin(txtTenTiem.Text, txtDiaChi.Text, txtCongCOM.Text, txtDuongDanDuLieu.Text, txtTenMayIn.Text))
+                if (_clsXuLyDuLieu.luuThongTin(txtTenTiem.Text, txtDiaChi.Text, txtCongCOM.Text, txtDuongDanDuLieu.Text, txtTenMayIn.Text, txtDinhDang.Text))
                 {
                     MessageBox.Show(this, "Thao tác thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RaiseNapLaiEventHander();

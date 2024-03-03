@@ -46,6 +46,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         string tenMayIn = "";
         string tenTiem = "";
         string diaChiTiem = "";
+        string dinhDang = "";
         clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
 
         public frmInTem()
@@ -54,16 +55,19 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             TaoMoi();
         }
 
-        public frmInTem(string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _duongDanFileExcel, string _tenMayIn)
+        public frmInTem(string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _duongDanFileExcel, string _tenMayIn, string _dinhDang)
         {
             InitializeComponent();
             duongDanFileExcel = _duongDanFileExcel;
 
             txtTenTiemNCC.Text = _tenTiemNCC;
             txtDiaChiNCC.Text = _diaChiNCC;
+            txtDinhDang.Text = _dinhDang;
+
             tenMayIn = _tenMayIn;
             tenTiem = _tenTiemNCC;
             diaChiTiem = _diaChiNCC;
+            dinhDang = _dinhDang;
 
             TaoMoi();
 
@@ -90,7 +94,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             
         //}
 
-        public frmInTem(string _tenTiem, string _diaChi, string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _tenMayIn, string _duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string nhaCungCap, string hamLuongPho, int soLuongTem)
+        public frmInTem(string _tenTiem, string _diaChi, string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _tenMayIn, string _duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string nhaCungCap, string hamLuongPho, int soLuongTem, string dinhDang)
         {
             InitializeComponent();
             duongDanFileExcel = _duongDanFileExcel;
@@ -124,6 +128,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             txtNhaCungCapCode.Text = nhaCungCap;
             txtHamLuongPho.Text = hamLuongPho;
             txtSoLuongTem.Value = soLuongTem;
+            txtDinhDang.Text = dinhDang;
         }
 
         private void TaoMoi()
@@ -461,9 +466,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void docCanNangRaChu()
         {
-            txtTongTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTongTrongLuong.Value);
-            txtTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTrongLuong.Value);
-            txtHotChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtHot.Value);
+            txtTongTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTongTrongLuong.Value, txtDinhDang.Text);
+            txtTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTrongLuong.Value, txtDinhDang.Text);
+            txtHotChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtHot.Value, txtDinhDang.Text);
         }
 
         private bool kiemTraTruocKhiIn()
@@ -515,7 +520,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void txtTrongLuong_EditValueChanged(object sender, EventArgs e)
         {
-            txtTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTrongLuong.Value);
+            txtTrongLuongChu.Text = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(txtTrongLuong.Value, txtDinhDang.Text);
         }
 
         private void txtHot_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -657,6 +662,18 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
                 txtMauTem.Text = _clsXuLyDuLieu.getMauTemInMacDinh(duongDanFileExcel);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtDinhDang_EditValueChanged(object sender, EventArgs e)
+        {
+            try 
+            {
+                docCanNangRaChu();
             }
             catch (Exception ex) 
             {

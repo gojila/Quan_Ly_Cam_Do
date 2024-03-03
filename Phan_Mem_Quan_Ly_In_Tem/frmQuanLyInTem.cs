@@ -81,6 +81,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             dt.Columns.Add("CongCOM");
             dt.Columns.Add("FileExcel");
             dt.Columns.Add("MayIn");
+            dt.Columns.Add("DinhDang");
 
             var fi = new FileInfo(Application.StartupPath + "\\ThongTinTiem.xml");
             if (!fi.Exists)
@@ -99,6 +100,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     string congCOM = dt.Rows[0]["CongCOM"] == DBNull.Value ? "" : dt.Rows[0]["CongCOM"].ToString();
                     string duongDanFileExcel = dt.Rows[0]["FileExcel"] == DBNull.Value ? "" : dt.Rows[0]["FileExcel"].ToString();
                     string mayIn = dt.Rows[0]["MayIn"] == DBNull.Value ? "" : dt.Rows[0]["MayIn"].ToString();
+                    string dinhDang = dt.Columns.Contains("DinhDang") ? (dt.Rows[0]["DinhDang"] == DBNull.Value ? "" : dt.Rows[0]["DinhDang"].ToString()) : "";
 
                     bbiTenTiem.EditValue = tenTiem;
                     bbiDiaChi.EditValue = diaChi;
@@ -125,6 +127,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                             napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
                         }
                     }
+
+                    bbiDinhDang.EditValue = dinhDang;
                 }
             }
             catch (Exception ex)
@@ -175,8 +179,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             string tenCongCOM = bbiCongCOM.EditValue == null ? "" : bbiCongCOM.EditValue.ToString();
             string tenMayIn = bbiMayIn.EditValue == null ? "" : bbiMayIn.EditValue.ToString();
             string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
+            string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
 
-            var _frmIntem = new frmInTem(tenTiem, diaChi, tenCongCOM, duongDanFileExcel, tenMayIn);
+            var _frmIntem = new frmInTem(tenTiem, diaChi, tenCongCOM, duongDanFileExcel, tenMayIn, dinhDang);
             _frmIntem.Xem += () => 
             {
                 bbiXem_ItemClick(this, null);
@@ -192,6 +197,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMaVachExcel)
         {
+            string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
+
             dsDanhSachHangHoa.InMaVach.Rows.Clear();
             foreach (DataRow dr in dtMaVachExcel.Rows)
             {
@@ -207,9 +214,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     dr["Nhà Cung Cấp"].ToString(),
                     dr["Hàm Lượng Phổ"].ToString(),
                     Convert.ToInt32(dr["Số Lượng Tem"] == DBNull.Value ? 0 : dr["Số Lượng Tem"]),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"])),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"])),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"])),
+                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]), dinhDang),
+                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]), dinhDang),
+                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]), dinhDang),
                     dr["Tên Tiệm"].ToString(),
                     dr["Địa Chỉ"].ToString(),
                     dr["Số Ni"] == DBNull.Value ? "" : dr["Số Ni"].ToString(),
@@ -289,7 +296,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             string tenMayIn = bbiMayIn.EditValue == null ? "" : bbiMayIn.EditValue.ToString();
             string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
 
-            var _frmIntem = new frmInTem(tenTiem, diaChi, tenTiemNCC, diaChiNCC, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCap, hamLuongPho, soLuongTem);
+            string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
+
+            var _frmIntem = new frmInTem(tenTiem, diaChi, tenTiemNCC, diaChiNCC, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCap, hamLuongPho, soLuongTem, dinhDang);
             _frmIntem.Xem += () =>
             {
                 bbiXem_ItemClick(this, null);
@@ -314,9 +323,10 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             string congCOM = bbiCongCOM.EditValue == null ? "" : bbiCongCOM.EditValue.ToString();
             string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
             string mayIn = bbiMayIn.EditValue == null ? "" : bbiMayIn.EditValue.ToString();
+            string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
 
             clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
-            _clsXuLyDuLieu.luuThongTin(tenTiem, diaChi, congCOM, duongDanFileExcel, mayIn);
+            _clsXuLyDuLieu.luuThongTin(tenTiem, diaChi, congCOM, duongDanFileExcel, mayIn, dinhDang);
             
         }
 

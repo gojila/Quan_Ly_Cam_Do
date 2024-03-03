@@ -29,11 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions9 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject33 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject34 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject35 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject36 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInTem));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -44,7 +55,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInTem));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -60,16 +70,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -116,6 +116,9 @@
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.txtKyHieuVang = new DevExpress.XtraEditors.TextEdit();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDinhDang = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVach.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHamLuongPho.Properties)).BeginInit();
@@ -138,6 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoNi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMauTem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKyHieuVang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -292,7 +296,7 @@
             this.txtTrongLuong.Properties.Appearance.Options.UseFont = true;
             this.txtTrongLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtTrongLuong.Properties.DisplayFormat.FormatString = "{0:##,##0.0000} Chỉ";
             this.txtTrongLuong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTrongLuong.Properties.EditFormat.FormatString = "{0:##,##0.0000}";
@@ -316,7 +320,7 @@
             this.txtTongTrongLuong.Properties.Appearance.Options.UseFont = true;
             this.txtTongTrongLuong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtTongTrongLuong.Properties.DisplayFormat.FormatString = "{0:##,##0.0000} Chỉ";
             this.txtTongTrongLuong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTongTrongLuong.Properties.EditFormat.FormatString = "{0:##,##0.0000}";
@@ -339,7 +343,7 @@
             this.txtTienCong.Properties.Appearance.Options.UseFont = true;
             this.txtTienCong.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtTienCong.Properties.DisplayFormat.FormatString = "{0:##,##0.###} VNĐ";
             this.txtTienCong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtTienCong.Properties.EditFormat.FormatString = "{0:##,##0.###}";
@@ -354,7 +358,7 @@
             this.btnIn.Appearance.Options.UseFont = true;
             this.btnIn.ImageOptions.ImageIndex = 62;
             this.btnIn.ImageOptions.ImageList = this.img;
-            this.btnIn.Location = new System.Drawing.Point(440, 550);
+            this.btnIn.Location = new System.Drawing.Point(440, 607);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(100, 25);
             this.btnIn.TabIndex = 18;
@@ -446,7 +450,7 @@
             this.btnTuyChinh.Appearance.Options.UseFont = true;
             this.btnTuyChinh.ImageOptions.ImageIndex = 4;
             this.btnTuyChinh.ImageOptions.ImageList = this.img;
-            this.btnTuyChinh.Location = new System.Drawing.Point(546, 550);
+            this.btnTuyChinh.Location = new System.Drawing.Point(546, 607);
             this.btnTuyChinh.Name = "btnTuyChinh";
             this.btnTuyChinh.Size = new System.Drawing.Size(100, 25);
             this.btnTuyChinh.TabIndex = 19;
@@ -459,7 +463,7 @@
             this.btnDong.Appearance.Options.UseFont = true;
             this.btnDong.ImageOptions.ImageIndex = 14;
             this.btnDong.ImageOptions.ImageList = this.img;
-            this.btnDong.Location = new System.Drawing.Point(652, 550);
+            this.btnDong.Location = new System.Drawing.Point(652, 607);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(100, 25);
             this.btnDong.TabIndex = 20;
@@ -469,7 +473,7 @@
             // txtCanNang
             // 
             this.txtCanNang.EditValue = "0";
-            this.txtCanNang.Location = new System.Drawing.Point(178, 337);
+            this.txtCanNang.Location = new System.Drawing.Point(178, 394);
             this.txtCanNang.Name = "txtCanNang";
             this.txtCanNang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 28F, System.Drawing.FontStyle.Bold);
             this.txtCanNang.Properties.Appearance.Options.UseFont = true;
@@ -485,7 +489,7 @@
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(11, 364);
+            this.labelControl7.Location = new System.Drawing.Point(11, 421);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(73, 17);
             this.labelControl7.TabIndex = 9;
@@ -508,7 +512,7 @@
             this.txtHot.Properties.Appearance.Options.UseFont = true;
             this.txtHot.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "Xoa", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtHot.Properties.DisplayFormat.FormatString = "{0:##,##0.0000} Chỉ";
             this.txtHot.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtHot.Properties.EditFormat.FormatString = "{0:##,##0.0000}";
@@ -524,7 +528,7 @@
             this.btnTaoMoi.Appearance.Options.UseFont = true;
             this.btnTaoMoi.ImageOptions.ImageIndex = 30;
             this.btnTaoMoi.ImageOptions.ImageList = this.img;
-            this.btnTaoMoi.Location = new System.Drawing.Point(178, 550);
+            this.btnTaoMoi.Location = new System.Drawing.Point(178, 607);
             this.btnTaoMoi.Name = "btnTaoMoi";
             this.btnTaoMoi.Size = new System.Drawing.Size(100, 25);
             this.btnTaoMoi.TabIndex = 17;
@@ -611,7 +615,7 @@
             // cbLuuSauKhiIn
             // 
             this.cbLuuSauKhiIn.EditValue = true;
-            this.cbLuuSauKhiIn.Location = new System.Drawing.Point(178, 523);
+            this.cbLuuSauKhiIn.Location = new System.Drawing.Point(178, 580);
             this.cbLuuSauKhiIn.Name = "cbLuuSauKhiIn";
             this.cbLuuSauKhiIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.cbLuuSauKhiIn.Properties.Appearance.Options.UseFont = true;
@@ -621,7 +625,7 @@
             // 
             // rdTuyChonIn
             // 
-            this.rdTuyChonIn.Location = new System.Drawing.Point(178, 423);
+            this.rdTuyChonIn.Location = new System.Drawing.Point(178, 480);
             this.rdTuyChonIn.Name = "rdTuyChonIn";
             this.rdTuyChonIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.rdTuyChonIn.Properties.Appearance.Options.UseFont = true;
@@ -629,12 +633,12 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "In tem"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Xem trước khi in"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Tùy chỉnh trước khi in")});
-            this.rdTuyChonIn.Size = new System.Drawing.Size(873, 94);
+            this.rdTuyChonIn.Size = new System.Drawing.Size(873, 89);
             this.rdTuyChonIn.TabIndex = 15;
             // 
             // cbXoaTrongLuong
             // 
-            this.cbXoaTrongLuong.Location = new System.Drawing.Point(397, 523);
+            this.cbXoaTrongLuong.Location = new System.Drawing.Point(397, 580);
             this.cbXoaTrongLuong.Name = "cbXoaTrongLuong";
             this.cbXoaTrongLuong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.cbXoaTrongLuong.Properties.Appearance.Options.UseFont = true;
@@ -648,7 +652,7 @@
             this.btnXoaTrongLuong.Appearance.Options.UseFont = true;
             this.btnXoaTrongLuong.ImageOptions.ImageIndex = 48;
             this.btnXoaTrongLuong.ImageOptions.ImageList = this.img;
-            this.btnXoaTrongLuong.Location = new System.Drawing.Point(284, 550);
+            this.btnXoaTrongLuong.Location = new System.Drawing.Point(284, 607);
             this.btnXoaTrongLuong.Name = "btnXoaTrongLuong";
             this.btnXoaTrongLuong.Size = new System.Drawing.Size(150, 25);
             this.btnXoaTrongLuong.TabIndex = 22;
@@ -662,7 +666,7 @@
             this.txtNhaCungCapCode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.txtNhaCungCapCode.Properties.Appearance.Options.UseFont = true;
             this.txtNhaCungCapCode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtNhaCungCapCode.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtNhaCungCap_Properties_ButtonClick);
             this.txtNhaCungCapCode.Size = new System.Drawing.Size(343, 30);
             this.txtNhaCungCapCode.TabIndex = 4;
@@ -674,7 +678,7 @@
             this.txtTenTiemNCC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.txtTenTiemNCC.Properties.Appearance.Options.UseFont = true;
             this.txtTenTiemNCC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtTenTiemNCC.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtTenTiem_Properties_ButtonClick);
             this.txtTenTiemNCC.Size = new System.Drawing.Size(873, 30);
             this.txtTenTiemNCC.TabIndex = 0;
@@ -686,7 +690,7 @@
             this.txtDiaChiNCC.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.txtDiaChiNCC.Properties.Appearance.Options.UseFont = true;
             this.txtDiaChiNCC.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtDiaChiNCC.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDiaChi_Properties_ButtonClick);
             this.txtDiaChiNCC.Size = new System.Drawing.Size(873, 30);
             this.txtDiaChiNCC.TabIndex = 1;
@@ -723,12 +727,12 @@
             // 
             // txtMauTem
             // 
-            this.txtMauTem.Location = new System.Drawing.Point(178, 395);
+            this.txtMauTem.Location = new System.Drawing.Point(178, 452);
             this.txtMauTem.Name = "txtMauTem";
             this.txtMauTem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.txtMauTem.Properties.Appearance.Options.UseFont = true;
             this.txtMauTem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Chọn", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.txtMauTem.Properties.ReadOnly = true;
             this.txtMauTem.Size = new System.Drawing.Size(873, 22);
             this.txtMauTem.TabIndex = 23;
@@ -738,7 +742,7 @@
             // 
             this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl17.Appearance.Options.UseFont = true;
-            this.labelControl17.Location = new System.Drawing.Point(11, 398);
+            this.labelControl17.Location = new System.Drawing.Point(11, 455);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(68, 17);
             this.labelControl17.TabIndex = 9;
@@ -763,11 +767,46 @@
             this.labelControl18.TabIndex = 3;
             this.labelControl18.Text = "Ký Hiệu Vàng (KH):";
             // 
+            // txtDinhDang
+            // 
+            this.txtDinhDang.Location = new System.Drawing.Point(178, 336);
+            this.txtDinhDang.Name = "txtDinhDang";
+            this.txtDinhDang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.txtDinhDang.Properties.Appearance.Options.UseFont = true;
+            this.txtDinhDang.Size = new System.Drawing.Size(343, 30);
+            this.txtDinhDang.TabIndex = 25;
+            this.txtDinhDang.EditValueChanged += new System.EventHandler(this.txtDinhDang_EditValueChanged);
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl19.Appearance.Options.UseFont = true;
+            this.labelControl19.Location = new System.Drawing.Point(12, 345);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(77, 17);
+            this.labelControl19.TabIndex = 3;
+            this.labelControl19.Text = "Định Dạng:";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.AllowHtmlString = true;
+            this.labelControl20.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl20.Appearance.Options.UseFont = true;
+            this.labelControl20.Location = new System.Drawing.Point(178, 372);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(346, 16);
+            this.labelControl20.TabIndex = 26;
+            this.labelControl20.Text = "<color=\"red\">[c]</color>: chỉ - <color=\"red\">[p]</color>: phân - <color=\"red\">[l]" +
+    "</color>: ly -<color=\"red\">[d]</color>: dem - <color=\"red\">[td]</color>: tiểu de" +
+    "m";
+            // 
             // frmInTem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 585);
+            this.ClientSize = new System.Drawing.Size(1063, 646);
+            this.Controls.Add(this.labelControl20);
+            this.Controls.Add(this.txtDinhDang);
             this.Controls.Add(this.txtKyHieuVang);
             this.Controls.Add(this.txtMauTem);
             this.Controls.Add(this.btnXoaTrongLuong);
@@ -798,6 +837,7 @@
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.labelControl12);
             this.Controls.Add(this.labelControl8);
+            this.Controls.Add(this.labelControl19);
             this.Controls.Add(this.labelControl16);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl14);
@@ -841,6 +881,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoNi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMauTem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKyHieuVang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -894,5 +935,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.TextEdit txtKyHieuVang;
         private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.TextEdit txtDinhDang;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
     }
 }

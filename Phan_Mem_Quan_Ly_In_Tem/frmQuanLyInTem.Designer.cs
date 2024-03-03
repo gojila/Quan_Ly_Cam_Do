@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyInTem));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gcList = new DevExpress.XtraGrid.GridControl();
@@ -58,6 +58,7 @@
             this.colTenTiem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoNi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKyHieuVang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bbiXem = new DevExpress.XtraBars.BarButtonItem();
@@ -86,7 +87,9 @@
             this.img = new DevExpress.Utils.ImageCollection(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colKyHieuVang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.bbiDinhDang = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
@@ -104,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -386,6 +391,18 @@
             this.colSoNi.Visible = true;
             this.colSoNi.VisibleIndex = 15;
             // 
+            // colKyHieuVang
+            // 
+            this.colKyHieuVang.AppearanceHeader.Options.UseTextOptions = true;
+            this.colKyHieuVang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colKyHieuVang.Caption = "Ký Hiệu Vàng";
+            this.colKyHieuVang.FieldName = "KyHieuVang";
+            this.colKyHieuVang.Name = "colKyHieuVang";
+            this.colKyHieuVang.OptionsColumn.ReadOnly = true;
+            this.colKyHieuVang.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
+            this.colKyHieuVang.Visible = true;
+            this.colKyHieuVang.VisibleIndex = 16;
+            // 
             // bm
             // 
             this.bm.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -410,14 +427,17 @@
             this.bbiDiaChi,
             this.bbiMayIn,
             this.bbiTuDongCan,
-            this.bbiMauTem});
-            this.bm.MaxItemId = 24;
+            this.bbiMauTem,
+            this.bbiDinhDang});
+            this.bm.MaxItemId = 26;
             this.bm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpt_cbCongCOM,
             this.rptChonFile,
             this.rpt_txtTenTiem,
             this.rpt_txtDiaChi,
-            this.rpt_cbMayIn});
+            this.rpt_cbMayIn,
+            this.repositoryItemTextEdit1,
+            this.repositoryItemTextEdit2});
             // 
             // bar1
             // 
@@ -500,7 +520,8 @@
             this.bar2.DockRow = 2;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.bbiChonFileDuLieu, "", false, true, true, 972, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.bbiChonFileDuLieu, "", false, true, true, 565, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.bbiDinhDang, "", false, true, true, 144, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.Text = "Tool2";
             // 
             // bbiChonFileDuLieu
@@ -517,7 +538,7 @@
             // 
             this.rptChonFile.AutoHeight = false;
             this.rptChonFile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rptChonFile.Name = "rptChonFile";
             this.rptChonFile.ReadOnly = true;
             // 
@@ -528,9 +549,9 @@
             this.bar3.DockRow = 1;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTenTiem),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.bbiTenTiem, "", false, true, true, 224),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDiaChi),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiMayIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.bbiMayIn, "", false, true, true, 208, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiCongCOM)});
             this.bar3.Text = "Tool3";
             // 
@@ -739,17 +760,22 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // colKyHieuVang
+            // repositoryItemTextEdit1
             // 
-            this.colKyHieuVang.AppearanceHeader.Options.UseTextOptions = true;
-            this.colKyHieuVang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colKyHieuVang.Caption = "Ký Hiệu Vàng";
-            this.colKyHieuVang.FieldName = "KyHieuVang";
-            this.colKyHieuVang.Name = "colKyHieuVang";
-            this.colKyHieuVang.OptionsColumn.ReadOnly = true;
-            this.colKyHieuVang.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
-            this.colKyHieuVang.Visible = true;
-            this.colKyHieuVang.VisibleIndex = 16;
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // bbiDinhDang
+            // 
+            this.bbiDinhDang.Caption = "Định Dạng";
+            this.bbiDinhDang.Edit = this.repositoryItemTextEdit2;
+            this.bbiDinhDang.Id = 25;
+            this.bbiDinhDang.Name = "bbiDinhDang";
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
             // frmQuanLyInTem
             // 
@@ -784,6 +810,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -843,6 +871,9 @@
         private DevExpress.XtraBars.BarButtonItem bbiMauTem;
         private DevExpress.XtraGrid.Columns.GridColumn colSoNi;
         private DevExpress.XtraGrid.Columns.GridColumn colKyHieuVang;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarEditItem bbiDinhDang;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
     }
 }
 
