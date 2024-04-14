@@ -184,11 +184,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 AutoCompleteStringCollection mangDanhSachDiaChi = new AutoCompleteStringCollection();
                 AutoCompleteStringCollection mangDanhSachTenTiem = new AutoCompleteStringCollection();
 
-                foreach (DataRow dr in dtDanhSachNhaCungCap.Rows)
+                if (dtDanhSachNhaCungCap != null && dtDanhSachNhaCungCap.Rows.Count > 0) 
                 {
-                    mangDanhSachNhaCungCap.Add(dr["Nhà Cung Cấp"].ToString());
-                    mangDanhSachDiaChi.Add(dr["Địa Chỉ"].ToString());
-                    mangDanhSachTenTiem.Add(dr["Tên Tiệm"].ToString());
+                    foreach (DataRow dr in dtDanhSachNhaCungCap.Rows)
+                    {
+                        mangDanhSachNhaCungCap.Add(dr["Nhà Cung Cấp"].ToString());
+                        mangDanhSachDiaChi.Add(dr["Địa Chỉ"].ToString());
+                        mangDanhSachTenTiem.Add(dr["Tên Tiệm"].ToString());
+                    }
                 }
 
                 var txtNhaCungCap_AutoComplete = txtNhaCungCapCode.MaskBox;

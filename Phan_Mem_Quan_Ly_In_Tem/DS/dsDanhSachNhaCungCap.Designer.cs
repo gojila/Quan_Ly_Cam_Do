@@ -285,6 +285,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             private global::System.Data.DataColumn columnDiaChi;
             
+            private global::System.Data.DataColumn columnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DanhSachNhaCungCapDataTable() {
@@ -344,6 +346,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -379,12 +389,13 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DanhSachNhaCungCapRow AddDanhSachNhaCungCapRow(string NhaCungCap, string TenTiem, string DiaChi) {
+            public DanhSachNhaCungCapRow AddDanhSachNhaCungCapRow(string NhaCungCap, string TenTiem, string DiaChi, string ID) {
                 DanhSachNhaCungCapRow rowDanhSachNhaCungCapRow = ((DanhSachNhaCungCapRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NhaCungCap,
                         TenTiem,
-                        DiaChi};
+                        DiaChi,
+                        ID};
                 rowDanhSachNhaCungCapRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDanhSachNhaCungCapRow);
                 return rowDanhSachNhaCungCapRow;
@@ -410,6 +421,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
                 this.columnNhaCungCap = base.Columns["NhaCungCap"];
                 this.columnTenTiem = base.Columns["TenTiem"];
                 this.columnDiaChi = base.Columns["DiaChi"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -421,6 +433,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
                 base.Columns.Add(this.columnTenTiem);
                 this.columnDiaChi = new global::System.Data.DataColumn("DiaChi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiaChi);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -611,6 +625,22 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableDanhSachNhaCungCap.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'DanhSachNhaCungCap\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDanhSachNhaCungCap.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNhaCungCapNull() {
                 return this.IsNull(this.tableDanhSachNhaCungCap.NhaCungCapColumn);
             }
@@ -643,6 +673,18 @@ namespace Phan_Mem_Quan_Ly_In_Tem.DS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDiaChiNull() {
                 this[this.tableDanhSachNhaCungCap.DiaChiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableDanhSachNhaCungCap.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableDanhSachNhaCungCap.IDColumn] = global::System.Convert.DBNull;
             }
         }
         

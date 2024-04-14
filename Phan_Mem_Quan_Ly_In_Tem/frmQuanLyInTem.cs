@@ -349,5 +349,20 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void bbiNhaCungCap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                string duongDanFileExcel = bbiChonFileDuLieu.EditValue == null ? "" : bbiChonFileDuLieu.EditValue.ToString();
+                var _frmDanhSachNhaCungCap = new frmDanhSachNhaCungCap(duongDanFileExcel);
+                _frmDanhSachNhaCungCap.setOpenType("edit");
+                _frmDanhSachNhaCungCap.ShowDialog();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

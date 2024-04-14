@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyInTem));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gcList = new DevExpress.XtraGrid.GridControl();
@@ -64,6 +64,7 @@
             this.bbiXem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiInTem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiThongTin = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNhaCungCap = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTuDongCan = new DevExpress.XtraBars.BarButtonItem();
             this.bbiMauTem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDong = new DevExpress.XtraBars.BarButtonItem();
@@ -71,6 +72,8 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bbiChonFileDuLieu = new DevExpress.XtraBars.BarEditItem();
             this.rptChonFile = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.bbiDinhDang = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.bbiTenTiem = new DevExpress.XtraBars.BarEditItem();
             this.rpt_txtTenTiem = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -85,11 +88,9 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.img = new DevExpress.Utils.ImageCollection(this.components);
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.bbiDinhDang = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
@@ -100,15 +101,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.rptLinkInTem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptChonFile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_txtTenTiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_txtDiaChi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbMayIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbCongCOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -179,6 +180,8 @@
             // 
             // colMaVach
             // 
+            this.colMaVach.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colMaVach.AppearanceCell.Options.UseFont = true;
             this.colMaVach.AppearanceHeader.Options.UseTextOptions = true;
             this.colMaVach.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMaVach.Caption = "Mã Vạch";
@@ -191,6 +194,8 @@
             // 
             // colTenHang
             // 
+            this.colTenHang.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTenHang.AppearanceCell.Options.UseFont = true;
             this.colTenHang.AppearanceHeader.Options.UseTextOptions = true;
             this.colTenHang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTenHang.Caption = "Tên Hàng";
@@ -203,6 +208,8 @@
             // 
             // colTongTrongLuong
             // 
+            this.colTongTrongLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTongTrongLuong.AppearanceCell.Options.UseFont = true;
             this.colTongTrongLuong.AppearanceHeader.Options.UseTextOptions = true;
             this.colTongTrongLuong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTongTrongLuong.Caption = "Tổng Trọng Lượng (chỉ)";
@@ -227,6 +234,8 @@
             // 
             // colTrongLuong
             // 
+            this.colTrongLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTrongLuong.AppearanceCell.Options.UseFont = true;
             this.colTrongLuong.AppearanceHeader.Options.UseTextOptions = true;
             this.colTrongLuong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTrongLuong.Caption = "Trọng Lượng (chỉ)";
@@ -240,6 +249,8 @@
             // 
             // colTienCong
             // 
+            this.colTienCong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTienCong.AppearanceCell.Options.UseFont = true;
             this.colTienCong.AppearanceHeader.Options.UseTextOptions = true;
             this.colTienCong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTienCong.Caption = "Tiền Công";
@@ -253,6 +264,8 @@
             // 
             // colHot
             // 
+            this.colHot.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colHot.AppearanceCell.Options.UseFont = true;
             this.colHot.AppearanceHeader.Options.UseTextOptions = true;
             this.colHot.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHot.Caption = "Hột (chỉ)";
@@ -266,6 +279,8 @@
             // 
             // colNhaCungCap
             // 
+            this.colNhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colNhaCungCap.AppearanceCell.Options.UseFont = true;
             this.colNhaCungCap.AppearanceHeader.Options.UseTextOptions = true;
             this.colNhaCungCap.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNhaCungCap.Caption = "Mã Nhà Cung Cấp";
@@ -278,6 +293,8 @@
             // 
             // colHamLuongPho
             // 
+            this.colHamLuongPho.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colHamLuongPho.AppearanceCell.Options.UseFont = true;
             this.colHamLuongPho.AppearanceHeader.Options.UseTextOptions = true;
             this.colHamLuongPho.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHamLuongPho.Caption = "Hàm Lượng Phổ";
@@ -290,6 +307,8 @@
             // 
             // colSoLuongTem
             // 
+            this.colSoLuongTem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colSoLuongTem.AppearanceCell.Options.UseFont = true;
             this.colSoLuongTem.AppearanceHeader.Options.UseTextOptions = true;
             this.colSoLuongTem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSoLuongTem.Caption = "Số Lượng Tem";
@@ -303,6 +322,8 @@
             // 
             // colTongTrongLuongChu
             // 
+            this.colTongTrongLuongChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTongTrongLuongChu.AppearanceCell.Options.UseFont = true;
             this.colTongTrongLuongChu.AppearanceHeader.Options.UseTextOptions = true;
             this.colTongTrongLuongChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTongTrongLuongChu.Caption = "Tổng Trọng Lượng (Chữ)";
@@ -315,6 +336,8 @@
             // 
             // colTrongLuongChu
             // 
+            this.colTrongLuongChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTrongLuongChu.AppearanceCell.Options.UseFont = true;
             this.colTrongLuongChu.AppearanceHeader.Options.UseTextOptions = true;
             this.colTrongLuongChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTrongLuongChu.Caption = "Trọng Lượng (Chữ)";
@@ -327,6 +350,8 @@
             // 
             // colHotChu
             // 
+            this.colHotChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colHotChu.AppearanceCell.Options.UseFont = true;
             this.colHotChu.AppearanceHeader.Options.UseTextOptions = true;
             this.colHotChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHotChu.Caption = "Hột (Chữ)";
@@ -339,6 +364,8 @@
             // 
             // colInTem
             // 
+            this.colInTem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colInTem.AppearanceCell.Options.UseFont = true;
             this.colInTem.AppearanceHeader.Options.UseTextOptions = true;
             this.colInTem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colInTem.Caption = "In Tem";
@@ -358,6 +385,8 @@
             // 
             // colTenTiem
             // 
+            this.colTenTiem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTenTiem.AppearanceCell.Options.UseFont = true;
             this.colTenTiem.AppearanceHeader.Options.UseTextOptions = true;
             this.colTenTiem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTenTiem.Caption = "Tên Tiệm NCC";
@@ -370,6 +399,8 @@
             // 
             // colDiaChi
             // 
+            this.colDiaChi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colDiaChi.AppearanceCell.Options.UseFont = true;
             this.colDiaChi.AppearanceHeader.Options.UseTextOptions = true;
             this.colDiaChi.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDiaChi.Caption = "Địa Chỉ NCC";
@@ -382,6 +413,8 @@
             // 
             // colSoNi
             // 
+            this.colSoNi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colSoNi.AppearanceCell.Options.UseFont = true;
             this.colSoNi.AppearanceHeader.Options.UseTextOptions = true;
             this.colSoNi.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSoNi.Caption = "Số Ni";
@@ -393,6 +426,8 @@
             // 
             // colKyHieuVang
             // 
+            this.colKyHieuVang.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colKyHieuVang.AppearanceCell.Options.UseFont = true;
             this.colKyHieuVang.AppearanceHeader.Options.UseTextOptions = true;
             this.colKyHieuVang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colKyHieuVang.Caption = "Ký Hiệu Vàng";
@@ -428,8 +463,9 @@
             this.bbiMayIn,
             this.bbiTuDongCan,
             this.bbiMauTem,
-            this.bbiDinhDang});
-            this.bm.MaxItemId = 26;
+            this.bbiDinhDang,
+            this.bbiNhaCungCap});
+            this.bm.MaxItemId = 27;
             this.bm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpt_cbCongCOM,
             this.rptChonFile,
@@ -449,6 +485,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiInTem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiThongTin, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiNhaCungCap, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTuDongCan, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiMauTem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiDong, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
@@ -479,6 +516,15 @@
             this.bbiThongTin.ImageOptions.ImageIndex = 1;
             this.bbiThongTin.Name = "bbiThongTin";
             this.bbiThongTin.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiThongTin_ItemClick);
+            // 
+            // bbiNhaCungCap
+            // 
+            this.bbiNhaCungCap.Caption = "Nhà Cung Cấp";
+            this.bbiNhaCungCap.Id = 26;
+            this.bbiNhaCungCap.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.printsortdesc_16x16;
+            this.bbiNhaCungCap.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.printsortdesc_32x32;
+            this.bbiNhaCungCap.Name = "bbiNhaCungCap";
+            this.bbiNhaCungCap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNhaCungCap_ItemClick);
             // 
             // bbiTuDongCan
             // 
@@ -538,9 +584,21 @@
             // 
             this.rptChonFile.AutoHeight = false;
             this.rptChonFile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rptChonFile.Name = "rptChonFile";
             this.rptChonFile.ReadOnly = true;
+            // 
+            // bbiDinhDang
+            // 
+            this.bbiDinhDang.Caption = "Định Dạng";
+            this.bbiDinhDang.Edit = this.repositoryItemTextEdit2;
+            this.bbiDinhDang.Id = 25;
+            this.bbiDinhDang.Name = "bbiDinhDang";
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
             // bar3
             // 
@@ -738,6 +796,11 @@
             this.img.Images.SetKeyName(74, "connect_creating.png");
             this.img.Images.SetKeyName(75, "connect_no.png");
             // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
@@ -759,23 +822,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(1235, 376);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
-            // bbiDinhDang
-            // 
-            this.bbiDinhDang.Caption = "Định Dạng";
-            this.bbiDinhDang.Edit = this.repositoryItemTextEdit2;
-            this.bbiDinhDang.Id = 25;
-            this.bbiDinhDang.Name = "bbiDinhDang";
-            // 
-            // repositoryItemTextEdit2
-            // 
-            this.repositoryItemTextEdit2.AutoHeight = false;
-            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
             // frmQuanLyInTem
             // 
@@ -803,15 +849,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.rptLinkInTem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptChonFile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_txtTenTiem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_txtDiaChi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbMayIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbCongCOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -874,6 +920,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarEditItem bbiDinhDang;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraBars.BarButtonItem bbiNhaCungCap;
     }
 }
 

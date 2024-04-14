@@ -78,17 +78,20 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
         private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMauTemInExcel)
         {
             dsMauTemIn.MauTemIn.Rows.Clear();
-            foreach (DataRow dr in dtMauTemInExcel.Rows)
+            if (dtMauTemInExcel != null && dtMauTemInExcel.Rows.Count > 0) 
             {
-                string ID = dr["ID"] == DBNull.Value || dr["ID"] == null ? "" : dr["ID"].ToString();
-                string TenTemIn = dr["Tên Mẫu Tem"] == DBNull.Value || dr["Tên Mẫu Tem"] == null ? "" : dr["Tên Mẫu Tem"].ToString();
-                string DuongDan = dr["Đường Dẫn"] == DBNull.Value || dr["Đường Dẫn"] == null ? "" : dr["Đường Dẫn"].ToString();
-                string GhiChu = dr["Ghi Chú"] == DBNull.Value || dr["Ghi Chú"] == null ? "" : dr["Ghi Chú"].ToString();
-                string LaMacDinh = dr["Mặc Định"] == DBNull.Value || dr["Mặc Định"] == null ? "" : dr["Mặc Định"].ToString();
+                foreach (DataRow dr in dtMauTemInExcel.Rows)
+                {
+                    string ID = dr["ID"] == DBNull.Value || dr["ID"] == null ? "" : dr["ID"].ToString();
+                    string TenTemIn = dr["Tên Mẫu Tem"] == DBNull.Value || dr["Tên Mẫu Tem"] == null ? "" : dr["Tên Mẫu Tem"].ToString();
+                    string DuongDan = dr["Đường Dẫn"] == DBNull.Value || dr["Đường Dẫn"] == null ? "" : dr["Đường Dẫn"].ToString();
+                    string GhiChu = dr["Ghi Chú"] == DBNull.Value || dr["Ghi Chú"] == null ? "" : dr["Ghi Chú"].ToString();
+                    string LaMacDinh = dr["Mặc Định"] == DBNull.Value || dr["Mặc Định"] == null ? "" : dr["Mặc Định"].ToString();
 
-                dsMauTemIn.MauTemIn.AddMauTemInRow(ID, TenTemIn, DuongDan, LaMacDinh, GhiChu);
+                    dsMauTemIn.MauTemIn.AddMauTemInRow(ID, TenTemIn, DuongDan, LaMacDinh, GhiChu);
+                }
+                gbList.BestFitColumns();
             }
-            gbList.BestFitColumns();
         }
 
         private void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -197,6 +200,11 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             {
                 MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void rptSelect_Click(object sender, EventArgs e)
+        {
+            bbiSelect_ItemClick(this, null);
         }
     }
 }

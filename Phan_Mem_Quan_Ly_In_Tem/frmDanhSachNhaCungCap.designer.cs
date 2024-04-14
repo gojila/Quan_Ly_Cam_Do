@@ -34,6 +34,7 @@
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bbiXem = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiThem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSua = new DevExpress.XtraBars.BarButtonItem();
             this.bbiXoa = new DevExpress.XtraBars.BarButtonItem();
             this.bbiChon = new DevExpress.XtraBars.BarButtonItem();
@@ -52,6 +53,7 @@
             this.colDiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rptChon = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
@@ -140,10 +142,11 @@
             this.bbiSua,
             this.bbiXoa,
             this.bbiDong,
-            this.bbiChon});
+            this.bbiChon,
+            this.bbiThem});
             this.bm.LargeImages = this.img;
             this.bm.MainMenu = this.bar2;
-            this.bm.MaxItemId = 13;
+            this.bm.MaxItemId = 14;
             // 
             // bar2
             // 
@@ -154,6 +157,7 @@
             this.bar2.FloatLocation = new System.Drawing.Point(49, 160);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiXem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSua),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiXoa),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiChon),
@@ -171,6 +175,15 @@
             this.bbiXem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbiXem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiXem_ItemClick);
             // 
+            // bbiThem
+            // 
+            this.bbiThem.Caption = "Thêm";
+            this.bbiThem.Id = 13;
+            this.bbiThem.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.addfile_16x16;
+            this.bbiThem.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.addfile_32x32;
+            this.bbiThem.Name = "bbiThem";
+            this.bbiThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiThem_ItemClick);
+            // 
             // bbiSua
             // 
             this.bbiSua.Caption = "Sửa";
@@ -178,7 +191,7 @@
             this.bbiSua.ImageOptions.ImageIndex = 29;
             this.bbiSua.Name = "bbiSua";
             this.bbiSua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.bbiSua.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbiSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSua_ItemClick);
             // 
             // bbiXoa
             // 
@@ -281,7 +294,8 @@
             this.colNhaCungCap,
             this.colTenTiem,
             this.colDiaChi,
-            this.colChon});
+            this.colChon,
+            this.colID});
             this.gbList.GridControl = this.gcList;
             this.gbList.GroupPanelText = "Kéo cột và thả vào đây để nhóm dữ liệu";
             this.gbList.IndicatorWidth = 40;
@@ -293,6 +307,8 @@
             // 
             // colNhaCungCap
             // 
+            this.colNhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colNhaCungCap.AppearanceCell.Options.UseFont = true;
             this.colNhaCungCap.AppearanceHeader.Options.UseTextOptions = true;
             this.colNhaCungCap.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNhaCungCap.Caption = "Nhà Cung Cấp (TCCS)";
@@ -306,6 +322,8 @@
             // 
             // colTenTiem
             // 
+            this.colTenTiem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colTenTiem.AppearanceCell.Options.UseFont = true;
             this.colTenTiem.AppearanceHeader.Options.UseTextOptions = true;
             this.colTenTiem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTenTiem.Caption = "Tên Tiệm NCC";
@@ -319,6 +337,8 @@
             // 
             // colDiaChi
             // 
+            this.colDiaChi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colDiaChi.AppearanceCell.Options.UseFont = true;
             this.colDiaChi.AppearanceHeader.Options.UseTextOptions = true;
             this.colDiaChi.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDiaChi.Caption = "Địa Chỉ NCC";
@@ -332,6 +352,8 @@
             // 
             // colChon
             // 
+            this.colChon.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colChon.AppearanceCell.Options.UseFont = true;
             this.colChon.AppearanceHeader.Options.UseTextOptions = true;
             this.colChon.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colChon.Caption = "Chọn";
@@ -348,6 +370,13 @@
             this.rptChon.Name = "rptChon";
             this.rptChon.NullText = "Chọn";
             this.rptChon.Click += new System.EventHandler(this.rptChon_Click);
+            // 
+            // colID
+            // 
+            this.colID.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colID.AppearanceCell.Options.UseFont = true;
+            this.colID.FieldName = "ID";
+            this.colID.Name = "colID";
             // 
             // layoutControlGroup1
             // 
@@ -384,6 +413,7 @@
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("frmDanhSachNhaCungCap.IconOptions.Icon")));
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmDanhSachNhaCungCap.IconOptions.Image")));
             this.Name = "frmDanhSachNhaCungCap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Nhà Cung Cấp";
             this.Load += new System.EventHandler(this.DanhSachKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
@@ -428,6 +458,8 @@
         private DS.dsDanhSachNhaCungCap dsDanhSachNhaCungCap;
         private DevExpress.XtraGrid.Columns.GridColumn colChon;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit rptChon;
+        private DevExpress.XtraBars.BarButtonItem bbiThem;
+        private DevExpress.XtraGrid.Columns.GridColumn colID;
     }
 }
 

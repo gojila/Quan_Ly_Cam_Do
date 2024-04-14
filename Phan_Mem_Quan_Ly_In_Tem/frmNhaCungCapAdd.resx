@@ -117,53 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="save_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="printsortdesc_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printsortdesc_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="emailtemplate_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emailtemplate_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveas_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveas_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="emailtemplate_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emailtemplate_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="printsortdesc_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printsortdesc_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="selectall2_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selectall2_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="saveas_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\saveas_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addfile_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addfile_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="selectall2_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selectall2_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="close_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\close_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="bm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="frmNhaCungCapAdd.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
 </root>

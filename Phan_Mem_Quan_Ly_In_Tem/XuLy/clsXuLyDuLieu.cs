@@ -97,12 +97,14 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 connExcel.Open();
                 DataTable dtExcelSchema;
                 dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                string SheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+                //string SheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+                string SheetName = dtExcelSchema.Rows[2]["TABLE_NAME"].ToString();
                 connExcel.Close();
 
                 //Read Data from First Sheet
                 connExcel.Open();
-                cmdExcel.CommandText = "SELECT DISTINCT [Nhà Cung Cấp], [Tên Tiệm], [Địa Chỉ] From [" + SheetName + "]";
+                //cmdExcel.CommandText = "SELECT DISTINCT [Nhà Cung Cấp], [Tên Tiệm], [Địa Chỉ] From [" + SheetName + "]";
+                cmdExcel.CommandText = "SELECT * From [" + SheetName + "] WHERE (([Xóa] = '' AND [Xóa] IS NOT NULL) OR [Xóa] = 'N')";
                 oda.SelectCommand = cmdExcel;
                 oda.Fill(dt);
                 connExcel.Close();
@@ -340,6 +342,17 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 var ds = new DataSet();
                 var dt = docThongTin();
 
+                if (dt == null || dt.Rows.Count == 0) 
+                {
+                    dt = new DataTable("ThongTinTiem");
+                    dt.Columns.Add("TenTiem");
+                    dt.Columns.Add("DiaChi");
+                    dt.Columns.Add("CongCOM");
+                    dt.Columns.Add("FileExcel");
+                    dt.Columns.Add("MayIn");
+                    dt.Columns.Add("DinhDang");
+                }
+
                 /*
                 var dt = new DataTable("ThongTinTiem");
                 dt.Columns.Add("TenTiem");
@@ -350,12 +363,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 dt.Columns.Add("DinhDang");
                 */
 
-                string _tenTiem = dt.Rows[0]["TenTiem"] == DBNull.Value ? "" : dt.Rows[0]["TenTiem"].ToString();
-                string _diaChi = dt.Rows[0]["DiaChi"] == DBNull.Value ? "" : dt.Rows[0]["DiaChi"].ToString();
-                string _tenCongCOM = dt.Rows[0]["CongCOM"] == DBNull.Value ? "" : dt.Rows[0]["CongCOM"].ToString();
-                string _tenMayIn = dt.Rows[0]["MayIn"] == DBNull.Value ? "" : dt.Rows[0]["MayIn"].ToString();
-                string _duongDanDuLieu = dt.Rows[0]["FileExcel"] == DBNull.Value ? "" : dt.Rows[0]["FileExcel"].ToString();
-                string _dinhDang = dt.Rows[0]["DinhDang"] == DBNull.Value ? "" : dt.Rows[0]["DinhDang"].ToString();
+                string _tenTiem = (dt.Rows.Count == 0 || dt.Rows[0]["TenTiem"] == DBNull.Value) ? "" : dt.Rows[0]["TenTiem"].ToString();
+                string _diaChi = (dt.Rows.Count == 0 || dt.Rows[0]["DiaChi"] == DBNull.Value) ? "" : dt.Rows[0]["DiaChi"].ToString();
+                string _tenCongCOM = (dt.Rows.Count == 0 || dt.Rows[0]["CongCOM"] == DBNull.Value) ? "" : dt.Rows[0]["CongCOM"].ToString();
+                string _tenMayIn = (dt.Rows.Count == 0 || dt.Rows[0]["MayIn"] == DBNull.Value) ? "" : dt.Rows[0]["MayIn"].ToString();
+                string _duongDanDuLieu = (dt.Rows.Count == 0 || dt.Rows[0]["FileExcel"] == DBNull.Value) ? "" : dt.Rows[0]["FileExcel"].ToString();
+                string _dinhDang = (dt.Rows.Count == 0 || dt.Rows[0]["DinhDang"] == DBNull.Value) ? "" : dt.Rows[0]["DinhDang"].ToString();
 
                 if (string.IsNullOrEmpty(tenTiem)) 
                 {
@@ -612,11 +625,13 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
                 //Read Data from First Sheet
                 connExcel.Open();
                 //cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
+                
                 if (macDinh == "Y") 
                 {
                     cmdExcel.CommandText = @"UPDATE [" + SheetName + @"] SET [Mặc Định] = 'N'";
                     cmdExcel.ExecuteNonQuery();
                 }
+                
                 if (string.IsNullOrEmpty(ID))
                 {
                     cmdExcel.CommandText = @"INSERT INTO [" + SheetName + @"] ([ID], [Tên Mẫu Tem], [Đường Dẫn], [Mặc Định], [Ghi Chú], [Xóa]) VALUES(@ID, @TenMauTem, @DuongDan, @MacDinh, @GhiChu, 'N')";
@@ -754,6 +769,155 @@ namespace Phan_Mem_Quan_Ly_In_Tem.XuLy
             {
                 XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+        public bool luuNhaCungCapTCCS(string duongDanFileExcel, string ID, string nhaCungCapTCCS, string tenTiem, string diaChi, string ghiChu)
+        {
+            if (!File.Exists(duongDanFileExcel))
+            {
+                MessageBox.Show("Không tìm thấy file dữ liệu. " + duongDanFileExcel);
+                return false;
+            }
+
+            string conStr = "";
+            string Extension = Path.GetExtension(duongDanFileExcel);
+            string isHDR = "Yes";
+            switch (Extension)
+            {
+                case ".xls": //Excel 97-03
+                    conStr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+                    break;
+                case ".xlsx": //Excel 07
+                    conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+                    break;
+            }
+            conStr = String.Format(conStr, duongDanFileExcel, isHDR);
+            OleDbConnection connExcel = new OleDbConnection(conStr);
+            OleDbCommand cmdExcel = new OleDbCommand();
+            OleDbDataAdapter oda = new OleDbDataAdapter();
+            DataTable dt = new DataTable();
+            cmdExcel.Connection = connExcel;
+            try
+            {
+                //Get the name of First Sheet
+                connExcel.Open();
+                DataTable dtExcelSchema;
+                dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                string SheetName = dtExcelSchema.Rows[2]["TABLE_NAME"].ToString();
+                connExcel.Close();
+
+                //Read Data from First Sheet
+                connExcel.Open();
+                //cmdExcel.CommandText = "SELECT * From [" + SheetName + "]";
+
+                if (string.IsNullOrEmpty(ID))
+                {
+                    cmdExcel.CommandText = @"INSERT INTO [" + SheetName + @"] ([ID], [Nhà Cung Cấp], [Tên Tiệm], [Địa Chỉ], [Ghi Chú], [Xóa]) VALUES(@ID, @NhaCungCap, @TenTiem, @DiaChi, @GhiChu, 'N')";
+
+                    cmdExcel.Parameters.AddWithValue("@ID", "" + Guid.NewGuid().ToString() + "");
+                    cmdExcel.Parameters.AddWithValue("@NhaCungCap", "" + nhaCungCapTCCS + "");
+                    cmdExcel.Parameters.AddWithValue("@TenTiem", "" + tenTiem + "");
+                    cmdExcel.Parameters.AddWithValue("@DiaChi", "" + diaChi + "");
+                    cmdExcel.Parameters.AddWithValue("@GhiChu", "" + ghiChu + "");
+                }
+                else
+                {
+                    cmdExcel.CommandText = @"UPDATE [" + SheetName + @"] SET [Nhà Cung Cấp] = @NhaCungCap, [Tên Tiệm] = @TenTiem, [Địa Chỉ] = @DiaChi, [Ghi Chú] = @GhiChu WHERE ID = @ID";
+
+                    cmdExcel.Parameters.AddWithValue("@NhaCungCap", "" + nhaCungCapTCCS + "");
+                    cmdExcel.Parameters.AddWithValue("@TenTiem", "" + tenTiem + "");
+                    cmdExcel.Parameters.AddWithValue("@DiaChi", "" + diaChi + "");
+                    cmdExcel.Parameters.AddWithValue("@GhiChu", "" + ghiChu + "");
+                    cmdExcel.Parameters.AddWithValue("@ID", "" + ID + "");
+                }
+
+
+                //oda.SelectCommand = cmdExcel;
+                //oda.Fill(dt);
+                cmdExcel.ExecuteNonQuery();
+                connExcel.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                connExcel.Close();
+                if (connExcel.State == ConnectionState.Open)
+                {
+                    connExcel.Close();
+                }
+            }
+        }
+
+        public DataRow getNhaCungCap(string duongDanFileExcel, string ID)
+        {
+            if (!File.Exists(duongDanFileExcel))
+            {
+                MessageBox.Show("Không tìm thấy file dữ liệu.");
+                return null;
+            }
+            try
+            {
+                string conStr = "";
+                string Extension = Path.GetExtension(duongDanFileExcel);
+                string isHDR = "Yes";
+                switch (Extension)
+                {
+                    case ".xls": //Excel 97-03
+                        conStr = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+                        break;
+                    case ".xlsx": //Excel 07
+                        conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+                        break;
+                }
+                conStr = String.Format(conStr, duongDanFileExcel, isHDR);
+                OleDbConnection connExcel = new OleDbConnection(conStr);
+                OleDbCommand cmdExcel = new OleDbCommand();
+                OleDbDataAdapter oda = new OleDbDataAdapter();
+                DataTable dt = new DataTable();
+                cmdExcel.Connection = connExcel;
+
+                //Get the name of First Sheet
+                connExcel.Open();
+                DataTable dtExcelSchema;
+                dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                string SheetName = dtExcelSchema.Rows[2]["TABLE_NAME"].ToString();
+                connExcel.Close();
+
+                //Read Data from First Sheet
+                connExcel.Open();
+                cmdExcel.CommandText = "SELECT * From [" + SheetName + "] WHERE [ID] = @ID";
+                cmdExcel.Parameters.AddWithValue("@ID", "" + ID + "");
+                oda.SelectCommand = cmdExcel;
+                oda.Fill(dt);
+                connExcel.Close();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    return dt.Rows[0];
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public void taoFileLuuTruData() 
+        {
+            try 
+            {
+                
+            }
+            catch (Exception ex) 
+            {
+                XtraMessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

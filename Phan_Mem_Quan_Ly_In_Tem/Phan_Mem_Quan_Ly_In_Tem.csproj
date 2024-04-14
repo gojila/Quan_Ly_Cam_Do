@@ -162,6 +162,12 @@
     <Compile Include="frmKetNoiCanTuDong.Designer.cs">
       <DependentUpon>frmKetNoiCanTuDong.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhaCungCapAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhaCungCapAdd.Designer.cs">
+      <DependentUpon>frmNhaCungCapAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuanLyInTem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmKetNoiCanTuDong.resx">
       <DependentUpon>frmKetNoiCanTuDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhaCungCapAdd.resx">
+      <DependentUpon>frmNhaCungCapAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyInTem.resx">
       <DependentUpon>frmQuanLyInTem.cs</DependentUpon>
@@ -310,6 +319,14 @@
     <None Include="Resources\close_32x32.png" />
     <None Include="Resources\saveas_16x16.png" />
     <None Include="Resources\saveas_32x32.png" />
+    <None Include="Resources\printsortdesc_16x16.png" />
+    <None Include="Resources\printsortdesc_32x32.png" />
+    <None Include="Resources\addfile_16x16.png" />
+    <None Include="Resources\addfile_32x32.png" />
+    <None Include="Resources\save_16x16.png" />
+    <None Include="Resources\save_32x32.png" />
+    <None Include="Resources\close_16x161.png" />
+    <None Include="Resources\close_32x321.png" />
     <Content Include="Resources\selectpivottable_16x16.png" />
     <Content Include="Resources\selectpivottable_32x32.png" />
   </ItemGroup>

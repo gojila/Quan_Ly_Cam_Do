@@ -15,6 +15,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 {
     public partial class frmDanhSachNhaCungCap : XtraForm
     {
+        private string opentype = "";
         private string duongDanFileExcel = "";
 
         public delegate void ChonNhaCungCapEventHander(string nhacungcap, string tentiem, string diachi);
@@ -68,22 +69,34 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             };
         }
 
+        public void setOpenType(string _opentype) 
+        {
+            this.opentype = _opentype;
+        }
+
         private void ActiveEditor_DoubleClick(object sender, EventArgs e)
         {
-            var nhaCungCap = gbList.GetFocusedRowCellValue(colNhaCungCap);
-            var tenTiem = gbList.GetFocusedRowCellValue(colTenTiem);
-            var diaChi = gbList.GetFocusedRowCellValue(colDiaChi);
-            //var noicap = gbList.GetFocusedRowCellValue(colNoi_Cap);
-            //var diachi = gbList.GetFocusedRowCellValue(colDia_Chi);
-            //var sodienthoai = gbList.GetFocusedRowCellValue(colSo_Dien_Thoai); 
+            if (opentype == "")
+            {
+                var nhaCungCap = gbList.GetFocusedRowCellValue(colNhaCungCap);
+                var tenTiem = gbList.GetFocusedRowCellValue(colTenTiem);
+                var diaChi = gbList.GetFocusedRowCellValue(colDiaChi);
+                //var noicap = gbList.GetFocusedRowCellValue(colNoi_Cap);
+                //var diachi = gbList.GetFocusedRowCellValue(colDia_Chi);
+                //var sodienthoai = gbList.GetFocusedRowCellValue(colSo_Dien_Thoai); 
 
-            RaiseChonNhaCungCapEventHander(
-                nhaCungCap.ToString(),
-                tenTiem.ToString(),
-                diaChi.ToString()
-                );
+                RaiseChonNhaCungCapEventHander(
+                    nhaCungCap.ToString(),
+                    tenTiem.ToString(),
+                    diaChi.ToString()
+                    );
 
-            this.Close();
+                this.Close();
+            }
+            else if (opentype == "edit") 
+            {
+                bbiSua_ItemClick(this, null);
+            }   
         }
 
         private void bbiDong_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -133,32 +146,35 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMaVachExcel)
         {
             dsDanhSachNhaCungCap.DanhSachNhaCungCap.Rows.Clear();
-            foreach (DataRow dr in dtMaVachExcel.Rows)
+            if (dtMaVachExcel != null && dtMaVachExcel.Rows.Count > 0) 
             {
-                //AddInMaVachRow(string MaVach, string TenHang, decimal TongTrongLuong, decimal TrongLuong, decimal TienCong, decimal Hot, string LoaiVang, string NhaCungCap, string HamLuongPho, int SoLuongTem, string TongTrongLuongChu, string TrongLuongChu, string HotChu)
-                dsDanhSachNhaCungCap.DanhSachNhaCungCap.AddDanhSachNhaCungCapRow(
-                    dr["Nhà Cung Cấp"].ToString(),
-                    dr["Tên Tiệm"].ToString(),
-                    dr["Địa Chỉ"].ToString()
-                    );
-                //dsDanhSachHangHoa.InMaVach.AddInMaVachRow
-                //    (
-                //    dr["Mã Vạch"].ToString(),
-                //    dr["Tên Hàng"].ToString(),
-                //    Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]),
-                //    Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]),
-                //    Convert.ToDecimal(dr["Tiền Công"] == DBNull.Value ? 0 : dr["Tiền Công"]),
-                //    Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]),
-                //    dr["Nhà Cung Cấp"].ToString(),
-                //    dr["Hàm Lượng Phổ"].ToString(),
-                //    Convert.ToInt32(dr["Số Lượng Tem"] == DBNull.Value ? 0 : dr["Số Lượng Tem"]),
-                //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"])),
-                //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"])),
-                //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]))
-                //    );
+                foreach (DataRow dr in dtMaVachExcel.Rows)
+                {
+                    //AddInMaVachRow(string MaVach, string TenHang, decimal TongTrongLuong, decimal TrongLuong, decimal TienCong, decimal Hot, string LoaiVang, string NhaCungCap, string HamLuongPho, int SoLuongTem, string TongTrongLuongChu, string TrongLuongChu, string HotChu)
+                    dsDanhSachNhaCungCap.DanhSachNhaCungCap.AddDanhSachNhaCungCapRow(
+                        dr["Nhà Cung Cấp"].ToString(),
+                        dr["Tên Tiệm"].ToString(),
+                        dr["Địa Chỉ"].ToString(),
+                        dr["ID"].ToString()
+                        );
+                    //dsDanhSachHangHoa.InMaVach.AddInMaVachRow
+                    //    (
+                    //    dr["Mã Vạch"].ToString(),
+                    //    dr["Tên Hàng"].ToString(),
+                    //    Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]),
+                    //    Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]),
+                    //    Convert.ToDecimal(dr["Tiền Công"] == DBNull.Value ? 0 : dr["Tiền Công"]),
+                    //    Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]),
+                    //    dr["Nhà Cung Cấp"].ToString(),
+                    //    dr["Hàm Lượng Phổ"].ToString(),
+                    //    Convert.ToInt32(dr["Số Lượng Tem"] == DBNull.Value ? 0 : dr["Số Lượng Tem"]),
+                    //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"])),
+                    //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"])),
+                    //    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]))
+                    //    );
+                }
+                gbList.BestFitColumns();
             }
-
-            gbList.BestFitColumns();
         }
 
         private void bbiChon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -179,6 +195,44 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         private void rptChon_Click(object sender, EventArgs e)
         {
             bbiChon_ItemClick(this, null);
+        }
+
+        private void bbiSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var id = gbList.GetFocusedRowCellValue(colID.FieldName);
+                if (id != null)
+                {
+                    var _frmAdd = new frmNhaCungCapAdd(duongDanFileExcel, id.ToString());
+                    _frmAdd.NapLai += () =>
+                    {
+                        bbiXem_ItemClick(this, null);
+                    };
+                    _frmAdd.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try 
+            {
+                var _frmAdd = new frmNhaCungCapAdd(duongDanFileExcel);
+                _frmAdd.NapLai += () => 
+                {
+                    bbiXem_ItemClick(this, null);
+                };
+                _frmAdd.ShowDialog();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
