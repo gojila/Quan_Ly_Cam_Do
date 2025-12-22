@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrintBarcodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BarcodeDetail">
+          <Key>
+            <PropertyRef Name="BarcodeID" />
+          </Key>
+          <Property Name="BarcodeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BarcodeUnique" Type="uniqueidentifier" />
+          <Property Name="BarcodeString" Type="nvarchar" MaxLength="250" />
+          <Property Name="ItemID" Type="bigint" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="250" />
+          <Property Name="GoldType" Type="nvarchar" MaxLength="250" />
+          <Property Name="GoldSign" Type="nvarchar" MaxLength="250" />
+          <Property Name="Size" Type="nvarchar" MaxLength="250" />
+          <Property Name="TotalWeight" Type="money" />
+          <Property Name="StoneWeight" Type="money" />
+          <Property Name="GoldWeight" Type="money" />
+          <Property Name="Expense" Type="money" />
+          <Property Name="SupplierID" Type="bigint" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SupplierAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="SupplierStandardNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Origin" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyID" Type="bigint" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyStandardNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="WeightDisplayFormat" Type="nvarchar" MaxLength="250" />
+          <Property Name="TemplatePath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeteletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedUserID" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BarcodeTemplate">
+          <Key>
+            <PropertyRef Name="BarcodeTemplateID" />
+          </Key>
+          <Property Name="BarcodeTemplateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BarcodeTemplateName" Type="nvarchar" MaxLength="250" />
+          <Property Name="BarcodeTemplatePath" Type="nvarchar" MaxLength="4000" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedUserID" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="CompanyStandardCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="250" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="FormatStringDefault" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedUserID" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SupplierAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="SupplierBaseStandardNo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedUserID" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedUserID" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="PrintBarcodeModelStoreContainer">
+          <EntitySet Name="BarcodeDetail" EntityType="Self.BarcodeDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BarcodeTemplate" EntityType="Self.BarcodeTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrintBarcodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PrintBarcodeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Suppliers" EntityType="PrintBarcodeModel.Supplier" />
+          <EntitySet Name="BarcodeDetails" EntityType="PrintBarcodeModel.BarcodeDetail" />
+          <EntitySet Name="BarcodeTemplates" EntityType="PrintBarcodeModel.BarcodeTemplate" />
+          <EntitySet Name="Companies" EntityType="PrintBarcodeModel.Company" />
+        </EntityContainer>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierBaseStandardNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BarcodeDetail">
+          <Key>
+            <PropertyRef Name="BarcodeID" />
+          </Key>
+          <Property Name="BarcodeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BarcodeUnique" Type="Guid" />
+          <Property Name="BarcodeString" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ItemID" Type="Int64" />
+          <Property Name="ItemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GoldType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GoldSign" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StoneWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GoldWeight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Expense" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SupplierID" Type="Int64" />
+          <Property Name="SupplierName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierStandardNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Origin" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyID" Type="Int64" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TemplatePath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeteletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompanyStandardNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WeightDisplayFormat" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BarcodeTemplate">
+          <Key>
+            <PropertyRef Name="BarcodeTemplateID" />
+          </Key>
+          <Property Name="BarcodeTemplateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BarcodeTemplateName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeTemplatePath" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDefault" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyStandardCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedUserID" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="FormatStringDefault" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrintBarcodeModelStoreContainer" CdmEntityContainer="PrintBarcodeEntities">
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="PrintBarcodeModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="SupplierBaseStandardNo" ColumnName="SupplierBaseStandardNo" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarcodeDetails">
+            <EntityTypeMapping TypeName="PrintBarcodeModel.BarcodeDetail">
+              <MappingFragment StoreEntitySet="BarcodeDetail">
+                <ScalarProperty Name="WeightDisplayFormat" ColumnName="WeightDisplayFormat" />
+                <ScalarProperty Name="CompanyStandardNo" ColumnName="CompanyStandardNo" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeteletedUserID" ColumnName="DeteletedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="SupplierStandardNo" ColumnName="SupplierStandardNo" />
+                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Expense" ColumnName="Expense" />
+                <ScalarProperty Name="GoldWeight" ColumnName="GoldWeight" />
+                <ScalarProperty Name="StoneWeight" ColumnName="StoneWeight" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="GoldSign" ColumnName="GoldSign" />
+                <ScalarProperty Name="GoldType" ColumnName="GoldType" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="BarcodeString" ColumnName="BarcodeString" />
+                <ScalarProperty Name="BarcodeUnique" ColumnName="BarcodeUnique" />
+                <ScalarProperty Name="BarcodeID" ColumnName="BarcodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarcodeTemplates">
+            <EntityTypeMapping TypeName="PrintBarcodeModel.BarcodeTemplate">
+              <MappingFragment StoreEntitySet="BarcodeTemplate">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="BarcodeTemplatePath" ColumnName="BarcodeTemplatePath" />
+                <ScalarProperty Name="BarcodeTemplateName" ColumnName="BarcodeTemplateName" />
+                <ScalarProperty Name="BarcodeTemplateID" ColumnName="BarcodeTemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="PrintBarcodeModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="FormatStringDefault" ColumnName="FormatStringDefault" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedUserID" ColumnName="DeletedUserID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="CompanyStandardCode" ColumnName="CompanyStandardCode" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

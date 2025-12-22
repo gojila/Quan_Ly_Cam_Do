@@ -27,7 +27,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             napThongTin();
 
             rptChonFile.ButtonClick += rptChonFile_ButtonClick;
-
+            /*
             var fileThongTinTiem = new FileInfo(Application.StartupPath + "\\ThongTinTiem.xml");
             if (!fileThongTinTiem.Exists)
             {
@@ -41,6 +41,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
                 }
             }
+            */
+            napDuLieuVaoLuoiTuFileExcel(null);
         }
 
         private void napDanhSachMayIn()
@@ -114,7 +116,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     {
                         bbiMayIn.EditValue = mayIn;
                     }
-
+                    /*
                     if (!string.IsNullOrEmpty(duongDanFileExcel))
                     {
                         bbiChonFileDuLieu.EditValue = duongDanFileExcel;
@@ -127,7 +129,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                             napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
                         }
                     }
-
+                    */
+                    napDuLieuVaoLuoiTuFileExcel(null);
                     bbiDinhDang.EditValue = dinhDang;
                 }
             }
@@ -153,7 +156,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
                 string path = openFileDialog1.FileName;
                 bbiChonFileDuLieu.EditValue = path;
-
+                /*
                 if (!string.IsNullOrEmpty(path) && File.Exists(path))
                 {
                     
@@ -164,6 +167,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
                     napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
                 }
+                */
+                napDuLieuVaoLuoiTuFileExcel(null);
             }
         }
 
@@ -186,6 +191,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 bbiXem_ItemClick(this, null);
             };
+            //_frmIntem.Shown += (s, a) => _frmIntem.WindowState = FormWindowState.Maximized;
             _frmIntem.ShowDialog();
         }
 
@@ -197,31 +203,36 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMaVachExcel)
         {
-            string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
+            //string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
 
-            dsDanhSachHangHoa.InMaVach.Rows.Clear();
-            foreach (DataRow dr in dtMaVachExcel.Rows)
+            //dsDanhSachHangHoa.InMaVach.Rows.Clear();
+            //foreach (DataRow dr in dtMaVachExcel.Rows)
+            //{
+            //    //AddInMaVachRow(string MaVach, string TenHang, decimal TongTrongLuong, decimal TrongLuong, decimal TienCong, decimal Hot, string LoaiVang, string NhaCungCap, string HamLuongPho, int SoLuongTem, string TongTrongLuongChu, string TrongLuongChu, string HotChu)
+            //    dsDanhSachHangHoa.InMaVach.AddInMaVachRow
+            //        (
+            //        dr["Mã Vạch"].ToString(),
+            //        dr["Tên Hàng"].ToString(),
+            //        Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]),
+            //        Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]),
+            //        Convert.ToDecimal(dr["Tiền Công"] == DBNull.Value ? 0 : dr["Tiền Công"]),
+            //        Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]),
+            //        dr["Nhà Cung Cấp"].ToString(),
+            //        dr["Hàm Lượng Phổ"].ToString(),
+            //        Convert.ToInt32(dr["Số Lượng Tem"] == DBNull.Value ? 0 : dr["Số Lượng Tem"]),
+            //        _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]), dinhDang),
+            //        _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]), dinhDang),
+            //        _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]), dinhDang),
+            //        dr["Tên Tiệm"].ToString(),
+            //        dr["Địa Chỉ"].ToString(),
+            //        dr["Số Ni"] == DBNull.Value ? "" : dr["Số Ni"].ToString(),
+            //        dr["Ký Hiệu Vàng"] == DBNull.Value ? "" : dr["Ký Hiệu Vàng"].ToString()
+            //        );
+            //}
+
+            using (var db = new ModelEF.PrintBarcodeEntities()) 
             {
-                //AddInMaVachRow(string MaVach, string TenHang, decimal TongTrongLuong, decimal TrongLuong, decimal TienCong, decimal Hot, string LoaiVang, string NhaCungCap, string HamLuongPho, int SoLuongTem, string TongTrongLuongChu, string TrongLuongChu, string HotChu)
-                dsDanhSachHangHoa.InMaVach.AddInMaVachRow
-                    (
-                    dr["Mã Vạch"].ToString(),
-                    dr["Tên Hàng"].ToString(),
-                    Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]),
-                    Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]),
-                    Convert.ToDecimal(dr["Tiền Công"] == DBNull.Value ? 0 : dr["Tiền Công"]),
-                    Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]),
-                    dr["Nhà Cung Cấp"].ToString(),
-                    dr["Hàm Lượng Phổ"].ToString(),
-                    Convert.ToInt32(dr["Số Lượng Tem"] == DBNull.Value ? 0 : dr["Số Lượng Tem"]),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Tổng Trọng Lượng"] == DBNull.Value ? 0 : dr["Tổng Trọng Lượng"]), dinhDang),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Trọng Lượng"] == DBNull.Value ? 0 : dr["Trọng Lượng"]), dinhDang),
-                    _xuLy.chuyenGiaTriSangNoiDung(Convert.ToDecimal(dr["Hột"] == DBNull.Value ? 0 : dr["Hột"]), dinhDang),
-                    dr["Tên Tiệm"].ToString(),
-                    dr["Địa Chỉ"].ToString(),
-                    dr["Số Ni"] == DBNull.Value ? "" : dr["Số Ni"].ToString(),
-                    dr["Ký Hiệu Vàng"] == DBNull.Value ? "" : dr["Ký Hiệu Vàng"].ToString()
-                    );
+                gcList.DataSource = db.BarcodeDetails.Where(bd => !(bd.IsDeleted ?? false)).OrderByDescending(bd => bd.CreatedDate).ToList();
             }
 
             gbList.BestFitColumns();
@@ -241,6 +252,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             try
             {
+                /*
                 string duongDanFileExcel = bbiChonFileDuLieu.EditValue.ToString();
                 if (!string.IsNullOrEmpty(duongDanFileExcel))
                 {
@@ -256,6 +268,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                         napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
                     }
                 }
+                */
+                napDuLieuVaoLuoiTuFileExcel(null);
             }
             catch(Exception ex)
             {
@@ -265,29 +279,29 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void rptLinkInTem_Click(object sender, EventArgs e)
         {
-            string maVach = gbList.GetFocusedRowCellValue(colMaVach).ToString();
-            string tenHang = gbList.GetFocusedRowCellValue(colTenHang).ToString();
+            string maVach = gbList.GetFocusedRowCellValue(colBarcodeString).ToString();
+            string tenHang = gbList.GetFocusedRowCellValue(colItemName).ToString();
             
             decimal tongTrongLuong = 0;
-            Decimal.TryParse(gbList.GetFocusedRowCellValue(colTongTrongLuong).ToString(), out tongTrongLuong);
+            Decimal.TryParse(gbList.GetFocusedRowCellValue(colTotalWeight).ToString(), out tongTrongLuong);
 
             decimal trongLuong = 0;
-            Decimal.TryParse(gbList.GetFocusedRowCellValue(colTrongLuong).ToString(), out trongLuong);
+            Decimal.TryParse(gbList.GetFocusedRowCellValue(colGoldWeight).ToString(), out trongLuong);
             
             decimal hot = 0;
-            Decimal.TryParse(gbList.GetFocusedRowCellValue(colHot).ToString(), out hot);
+            Decimal.TryParse(gbList.GetFocusedRowCellValue(colStoneWeight).ToString(), out hot);
             
             decimal tienCong = 0;
-            Decimal.TryParse(gbList.GetFocusedRowCellValue(colTienCong).ToString(), out tienCong);
+            Decimal.TryParse(gbList.GetFocusedRowCellValue(colExpense).ToString(), out tienCong);
 
-            string nhaCungCap = gbList.GetFocusedRowCellValue(colNhaCungCap).ToString(); 
-            string hamLuongPho = gbList.GetFocusedRowCellValue(colHamLuongPho).ToString();
+            string nhaCungCapTCCS = gbList.GetFocusedRowCellValue(colSupplierStandardNo).ToString(); 
+            string hamLuongPho = gbList.GetFocusedRowCellValue(colGoldType).ToString();
             
-            int soLuongTem = 0;
-            Int32.TryParse(gbList.GetFocusedRowCellValue(colSoLuongTem).ToString(), out soLuongTem);
+            int soLuongTem = 1;
+            //Int32.TryParse(gbList.GetFocusedRowCellValue(colSoLuongTem).ToString(), out soLuongTem);
 
-            string tenTiemNCC = gbList.GetFocusedRowCellValue(colTenTiem).ToString();
-            string diaChiNCC = gbList.GetFocusedRowCellValue(colDiaChi).ToString();
+            string tenTiemNCC = gbList.GetFocusedRowCellValue(colSupplierName).ToString();
+            string diaChiNCC = gbList.GetFocusedRowCellValue(colSupplierAddress).ToString();
 
             string tenTiem = bbiTenTiem.EditValue == null ? "" : bbiTenTiem.EditValue.ToString();
             string diaChi = bbiDiaChi.EditValue == null ? "" : bbiDiaChi.EditValue.ToString();            
@@ -298,11 +312,15 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
             string dinhDang = bbiDinhDang.EditValue == null ? "" : bbiDinhDang.EditValue.ToString();
 
-            var _frmIntem = new frmInTem(tenTiem, diaChi, tenTiemNCC, diaChiNCC, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCap, hamLuongPho, soLuongTem, dinhDang);
+            long BarcodeID = Convert.ToInt64(gbList.GetFocusedRowCellValue(colBarcodeID));
+
+            //var _frmIntem = new frmInTem(tenTiem, diaChi, tenTiemNCC, diaChiNCC, tenCongCOM, tenMayIn, duongDanFileExcel, maVach, tenHang, tongTrongLuong, trongLuong, hot, tienCong, nhaCungCapTCCS, hamLuongPho, soLuongTem, dinhDang);
+            var _frmIntem = new frmInTem(BarcodeID, tenCongCOM, tenMayIn);
             _frmIntem.Xem += () =>
             {
                 bbiXem_ItemClick(this, null);
             };
+            //_frmIntem.Shown += (s, a) => _frmIntem.WindowState = FormWindowState.Maximized;
             _frmIntem.ShowDialog();
         }
 
@@ -363,6 +381,64 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void bbiCompany_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                var _frmCompany = new frmCompany();
+                _frmCompany.setOpenType("edit");
+                _frmCompany.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+
+                int[] selectedRows = gbList.GetSelectedRows();
+                string ids = "";
+                if (selectedRows.Length > 0)
+                {
+                    //clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                    for (int i = selectedRows.Length; i > 0; i--)
+                    {
+                        var arg = gbList.GetRowCellValue(selectedRows[i - 1], colBarcodeID);
+                        if (arg == null)
+                            continue;
+
+                        if (!string.IsNullOrEmpty(ids))
+                        {
+                            ids += ",";
+                        }
+                        ids += arg.ToString();
+                        //_clsXuLyDuLieu.xoaMauTemIn(this.path, arg.ToString());
+                    }
+                    if (!string.IsNullOrEmpty(ids))
+                    {
+                        using (var db = new ModelEF.PrintBarcodeEntities())
+                        {
+                            db.Database.ExecuteSqlCommand("UPDATE [BarcodeDetail] SET [IsDeleted] = 1, [DeletedDate] = GETDATE() WHERE [BarcodeID] IN (" + ids + ")");
+                            db.SaveChanges();
+                        }
+                    }
+                    MessageBox.Show(this, "Xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bbiXem_ItemClick(this, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

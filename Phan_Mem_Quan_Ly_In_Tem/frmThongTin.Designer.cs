@@ -45,39 +45,39 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDinhDang = new DevExpress.XtraEditors.TextEdit();
+            this.txtDuongDanDuLieu = new DevExpress.XtraEditors.ButtonEdit();
+            this.txtTenMayIn = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtCongCOM = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.txtTenTiem = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtCongCOM = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtTenMayIn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDuongDanDuLieu = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtDinhDang = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
@@ -193,8 +193,8 @@
             // 
             this.bbiSave.Caption = "Lưu";
             this.bbiSave.Id = 0;
-            this.bbiSave.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.saveas_16x16;
-            this.bbiSave.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.saveas_32x32;
+            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
+            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
             this.bbiSave.Name = "bbiSave";
             this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
@@ -202,8 +202,8 @@
             // 
             this.bbiClose.Caption = "Đóng";
             this.bbiClose.Id = 1;
-            this.bbiClose.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_16x16;
-            this.bbiClose.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_32x32;
+            this.bbiClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.Image")));
+            this.bbiClose.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.LargeImage")));
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
@@ -256,6 +256,111 @@
             this.layoutControl1.TabIndex = 15;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(12, 222);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(355, 31);
+            this.labelControl1.StyleController = this.layoutControl1;
+            this.labelControl1.TabIndex = 10;
+            this.labelControl1.Text = "[c]: chỉ - [p]: phân - [l]: ly -[d]: dem - [td]: tiểu dem";
+            // 
+            // txtDinhDang
+            // 
+            this.txtDinhDang.EditValue = "[c]c[p]p[l][d][td]";
+            this.txtDinhDang.Location = new System.Drawing.Point(206, 187);
+            this.txtDinhDang.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtDinhDang.MenuManager = this.bm;
+            this.txtDinhDang.Name = "txtDinhDang";
+            this.txtDinhDang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDinhDang.Properties.Appearance.Options.UseFont = true;
+            this.txtDinhDang.Properties.AutoHeight = false;
+            this.txtDinhDang.Size = new System.Drawing.Size(821, 30);
+            this.txtDinhDang.StyleController = this.layoutControl1;
+            this.txtDinhDang.TabIndex = 9;
+            // 
+            // txtDuongDanDuLieu
+            // 
+            this.txtDuongDanDuLieu.Location = new System.Drawing.Point(206, 152);
+            this.txtDuongDanDuLieu.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtDuongDanDuLieu.MenuManager = this.bm;
+            this.txtDuongDanDuLieu.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtDuongDanDuLieu.Name = "txtDuongDanDuLieu";
+            this.txtDuongDanDuLieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDuongDanDuLieu.Properties.Appearance.Options.UseFont = true;
+            this.txtDuongDanDuLieu.Properties.AutoHeight = false;
+            this.txtDuongDanDuLieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.txtDuongDanDuLieu.Properties.Tag = "Chon";
+            this.txtDuongDanDuLieu.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDuongDanDuLieu_Properties_ButtonClick);
+            this.txtDuongDanDuLieu.Size = new System.Drawing.Size(821, 30);
+            this.txtDuongDanDuLieu.StyleController = this.layoutControl1;
+            this.txtDuongDanDuLieu.TabIndex = 8;
+            // 
+            // txtTenMayIn
+            // 
+            this.txtTenMayIn.Location = new System.Drawing.Point(206, 117);
+            this.txtTenMayIn.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtTenMayIn.MenuManager = this.bm;
+            this.txtTenMayIn.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtTenMayIn.Name = "txtTenMayIn";
+            this.txtTenMayIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTenMayIn.Properties.Appearance.Options.UseFont = true;
+            this.txtTenMayIn.Properties.AutoHeight = false;
+            this.txtTenMayIn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtTenMayIn.Size = new System.Drawing.Size(821, 30);
+            this.txtTenMayIn.StyleController = this.layoutControl1;
+            this.txtTenMayIn.TabIndex = 7;
+            // 
+            // txtCongCOM
+            // 
+            this.txtCongCOM.Location = new System.Drawing.Point(206, 82);
+            this.txtCongCOM.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtCongCOM.MenuManager = this.bm;
+            this.txtCongCOM.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtCongCOM.Name = "txtCongCOM";
+            this.txtCongCOM.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtCongCOM.Properties.Appearance.Options.UseFont = true;
+            this.txtCongCOM.Properties.AutoHeight = false;
+            this.txtCongCOM.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtCongCOM.Size = new System.Drawing.Size(821, 30);
+            this.txtCongCOM.StyleController = this.layoutControl1;
+            this.txtCongCOM.TabIndex = 6;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Location = new System.Drawing.Point(206, 47);
+            this.txtDiaChi.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtDiaChi.MenuManager = this.bm;
+            this.txtDiaChi.MinimumSize = new System.Drawing.Size(0, 30);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
+            this.txtDiaChi.Properties.AutoHeight = false;
+            this.txtDiaChi.Size = new System.Drawing.Size(821, 30);
+            this.txtDiaChi.StyleController = this.layoutControl1;
+            this.txtDiaChi.TabIndex = 5;
+            // 
+            // txtTenTiem
+            // 
+            this.txtTenTiem.EditValue = "";
+            this.txtTenTiem.Location = new System.Drawing.Point(206, 12);
+            this.txtTenTiem.MaximumSize = new System.Drawing.Size(0, 30);
+            this.txtTenTiem.MenuManager = this.bm;
+            this.txtTenTiem.Name = "txtTenTiem";
+            this.txtTenTiem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.txtTenTiem.Properties.Appearance.Options.UseFont = true;
+            this.txtTenTiem.Properties.AutoHeight = false;
+            this.txtTenTiem.Size = new System.Drawing.Size(821, 30);
+            this.txtTenTiem.StyleController = this.layoutControl1;
+            this.txtTenTiem.TabIndex = 4;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -272,20 +377,6 @@
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1039, 281);
             this.Root.TextVisible = false;
-            // 
-            // txtTenTiem
-            // 
-            this.txtTenTiem.EditValue = "";
-            this.txtTenTiem.Location = new System.Drawing.Point(215, 12);
-            this.txtTenTiem.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtTenTiem.MenuManager = this.bm;
-            this.txtTenTiem.Name = "txtTenTiem";
-            this.txtTenTiem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtTenTiem.Properties.Appearance.Options.UseFont = true;
-            this.txtTenTiem.Properties.AutoHeight = false;
-            this.txtTenTiem.Size = new System.Drawing.Size(812, 30);
-            this.txtTenTiem.StyleController = this.layoutControl1;
-            this.txtTenTiem.TabIndex = 4;
             // 
             // layoutControlItem1
             // 
@@ -310,20 +401,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(1019, 16);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(215, 47);
-            this.txtDiaChi.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtDiaChi.MenuManager = this.bm;
-            this.txtDiaChi.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Properties.AutoHeight = false;
-            this.txtDiaChi.Size = new System.Drawing.Size(812, 30);
-            this.txtDiaChi.StyleController = this.layoutControl1;
-            this.txtDiaChi.TabIndex = 5;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -337,22 +414,6 @@
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "Địa Chỉ:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(191, 17);
-            // 
-            // txtCongCOM
-            // 
-            this.txtCongCOM.Location = new System.Drawing.Point(215, 82);
-            this.txtCongCOM.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtCongCOM.MenuManager = this.bm;
-            this.txtCongCOM.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtCongCOM.Name = "txtCongCOM";
-            this.txtCongCOM.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtCongCOM.Properties.Appearance.Options.UseFont = true;
-            this.txtCongCOM.Properties.AutoHeight = false;
-            this.txtCongCOM.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtCongCOM.Size = new System.Drawing.Size(812, 30);
-            this.txtCongCOM.StyleController = this.layoutControl1;
-            this.txtCongCOM.TabIndex = 6;
             // 
             // layoutControlItem3
             // 
@@ -368,22 +429,6 @@
             this.layoutControlItem3.Text = "Cổng COM:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(191, 17);
             // 
-            // txtTenMayIn
-            // 
-            this.txtTenMayIn.Location = new System.Drawing.Point(215, 117);
-            this.txtTenMayIn.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtTenMayIn.MenuManager = this.bm;
-            this.txtTenMayIn.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtTenMayIn.Name = "txtTenMayIn";
-            this.txtTenMayIn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtTenMayIn.Properties.Appearance.Options.UseFont = true;
-            this.txtTenMayIn.Properties.AutoHeight = false;
-            this.txtTenMayIn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtTenMayIn.Size = new System.Drawing.Size(812, 30);
-            this.txtTenMayIn.StyleController = this.layoutControl1;
-            this.txtTenMayIn.TabIndex = 7;
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -397,24 +442,6 @@
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "Máy In:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(191, 16);
-            // 
-            // txtDuongDanDuLieu
-            // 
-            this.txtDuongDanDuLieu.Location = new System.Drawing.Point(215, 152);
-            this.txtDuongDanDuLieu.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtDuongDanDuLieu.MenuManager = this.bm;
-            this.txtDuongDanDuLieu.MinimumSize = new System.Drawing.Size(0, 30);
-            this.txtDuongDanDuLieu.Name = "txtDuongDanDuLieu";
-            this.txtDuongDanDuLieu.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtDuongDanDuLieu.Properties.Appearance.Options.UseFont = true;
-            this.txtDuongDanDuLieu.Properties.AutoHeight = false;
-            this.txtDuongDanDuLieu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.txtDuongDanDuLieu.Properties.Tag = "Chon";
-            this.txtDuongDanDuLieu.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDuongDanDuLieu_Properties_ButtonClick);
-            this.txtDuongDanDuLieu.Size = new System.Drawing.Size(812, 30);
-            this.txtDuongDanDuLieu.StyleController = this.layoutControl1;
-            this.txtDuongDanDuLieu.TabIndex = 8;
             // 
             // layoutControlItem5
             // 
@@ -430,20 +457,6 @@
             this.layoutControlItem5.Text = "Đường Dẫn Dữ Liệu (Excel):";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(191, 17);
             // 
-            // txtDinhDang
-            // 
-            this.txtDinhDang.EditValue = "[c]c[p]p[l][d][td]";
-            this.txtDinhDang.Location = new System.Drawing.Point(215, 187);
-            this.txtDinhDang.MaximumSize = new System.Drawing.Size(0, 30);
-            this.txtDinhDang.MenuManager = this.bm;
-            this.txtDinhDang.Name = "txtDinhDang";
-            this.txtDinhDang.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.txtDinhDang.Properties.Appearance.Options.UseFont = true;
-            this.txtDinhDang.Properties.AutoHeight = false;
-            this.txtDinhDang.Size = new System.Drawing.Size(812, 30);
-            this.txtDinhDang.StyleController = this.layoutControl1;
-            this.txtDinhDang.TabIndex = 9;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -457,19 +470,6 @@
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "Định Dạng:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(191, 17);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(12, 222);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(355, 31);
-            this.labelControl1.StyleController = this.layoutControl1;
-            this.labelControl1.TabIndex = 10;
-            this.labelControl1.Text = "[c]: chỉ - [p]: phân - [l]: ly -[d]: dem - [td]: tiểu dem";
             // 
             // layoutControlItem7
             // 
@@ -501,19 +501,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenTiem.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCongCOM.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenMayIn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDuongDanDuLieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDinhDang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);

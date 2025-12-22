@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Phan_Mem_Quan_Ly_In_Tem</RootNamespace>
     <AssemblyName>Phan_Mem_Quan_Ly_In_Tem</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,6 +69,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -90,12 +91,28 @@
     <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v20.1.Extensions, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq">
       <Private>True</Private>
     </Reference>
@@ -123,10 +140,28 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Company\frmCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmCompany.designer.cs">
+      <DependentUpon>frmCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmCompanyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmCompanyAdd.Designer.cs">
+      <DependentUpon>frmCompanyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsDanhSachHangHoa.cs">
+      <DependentUpon>dsDanhSachHangHoa.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS\dsDanhSachNhaCungCap.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDanhSachNhaCungCap.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsMauTemIn.cs">
+      <DependentUpon>dsMauTemIn.xsd</DependentUpon>
     </Compile>
     <Compile Include="DS\dsMauTemIn.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,6 +233,34 @@
     <Compile Include="MauTemIn\frmThemMauTemIn.Designer.cs">
       <DependentUpon>frmThemMauTemIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelEF\BarcodeDetail.cs">
+      <DependentUpon>PrintBarcodeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\BarcodeTemplate.cs">
+      <DependentUpon>PrintBarcodeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\clsBarcodeShort.cs" />
+    <Compile Include="ModelEF\Company.cs">
+      <DependentUpon>PrintBarcodeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\PrintBarcodeDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintBarcodeDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\PrintBarcodeDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintBarcodeDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\PrintBarcodeDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintBarcodeDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEF\Supplier.cs">
+      <DependentUpon>PrintBarcodeDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rptInTemNuTrang.cs">
@@ -213,6 +276,13 @@
       <DependentUpon>rptInTem.cs</DependentUpon>
     </Compile>
     <Compile Include="XuLy\clsXuLyDuLieu.cs" />
+    <EmbeddedResource Include="Company\frmCompany.resx">
+      <DependentUpon>frmCompany.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmCompanyAdd.resx">
+      <DependentUpon>frmCompanyAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,14 +317,8 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="rptInTemNuTrang.resx">
       <DependentUpon>rptInTemNuTrang.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +359,14 @@
     <None Include="DS\dsMauTemIn.xss">
       <DependentUpon>dsMauTemIn.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="ModelEF\PrintBarcodeDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PrintBarcodeDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelEF\PrintBarcodeDB.edmx.diagram">
+      <DependentUpon>PrintBarcodeDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Phan_Mem_Quan_Ly_In_Tem_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,6 +399,29 @@
     <None Include="Resources\save_32x32.png" />
     <None Include="Resources\close_16x161.png" />
     <None Include="Resources\close_32x321.png" />
+    <Content Include="ModelEF\PrintBarcodeDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PrintBarcodeDB.Context.cs</LastGenOutput>
+      <DependentUpon>PrintBarcodeDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelEF\PrintBarcodeDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PrintBarcodeDB.edmx</DependentUpon>
+      <LastGenOutput>PrintBarcodeDB.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\gridcolumnheader_16x16.png" />
+    <None Include="Resources\gridcolumnheader_32x32.png" />
+    <None Include="Resources\build_32x32.png" />
+    <None Include="Resources\build_16x16.png" />
+    <None Include="Resources\initialstate.svg" />
+    <None Include="Resources\printarea_32x32.png" />
+    <None Include="Resources\printarea_16x16.png" />
+    <None Include="Resources\deleteheader_32x32.png" />
+    <None Include="Resources\deleteheader_16x16.png" />
+    <None Include="Resources\addgroupfooter_32x32.png" />
+    <None Include="Resources\addgroupfooter_16x16.png" />
+    <None Include="Resources\close_32x322.png" />
+    <None Include="Resources\close_16x162.png" />
     <Content Include="Resources\selectpivottable_16x16.png" />
     <Content Include="Resources\selectpivottable_32x32.png" />
   </ItemGroup>
@@ -337,6 +432,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

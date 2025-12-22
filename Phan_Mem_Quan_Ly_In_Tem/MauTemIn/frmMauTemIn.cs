@@ -64,10 +64,15 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
         {
             try 
             {
-                clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
-                DataTable dtMauTemInExcel = new DataTable();
-                dtMauTemInExcel = _clsXuLyDuLieu.docDanhSachMauTemInFileExcel(path, Path.GetExtension(path), "Yes");
-                napDuLieuVaoLuoiTuFileExcel(dtMauTemInExcel);
+                //clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                //DataTable dtMauTemInExcel = new DataTable();
+                //dtMauTemInExcel = _clsXuLyDuLieu.docDanhSachMauTemInFileExcel(path, Path.GetExtension(path), "Yes");
+                //napDuLieuVaoLuoiTuFileExcel(dtMauTemInExcel);
+
+                var db = new ModelEF.PrintBarcodeEntities();
+                gcList.DataSource = db.BarcodeTemplates.Where(bt => !(bt.IsDeleted ?? false)).ToList();
+
+                gbList.BestFitColumns();
             }
             catch (Exception ex) 
             {
@@ -75,30 +80,30 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
             }
         }
 
-        private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMauTemInExcel)
-        {
-            dsMauTemIn.MauTemIn.Rows.Clear();
-            if (dtMauTemInExcel != null && dtMauTemInExcel.Rows.Count > 0) 
-            {
-                foreach (DataRow dr in dtMauTemInExcel.Rows)
-                {
-                    string ID = dr["ID"] == DBNull.Value || dr["ID"] == null ? "" : dr["ID"].ToString();
-                    string TenTemIn = dr["Tên Mẫu Tem"] == DBNull.Value || dr["Tên Mẫu Tem"] == null ? "" : dr["Tên Mẫu Tem"].ToString();
-                    string DuongDan = dr["Đường Dẫn"] == DBNull.Value || dr["Đường Dẫn"] == null ? "" : dr["Đường Dẫn"].ToString();
-                    string GhiChu = dr["Ghi Chú"] == DBNull.Value || dr["Ghi Chú"] == null ? "" : dr["Ghi Chú"].ToString();
-                    string LaMacDinh = dr["Mặc Định"] == DBNull.Value || dr["Mặc Định"] == null ? "" : dr["Mặc Định"].ToString();
+        //private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMauTemInExcel)
+        //{
+        //    dsMauTemIn.MauTemIn.Rows.Clear();
+        //    if (dtMauTemInExcel != null && dtMauTemInExcel.Rows.Count > 0) 
+        //    {
+        //        foreach (DataRow dr in dtMauTemInExcel.Rows)
+        //        {
+        //            string ID = dr["ID"] == DBNull.Value || dr["ID"] == null ? "" : dr["ID"].ToString();
+        //            string TenTemIn = dr["Tên Mẫu Tem"] == DBNull.Value || dr["Tên Mẫu Tem"] == null ? "" : dr["Tên Mẫu Tem"].ToString();
+        //            string DuongDan = dr["Đường Dẫn"] == DBNull.Value || dr["Đường Dẫn"] == null ? "" : dr["Đường Dẫn"].ToString();
+        //            string GhiChu = dr["Ghi Chú"] == DBNull.Value || dr["Ghi Chú"] == null ? "" : dr["Ghi Chú"].ToString();
+        //            string LaMacDinh = dr["Mặc Định"] == DBNull.Value || dr["Mặc Định"] == null ? "" : dr["Mặc Định"].ToString();
 
-                    dsMauTemIn.MauTemIn.AddMauTemInRow(ID, TenTemIn, DuongDan, LaMacDinh, GhiChu);
-                }
-                gbList.BestFitColumns();
-            }
-        }
+        //            dsMauTemIn.MauTemIn.AddMauTemInRow(ID, TenTemIn, DuongDan, LaMacDinh, GhiChu);
+        //        }
+        //        gbList.BestFitColumns();
+        //    }
+        //}
 
         private void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
-                var id = gbList.GetFocusedRowCellValue(colID.FieldName);
+                var id = gbList.GetFocusedRowCellValue(colBarcodeTemplateID.FieldName);
                 if (id != null) 
                 {
                     frmThemMauTemIn _frmAdd = new frmThemMauTemIn(this.path, id.ToString());
@@ -156,17 +161,32 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
                     return;
 
                 int[] selectedRows = gbList.GetSelectedRows();
+                string ids = "";
                 if (selectedRows.Length > 0) 
                 {
-                    clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                    //clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
                     for (int i = selectedRows.Length; i > 0; i--)
                     {
-                        var arg = gbList.GetRowCellValue(selectedRows[i - 1], colID);
+                        var arg = gbList.GetRowCellValue(selectedRows[i - 1], colBarcodeTemplateID);
                         if (arg == null)
                             continue;
-                        _clsXuLyDuLieu.xoaMauTemIn(this.path, arg.ToString());
+
+                        if (!string.IsNullOrEmpty(ids)) 
+                        {
+                            ids += ",";
+                        }
+                        ids += arg.ToString();
+                        //_clsXuLyDuLieu.xoaMauTemIn(this.path, arg.ToString());
                     }
-                    MessageBox.Show(this, "Thông báo", "Xóa thành công.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!string.IsNullOrEmpty(ids)) 
+                    {
+                        using (var db = new ModelEF.PrintBarcodeEntities()) 
+                        {
+                            db.Database.ExecuteSqlCommand("UPDATE [BarcodeTemplate] SET [IsDeleted] = 1, [DeletedDate] = GETDATE() WHERE BarcodeTemplateID IN (" + ids + ")");
+                            db.SaveChanges();
+                        }
+                    }
+                    MessageBox.Show(this, "Xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     bbiView_ItemClick(this, null);
                 }
             }
@@ -183,7 +203,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
                 int[] selectedRows = gbList.GetSelectedRows();
                 if (selectedRows.Length > 0)
                 {
-                    var arg = gbList.GetRowCellValue(selectedRows[selectedRows.Length - 1], colDuongDan);
+                    var arg = gbList.GetRowCellValue(selectedRows[selectedRows.Length - 1], colBarcodeTemplatePath);
                     if (arg == null)
                     {
                         MessageBox.Show(this, "Không có dữ liệu đường dẫn vui lòng chọn dòng khác !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -191,8 +211,15 @@ namespace Phan_Mem_Quan_Ly_In_Tem.MauTemIn
                     }
                     else 
                     {
-                        RaiseSelectEventHander(arg.ToString());
-                        this.Close();
+                        if (isSelectState)
+                        {
+                            RaiseSelectEventHander(arg.ToString());
+                            this.Close();
+                        }
+                        else 
+                        {
+                            bbiEdit_ItemClick(this, null);
+                        }
                     }
                 }
             }

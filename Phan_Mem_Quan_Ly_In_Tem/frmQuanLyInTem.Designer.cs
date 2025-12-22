@@ -29,46 +29,53 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuanLyInTem));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gcList = new DevExpress.XtraGrid.GridControl();
-            this.inMaVachBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.barcodeDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsDanhSachHangHoa = new Phan_Mem_Quan_Ly_In_Tem.DS.dsDanhSachHangHoa();
             this.gbList = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMaVach = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTenHang = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTongTrongLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.rptMayTinh = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.colTrongLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTienCong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHot = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHamLuongPho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSoLuongTem = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTongTrongLuongChu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTrongLuongChu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHotChu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInTem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rptLinkInTem = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
-            this.colTenTiem = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSoNi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKyHieuVang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarcodeString = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarcodeUnique = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalWeight = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGoldWeight = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colExpense = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStoneWeight = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplierStandardNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGoldSign = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplierName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplierAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSize = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGoldType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrigin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBarcodeID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplierID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTemplatePath = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWeightDisplayFormat = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyStandardNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bm = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bbiXem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiInTem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiThongTin = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNhaCungCap = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCompany = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTuDongCan = new DevExpress.XtraBars.BarButtonItem();
             this.bbiMauTem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDong = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiXoa = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bbiChonFileDuLieu = new DevExpress.XtraBars.BarEditItem();
             this.rptChonFile = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -89,15 +96,17 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.img = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.rptMayTinh = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.inMaVachBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inMaVachBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDanhSachHangHoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rptMayTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptLinkInTem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptChonFile)).BeginInit();
@@ -108,8 +117,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbCongCOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptMayTinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inMaVachBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -126,7 +137,7 @@
             // gcList
             // 
             this.gcList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gcList.DataSource = this.inMaVachBindingSource;
+            this.gcList.DataSource = this.barcodeDetailBindingSource;
             this.gcList.Location = new System.Drawing.Point(2, 2);
             this.gcList.MainView = this.gbList;
             this.gcList.MenuManager = this.bm;
@@ -139,228 +150,53 @@
             this.gcList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gbList});
             // 
-            // inMaVachBindingSource
+            // barcodeDetailBindingSource
             // 
-            this.inMaVachBindingSource.DataMember = "InMaVach";
-            this.inMaVachBindingSource.DataSource = this.dsDanhSachHangHoa;
+            this.barcodeDetailBindingSource.DataMember = "BarcodeDetail";
+            this.barcodeDetailBindingSource.DataSource = this.dsDanhSachHangHoa;
             // 
             // dsDanhSachHangHoa
             // 
             this.dsDanhSachHangHoa.DataSetName = "dsDanhSachHangHoa";
+            this.dsDanhSachHangHoa.EnforceConstraints = false;
             this.dsDanhSachHangHoa.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gbList
             // 
             this.gbList.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMaVach,
-            this.colTenHang,
-            this.colTongTrongLuong,
-            this.colTrongLuong,
-            this.colTienCong,
-            this.colHot,
-            this.colNhaCungCap,
-            this.colHamLuongPho,
-            this.colSoLuongTem,
-            this.colTongTrongLuongChu,
-            this.colTrongLuongChu,
-            this.colHotChu,
             this.colInTem,
-            this.colTenTiem,
-            this.colDiaChi,
-            this.colSoNi,
-            this.colKyHieuVang});
+            this.colBarcodeString,
+            this.colBarcodeUnique,
+            this.colItemID,
+            this.colItemName,
+            this.colTotalWeight,
+            this.colGoldWeight,
+            this.colExpense,
+            this.colStoneWeight,
+            this.colSupplierStandardNo,
+            this.colGoldSign,
+            this.colSupplierName,
+            this.colSupplierAddress,
+            this.colSize,
+            this.colGoldType,
+            this.colOrigin,
+            this.colBarcodeID,
+            this.colCompanyID,
+            this.colSupplierID,
+            this.colCompanyName,
+            this.colCompanyAddress,
+            this.colTemplatePath,
+            this.colWeightDisplayFormat,
+            this.colCompanyStandardNo});
             this.gbList.GridControl = this.gcList;
             this.gbList.GroupPanelText = "Kéo cột và thả cào đây để nhóm dữ liệu";
             this.gbList.IndicatorWidth = 40;
             this.gbList.Name = "gbList";
+            this.gbList.OptionsSelection.MultiSelect = true;
             this.gbList.OptionsView.ColumnAutoWidth = false;
             this.gbList.OptionsView.ShowAutoFilterRow = true;
             this.gbList.OptionsView.ShowFooter = true;
             this.gbList.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gbList_CustomDrawRowIndicator);
-            // 
-            // colMaVach
-            // 
-            this.colMaVach.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colMaVach.AppearanceCell.Options.UseFont = true;
-            this.colMaVach.AppearanceHeader.Options.UseTextOptions = true;
-            this.colMaVach.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colMaVach.Caption = "Mã Vạch";
-            this.colMaVach.FieldName = "MaVach";
-            this.colMaVach.Name = "colMaVach";
-            this.colMaVach.OptionsColumn.ReadOnly = true;
-            this.colMaVach.Visible = true;
-            this.colMaVach.VisibleIndex = 1;
-            this.colMaVach.Width = 81;
-            // 
-            // colTenHang
-            // 
-            this.colTenHang.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTenHang.AppearanceCell.Options.UseFont = true;
-            this.colTenHang.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTenHang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTenHang.Caption = "Tên Hàng";
-            this.colTenHang.FieldName = "TenHang";
-            this.colTenHang.Name = "colTenHang";
-            this.colTenHang.OptionsColumn.ReadOnly = true;
-            this.colTenHang.Visible = true;
-            this.colTenHang.VisibleIndex = 2;
-            this.colTenHang.Width = 81;
-            // 
-            // colTongTrongLuong
-            // 
-            this.colTongTrongLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTongTrongLuong.AppearanceCell.Options.UseFont = true;
-            this.colTongTrongLuong.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTongTrongLuong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTongTrongLuong.Caption = "Tổng Trọng Lượng (chỉ)";
-            this.colTongTrongLuong.ColumnEdit = this.rptMayTinh;
-            this.colTongTrongLuong.FieldName = "TongTrongLuong";
-            this.colTongTrongLuong.Name = "colTongTrongLuong";
-            this.colTongTrongLuong.OptionsColumn.ReadOnly = true;
-            this.colTongTrongLuong.Visible = true;
-            this.colTongTrongLuong.VisibleIndex = 5;
-            this.colTongTrongLuong.Width = 135;
-            // 
-            // rptMayTinh
-            // 
-            this.rptMayTinh.AutoHeight = false;
-            this.rptMayTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.rptMayTinh.DisplayFormat.FormatString = "{0##,##0.###}";
-            this.rptMayTinh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.rptMayTinh.EditFormat.FormatString = "{0##,##0.###}";
-            this.rptMayTinh.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.rptMayTinh.Name = "rptMayTinh";
-            // 
-            // colTrongLuong
-            // 
-            this.colTrongLuong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTrongLuong.AppearanceCell.Options.UseFont = true;
-            this.colTrongLuong.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTrongLuong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTrongLuong.Caption = "Trọng Lượng (chỉ)";
-            this.colTrongLuong.ColumnEdit = this.rptMayTinh;
-            this.colTrongLuong.FieldName = "TrongLuong";
-            this.colTrongLuong.Name = "colTrongLuong";
-            this.colTrongLuong.OptionsColumn.ReadOnly = true;
-            this.colTrongLuong.Visible = true;
-            this.colTrongLuong.VisibleIndex = 7;
-            this.colTrongLuong.Width = 108;
-            // 
-            // colTienCong
-            // 
-            this.colTienCong.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTienCong.AppearanceCell.Options.UseFont = true;
-            this.colTienCong.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTienCong.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTienCong.Caption = "Tiền Công";
-            this.colTienCong.ColumnEdit = this.rptMayTinh;
-            this.colTienCong.FieldName = "TienCong";
-            this.colTienCong.Name = "colTienCong";
-            this.colTienCong.OptionsColumn.ReadOnly = true;
-            this.colTienCong.Visible = true;
-            this.colTienCong.VisibleIndex = 11;
-            this.colTienCong.Width = 71;
-            // 
-            // colHot
-            // 
-            this.colHot.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colHot.AppearanceCell.Options.UseFont = true;
-            this.colHot.AppearanceHeader.Options.UseTextOptions = true;
-            this.colHot.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colHot.Caption = "Hột (chỉ)";
-            this.colHot.ColumnEdit = this.rptMayTinh;
-            this.colHot.FieldName = "Hot";
-            this.colHot.Name = "colHot";
-            this.colHot.OptionsColumn.ReadOnly = true;
-            this.colHot.Visible = true;
-            this.colHot.VisibleIndex = 9;
-            this.colHot.Width = 71;
-            // 
-            // colNhaCungCap
-            // 
-            this.colNhaCungCap.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colNhaCungCap.AppearanceCell.Options.UseFont = true;
-            this.colNhaCungCap.AppearanceHeader.Options.UseTextOptions = true;
-            this.colNhaCungCap.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colNhaCungCap.Caption = "Mã Nhà Cung Cấp";
-            this.colNhaCungCap.FieldName = "NhaCungCap";
-            this.colNhaCungCap.Name = "colNhaCungCap";
-            this.colNhaCungCap.OptionsColumn.ReadOnly = true;
-            this.colNhaCungCap.Visible = true;
-            this.colNhaCungCap.VisibleIndex = 3;
-            this.colNhaCungCap.Width = 109;
-            // 
-            // colHamLuongPho
-            // 
-            this.colHamLuongPho.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colHamLuongPho.AppearanceCell.Options.UseFont = true;
-            this.colHamLuongPho.AppearanceHeader.Options.UseTextOptions = true;
-            this.colHamLuongPho.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colHamLuongPho.Caption = "Hàm Lượng Phổ";
-            this.colHamLuongPho.FieldName = "HamLuongPho";
-            this.colHamLuongPho.Name = "colHamLuongPho";
-            this.colHamLuongPho.OptionsColumn.ReadOnly = true;
-            this.colHamLuongPho.Visible = true;
-            this.colHamLuongPho.VisibleIndex = 4;
-            this.colHamLuongPho.Width = 98;
-            // 
-            // colSoLuongTem
-            // 
-            this.colSoLuongTem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colSoLuongTem.AppearanceCell.Options.UseFont = true;
-            this.colSoLuongTem.AppearanceHeader.Options.UseTextOptions = true;
-            this.colSoLuongTem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colSoLuongTem.Caption = "Số Lượng Tem";
-            this.colSoLuongTem.ColumnEdit = this.rptMayTinh;
-            this.colSoLuongTem.FieldName = "SoLuongTem";
-            this.colSoLuongTem.Name = "colSoLuongTem";
-            this.colSoLuongTem.OptionsColumn.ReadOnly = true;
-            this.colSoLuongTem.Visible = true;
-            this.colSoLuongTem.VisibleIndex = 12;
-            this.colSoLuongTem.Width = 91;
-            // 
-            // colTongTrongLuongChu
-            // 
-            this.colTongTrongLuongChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTongTrongLuongChu.AppearanceCell.Options.UseFont = true;
-            this.colTongTrongLuongChu.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTongTrongLuongChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTongTrongLuongChu.Caption = "Tổng Trọng Lượng (Chữ)";
-            this.colTongTrongLuongChu.FieldName = "TongTrongLuongChu";
-            this.colTongTrongLuongChu.Name = "colTongTrongLuongChu";
-            this.colTongTrongLuongChu.OptionsColumn.ReadOnly = true;
-            this.colTongTrongLuongChu.Visible = true;
-            this.colTongTrongLuongChu.VisibleIndex = 6;
-            this.colTongTrongLuongChu.Width = 142;
-            // 
-            // colTrongLuongChu
-            // 
-            this.colTrongLuongChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTrongLuongChu.AppearanceCell.Options.UseFont = true;
-            this.colTrongLuongChu.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTrongLuongChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTrongLuongChu.Caption = "Trọng Lượng (Chữ)";
-            this.colTrongLuongChu.FieldName = "TrongLuongChu";
-            this.colTrongLuongChu.Name = "colTrongLuongChu";
-            this.colTrongLuongChu.OptionsColumn.ReadOnly = true;
-            this.colTrongLuongChu.Visible = true;
-            this.colTrongLuongChu.VisibleIndex = 8;
-            this.colTrongLuongChu.Width = 115;
-            // 
-            // colHotChu
-            // 
-            this.colHotChu.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colHotChu.AppearanceCell.Options.UseFont = true;
-            this.colHotChu.AppearanceHeader.Options.UseTextOptions = true;
-            this.colHotChu.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colHotChu.Caption = "Hột (Chữ)";
-            this.colHotChu.FieldName = "HotChu";
-            this.colHotChu.Name = "colHotChu";
-            this.colHotChu.OptionsColumn.ReadOnly = true;
-            this.colHotChu.Visible = true;
-            this.colHotChu.VisibleIndex = 10;
-            this.colHotChu.Width = 77;
             // 
             // colInTem
             // 
@@ -383,60 +219,254 @@
             this.rptLinkInTem.NullText = "In Tem";
             this.rptLinkInTem.Click += new System.EventHandler(this.rptLinkInTem_Click);
             // 
-            // colTenTiem
+            // colBarcodeString
             // 
-            this.colTenTiem.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colTenTiem.AppearanceCell.Options.UseFont = true;
-            this.colTenTiem.AppearanceHeader.Options.UseTextOptions = true;
-            this.colTenTiem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colTenTiem.Caption = "Tên Tiệm NCC";
-            this.colTenTiem.FieldName = "TenTiem";
-            this.colTenTiem.Name = "colTenTiem";
-            this.colTenTiem.OptionsColumn.ReadOnly = true;
-            this.colTenTiem.Visible = true;
-            this.colTenTiem.VisibleIndex = 13;
-            this.colTenTiem.Width = 90;
+            this.colBarcodeString.AppearanceHeader.Options.UseTextOptions = true;
+            this.colBarcodeString.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colBarcodeString.Caption = "Mã Vạch";
+            this.colBarcodeString.FieldName = "BarcodeString";
+            this.colBarcodeString.Name = "colBarcodeString";
+            this.colBarcodeString.OptionsColumn.ReadOnly = true;
+            this.colBarcodeString.Visible = true;
+            this.colBarcodeString.VisibleIndex = 1;
             // 
-            // colDiaChi
+            // colBarcodeUnique
             // 
-            this.colDiaChi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colDiaChi.AppearanceCell.Options.UseFont = true;
-            this.colDiaChi.AppearanceHeader.Options.UseTextOptions = true;
-            this.colDiaChi.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colDiaChi.Caption = "Địa Chỉ NCC";
-            this.colDiaChi.FieldName = "DiaChi";
-            this.colDiaChi.Name = "colDiaChi";
-            this.colDiaChi.OptionsColumn.ReadOnly = true;
-            this.colDiaChi.Visible = true;
-            this.colDiaChi.VisibleIndex = 14;
-            this.colDiaChi.Width = 81;
+            this.colBarcodeUnique.AppearanceHeader.Options.UseTextOptions = true;
+            this.colBarcodeUnique.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colBarcodeUnique.FieldName = "BarcodeUnique";
+            this.colBarcodeUnique.Name = "colBarcodeUnique";
+            this.colBarcodeUnique.OptionsColumn.ReadOnly = true;
             // 
-            // colSoNi
+            // colItemID
             // 
-            this.colSoNi.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colSoNi.AppearanceCell.Options.UseFont = true;
-            this.colSoNi.AppearanceHeader.Options.UseTextOptions = true;
-            this.colSoNi.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colSoNi.Caption = "Số Ni";
-            this.colSoNi.FieldName = "SoNi";
-            this.colSoNi.Name = "colSoNi";
-            this.colSoNi.OptionsColumn.ReadOnly = true;
-            this.colSoNi.Visible = true;
-            this.colSoNi.VisibleIndex = 15;
+            this.colItemID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemID.FieldName = "ItemID";
+            this.colItemID.Name = "colItemID";
+            this.colItemID.OptionsColumn.ReadOnly = true;
             // 
-            // colKyHieuVang
+            // colItemName
             // 
-            this.colKyHieuVang.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colKyHieuVang.AppearanceCell.Options.UseFont = true;
-            this.colKyHieuVang.AppearanceHeader.Options.UseTextOptions = true;
-            this.colKyHieuVang.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colKyHieuVang.Caption = "Ký Hiệu Vàng";
-            this.colKyHieuVang.FieldName = "KyHieuVang";
-            this.colKyHieuVang.Name = "colKyHieuVang";
-            this.colKyHieuVang.OptionsColumn.ReadOnly = true;
-            this.colKyHieuVang.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains;
-            this.colKyHieuVang.Visible = true;
-            this.colKyHieuVang.VisibleIndex = 16;
+            this.colItemName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colItemName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colItemName.Caption = "Tên Hàng";
+            this.colItemName.FieldName = "ItemName";
+            this.colItemName.Name = "colItemName";
+            this.colItemName.OptionsColumn.ReadOnly = true;
+            this.colItemName.Visible = true;
+            this.colItemName.VisibleIndex = 2;
+            // 
+            // colTotalWeight
+            // 
+            this.colTotalWeight.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTotalWeight.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTotalWeight.Caption = "Tổng Trọng Lượng (chỉ)";
+            this.colTotalWeight.FieldName = "TotalWeight";
+            this.colTotalWeight.Name = "colTotalWeight";
+            this.colTotalWeight.OptionsColumn.ReadOnly = true;
+            this.colTotalWeight.Visible = true;
+            this.colTotalWeight.VisibleIndex = 3;
+            this.colTotalWeight.Width = 135;
+            // 
+            // colGoldWeight
+            // 
+            this.colGoldWeight.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGoldWeight.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGoldWeight.Caption = "Trọng Lượng (chỉ)";
+            this.colGoldWeight.FieldName = "GoldWeight";
+            this.colGoldWeight.Name = "colGoldWeight";
+            this.colGoldWeight.OptionsColumn.ReadOnly = true;
+            this.colGoldWeight.Visible = true;
+            this.colGoldWeight.VisibleIndex = 4;
+            this.colGoldWeight.Width = 108;
+            // 
+            // colExpense
+            // 
+            this.colExpense.AppearanceHeader.Options.UseTextOptions = true;
+            this.colExpense.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colExpense.Caption = "Tiền Công";
+            this.colExpense.FieldName = "Expense";
+            this.colExpense.Name = "colExpense";
+            this.colExpense.OptionsColumn.ReadOnly = true;
+            this.colExpense.Visible = true;
+            this.colExpense.VisibleIndex = 7;
+            // 
+            // colStoneWeight
+            // 
+            this.colStoneWeight.AppearanceHeader.Options.UseTextOptions = true;
+            this.colStoneWeight.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colStoneWeight.Caption = "Hột (chỉ)";
+            this.colStoneWeight.FieldName = "StoneWeight";
+            this.colStoneWeight.Name = "colStoneWeight";
+            this.colStoneWeight.OptionsColumn.ReadOnly = true;
+            this.colStoneWeight.Visible = true;
+            this.colStoneWeight.VisibleIndex = 5;
+            // 
+            // colSupplierStandardNo
+            // 
+            this.colSupplierStandardNo.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSupplierStandardNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSupplierStandardNo.Caption = "Nhà Cung Cấp (TCCS)";
+            this.colSupplierStandardNo.FieldName = "SupplierStandardNo";
+            this.colSupplierStandardNo.Name = "colSupplierStandardNo";
+            this.colSupplierStandardNo.OptionsColumn.ReadOnly = true;
+            this.colSupplierStandardNo.Visible = true;
+            this.colSupplierStandardNo.VisibleIndex = 10;
+            this.colSupplierStandardNo.Width = 129;
+            // 
+            // colGoldSign
+            // 
+            this.colGoldSign.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGoldSign.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGoldSign.Caption = "Hàm Lượng Phổ";
+            this.colGoldSign.FieldName = "GoldSign";
+            this.colGoldSign.Name = "colGoldSign";
+            this.colGoldSign.OptionsColumn.ReadOnly = true;
+            this.colGoldSign.Visible = true;
+            this.colGoldSign.VisibleIndex = 8;
+            this.colGoldSign.Width = 98;
+            // 
+            // colSupplierName
+            // 
+            this.colSupplierName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSupplierName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSupplierName.Caption = "Nhà Cung Cấp";
+            this.colSupplierName.FieldName = "SupplierName";
+            this.colSupplierName.Name = "colSupplierName";
+            this.colSupplierName.OptionsColumn.ReadOnly = true;
+            this.colSupplierName.Visible = true;
+            this.colSupplierName.VisibleIndex = 11;
+            this.colSupplierName.Width = 92;
+            // 
+            // colSupplierAddress
+            // 
+            this.colSupplierAddress.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSupplierAddress.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSupplierAddress.Caption = "Địa Chỉ NCC";
+            this.colSupplierAddress.FieldName = "SupplierAddress";
+            this.colSupplierAddress.Name = "colSupplierAddress";
+            this.colSupplierAddress.OptionsColumn.ReadOnly = true;
+            this.colSupplierAddress.Visible = true;
+            this.colSupplierAddress.VisibleIndex = 12;
+            this.colSupplierAddress.Width = 81;
+            // 
+            // colSize
+            // 
+            this.colSize.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSize.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSize.Caption = "Số Ni";
+            this.colSize.FieldName = "Size";
+            this.colSize.Name = "colSize";
+            this.colSize.OptionsColumn.ReadOnly = true;
+            this.colSize.Visible = true;
+            this.colSize.VisibleIndex = 13;
+            // 
+            // colGoldType
+            // 
+            this.colGoldType.AppearanceHeader.Options.UseTextOptions = true;
+            this.colGoldType.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colGoldType.Caption = "Ký Hiệu Vàng";
+            this.colGoldType.FieldName = "GoldType";
+            this.colGoldType.Name = "colGoldType";
+            this.colGoldType.OptionsColumn.ReadOnly = true;
+            this.colGoldType.Visible = true;
+            this.colGoldType.VisibleIndex = 9;
+            this.colGoldType.Width = 86;
+            // 
+            // colOrigin
+            // 
+            this.colOrigin.AppearanceHeader.Options.UseTextOptions = true;
+            this.colOrigin.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colOrigin.Caption = "Xuất Xứ";
+            this.colOrigin.FieldName = "Origin";
+            this.colOrigin.Name = "colOrigin";
+            this.colOrigin.OptionsColumn.ReadOnly = true;
+            this.colOrigin.Visible = true;
+            this.colOrigin.VisibleIndex = 14;
+            // 
+            // colBarcodeID
+            // 
+            this.colBarcodeID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colBarcodeID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colBarcodeID.FieldName = "BarcodeID";
+            this.colBarcodeID.Name = "colBarcodeID";
+            this.colBarcodeID.OptionsColumn.ReadOnly = true;
+            // 
+            // colCompanyID
+            // 
+            this.colCompanyID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCompanyID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCompanyID.FieldName = "CompanyID";
+            this.colCompanyID.Name = "colCompanyID";
+            this.colCompanyID.OptionsColumn.ReadOnly = true;
+            // 
+            // colSupplierID
+            // 
+            this.colSupplierID.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSupplierID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSupplierID.FieldName = "SupplierID";
+            this.colSupplierID.Name = "colSupplierID";
+            this.colSupplierID.OptionsColumn.ReadOnly = true;
+            // 
+            // colCompanyName
+            // 
+            this.colCompanyName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCompanyName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCompanyName.Caption = "Nhà Phân Phối";
+            this.colCompanyName.FieldName = "CompanyName";
+            this.colCompanyName.Name = "colCompanyName";
+            this.colCompanyName.OptionsColumn.ReadOnly = true;
+            this.colCompanyName.Visible = true;
+            this.colCompanyName.VisibleIndex = 15;
+            this.colCompanyName.Width = 92;
+            // 
+            // colCompanyAddress
+            // 
+            this.colCompanyAddress.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCompanyAddress.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCompanyAddress.Caption = "Địa Chỉ (NPP)";
+            this.colCompanyAddress.FieldName = "CompanyAddress";
+            this.colCompanyAddress.Name = "colCompanyAddress";
+            this.colCompanyAddress.OptionsColumn.ReadOnly = true;
+            this.colCompanyAddress.Visible = true;
+            this.colCompanyAddress.VisibleIndex = 16;
+            this.colCompanyAddress.Width = 87;
+            // 
+            // colTemplatePath
+            // 
+            this.colTemplatePath.AppearanceHeader.Options.UseTextOptions = true;
+            this.colTemplatePath.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colTemplatePath.Caption = "Đường Dẫn Tem In";
+            this.colTemplatePath.FieldName = "TemplatePath";
+            this.colTemplatePath.Name = "colTemplatePath";
+            this.colTemplatePath.OptionsColumn.ReadOnly = true;
+            this.colTemplatePath.Visible = true;
+            this.colTemplatePath.VisibleIndex = 18;
+            this.colTemplatePath.Width = 114;
+            // 
+            // colWeightDisplayFormat
+            // 
+            this.colWeightDisplayFormat.AppearanceHeader.Options.UseTextOptions = true;
+            this.colWeightDisplayFormat.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colWeightDisplayFormat.Caption = "Định Dạng";
+            this.colWeightDisplayFormat.FieldName = "WeightDisplayFormat";
+            this.colWeightDisplayFormat.Name = "colWeightDisplayFormat";
+            this.colWeightDisplayFormat.OptionsColumn.ReadOnly = true;
+            this.colWeightDisplayFormat.Visible = true;
+            this.colWeightDisplayFormat.VisibleIndex = 6;
+            // 
+            // colCompanyStandardNo
+            // 
+            this.colCompanyStandardNo.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCompanyStandardNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCompanyStandardNo.Caption = "Nhà Phân Phối (TCCS)";
+            this.colCompanyStandardNo.FieldName = "CompanyStandardNo";
+            this.colCompanyStandardNo.Name = "colCompanyStandardNo";
+            this.colCompanyStandardNo.OptionsColumn.ReadOnly = true;
+            this.colCompanyStandardNo.Visible = true;
+            this.colCompanyStandardNo.VisibleIndex = 17;
+            this.colCompanyStandardNo.Width = 129;
             // 
             // bm
             // 
@@ -455,7 +485,7 @@
             this.bbiInTem,
             this.bbiDong,
             this.bbiCongCOM,
-            this.barButtonItem1,
+            this.bbiXoa,
             this.bbiChonFileDuLieu,
             this.bbiThongTin,
             this.bbiTenTiem,
@@ -464,8 +494,10 @@
             this.bbiTuDongCan,
             this.bbiMauTem,
             this.bbiDinhDang,
-            this.bbiNhaCungCap});
-            this.bm.MaxItemId = 27;
+            this.bbiNhaCungCap,
+            this.bbiCompany,
+            this.barButtonItem1});
+            this.bm.MaxItemId = 29;
             this.bm.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpt_cbCongCOM,
             this.rptChonFile,
@@ -484,12 +516,13 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiInTem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiThongTin, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiNhaCungCap, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiCompany, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTuDongCan, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiMauTem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiDong, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.None, false, this.barButtonItem1, false)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiDong, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Tools";
             // 
@@ -521,10 +554,19 @@
             // 
             this.bbiNhaCungCap.Caption = "Nhà Cung Cấp";
             this.bbiNhaCungCap.Id = 26;
-            this.bbiNhaCungCap.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.printsortdesc_16x16;
-            this.bbiNhaCungCap.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.printsortdesc_32x32;
+            this.bbiNhaCungCap.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNhaCungCap.ImageOptions.Image")));
+            this.bbiNhaCungCap.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNhaCungCap.ImageOptions.LargeImage")));
             this.bbiNhaCungCap.Name = "bbiNhaCungCap";
             this.bbiNhaCungCap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNhaCungCap_ItemClick);
+            // 
+            // bbiCompany
+            // 
+            this.bbiCompany.Caption = "Nhà Phân Phối";
+            this.bbiCompany.Id = 27;
+            this.bbiCompany.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCompany.ImageOptions.Image")));
+            this.bbiCompany.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCompany.ImageOptions.LargeImage")));
+            this.bbiCompany.Name = "bbiCompany";
+            this.bbiCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCompany_ItemClick);
             // 
             // bbiTuDongCan
             // 
@@ -539,8 +581,8 @@
             // 
             this.bbiMauTem.Caption = "Mẫu Tem";
             this.bbiMauTem.Id = 23;
-            this.bbiMauTem.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.emailtemplate_16x16;
-            this.bbiMauTem.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.emailtemplate_32x32;
+            this.bbiMauTem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiMauTem.ImageOptions.Image")));
+            this.bbiMauTem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiMauTem.ImageOptions.LargeImage")));
             this.bbiMauTem.Name = "bbiMauTem";
             this.bbiMauTem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiMauTem_ItemClick);
             // 
@@ -552,12 +594,14 @@
             this.bbiDong.Name = "bbiDong";
             this.bbiDong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDong_ItemClick);
             // 
-            // barButtonItem1
+            // bbiXoa
             // 
-            this.barButtonItem1.Caption = "test";
-            this.barButtonItem1.Id = 5;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.bbiXoa.Caption = "Xóa";
+            this.bbiXoa.Id = 5;
+            this.bbiXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiXoa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiXoa.Name = "bbiXoa";
+            this.bbiXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiXoa_ItemClick);
             // 
             // bar2
             // 
@@ -584,7 +628,7 @@
             // 
             this.rptChonFile.AutoHeight = false;
             this.rptChonFile.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "Chon", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rptChonFile.Name = "rptChonFile";
             this.rptChonFile.ReadOnly = true;
             // 
@@ -801,6 +845,17 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // rptMayTinh
+            // 
+            this.rptMayTinh.AutoHeight = false;
+            this.rptMayTinh.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rptMayTinh.DisplayFormat.FormatString = "{0##,##0.###}";
+            this.rptMayTinh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.rptMayTinh.EditFormat.FormatString = "{0##,##0.###}";
+            this.rptMayTinh.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.rptMayTinh.Name = "rptMayTinh";
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
@@ -823,6 +878,17 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // inMaVachBindingSource
+            // 
+            this.inMaVachBindingSource.DataMember = "InMaVach";
+            this.inMaVachBindingSource.DataSource = this.dsDanhSachHangHoa;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Xóa";
+            this.barButtonItem1.Id = 28;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // frmQuanLyInTem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -842,10 +908,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inMaVachBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsDanhSachHangHoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rptMayTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptLinkInTem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rptChonFile)).EndInit();
@@ -856,8 +921,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.rpt_cbCongCOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rptMayTinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inMaVachBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -878,7 +945,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiDong;
         private DevExpress.XtraBars.BarEditItem bbiCongCOM;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rpt_cbCongCOM;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiXoa;
         private DevExpress.XtraGrid.GridControl gcList;
         private DevExpress.XtraGrid.Views.Grid.GridView gbList;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -886,18 +953,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rptChonFile;
         private System.Windows.Forms.BindingSource inMaVachBindingSource;
         private DS.dsDanhSachHangHoa dsDanhSachHangHoa;
-        private DevExpress.XtraGrid.Columns.GridColumn colMaVach;
-        private DevExpress.XtraGrid.Columns.GridColumn colTenHang;
-        private DevExpress.XtraGrid.Columns.GridColumn colTongTrongLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn colTrongLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn colTienCong;
-        private DevExpress.XtraGrid.Columns.GridColumn colHot;
-        private DevExpress.XtraGrid.Columns.GridColumn colNhaCungCap;
-        private DevExpress.XtraGrid.Columns.GridColumn colHamLuongPho;
-        private DevExpress.XtraGrid.Columns.GridColumn colSoLuongTem;
-        private DevExpress.XtraGrid.Columns.GridColumn colTongTrongLuongChu;
-        private DevExpress.XtraGrid.Columns.GridColumn colTrongLuongChu;
-        private DevExpress.XtraGrid.Columns.GridColumn colHotChu;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit rptLinkInTem;
         private DevExpress.XtraGrid.Columns.GridColumn colInTem;
         private DevExpress.XtraBars.BarButtonItem bbiThongTin;
@@ -911,16 +966,38 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox rpt_cbMayIn;
         private DevExpress.Utils.ImageCollection img;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit rptMayTinh;
-        private DevExpress.XtraGrid.Columns.GridColumn colTenTiem;
-        private DevExpress.XtraGrid.Columns.GridColumn colDiaChi;
         private DevExpress.XtraBars.BarButtonItem bbiTuDongCan;
         private DevExpress.XtraBars.BarButtonItem bbiMauTem;
-        private DevExpress.XtraGrid.Columns.GridColumn colSoNi;
-        private DevExpress.XtraGrid.Columns.GridColumn colKyHieuVang;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarEditItem bbiDinhDang;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraBars.BarButtonItem bbiNhaCungCap;
+        private System.Windows.Forms.BindingSource barcodeDetailBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarcodeString;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarcodeUnique;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemID;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemName;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalWeight;
+        private DevExpress.XtraGrid.Columns.GridColumn colGoldWeight;
+        private DevExpress.XtraGrid.Columns.GridColumn colExpense;
+        private DevExpress.XtraGrid.Columns.GridColumn colStoneWeight;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplierStandardNo;
+        private DevExpress.XtraGrid.Columns.GridColumn colGoldSign;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplierName;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplierAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colSize;
+        private DevExpress.XtraGrid.Columns.GridColumn colGoldType;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrigin;
+        private DevExpress.XtraGrid.Columns.GridColumn colBarcodeID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyID;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplierID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colTemplatePath;
+        private DevExpress.XtraBars.BarButtonItem bbiCompany;
+        private DevExpress.XtraGrid.Columns.GridColumn colWeightDisplayFormat;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyStandardNo;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 

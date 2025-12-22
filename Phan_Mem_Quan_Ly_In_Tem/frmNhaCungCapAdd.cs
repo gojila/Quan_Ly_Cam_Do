@@ -52,13 +52,25 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 ValidateForm();
 
-                var _xuLyDuLieu = new clsXuLyDuLieu();
-                bool result = _xuLyDuLieu.luuNhaCungCapTCCS(duongDanFileExcel, ID, txtTCCS.Text, txtTenTiem.Text, txtDiaChi.Text, txtGhiChu.Text);
-                if (result) 
+                //var _xuLyDuLieu = new clsXuLyDuLieu();
+                //bool result = _xuLyDuLieu.luuNhaCungCapTCCS(duongDanFileExcel, ID, txtTCCS.Text, txtTenTiem.Text, txtDiaChi.Text, txtGhiChu.Text);
+                //if (result) 
+                //{
+                //    MessageBox.Show(this, "Thao tác thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    RaiseNapLaiEventHander();
+                //    this.Close();
+                //}
+
+                string result = Save();
+                if (string.IsNullOrEmpty(result))
                 {
                     MessageBox.Show(this, "Thao tác thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RaiseNapLaiEventHander();
                     this.Close();
+                }
+                else 
+                {
+                    XtraMessageBox.Show(this, result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex) 
@@ -104,20 +116,82 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (!string.IsNullOrEmpty(this.ID))
                 {
-                    var _clsXulyDuLieu = new clsXuLyDuLieu();
-                    var dr = _clsXulyDuLieu.getNhaCungCap(this.duongDanFileExcel, ID.ToString());
-                    if (dr != null)
+                    var SupplierID = Convert.ToInt64(ID);
+                    var db = new ModelEF.PrintBarcodeEntities();
+                    var supplier = db.Suppliers.Where(s => s.SupplierID == SupplierID && !(s.IsDeleted ?? false)).FirstOrDefault();
+
+                    if (supplier != null) 
                     {
-                        txtTCCS.Text = dr["Nhà Cung Cấp"] != DBNull.Value ? dr["Nhà Cung Cấp"].ToString() : "";
-                        txtTenTiem.Text = dr["Tên Tiệm"] != DBNull.Value ? dr["Tên Tiệm"].ToString() : "";
-                        txtDiaChi.Text = dr["Địa Chỉ"] != DBNull.Value ? dr["Địa Chỉ"].ToString() : "";
-                        txtGhiChu.Text = dr["Ghi Chú"] != DBNull.Value ? dr["Ghi Chú"].ToString() : "";   
+                        txtTCCS.Text = supplier.SupplierBaseStandardNo; //dr["Nhà Cung Cấp"] != DBNull.Value ? dr["Nhà Cung Cấp"].ToString() : "";
+                        txtTenTiem.Text = supplier.SupplierName; //dr["Tên Tiệm"] != DBNull.Value ? dr["Tên Tiệm"].ToString() : "";
+                        txtDiaChi.Text = supplier.SupplierAddress; //dr["Địa Chỉ"] != DBNull.Value ? dr["Địa Chỉ"].ToString() : "";
+                        txtGhiChu.Text = supplier.Remark; //dr["Ghi Chú"] != DBNull.Value ? dr["Ghi Chú"].ToString() : "";
                     }
+
+                    //var _clsXulyDuLieu = new clsXuLyDuLieu();
+                    //var dr = _clsXulyDuLieu.getNhaCungCap(this.duongDanFileExcel, ID.ToString());
+                    //if (dr != null)
+                    //{
+                    //    txtTCCS.Text = dr["Nhà Cung Cấp"] != DBNull.Value ? dr["Nhà Cung Cấp"].ToString() : "";
+                    //    txtTenTiem.Text = dr["Tên Tiệm"] != DBNull.Value ? dr["Tên Tiệm"].ToString() : "";
+                    //    txtDiaChi.Text = dr["Địa Chỉ"] != DBNull.Value ? dr["Địa Chỉ"].ToString() : "";
+                    //    txtGhiChu.Text = dr["Ghi Chú"] != DBNull.Value ? dr["Ghi Chú"].ToString() : "";   
+                    //}
                 }
             }
             catch (Exception ex) 
             {
                 XtraMessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string Save() 
+        {
+            try 
+            {
+                var db = new ModelEF.PrintBarcodeEntities();
+
+                ModelEF.Supplier supplier = null;
+                if (!string.IsNullOrEmpty(ID))
+                {
+                    var supplierId = Convert.ToInt64(ID);
+                    supplier = db.Suppliers.Where(s => s.SupplierID == supplierId && !(s.IsDeleted ?? false)).FirstOrDefault();
+                    if (supplier == null) 
+                    {
+                        supplier = new ModelEF.Supplier();
+                    }
+                }
+                else 
+                {
+                    supplier = new ModelEF.Supplier();
+                }
+
+                supplier.CreatedDate = DateTime.Now;
+                supplier.CreatedUserID = 0;
+                //supplier.DeletedDate = null;
+                //supplier.DeletedUserID = 0;
+                supplier.IsDeleted = false;
+                supplier.Remark = txtGhiChu.Text;
+
+                supplier.SupplierAddress = txtDiaChi.Text;
+                supplier.SupplierBaseStandardNo = txtTCCS.Text;
+                //supplier.SupplierID = 0;
+                supplier.SupplierName = txtTenTiem.Text;
+                
+                supplier.UpdatedDate = DateTime.Now;
+                supplier.UpdatedUserID = 0;
+
+                if (string.IsNullOrEmpty(ID))
+                {
+                    db.Suppliers.Add(supplier);
+                }
+                db.SaveChanges();
+
+                return "";
+            }
+            catch (Exception ex) 
+            {
+                return ex.Message;
             }
         }
     }

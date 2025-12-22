@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+  </startup>
+  <connectionStrings>
+    <add name="PrintBarcodeEntities" connectionString="metadata=res://*/ModelEF.PrintBarcodeDB.csdl|res://*/ModelEF.PrintBarcodeDB.ssdl|res://*/ModelEF.PrintBarcodeDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=PrintBarcode;persist security info=True;user id=sa;password=123456;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+      providerName="System.Data.EntityClient" />
+    <add name="Phan_Mem_Quan_Ly_In_Tem.Properties.Settings.PrintBarcodeConnectionString"
+      connectionString="Data Source=(local);Initial Catalog=PrintBarcode;Persist Security Info=True;User ID=sa;Password=123456"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb" />
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+    </providers>
+  </entityFramework>
+	<appSettings>
+		<add key="AesKey" value="b14ca5898a4e412312bce2a2315a1916"/>
+	</appSettings>
+</configuration>

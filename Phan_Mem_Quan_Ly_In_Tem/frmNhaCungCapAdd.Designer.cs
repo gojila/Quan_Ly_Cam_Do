@@ -47,8 +47,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGhiChu.Properties)).BeginInit();
@@ -59,8 +59,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -117,8 +117,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             // 
             this.bbiSave.Caption = "Lưu";
             this.bbiSave.Id = 0;
-            this.bbiSave.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.save_16x16;
-            this.bbiSave.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.save_32x32;
+            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
+            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
             this.bbiSave.Name = "bbiSave";
             this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
@@ -126,8 +126,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             // 
             this.bbiClose.Caption = "Thoát";
             this.bbiClose.Id = 1;
-            this.bbiClose.ImageOptions.Image = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_16x161;
-            this.bbiClose.ImageOptions.LargeImage = global::Phan_Mem_Quan_Ly_In_Tem.Properties.Resources.close_32x321;
+            this.bbiClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.Image")));
+            this.bbiClose.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClose.ImageOptions.LargeImage")));
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
@@ -232,6 +232,17 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             this.layoutControlItem2.Text = "Địa Chỉ <color=\"red\">(*)</color>:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(92, 16);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.txtGhiChu;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 128);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(800, 76);
+            this.layoutControlItem4.Text = "Ghi Chú";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(92, 16);
+            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.AllowHtmlStringInCaption = true;
@@ -243,17 +254,6 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             this.layoutControlItem3.Size = new System.Drawing.Size(800, 26);
             this.layoutControlItem3.Text = "Tên Tiệm <color=\"red\">(*)</color>:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(92, 16);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem4.Control = this.txtGhiChu;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 128);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(800, 76);
-            this.layoutControlItem4.Text = "Ghi Chú";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(92, 16);
             // 
             // frmNhaCungCapAdd
             // 
@@ -280,8 +280,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -78,9 +78,9 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             if (opentype == "")
             {
-                var nhaCungCap = gbList.GetFocusedRowCellValue(colNhaCungCap);
-                var tenTiem = gbList.GetFocusedRowCellValue(colTenTiem);
-                var diaChi = gbList.GetFocusedRowCellValue(colDiaChi);
+                var nhaCungCap = gbList.GetFocusedRowCellValue(colSupplierBaseStandardNo);
+                var tenTiem = gbList.GetFocusedRowCellValue(colSupplierName);
+                var diaChi = gbList.GetFocusedRowCellValue(colSupplierAddress);
                 //var noicap = gbList.GetFocusedRowCellValue(colNoi_Cap);
                 //var diachi = gbList.GetFocusedRowCellValue(colDia_Chi);
                 //var sodienthoai = gbList.GetFocusedRowCellValue(colSo_Dien_Thoai); 
@@ -109,7 +109,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         }
 
-        clsXuLyDuLieu _xuLy = new clsXuLyDuLieu();
+        //clsXuLyDuLieu _xuLy = new clsXuLyDuLieu();
         private void bbiXem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //dANH_SACH_KHACH_HANGTableAdapter.Connection.ConnectionString = SqlHelper.ConnectionString;
@@ -130,19 +130,22 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             //    }
             //}
 
-            if (File.Exists(duongDanFileExcel))
-            {
-                //bbiChonFileDuLieu.EditValue = duongDanFileExcelMacDinh;
-                DataTable dtMaVachExcel = new DataTable();
-                dtMaVachExcel = _xuLy.docDanhSachNhaCungCapFileExcel(duongDanFileExcel, Path.GetExtension(duongDanFileExcel), "Yes");
-                //MessageBox.Show(dtMaVachExcel.Rows.Count.ToString());
-                napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
-            }
+            //if (File.Exists(duongDanFileExcel))
+            //{
+            //    //bbiChonFileDuLieu.EditValue = duongDanFileExcelMacDinh;
+            //    //DataTable dtMaVachExcel = new DataTable();
+            //    //dtMaVachExcel = _xuLy.docDanhSachNhaCungCapFileExcel(duongDanFileExcel, Path.GetExtension(duongDanFileExcel), "Yes");
+            //    //MessageBox.Show(dtMaVachExcel.Rows.Count.ToString());
+            //    //napDuLieuVaoLuoiTuFileExcel(dtMaVachExcel);
+            //}
 
+
+            var db = new ModelEF.PrintBarcodeEntities();
+            gcList.DataSource = db.Suppliers.Where(s => !(s.IsDeleted ?? false)).ToList();
             gbList.BestFitColumns();
 
         }
-
+        /*
         private void napDuLieuVaoLuoiTuFileExcel(DataTable dtMaVachExcel)
         {
             dsDanhSachNhaCungCap.DanhSachNhaCungCap.Rows.Clear();
@@ -176,7 +179,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 gbList.BestFitColumns();
             }
         }
-
+        */
         private void bbiChon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ActiveEditor_DoubleClick(this, null);
@@ -201,7 +204,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             try
             {
-                var id = gbList.GetFocusedRowCellValue(colID.FieldName);
+                var id = gbList.GetFocusedRowCellValue(colSupplierID.FieldName);
                 if (id != null)
                 {
                     var _frmAdd = new frmNhaCungCapAdd(duongDanFileExcel, id.ToString());
@@ -228,6 +231,49 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                     bbiXem_ItemClick(this, null);
                 };
                 _frmAdd.ShowDialog();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try 
+            {
+                if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+
+                int[] selectedRows = gbList.GetSelectedRows();
+                string ids = "";
+                if (selectedRows.Length > 0)
+                {
+                    //clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                    for (int i = selectedRows.Length; i > 0; i--)
+                    {
+                        var arg = gbList.GetRowCellValue(selectedRows[i - 1], colSupplierID);
+                        if (arg == null)
+                            continue;
+
+                        if (!string.IsNullOrEmpty(ids))
+                        {
+                            ids += ",";
+                        }
+                        ids += arg.ToString();
+                        //_clsXuLyDuLieu.xoaMauTemIn(this.path, arg.ToString());
+                    }
+                    if (!string.IsNullOrEmpty(ids))
+                    {
+                        using (var db = new ModelEF.PrintBarcodeEntities())
+                        {
+                            db.Database.ExecuteSqlCommand("UPDATE [Supplier] SET [IsDeleted] = 1, [DeletedDate] = GETDATE() WHERE [SupplierID] IN (" + ids + ")");
+                            db.SaveChanges();
+                        }
+                    }
+                    MessageBox.Show(this, "Xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bbiXem_ItemClick(this, null);
+                }
             }
             catch (Exception ex) 
             {

@@ -42,11 +42,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             }
         }
 
-        string duongDanFileExcel = "";
+        //string duongDanFileExcel = "";
         string tenMayIn = "";
         string tenTiem = "";
         string diaChiTiem = "";
         string dinhDang = "";
+        long printBarcodeID = 0;
         clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
 
         public frmInTem()
@@ -58,16 +59,41 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         public frmInTem(string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _duongDanFileExcel, string _tenMayIn, string _dinhDang)
         {
             InitializeComponent();
-            duongDanFileExcel = _duongDanFileExcel;
+            //duongDanFileExcel = _duongDanFileExcel;
 
-            txtTenTiemNCC.Text = _tenTiemNCC;
-            txtDiaChiNCC.Text = _diaChiNCC;
-            txtDinhDang.Text = _dinhDang;
+            //txtTenTiemNCC.Text = _tenTiemNCC;
+            //txtDiaChiNCC.Text = _diaChiNCC;
+            //txtDinhDang.Text = _dinhDang;
 
             tenMayIn = _tenMayIn;
-            tenTiem = _tenTiemNCC;
-            diaChiTiem = _diaChiNCC;
-            dinhDang = _dinhDang;
+            //tenTiem = _tenTiemNCC;
+            //diaChiTiem = _diaChiNCC;
+            //dinhDang = _dinhDang;
+
+            var db = new ModelEF.PrintBarcodeEntities();
+
+            var company = db.Companies.Where(c => !(c.IsDeleted ?? false)).OrderByDescending(c => (c.IsDefault ?? false)).FirstOrDefault();
+            if (company != null) 
+            {
+                txtNhaPhanPhoi.Text = company.CompanyName;
+                txtNhaPhanPhoiCode.Text = company.CompanyStandardCode;
+                txtDiaChiNhaPhanPhoi.Text = company.CompanyAddress;
+                txtDinhDang.Text = company.FormatStringDefault;
+            }
+
+            var supplier = db.Suppliers.Where(s => !(s.IsDeleted ?? false)).OrderByDescending(s => s.UpdatedDate).FirstOrDefault();
+            if (supplier != null) 
+            {
+                txtDiaChiNCC.Text = supplier.SupplierAddress;
+                txtTenTiemNCC.Text = supplier.SupplierName;
+                txtNhaCungCapCode.Text = supplier.SupplierBaseStandardNo;
+            }
+
+            var barcodeTemplate = db.BarcodeTemplates.Where(bt => !(bt.IsDeleted ?? false)).OrderByDescending(bt => bt.IsDefault.Value).FirstOrDefault();
+            if(barcodeTemplate != null) 
+            {
+                txtMauTem.Text = barcodeTemplate.BarcodeTemplatePath;
+            }
 
             TaoMoi();
 
@@ -97,7 +123,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         public frmInTem(string _tenTiem, string _diaChi, string _tenTiemNCC, string _diaChiNCC, string tenCongCOM, string _tenMayIn, string _duongDanFileExcel, string maVach, string tenHang, decimal tongTrongLuong, decimal trongLuong, decimal hot, decimal tienCong, string nhaCungCap, string hamLuongPho, int soLuongTem, string dinhDang)
         {
             InitializeComponent();
-            duongDanFileExcel = _duongDanFileExcel;
+            //duongDanFileExcel = _duongDanFileExcel;
             txtTenTiemNCC.Text = _tenTiemNCC;
             txtDiaChiNCC.Text = _diaChiNCC;
             tenMayIn = _tenMayIn;
@@ -129,6 +155,26 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             txtHamLuongPho.Text = hamLuongPho;
             txtSoLuongTem.Value = soLuongTem;
             txtDinhDang.Text = dinhDang;
+        }
+
+        public frmInTem(long BarcodeID, string tenCongCOM, string _tenMayIn) 
+        {
+            InitializeComponent();
+            LoadForm(BarcodeID);
+            tenMayIn = _tenMayIn;
+            if (!Com.IsOpen && !string.IsNullOrEmpty(tenCongCOM))
+            {
+                try
+                {
+                    Com.PortName = tenCongCOM;
+                    Com.Open();
+                    Com.DataReceived += Com_DataReceived;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void TaoMoi()
@@ -165,7 +211,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void napDanhSachTenTiemVaDiaChi()
         {
-
+            /*
             if (File.Exists(duongDanFileExcel))
             {
                 clsXuLyDuLieu _xuLy = new clsXuLyDuLieu();
@@ -209,7 +255,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 txtTenTiem_AutoComplete.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtTenTiem_AutoComplete.AutoCompleteCustomSource = mangDanhSachTenTiem;
             }
-            
+            */
         }
         private void DisplayText(string canNang)
         {
@@ -266,9 +312,17 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
         private void frmKetNoiCan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Com.IsOpen)
+            try 
             {
-                Com.Close();
+                if (Com != null && Com.IsOpen)
+                {
+                    Com.Close();
+                    Com.Dispose();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -289,8 +343,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             if (File.Exists(filePath))
             {
                 rptMaVach.LoadLayout(filePath);
-                rptMaVach.Parameters["TenTiem"].Value = tenTiem;
-                rptMaVach.Parameters["DiaChi"].Value = diaChiTiem;
+                //rptMaVach.Parameters["TenTiem"].Value = tenTiem;
+                //rptMaVach.Parameters["DiaChi"].Value = diaChiTiem;
             }
 
             rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
@@ -320,7 +374,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                    //_clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                    string result = Save();
+                    if (!string.IsNullOrEmpty(result)) 
+                    {
+                        MessageBox.Show(this, result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     RaiseXemEventHander();
                 }
             }
@@ -354,8 +413,8 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             if (File.Exists(filePath))
             {
                 report.LoadLayout(filePath);
-                report.Parameters["TenTiem"].Value = tenTiem;
-                report.Parameters["DiaChi"].Value = diaChiTiem;
+                //report.Parameters["TenTiem"].Value = tenTiem;
+                //report.Parameters["DiaChi"].Value = diaChiTiem;
             }
             ReportDesignTool dt = new ReportDesignTool(report);
             //ReportDesignTool dt = new ReportDesignTool(new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text));
@@ -373,11 +432,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             //rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
             //rptMaVach.CreateDocument();
             //rptMaVach.ShowDesigner();
+            /*
             try
             {
                 if (cbLuuSauKhiIn.Checked)
                 {
-                    _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                    //_clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
                     RaiseXemEventHander();
                 }
             }
@@ -385,11 +445,13 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             {
                 MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */
         }
 
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
-            txtMaVach.Text = "M" + String.Format("{0:ddMMyyyy}", DateTime.Now);
+            //txtMaVach.Text = "M" + String.Format("{0:ddMMyyyy}", DateTime.Now);
+            txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
             txtTenHang.Text = "";
             txtTongTrongLuong.Value = 0;
             txtTrongLuong.Value = 0;
@@ -459,8 +521,6 @@ namespace Phan_Mem_Quan_Ly_In_Tem
 
             //return (giaTri * 10);
         }
-
-        
 
         private void txtTrongLuong_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
@@ -597,7 +657,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             if (e.Button.Tag.ToString() == "Chon")
             {
-                var frmChonNhaCungCap = new frmDanhSachNhaCungCap(duongDanFileExcel);
+                var frmChonNhaCungCap = new frmDanhSachNhaCungCap();
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) => 
                 {
@@ -613,7 +673,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             if (e.Button.Tag.ToString() == "Chon")
             {
-                var frmChonNhaCungCap = new frmDanhSachNhaCungCap(duongDanFileExcel);
+                var frmChonNhaCungCap = new frmDanhSachNhaCungCap();
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) =>
                 {
@@ -629,7 +689,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             if (e.Button.Tag.ToString() == "Chon")
             {
-                var frmChonNhaCungCap = new frmDanhSachNhaCungCap(duongDanFileExcel);
+                var frmChonNhaCungCap = new frmDanhSachNhaCungCap();
                 frmChonNhaCungCap.StartPosition = FormStartPosition.CenterParent;
                 frmChonNhaCungCap.ChonNhaCungCap += (nhacungcap, tentiem, diachi) =>
                 {
@@ -645,7 +705,7 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             try
             {
-                var _frmMauTemIn = new frmMauTemIn(duongDanFileExcel);
+                var _frmMauTemIn = new frmMauTemIn();
                 _frmMauTemIn.SetSelectState();
                 _frmMauTemIn.Select += (ss, path) => 
                 {
@@ -663,8 +723,10 @@ namespace Phan_Mem_Quan_Ly_In_Tem
         {
             try 
             {
+                /*
                 clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
                 txtMauTem.Text = _clsXuLyDuLieu.getMauTemInMacDinh(duongDanFileExcel);
+                */
             }
             catch (Exception ex) 
             {
@@ -677,6 +739,410 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             try 
             {
                 docCanNangRaChu();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string Save()
+        {
+            try 
+            {
+                var db = new ModelEF.PrintBarcodeEntities();
+
+                var barcodeDetail = new ModelEF.BarcodeDetail();
+
+                barcodeDetail.BarcodeString = txtMaVach.Text;
+                barcodeDetail.BarcodeUnique = Guid.NewGuid();
+                barcodeDetail.CompanyAddress = txtDiaChiNhaPhanPhoi.Text;
+                barcodeDetail.CompanyID = 0;
+                barcodeDetail.CompanyName = txtNhaPhanPhoi.Text;
+                barcodeDetail.CreatedDate = DateTime.Now;
+                barcodeDetail.CompanyStandardNo = txtNhaPhanPhoiCode.Text;
+
+                barcodeDetail.CreatedUserID = 0;
+                //barcodeDetail.DeletedDate = null;
+                //barcodeDetail.DeteletedUserID = 0;
+                barcodeDetail.Expense = Convert.ToDecimal(txtTienCong.EditValue);
+                barcodeDetail.GoldType = txtHamLuongPho.Text;
+
+                barcodeDetail.GoldWeight = Convert.ToDecimal(txtTrongLuong.EditValue);
+                barcodeDetail.GoldSign = txtKyHieuVang.Text;
+                barcodeDetail.IsDeleted = false;
+                barcodeDetail.ItemID = 0;
+                barcodeDetail.ItemName = txtTenHang.Text;
+                barcodeDetail.Origin = txtXuatXu.Text;
+                
+                barcodeDetail.Size = txtSoNi.Text;
+                barcodeDetail.StoneWeight = Convert.ToDecimal(txtHot.EditValue);
+                barcodeDetail.SupplierAddress = txtDiaChiNCC.Text;
+                barcodeDetail.SupplierID = 0;
+                barcodeDetail.SupplierName = txtTenTiemNCC.Text;
+                
+                barcodeDetail.SupplierStandardNo = txtNhaCungCapCode.Text;
+                barcodeDetail.TotalWeight = Convert.ToDecimal(txtTongTrongLuong.EditValue);
+                barcodeDetail.UpdatedDate = DateTime.Now;
+                barcodeDetail.UpdatedUserID = 0;
+                barcodeDetail.TemplatePath = txtMauTem.Text;
+                barcodeDetail.WeightDisplayFormat = txtDinhDang.Text;
+
+                db.BarcodeDetails.Add(barcodeDetail);
+                db.SaveChanges();
+
+                printBarcodeID = barcodeDetail.BarcodeID;
+
+                return "";
+            }
+            catch (Exception ex) 
+            {
+                return ex.Message;
+            }
+        }
+
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (Com != null && Com.IsOpen)
+                {
+                    Com.Close();
+                    Com.Dispose();
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiSetting_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Setting();
+        }
+
+        private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Print();
+        }
+
+        private void bbiRemoveTotalWeight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ClearTotalWeight();
+        }
+
+        private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ClearForm();
+        }
+
+        private void ClearForm()
+        {
+            try 
+            {
+                //txtMaVach.Text = "M" + String.Format("{0:ddMMyyyy}", DateTime.Now);
+                txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+                txtTenHang.Text = "";
+                txtTongTrongLuong.Value = 0;
+                txtTrongLuong.Value = 0;
+                txtHot.Value = 0;
+                txtNhaCungCapCode.Text = "";
+                txtHamLuongPho.Text = "";
+                txtTienCong.Value = 0;
+                txtSoLuongTem.Value = 1;
+                txtCanNang.Text = "0";
+                cbLuuSauKhiIn.Checked = true;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearTotalWeight()
+        {
+            try
+            {
+                txtTongTrongLuong.Value = 0;
+                txtTrongLuong.Value = 0;
+                txtHot.Value = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Print()
+        {
+            try 
+            {
+                if (!kiemTraTruocKhiIn())
+                {
+                    return;
+                }
+
+                try
+                {
+                    if (printBarcodeID == 0)
+                    {
+                        //_clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                        if (cbLuuSauKhiIn.Checked) 
+                        {
+                            string result = Save();
+                            if (!string.IsNullOrEmpty(result))
+                            {
+                                MessageBox.Show(this, result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            RaiseXemEventHander();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                var _clsXuLyDuLieu = new clsXuLyDuLieu();
+                txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+                //var rptMaVach = new rptInTemNuTrang(tenTiem, diaChiTiem, txtTenTiemNCC.Text, txtDiaChiNCC.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                rptInTemNuTrang rptMaVach = new rptInTemNuTrang();
+                if (printBarcodeID != 0)
+                {
+                    rptMaVach = new rptInTemNuTrang(printBarcodeID, Convert.ToInt32(txtSoLuongTem.Value));
+                    printBarcodeID = 0;
+                }
+                string filePath = @"rptInTemNuTrang.repx";
+                if (!string.IsNullOrEmpty(txtMauTem.Text))
+                {
+                    filePath = txtMauTem.Text;
+                }
+                if (File.Exists(filePath))
+                {
+                    rptMaVach.LoadLayout(filePath);
+                    //rptMaVach.Parameters["TenTiem"].Value = tenTiem;
+                    //rptMaVach.Parameters["DiaChi"].Value = diaChiTiem;
+                }
+
+                rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
+                rptMaVach.CreateDocument();
+
+                if (rdTuyChonIn.SelectedIndex == 0)
+                {
+                    if (string.IsNullOrEmpty(tenMayIn))
+                    {
+                        rptMaVach.ShowPreview();
+                    }
+                    else
+                    {
+                        rptMaVach.Print(tenMayIn);
+                    }
+                }
+                else if (rdTuyChonIn.SelectedIndex == 1)
+                {
+                    rptMaVach.ShowPreview();
+                }
+                else if (rdTuyChonIn.SelectedIndex == 2)
+                {
+                    rptMaVach.ShowDesigner();
+                }
+
+                if (cbXoaTrongLuong.Checked)
+                {
+                    txtTongTrongLuong.Value = 0;
+                    txtTrongLuong.Value = 0;
+                    txtHot.Value = 0;
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Setting() 
+        {
+            try 
+            {
+                if (!kiemTraTruocKhiIn())
+                {
+                    return;
+                }
+                if (printBarcodeID == 0)
+                {
+                    //_clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                    if (cbLuuSauKhiIn.Checked) 
+                    {
+                        string result = Save();
+                        if (!string.IsNullOrEmpty(result))
+                        {
+                            MessageBox.Show(this, result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        RaiseXemEventHander();
+                    }
+                }
+                var _clsXuLyDuLieu = new clsXuLyDuLieu();
+                txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+                var report = new rptInTemNuTrang(tenTiem, diaChiTiem, txtTenTiemNCC.Text, txtDiaChiNCC.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text, Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                if (printBarcodeID != 0)
+                {
+                    report = new rptInTemNuTrang(printBarcodeID, Convert.ToInt32(txtSoLuongTem.Value));
+                    printBarcodeID = 0;
+                }
+                string filePath = @"rptInTemNuTrang.repx";
+                if (!string.IsNullOrEmpty(txtMauTem.Text))
+                {
+                    filePath = txtMauTem.Text;
+                }
+                if (File.Exists(filePath))
+                {
+                    report.LoadLayout(filePath);
+                    //report.Parameters["TenTiem"].Value = tenTiem;
+                    //report.Parameters["DiaChi"].Value = diaChiTiem;
+                }
+                ReportDesignTool dt = new ReportDesignTool(report);
+                //ReportDesignTool dt = new ReportDesignTool(new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text));
+
+                // Access the report's properties.
+                dt.Report.DrawGrid = false;
+
+                // Access the Designer form's properties.
+                dt.DesignForm.SetWindowVisibility(DesignDockPanelType.FieldList | DesignDockPanelType.PropertyGrid, false);
+
+                // Show the Designer form, modally.
+                dt.ShowDesignerDialog();
+
+                //var rptMaVach = new rptInTemNuTrang(txtTenTiem.Text, txtDiaChi.Text, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTongTrongLuong.Value, txtTienCong.Value, txtHot.Value, "", txtNhaCungCap.Text, txtHamLuongPho.Text, Convert.ToInt32(txtSoLuongTem.Value), txtTongTrongLuongChu.Text, txtTrongLuongChu.Text, txtHotChu.Text);
+                //rptMaVach.AssignPrintTool(new ReportPrintTool(rptMaVach));
+                //rptMaVach.CreateDocument();
+                //rptMaVach.ShowDesigner();
+                /*
+                try
+                {
+                    if (cbLuuSauKhiIn.Checked)
+                    {
+                        _clsXuLyDuLieu.luuDuLieuExcel(duongDanFileExcel, txtMaVach.Text, txtTenHang.Text, txtTongTrongLuong.Value, txtTrongLuong.Value, txtHot.Value, txtTienCong.Value, "", txtNhaCungCapCode.Text, txtHamLuongPho.Text, txtTenTiemNCC.Text, txtDiaChiNCC.Text, Convert.ToInt32(txtSoLuongTem.Value), Convert.ToInt32(txtSoNi.Value), txtKyHieuVang.Text);
+                        RaiseXemEventHander();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                */
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /*
+        private void _Close() 
+        {
+            try
+            {
+                if (Com != null && Com.IsOpen)
+                {
+                    Com.Close();
+                    Com.Dispose();
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        */
+        private void txtNhaPhanPhoi_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            try 
+            {
+                if (e.Button.Tag.ToString() == "Chon")
+                {
+                    var _frmCompany = new frmCompany();
+                    _frmCompany.StartPosition = FormStartPosition.CenterParent;
+                    _frmCompany.SelectedCompany += (companyStandardCode, conpanyName, companyAddress) =>
+                    {
+                        txtNhaPhanPhoiCode.Text = companyStandardCode;
+                        txtNhaPhanPhoi.Text = conpanyName;
+                        txtDiaChiNhaPhanPhoi.Text = companyAddress;
+                    };
+                    _frmCompany.ShowDialog();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadForm(long BarcodeID)
+        {
+            try 
+            {
+                var db = new ModelEF.PrintBarcodeEntities();
+                var barcodeDetail = db.BarcodeDetails.Where(bd => bd.BarcodeID == BarcodeID && !(bd.IsDeleted ?? false)).FirstOrDefault();
+                if (barcodeDetail != null)
+                {
+                    txtTenTiemNCC.Text = barcodeDetail.SupplierName;
+                    txtNhaCungCapCode.Text = barcodeDetail.SupplierStandardNo;
+                    txtDiaChiNCC.Text = barcodeDetail.SupplierAddress;
+
+                    txtNhaPhanPhoi.Text = barcodeDetail.CompanyName;
+                    txtNhaPhanPhoiCode.Text = barcodeDetail.CompanyStandardNo;
+                    txtDiaChiNhaPhanPhoi.Text = barcodeDetail.CompanyAddress;
+
+                    txtTongTrongLuong.EditValue = barcodeDetail.TotalWeight;
+                    txtTrongLuong.EditValue = barcodeDetail.GoldWeight;
+                    txtHot.EditValue = barcodeDetail.StoneWeight;
+                    txtTienCong.EditValue = barcodeDetail.Expense;
+                    txtSoNi.EditValue = barcodeDetail.Size;
+
+                    txtKyHieuVang.Text = barcodeDetail.GoldSign;
+                    txtXuatXu.Text = barcodeDetail.Origin;
+                    txtTenHang.Text = barcodeDetail.ItemName;
+                    txtMaVach.Text = barcodeDetail.BarcodeString;
+
+                    txtMauTem.Text = barcodeDetail.TemplatePath;
+                    txtHamLuongPho.Text = barcodeDetail.GoldType;
+
+                    
+                    if (!string.IsNullOrEmpty(barcodeDetail.WeightDisplayFormat)) 
+                    {
+                        txtDinhDang.Text = barcodeDetail.WeightDisplayFormat;
+                    }
+                    else 
+                    {
+                        var company = db.Companies.Where(c => !(c.IsDeleted ?? false)).OrderByDescending(c => (c.IsDefault ?? false)).FirstOrDefault();
+                        if (company != null)
+                        {
+                            txtDinhDang.Text = company.FormatStringDefault;
+                        }
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show(this, "Không tìm thấy thông tin này !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearForm();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTenHang_EditValueChanged(object sender, EventArgs e)
+        {
+            try 
+            {
+                if (!string.IsNullOrEmpty(txtMaVach.Text)) 
+                {
+                    txtMaVach.Text = _clsXuLyDuLieu.generateUniqueIDByDateTime(txtTenHang.Text);
+                }
             }
             catch (Exception ex) 
             {

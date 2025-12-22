@@ -30,7 +30,6 @@
         {
             DevExpress.XtraPrinting.BarCode.Code128Generator code128Generator1 = new DevExpress.XtraPrinting.BarCode.Code128Generator();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
-            this.DiaChi = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
@@ -42,7 +41,6 @@
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.TenTiem = new DevExpress.XtraReports.Parameters.Parameter();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.dsDanhSachHangHoa1 = new Phan_Mem_Quan_Ly_In_Tem.DS.dsDanhSachHangHoa();
             ((System.ComponentModel.ISupportInitialize)(this.dsDanhSachHangHoa1)).BeginInit();
@@ -56,7 +54,7 @@
             this.xrLabel6.CanGrow = false;
             this.xrLabel6.Dpi = 254F;
             this.xrLabel6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Parameters.DiaChi]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiaChi]")});
             this.xrLabel6.Font = new System.Drawing.Font("Arial", 4.5F, System.Drawing.FontStyle.Bold);
             this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(229.7014F, 69.99998F);
             this.xrLabel6.Name = "xrLabel6";
@@ -68,11 +66,6 @@
             this.xrLabel6.StylePriority.UsePadding = false;
             this.xrLabel6.StylePriority.UseTextAlignment = false;
             this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ValueInfo = "259Đ Bà Mía Mỹ Lạc";
             // 
             // xrLabel1
             // 
@@ -227,7 +220,7 @@
             this.xrLabel5.CanGrow = false;
             this.xrLabel5.Dpi = 254F;
             this.xrLabel5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Parameters.TenTiem]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TenTiem]")});
             this.xrLabel5.Font = new System.Drawing.Font("Arial", 4.5F, System.Drawing.FontStyle.Bold);
             this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(229.7014F, 5.000004F);
             this.xrLabel5.Name = "xrLabel5";
@@ -284,11 +277,6 @@
             this.xrLabel2.Text = "Công: [TienCong!##,##0.###]";
             this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // TenTiem
-            // 
-            this.TenTiem.Name = "TenTiem";
-            this.TenTiem.ValueInfo = "DNTN Ngọc Ánh Mỹ Lạc";
-            // 
             // BottomMargin
             // 
             this.BottomMargin.BorderWidth = 0F;
@@ -303,6 +291,7 @@
             // dsDanhSachHangHoa1
             // 
             this.dsDanhSachHangHoa1.DataSetName = "dsDanhSachHangHoa";
+            this.dsDanhSachHangHoa1.EnforceConstraints = false;
             this.dsDanhSachHangHoa1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rptInTemNuTrang
@@ -318,9 +307,6 @@
             this.PageHeight = 100;
             this.PageWidth = 730;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
-            this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
-            this.TenTiem,
-            this.DiaChi});
             this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
             this.RequestParameters = false;
             this.ShowPrintMarginsWarning = false;
@@ -335,7 +321,6 @@
         #endregion
 
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
-        private DevExpress.XtraReports.Parameters.Parameter DiaChi;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
         private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
@@ -345,7 +330,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel7;
         private DevExpress.XtraReports.UI.XRBarCode xrBarCode1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
-        private DevExpress.XtraReports.Parameters.Parameter TenTiem;
         private DevExpress.XtraReports.UI.XRLabel xrLabel3;
         private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
