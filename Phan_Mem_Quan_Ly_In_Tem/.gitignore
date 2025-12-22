@@ -3,3 +3,5 @@ obj\
 bin\Debug
 obj\Debug
 Publish\
+packages\
+Phan_Mem_Quan_Ly_In_Tem/Publish
