@@ -82,6 +82,62 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             RequestParameters = false;
         }
 
+        public rptInTemNuTrang(ModelEF.BarcodeDetail barcodeDetail, int soLuongTem) 
+        {
+            InitializeComponent();
+            try 
+            {
+                if (barcodeDetail != null)
+                {
+                    clsXuLyDuLieu _clsXuLyDuLieu = new clsXuLyDuLieu();
+                    for (int i = 0; i < soLuongTem; i++)
+                    {
+                        DataRow drDongIn = dsDanhSachHangHoa1.InMaVach.NewRow();
+
+                        drDongIn["MaVach"] = barcodeDetail.BarcodeString;
+                        drDongIn["BarcodeUnique"] = barcodeDetail.BarcodeUnique;
+
+                        //drDongIn["TenHang"] = tenHang + (soNi > 0 ? ("-Ni:" + soNi.ToString()) : "");
+                        drDongIn["TenHang"] = barcodeDetail.ItemName;
+                        drDongIn["TongTrongLuong"] = barcodeDetail.TotalWeight;
+                        drDongIn["TrongLuong"] = barcodeDetail.GoldWeight;
+                        drDongIn["TienCong"] = barcodeDetail.Expense;
+                        drDongIn["Hot"] = barcodeDetail.StoneWeight;
+                        drDongIn["NhaCungCap"] = barcodeDetail.SupplierName;
+                        drDongIn["HamLuongPho"] = barcodeDetail.GoldType;
+                        drDongIn["SoLuongTem"] = soLuongTem;
+
+
+                        drDongIn["TongTrongLuongChu"] = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(barcodeDetail.TotalWeight ?? 0, barcodeDetail.WeightDisplayFormat);
+                        drDongIn["TrongLuongChu"] = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(barcodeDetail.GoldWeight ?? 0, barcodeDetail.WeightDisplayFormat); ;
+                        drDongIn["HotChu"] = _clsXuLyDuLieu.chuyenGiaTriSangNoiDung(barcodeDetail.StoneWeight ?? 0, barcodeDetail.WeightDisplayFormat); ;
+                        drDongIn["SoNi"] = barcodeDetail.Size;
+                        drDongIn["KyHieuVang"] = barcodeDetail.GoldSign;
+
+                        drDongIn["TenTiem"] = barcodeDetail.SupplierName;
+                        drDongIn["DiaChi"] = barcodeDetail.SupplierAddress;
+
+                        drDongIn["NhaCungCapDiaChi"] = barcodeDetail.SupplierAddress;
+                        drDongIn["NhaCungCapTCCS"] = barcodeDetail.SupplierStandardNo;
+
+                        drDongIn["NhaPhanPhoi"] = barcodeDetail.CompanyName;
+                        drDongIn["NhaPhanPhoiDiaChi"] = barcodeDetail.CompanyAddress;
+                        drDongIn["NhaPhanPhoiTCCS"] = barcodeDetail.CompanyStandardNo;
+                        drDongIn["XuatXu"] = barcodeDetail.Origin;
+                        drDongIn["BarcodeFullString"] = barcodeDetail.BarcodeUnique;
+                        drDongIn["BarcodeID"] = barcodeDetail.BarcodeID;
+
+                        dsDanhSachHangHoa1.InMaVach.Rows.Add(drDongIn);
+                        dsDanhSachHangHoa1.InMaVach.AcceptChanges();
+                    }
+                }
+            }
+            catch (Exception ex) 
+            { 
+            }
+            RequestParameters = false;
+        }
+
         public rptInTemNuTrang(long BarcodeID, int soLuongTem)
         {
             InitializeComponent();

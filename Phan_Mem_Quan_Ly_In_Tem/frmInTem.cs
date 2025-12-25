@@ -751,7 +751,64 @@ namespace Phan_Mem_Quan_Ly_In_Tem
             try 
             {
                 var db = new ModelEF.PrintBarcodeEntities();
+                var barcodeDetail = GetBarcodeDetail();
 
+                //var barcodeDetail = new ModelEF.BarcodeDetail();
+
+                //barcodeDetail.BarcodeString = txtMaVach.Text;
+                //barcodeDetail.BarcodeUnique = Guid.NewGuid();
+                //barcodeDetail.CompanyAddress = txtDiaChiNhaPhanPhoi.Text;
+                //barcodeDetail.CompanyID = 0;
+                //barcodeDetail.CompanyName = txtNhaPhanPhoi.Text;
+                //barcodeDetail.CreatedDate = DateTime.Now;
+                //barcodeDetail.CompanyStandardNo = txtNhaPhanPhoiCode.Text;
+
+                //barcodeDetail.CreatedUserID = 0;
+                ////barcodeDetail.DeletedDate = null;
+                ////barcodeDetail.DeteletedUserID = 0;
+                //barcodeDetail.Expense = Convert.ToDecimal(txtTienCong.EditValue);
+                //barcodeDetail.GoldType = txtHamLuongPho.Text;
+
+                //barcodeDetail.GoldWeight = Convert.ToDecimal(txtTrongLuong.EditValue);
+                //barcodeDetail.GoldSign = txtKyHieuVang.Text;
+                //barcodeDetail.IsDeleted = false;
+                //barcodeDetail.ItemID = 0;
+                //barcodeDetail.ItemName = txtTenHang.Text;
+                //barcodeDetail.Origin = txtXuatXu.Text;
+
+                //barcodeDetail.Size = txtSoNi.Text;
+                //barcodeDetail.StoneWeight = Convert.ToDecimal(txtHot.EditValue);
+                //barcodeDetail.SupplierAddress = txtDiaChiNCC.Text;
+                //barcodeDetail.SupplierID = 0;
+                //barcodeDetail.SupplierName = txtTenTiemNCC.Text;
+
+                //barcodeDetail.SupplierStandardNo = txtNhaCungCapCode.Text;
+                //barcodeDetail.TotalWeight = Convert.ToDecimal(txtTongTrongLuong.EditValue);
+                //barcodeDetail.UpdatedDate = DateTime.Now;
+                //barcodeDetail.UpdatedUserID = 0;
+                //barcodeDetail.TemplatePath = txtMauTem.Text;
+                //barcodeDetail.WeightDisplayFormat = txtDinhDang.Text;
+
+                if (barcodeDetail != null) 
+                {
+                    db.BarcodeDetails.Add(barcodeDetail);
+                    db.SaveChanges();
+
+                    printBarcodeID = barcodeDetail.BarcodeID;
+                }
+
+                return "";
+            }
+            catch (Exception ex) 
+            {
+                return ex.Message;
+            }
+        }
+
+        private ModelEF.BarcodeDetail GetBarcodeDetail() 
+        {
+            try 
+            {
                 var barcodeDetail = new ModelEF.BarcodeDetail();
 
                 barcodeDetail.BarcodeString = txtMaVach.Text;
@@ -774,13 +831,13 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 barcodeDetail.ItemID = 0;
                 barcodeDetail.ItemName = txtTenHang.Text;
                 barcodeDetail.Origin = txtXuatXu.Text;
-                
+
                 barcodeDetail.Size = txtSoNi.Text;
                 barcodeDetail.StoneWeight = Convert.ToDecimal(txtHot.EditValue);
                 barcodeDetail.SupplierAddress = txtDiaChiNCC.Text;
                 barcodeDetail.SupplierID = 0;
                 barcodeDetail.SupplierName = txtTenTiemNCC.Text;
-                
+
                 barcodeDetail.SupplierStandardNo = txtNhaCungCapCode.Text;
                 barcodeDetail.TotalWeight = Convert.ToDecimal(txtTongTrongLuong.EditValue);
                 barcodeDetail.UpdatedDate = DateTime.Now;
@@ -788,17 +845,15 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 barcodeDetail.TemplatePath = txtMauTem.Text;
                 barcodeDetail.WeightDisplayFormat = txtDinhDang.Text;
 
-                db.BarcodeDetails.Add(barcodeDetail);
-                db.SaveChanges();
+                return barcodeDetail;
 
-                printBarcodeID = barcodeDetail.BarcodeID;
-
-                return "";
             }
             catch (Exception ex) 
             {
-                return ex.Message;
+                MessageBox.Show(this, ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
+            
         }
 
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -912,6 +967,12 @@ namespace Phan_Mem_Quan_Ly_In_Tem
                 if (printBarcodeID != 0)
                 {
                     rptMaVach = new rptInTemNuTrang(printBarcodeID, Convert.ToInt32(txtSoLuongTem.Value));
+                    printBarcodeID = 0;
+                }
+                else if (!cbLuuSauKhiIn.Checked) 
+                {
+                    var barcodeDetail = GetBarcodeDetail();
+                    rptMaVach = new rptInTemNuTrang(barcodeDetail, Convert.ToInt32(txtSoLuongTem.Value));
                     printBarcodeID = 0;
                 }
                 string filePath = @"rptInTemNuTrang.repx";
